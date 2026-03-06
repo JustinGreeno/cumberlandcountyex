@@ -683,9 +683,11 @@
                         </div>
                     </div>
 
+                    <input type="hidden" name="_subject" value="CCEx Vendor Application 2026">
+
                     <!-- Form Buttons -->
                     <div class="form-buttons">
-                        <button type="submit" class="btn-submit" id="submitBtn" disabled>Submit Application</button>
+                        <button type="submit" class="btn-submit" id="vendorSubmitBtn" disabled>Submit Application</button>
                         <button type="reset" class="btn-clear">Clear Form</button>
                     </div>
 
@@ -693,6 +695,36 @@
                         Your application will be reviewed by our Vendor Committee. We will contact you within 2 weeks regarding your application status.
                     </div>
                 </form>
+
+                <script>
+                document.getElementById('vendorApplicationForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const btn = document.getElementById('vendorSubmitBtn');
+                    btn.textContent = 'Submitting...';
+                    btn.disabled = true;
+                    btn.classList.add('btn-submit-loading');
+                    document.getElementById('vendorError').style.display = 'none';
+                    try {
+                        const res = await fetch(this.action, {
+                            method: 'POST',
+                            body: new FormData(this),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        if (res.ok) {
+                            this.style.display = 'none';
+                            document.getElementById('vendorSuccess').style.display = 'block';
+                            document.getElementById('vendorSuccess').scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            throw new Error('Server error');
+                        }
+                    } catch(err) {
+                        document.getElementById('vendorError').style.display = 'block';
+                        btn.textContent = 'Submit Application';
+                        btn.disabled = false;
+                        btn.classList.remove('btn-submit-loading');
+                    }
+                });
+                </script>
             </section>
 
             <!-- Contact Info -->
@@ -857,4 +889,25 @@
 
             body += `\nINSURANCE & PERMITS\n`;
             body += `-------------------\n`;
-            body += `Liabili
+            body += `Liability Insurance: ${insurance}\n`;
+            if (healthPermit) body += `Health Permit: ${healthPermit}\n`;
+
+            if (comments) {
+                body += `\nCOMMENTS\n`;
+                body += `--------\n`;
+                body += `${comments}\n`;
+            }
+
+            body += `\n========================================\n`;
+            body += `Terms and Conditions: ACCEPTED\n`;
+            body += `Submitted via cumberlandcountyex.com`;
+
+            // Create mailto link
+            const mailtoLink = `mailto:cumberlandexhibition@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+
+            alert('Your email client will open with the application details. Please send the email to complete your application.\n\nIf your email client doesn\'t open, please email cumberlandexhibition@gmail.com directly with your application information.');
+        });
+    </script>
+</body>
+</html>
