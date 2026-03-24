@@ -115,7 +115,7 @@ body::after {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
 /* ============================================
@@ -283,9 +283,9 @@ nav .dropdown a.active {
 /* Main nav tabs */
 nav a {
     display: block;
-    padding: 0.6rem 1rem;
+    padding: 0.42rem 0.7rem;
     font-family: 'Alfa Slab One', serif;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 0.5px;
     color: var(--cream);
     text-decoration: none;

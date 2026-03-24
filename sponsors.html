@@ -138,6 +138,17 @@
         .sponsor-name-list.silver { border-color: #A8A8A8; }
         .sponsor-name-list.bronze { border-color: #CD7F32; }
         .sponsor-name-list.friends { border-color: #4a7c4e; background: linear-gradient(145deg, #f0f8f0, var(--cream)); }
+        .sponsor-placeholder {
+            border-style: dashed;
+            opacity: 0.75;
+        }
+        .sponsor-placeholder .sponsor-name {
+            color: var(--text-medium);
+        }
+        /* Only show placeholders when 4-col grid would have empty spaces (6 real cards) */
+        @media (max-width: 1095px) {
+            .sponsor-placeholder { display: none; }
+        }
         .year-note {
             background: var(--straw-light);
             border: 3px solid var(--straw);
@@ -166,18 +177,19 @@
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="schedule-2026.html">Schedule</a></li>
+                    <li><a href="activities.html">Kids Activities</a></li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
                     <li class="has-dropdown">
                         <a href="#">Info</a>
                         <ul class="dropdown">
-                            <li><a href="activities.html">Kids Activities</a></li>
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
                             <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
                             <li><a href="4h.html">4-H</a></li>
                         </ul>
                     </li>
-                    <li><a href="merch.html">Merch</a></li>
-                    <li><a href="photos.html">Photos</a></li>
                     <li class="has-dropdown">
                         <a href="#" class="active">About</a>
                         <ul class="dropdown">
@@ -263,6 +275,18 @@
                     <div class="sponsor-card platinum">
                         <img src="images/sponser logos/Casey.png" alt="Casey Concrete" class="sponsor-logo">
                         <div class="sponsor-name">Casey Concrete Ltd.</div>
+                    </div>
+                    <div class="sponsor-card platinum sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company Here</div>
+                        <div class="sponsor-location">Sponsor Us Now</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top: 0.75rem; font-size: 0.8rem; padding: 0.4rem 0.8rem;">Learn More</a>
+                    </div>
+                    <div class="sponsor-card platinum sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company Here</div>
+                        <div class="sponsor-location">Sponsor Us Now</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top: 0.75rem; font-size: 0.8rem; padding: 0.4rem 0.8rem;">Learn More</a>
                     </div>
                 </div>
             </div>
