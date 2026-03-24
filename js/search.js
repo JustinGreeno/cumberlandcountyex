@@ -31,7 +31,7 @@ const searchIndex = [
     // Events & Activities
     { type: 'event', icon: '🐴', title: 'Heavy Horse Pull', desc: 'Watch powerful draft horses compete', url: 'events.html', keywords: 'heavy horse pull draft horses competition' },
     { type: 'event', icon: '🐴', title: 'Light Horse Show', desc: 'English and Western horse show classes', url: 'exhibitors.html', keywords: 'light horse show western english classes equitation barrel racing' },
-    { type: 'event', icon: '🏛️', title: 'Agricultural Hall', desc: 'Prize-winning vegetables and crafts', url: 'exhibitors.html', keywords: 'agricultural hall vegetables preserves crafts display' },
+    { type: 'event', icon: '🏛️', title: 'Exhibition Hall', desc: 'Prize-winning vegetables and crafts', url: 'exhibitors.html', keywords: 'exhibition hall vegetables preserves crafts display' },
     { type: 'event', icon: '🎤', title: 'Live Music', desc: 'Live music performances on the main stage', url: 'events.html', keywords: 'live entertainment music bands stage performers concert' },
     { type: 'event', icon: '🐾', title: 'Petting Zoo', desc: 'Get up close with fluffy little friends', url: 'activities.html', keywords: 'petting zoo animals fluffy bunnies chicks' },
     { type: 'event', icon: '🍟', title: 'Food Court', desc: 'Fair favorites and treats', url: 'vendors.html', keywords: 'food court fries cotton candy treats eating' },
