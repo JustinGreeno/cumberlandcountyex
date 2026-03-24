@@ -548,7 +548,6 @@ h1, h2 {
     margin: 2rem 0;
     position: relative;
     box-shadow: 0 8px 30px var(--shadow-medium);
-    filter: saturate(0.4);
 }
 
 /* Green ribbon on wooden panels */
@@ -731,7 +730,7 @@ h1, h2 {
 }
 
 .feature-item p {
-    color: var(--text-light);
+    color: var(--text-dark);
     font-size: 1.05rem;
 }
 
@@ -2372,7 +2371,7 @@ main {
 
 .search-result-desc {
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: var(--text-medium);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2391,7 +2390,7 @@ main {
 .search-no-results {
     padding: 2rem;
     text-align: center;
-    color: var(--text-light);
+    color: var(--text-dark);
 }
 
 .search-no-results strong {
