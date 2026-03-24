@@ -300,6 +300,7 @@
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="schedule-2026.html">Schedule</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="activities.html">Kids Activities</a></li>
                     <li><a href="merch.html">Merch</a></li>
                     <li><a href="photos.html">Photos</a></li>
@@ -354,30 +355,40 @@
 
             <!-- Fee Information -->
             <div class="fee-info">
-                <h3>Vendor Fees</h3>
+                <h3>Vendor Fees – CCEx 2026</h3>
                 <table class="fee-table">
                     <tr>
-                        <th>Vendor Type</th>
-                        <th>Full Exhibition (Aug 31–Sep 6) *</th>
+                        <th>Booth Type</th>
+                        <th>Reserve Fee</th>
+                        <th>Deposit Returned</th>
                     </tr>
                     <tr>
-                        <td>Food Vendor (with power)</td>
-                        <td>$400</td>
+                        <td>10x10 (inside or outside)</td>
+                        <td>$50</td>
+                        <td>$25 at end of event</td>
                     </tr>
                     <tr>
-                        <td>Food Vendor (no power)</td>
-                        <td>$300</td>
+                        <td>10x20 (inside or outside)</td>
+                        <td>$70</td>
+                        <td>$35 at end of event</td>
                     </tr>
                     <tr>
-                        <td>Merchandise/Crafts (10x10)</td>
-                        <td>$200</td>
+                        <td>Food Truck (no power/water)</td>
+                        <td>$100/week</td>
+                        <td>-</td>
                     </tr>
                     <tr>
-                        <td>Non-Profit/Community</td>
-                        <td>$100</td>
+                        <td>Food Truck (power &amp; water hookup)</td>
+                        <td>$150/week</td>
+                        <td>- (limited spaces)</td>
+                    </tr>
+                    <tr>
+                        <td>Larger booth (on request)</td>
+                        <td>Additional charge</td>
+                        <td>Limited spaces</td>
                     </tr>
                 </table>
-                <p style="margin-top: 1rem; font-style: italic;">Fees are due upon approval. Space assignments are made at the committee's discretion. <em>* 2026 pricing subject to confirmation by the board.</em></p>
+                <p style="margin-top: 1rem; font-style: italic;">All booth vendors must provide one item of $20+ value for the basket draw. Indoor booths include 1 table &amp; 2 chairs. Vendors provide own tablecloths and electrical cords. Space assignments are at the committee's discretion.</p>
             </div>
 
             <!-- Application Form -->
@@ -452,19 +463,31 @@
                         <h3>Vendor Type</h3>
 
                         <div class="form-group">
-                            <label>What type of vendor are you? <span class="required">*</span></label>
+                            <label>What type of booth are you applying for? <span class="required">*</span></label>
                             <div class="radio-group">
                                 <label class="radio-option">
-                                    <input type="radio" name="vendorType" value="food" required>
-                                    <span>Food Vendor</span>
+                                    <input type="radio" name="vendorType" value="outdoor_10x10" required>
+                                    <span>Outside Vendor 10x10</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="vendorType" value="merchandise">
-                                    <span>Merchandise/Crafts</span>
+                                    <input type="radio" name="vendorType" value="outdoor_10x20">
+                                    <span>Outside Vendor 10x20</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="vendorType" value="nonprofit">
-                                    <span>Non-Profit/Community</span>
+                                    <input type="radio" name="vendorType" value="indoor_10x10">
+                                    <span>Indoor Vendor 10x10</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="vendorType" value="indoor_10x20">
+                                    <span>Indoor Vendor 10x20</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="vendorType" value="foodtruck_no_power">
+                                    <span>Food Truck (no power/water)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="vendorType" value="foodtruck_power">
+                                    <span>Food Truck (power/water hookup)</span>
                                 </label>
                                 <label class="radio-option">
                                     <input type="radio" name="vendorType" value="other">
@@ -518,18 +541,17 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="spaceSize">Space Size Required</label>
-                                <select id="spaceSize" name="spaceSize">
-                                    <option value="">Select...</option>
-                                    <option value="10x10">10' x 10' (Standard)</option>
-                                    <option value="10x20">10' x 20'</option>
-                                    <option value="20x20">20' x 20'</option>
-                                    <option value="other">Other (specify below)</option>
-                                </select>
+                                <label for="vehicleType">Food Truck / Trailer Measurements</label>
+                                <input type="text" id="vehicleType" name="vehicleType" placeholder="e.g., 24' food truck, 16' trailer - required for food trucks">
+                                <p class="hint">Food truck applicants: please provide your vehicle dimensions.</p>
                             </div>
                             <div class="form-group">
-                                <label for="vehicleType">Vehicle/Trailer Size</label>
-                                <input type="text" id="vehicleType" name="vehicleType" placeholder="e.g., Food truck 20', Tent, Trailer">
+                                <label for="powerOutlet">Power outlet needed?</label>
+                                <select id="powerOutlet" name="powerOutlet">
+                                    <option value="">Select...</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
                             </div>
                         </div>
 

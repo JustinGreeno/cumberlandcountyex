@@ -3,11 +3,11 @@ const searchIndex = [
     // Pages
     { type: 'page', icon: '🏠', title: 'Home', desc: 'Main page - Welcome to the Fair', url: 'index.html', keywords: 'home main welcome fair exhibition' },
     { type: 'page', icon: '📅', title: 'Schedule', desc: 'Full event schedule for 2026', url: 'schedule-2026.html', keywords: 'schedule events times calendar when' },
-    { type: 'page', icon: '🎠', title: 'Kids Activities', desc: 'Fun activities for children', url: 'activities.html', keywords: 'kids children activities petting zoo face painting games' },
-    { type: 'page', icon: '🐄', title: 'Exhibitors', desc: 'Information for exhibitors', url: 'exhibitors.html', keywords: 'exhibitors livestock cattle horses sheep entry' },
-    { type: 'page', icon: '🍔', title: 'Vendors', desc: 'Vendor information and pricing', url: 'vendors.html', keywords: 'vendors food booth craft merchandise sell' },
+    { type: 'page', icon: '🎠', title: 'Kids Activities', desc: 'Fun activities for children including Fun Zone, bouncy castles, foam party, and more', url: 'activities.html', keywords: 'kids children activities petting zoo face painting games fun zone bouncy castle foam party carnival games bracelet' },
+    { type: 'page', icon: '🐄', title: 'Exhibitors', desc: 'Information for exhibitors', url: 'exhibitors.html', keywords: 'exhibitors livestock cattle horses sheep entry light horse heavy horse draft horse maritime 4 horse classic hitch gymkhana western english' },
+    { type: 'page', icon: '🍔', title: 'Vendors', desc: 'Vendor information and booth pricing', url: 'vendors.html', keywords: 'vendors food booth craft merchandise sell 10x10 10x20 food truck indoor outdoor pricing deposit basket draw' },
     { type: 'page', icon: '📝', title: 'Forms & Documents', desc: 'Download entry forms and rules', url: 'forms.html', keywords: 'forms documents download entry application' },
-    { type: 'page', icon: '👕', title: 'Merchandise', desc: 'Official CCEx merchandise', url: 'merch.html', keywords: 'merch merchandise shirts hats clothing buy shop' },
+    { type: 'page', icon: '👕', title: 'Tickets & Merchandise', desc: 'Admission prices, event tickets, and official CCEx merchandise', url: 'merch.html', keywords: 'merch merchandise shirts hats clothing buy shop tickets admission prices fun zone mud stomp foam party bracelet' },
     { type: 'page', icon: '📸', title: 'Photos', desc: 'Photo gallery from the fair', url: 'photos.html', keywords: 'photos pictures gallery images memories' },
     { type: 'page', icon: '🤝', title: 'Sponsors', desc: 'Our sponsors and partners', url: 'sponsors.html', keywords: 'sponsors partners support business' },
     { type: 'page', icon: '👥', title: 'Board Members', desc: 'Meet the exhibition board', url: 'members.html', keywords: 'board members directors committee team' },
@@ -29,42 +29,61 @@ const searchIndex = [
     { type: 'form', icon: '📄', title: 'Sponsorship Package', desc: '2026 Sponsorship opportunities info', url: 'images/forms and documents/PDF 2026 Full Sponsorship Package.pdf', keywords: 'sponsor sponsorship package business support 2026' },
 
     // Events & Activities
-    { type: 'event', icon: '🐴', title: 'Heavy Horse Pull', desc: 'Watch powerful draft horses compete', url: 'schedule-2026.html', keywords: 'heavy horse pull draft horses competition' },
-    { type: 'event', icon: '🐴', title: 'Light Horse Show', desc: 'English and Western horse show classes', url: 'schedule-2026.html', keywords: 'light horse show western english classes equitation barrel racing' },
-    { type: 'event', icon: '🏛️', title: 'Agricultural Hall', desc: 'Prize-winning vegetables and crafts', url: 'schedule-2026.html', keywords: 'agricultural hall vegetables preserves crafts display' },
-    { type: 'event', icon: '🎤', title: 'Live Music', desc: 'Live music performances on the main stage', url: 'schedule-2026.html', keywords: 'live entertainment music bands stage performers concert' },
+    { type: 'event', icon: '🐴', title: 'Heavy Horse Pull', desc: 'Watch powerful draft horses compete', url: 'events.html', keywords: 'heavy horse pull draft horses competition' },
+    { type: 'event', icon: '🐴', title: 'Light Horse Show', desc: 'English and Western horse show classes', url: 'exhibitors.html', keywords: 'light horse show western english classes equitation barrel racing' },
+    { type: 'event', icon: '🏛️', title: 'Agricultural Hall', desc: 'Prize-winning vegetables and crafts', url: 'exhibitors.html', keywords: 'agricultural hall vegetables preserves crafts display' },
+    { type: 'event', icon: '🎤', title: 'Live Music', desc: 'Live music performances on the main stage', url: 'events.html', keywords: 'live entertainment music bands stage performers concert' },
     { type: 'event', icon: '🐾', title: 'Petting Zoo', desc: 'Get up close with fluffy little friends', url: 'activities.html', keywords: 'petting zoo animals fluffy bunnies chicks' },
-    { type: 'event', icon: '🍟', title: 'Food Court', desc: 'Fair favorites and treats', url: 'index.html', keywords: 'food court fries cotton candy treats eating' },
+    { type: 'event', icon: '🍟', title: 'Food Court', desc: 'Fair favorites and treats', url: 'vendors.html', keywords: 'food court fries cotton candy treats eating' },
     { type: 'event', icon: '🎨', title: 'Face Painting', desc: 'Transform into your favorite character', url: 'activities.html', keywords: 'face painting kids art children' },
     { type: 'event', icon: '✏️', title: 'Caricature Drawings', desc: 'Hilarious hand-drawn caricatures for all ages', url: 'activities.html', keywords: 'caricature drawings portraits art kids adults' },
-    { type: 'event', icon: '🎄', title: 'Christmas Tree Competition', desc: 'In memory of Keith Moore', url: 'activities.html', keywords: 'christmas tree competition keith moore memorial' },
+    { type: 'event', icon: '🎄', title: 'Christmas Tree Competition', desc: 'In memory of Keith Moore', url: 'events.html', keywords: 'christmas tree competition keith moore memorial' },
     { type: 'event', icon: '🎢', title: 'Midway Rides', desc: 'Thrilling rides for all ages', url: 'activities.html', keywords: 'midway rides carnival games thrilling' },
     { type: 'event', icon: '🌾', title: 'Hay Bale Maze', desc: 'Navigate through the maze', url: 'activities.html', keywords: 'hay bale maze adventure kids' },
-    { type: 'event', icon: '🐄', title: 'Livestock Shows', desc: 'Beef cattle, horses, dairy display and more', url: 'schedule-2026.html', keywords: 'livestock shows cattle horses beef draft horse pull' },
-    { type: 'event', icon: '🏆', title: '4-H Competitions', desc: 'Youth agricultural competitions - Aug 31 & Sept 1', url: 'schedule-2026.html', keywords: '4h 4-h competitions youth showmanship august september' },
+    { type: 'event', icon: '🐄', title: 'Livestock Shows', desc: 'Beef cattle, horses, dairy display and more', url: 'exhibitors.html', keywords: 'livestock shows cattle horses beef draft horse pull' },
+    { type: 'event', icon: '🏆', title: '4-H Competitions', desc: 'Youth agricultural competitions - Aug 31 & Sept 1', url: '4h.html', keywords: '4h 4-h competitions youth showmanship august september' },
     { type: 'event', icon: '🎈', title: 'Balloon Animals', desc: 'Amazing balloon art creations', url: 'activities.html', keywords: 'balloon animals art kids' },
     { type: 'event', icon: '🏆', title: 'Kids Competitions', desc: 'Pie eating, sack races, and more', url: 'activities.html', keywords: 'kids competitions pie eating sack races' },
 
     // Info & FAQ
-    { type: 'info', icon: '💵', title: 'Admission Prices', desc: 'Day $5 · Week Pass $15 · Family Pass $20 · Under 5 Free', url: 'contact.html', keywords: 'admission price cost tickets entry fee day pass week pass family pass' },
+    { type: 'info', icon: '💵', title: 'Admission Prices', desc: 'Day $5 · Week Pass $15 · Family Pass $20 · Under 5 Free · Fun Zone $5/day · Mud Stomp $10/$15', url: 'merch.html', keywords: 'admission price cost tickets entry fee day pass week pass family pass fun zone bracelet mud stomp advance door' },
     { type: 'info', icon: '📍', title: 'Location & Directions', desc: 'Exhibition Grounds, Oxford, NS', url: 'contact.html', keywords: 'location directions address map oxford nova scotia' },
     { type: 'info', icon: '🅿️', title: 'Parking Information', desc: 'Free parking, accessible spots available', url: 'contact.html', keywords: 'parking free accessible handicap' },
     { type: 'info', icon: '🐕', title: 'Pet Policy', desc: 'Service animals only permitted', url: 'contact.html', keywords: 'pets dogs animals allowed policy' },
-    { type: 'info', icon: '📆', title: 'Fair Dates 2026', desc: 'Aug 31 - Sept 6', url: 'index.html', keywords: 'dates when fair 2026 august september' },
+    { type: 'info', icon: '📆', title: 'Fair Dates 2026', desc: 'Aug 31 - Sept 6', url: 'schedule-2026.html', keywords: 'dates when fair 2026 august september' },
     { type: 'info', icon: '⏰', title: 'Fair Hours', desc: 'Fri 5-10PM, Sat-Sun 10AM-10PM, Mon 10AM-4PM', url: 'vendors.html', keywords: 'hours times open close schedule' },
     { type: 'info', icon: '🌧️', title: 'Weather Policy', desc: 'Fair runs rain or shine', url: 'contact.html', keywords: 'weather rain policy refund' },
     { type: 'info', icon: '📧', title: 'Email Contact', desc: 'cumberlandexhibition@gmail.com', url: 'contact.html', keywords: 'email contact info address' },
     { type: 'info', icon: '♿', title: 'Accessibility', desc: 'Accessible parking and facilities', url: 'contact.html', keywords: 'accessible accessibility wheelchair handicap' },
     { type: 'info', icon: '🍽️', title: 'Food Available', desc: 'Food court with fair favorites', url: 'contact.html', keywords: 'food eating available vendors' },
-    { type: 'info', icon: '💼', title: 'Become a Vendor', desc: 'Apply to sell at the fair', url: 'vendors.html', keywords: 'vendor apply sell booth' },
+    { type: 'info', icon: '💼', title: 'Become a Vendor', desc: 'Apply to sell at the fair', url: 'vendor-application.html', keywords: 'vendor apply sell booth' },
     { type: 'info', icon: '🤝', title: 'Become a Sponsor', desc: 'Sponsorship opportunities', url: 'sponsors.html', keywords: 'sponsor sponsorship business partner' },
     { type: 'info', icon: '🙋', title: 'Volunteer', desc: 'Help at the fair', url: 'contact.html', keywords: 'volunteer help work fair' },
 
     // Livestock Categories
     { type: 'info', icon: '🐄', title: 'Beef Cattle Entry', desc: 'Enter beef cattle in the show', url: 'exhibitors.html', keywords: 'beef cattle entry show' },
-    { type: 'info', icon: '🐴', title: 'Light Horse Entry', desc: 'Enter light horses in shows', url: 'exhibitors.html', keywords: 'horse entry show light horse western english' },
-    { type: 'info', icon: '🐴', title: 'Draft Horse / Horse Pull Entry', desc: 'Enter draft horses or horse pull', url: 'exhibitors.html', keywords: 'draft horse horse pull entry heavy' },
-    { type: 'info', icon: '🐰', title: 'Rabbit Entry', desc: 'Enter rabbits in the show', url: 'exhibitors.html', keywords: 'rabbit entry bunny show' }
+    { type: 'info', icon: '🐴', title: 'Light Horse Entry', desc: 'English and Western classes including gymkhana (barrel racing, pole bending)', url: 'exhibitors.html', keywords: 'horse entry show light horse western english gymkhana flat barrel racing pole bending equitation pleasure' },
+    { type: 'info', icon: '🐴', title: 'Heavy Horse / Horse Pull Entry', desc: 'Maritime 4 Horse Classic and Horse Pull — heavy horses haul in/out for competitions', url: 'exhibitors.html', keywords: 'draft horse horse pull entry heavy maritime 4 horse classic hitch clydesdale belgian percheron shire haul' },
+    { type: 'info', icon: '🐰', title: 'Rabbit Entry', desc: 'Enter rabbits in the show', url: 'exhibitors.html', keywords: 'rabbit entry bunny show' },
+
+    // Fun Zone
+    { type: 'event', icon: '🎪', title: 'Fun Zone', desc: '$5/day bracelet — bouncy castles, carnival games, foam party', url: 'activities.html#fun-zone', keywords: 'fun zone bracelet $5 five dollar bouncy castle inflatable carnival games kids play all day' },
+    { type: 'event', icon: '🏰', title: 'Bouncy Castles', desc: 'Large and small bouncy castles for kids of all sizes — included with Fun Zone bracelet', url: 'activities.html#fun-zone', keywords: 'bouncy castle inflatable bounce jump kids large small fun zone' },
+    { type: 'event', icon: '🫧', title: 'Foam Party', desc: 'Saturday 2-hour kids event — part of the Fun Zone, included with bracelet', url: 'activities.html#fun-zone', keywords: 'foam party saturday suds wet fun zone bubble kids family friendly 2 hour' },
+
+    // Mud Stomp
+    { type: 'event', icon: '🎶', title: 'Mud Stomp', desc: 'Saturday night adult event - DJ Dave, Coldstream drinks, 19+ only. $10 advance / $15 door', url: 'events.html#mud-stomp', keywords: 'mud stomp saturday night adults 19+ dj dave coldstream drinks tickets advance door evening party music dance' },
+    { type: 'info', icon: '🎟️', title: 'Mud Stomp Tickets', desc: '$10 in advance or $15 at the door - adults 19+ only', url: 'events.html#mud-stomp', keywords: 'mud stomp tickets price cost advance door 19 plus adults only saturday night' },
+
+    // Maritime 4 Horse Classic
+    { type: 'event', icon: '🐴', title: 'Maritime 4 Horse Classic', desc: 'Draft horse hitch competition — teams of four horses competing across the Maritimes', url: 'exhibitors.html', keywords: 'maritime 4 horse classic draft hitch clydesdale belgian percheron shire four horse team series maritimes' },
+
+    // Vendor details
+    { type: 'info', icon: '🏪', title: 'Booth Pricing — 10x10', desc: '$50 to reserve ($25 returned at end) — inside or outside', url: 'vendors.html', keywords: 'booth pricing 10x10 cost reserve deposit indoor outdoor vendor' },
+    { type: 'info', icon: '🏪', title: 'Booth Pricing — 10x20', desc: '$70 to reserve ($35 returned at end) — inside or outside', url: 'vendors.html', keywords: 'booth pricing 10x20 cost reserve deposit indoor outdoor vendor' },
+    { type: 'info', icon: '🚚', title: 'Food Truck Pricing', desc: '$100/week (no power/water) or $150/week (power & water) — limited hookup spaces', url: 'vendors.html', keywords: 'food truck pricing cost power water hookup week vendor' },
+    { type: 'info', icon: '🎁', title: 'Basket Draw — Vendor Requirement', desc: 'All booth vendors must provide one item ($20+ value) for the basket draw', url: 'vendors.html', keywords: 'basket draw vendor requirement item donation prize' },
+    { type: 'info', icon: '🕙', title: 'Vendor Hall Hours', desc: 'Sept 2–5: 10AM–9PM · Sept 6: 10AM–1PM · Setup Sept 1 or 2', url: 'vendors.html', keywords: 'vendor hall hours setup move in september open close times' }
 ];
 
 // Animal synonym groups - searching any term matches all related terms

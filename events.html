@@ -4,19 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events | Cumberland County Exhibition</title>
-    <meta name="description" content="Full event schedule for the Cumberland County Exhibition - livestock shows, 4-H competitions, and more!">
+    <meta name="description" content="Featured events at CCEx 2026 - Mud Stomp, Foam Party, Maritime 4 Horse Classic, Horse Pull, Live Music, and more!">
+    <meta name="keywords" content="CCEx events, mud stomp, foam party, horse pull, maritime 4 horse classic, DJ dave, live music, Oxford NS">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
     <script src="js/countdown.js" defer></script>
     <script src="js/horseshoe.js" defer></script>
     <script src="js/ui.js" defer></script>
+    <style>
+        /* ── Featured Event Cards ── */
+        .featured-events {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .event-feature-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px var(--shadow-dark);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .event-feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px var(--shadow-dark);
+        }
+        .efc-header {
+            padding: 2rem 2rem 1.5rem;
+            position: relative;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .efc-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.25);
+            border-radius: 0;
+        }
+        .efc-header > * { position: relative; z-index: 1; }
+        .efc-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+            width: fit-content;
+        }
+        .efc-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 3px 10px rgba(0,0,0,0.6);
+            line-height: 1.1;
+            margin: 0;
+        }
+        .efc-body {
+            background: var(--cream);
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .efc-body p {
+            color: var(--text);
+            line-height: 1.65;
+            margin: 0;
+        }
+        .efc-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 2px dashed var(--rope-tan);
+        }
+        .efc-tag {
+            background: var(--cream-dark);
+            border: 2px solid var(--rope-tan);
+            border-radius: 20px;
+            padding: 0.3rem 0.85rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--wood-dark);
+        }
+        .efc-tag.highlight {
+            background: var(--barn-red);
+            border-color: var(--barn-red);
+            color: white;
+        }
+        .efc-tag.gold {
+            background: var(--straw);
+            border-color: var(--hay);
+            color: var(--wood-dark);
+        }
+
+        /* ── Mud Stomp Hero ── */
+        .mud-stomp-hero {
+            position: relative;
+            width: 100%;
+            min-height: 480px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-end;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.6);
+        }
+        .mud-stomp-hero-bg {
+            position: absolute;
+            inset: -10%;
+            background: url('images/art/mud stomp hero shot.png') center center / cover no-repeat;
+            animation: kenBurns 18s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes kenBurns {
+            0%   { transform: scale(1)    translateX(0)     translateY(0); }
+            100% { transform: scale(1.14) translateX(-2%)   translateY(-2%); }
+        }
+        .mud-stomp-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(10,5,30,0.92) 0%,
+                rgba(30,15,60,0.70) 45%,
+                rgba(10,5,30,0.30) 100%
+            );
+            z-index: 1;
+        }
+        .mud-stomp-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem 2.5rem 2.5rem;
+            width: 100%;
+        }
+        .ms-hero-badge {
+            display: inline-block;
+            background: var(--barn-red);
+            color: white;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+        .ms-hero-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            color: white;
+            text-shadow: 2px 4px 16px rgba(0,0,0,0.8);
+            margin: 0 0 0.75rem;
+            line-height: 1;
+        }
+        .ms-hero-desc {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 580px;
+            margin-bottom: 1.25rem;
+        }
+        .ms-hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .ms-hero-tag {
+            background: rgba(255,255,255,0.14);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: white;
+        }
+        .ms-hero-tag.red {
+            background: var(--barn-red);
+            border-color: var(--barn-red);
+        }
+        .ms-hero-tag.gold {
+            background: var(--straw);
+            border-color: var(--hay);
+            color: var(--wood-dark);
+        }
+
+        /* ── Secondary event cards ── */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .event-card-sm {
+            background: var(--cream);
+            border: 4px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 14px var(--shadow-medium);
+            transition: all 0.3s ease;
+        }
+        .event-card-sm:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px var(--shadow-dark);
+            border-color: var(--straw);
+        }
+        .event-card-sm .ec-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .event-card-sm h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--wood-dark);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .event-card-sm p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+        .event-card-sm .ec-when {
+            display: inline-block;
+            background: var(--wood-medium);
+            color: var(--straw-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+        .ec-img-frame {
+            width: 140px;
+            height: 140px;
+            border: 5px solid var(--wood-dark);
+            border-radius: 12px;
+            background: var(--cream-dark);
+            box-shadow:
+                0 6px 18px var(--shadow-medium),
+                inset 0 0 0 3px var(--straw),
+                inset 0 0 0 6px var(--wood-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0 auto 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ec-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .event-card-sm:hover .ec-img-frame {
+            transform: scale(1.08);
+            box-shadow:
+                0 10px 28px var(--shadow-dark),
+                inset 0 0 0 3px var(--hay),
+                inset 0 0 0 6px var(--wood-light);
+            border-color: var(--straw);
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <span class="logo-text">CCEx</span>
+                <img src="images/art/Try Logo 1 white glow.png" alt="CCEx" class="logo-img">
                 <span class="logo-tagline">Cumberland County Exhibition</span>
             </a>
             <nav>
@@ -28,6 +293,7 @@
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="schedule-2026.html">Schedule</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
                     <li><a href="activities.html">Kids Activities</a></li>
                     <li><a href="merch.html">Merch</a></li>
                     <li><a href="photos.html">Photos</a></li>
@@ -69,187 +335,136 @@
 
     <main>
         <section class="hero">
-            <h1>Events Schedule</h1>
-            <p class="tagline">Seven Days of Country Fun!</p>
+            <h1>Events</h1>
+            <p class="tagline">Something for Everyone - All Week Long!</p>
         </section>
 
         <div class="container">
-            <!-- Friday -->
-            <section class="panel animate-in">
-                <h2>Friday - Opening Day</h2>
-                <p style="margin-bottom: 1.5rem; color: var(--text-light);">Gates open at 4:00 PM</p>
 
-                <div class="event-card">
-                    <div class="event-date">4:00 PM</div>
-                    <div class="event-title">Gates Open</div>
-                    <div class="event-desc">Welcome to CCEx! Food vendors open and CCEx officially kicks off.</div>
+            <!-- Featured Events -->
+            <section class="panel animate-in section-decorated">
+                <div class="animal-head left">
+                    <img src="images/art/chicken facing right.png" alt="Decorative farm animal">
                 </div>
-
-                <div class="event-card">
-                    <div class="event-date">5:00 PM</div>
-                    <div class="event-title">4-H Beef Show</div>
-                    <div class="event-desc">Young farmers showcase their beef cattle in the livestock ring. Come support our 4-H members!</div>
-                    <span class="event-time">Livestock Ring</span>
+                <div class="animal-head right">
+                    <img src="images/art/horse facing left.png" alt="Decorative farm animal">
                 </div>
-
-                <div class="event-card">
-                    <div class="event-date">6:30 PM</div>
-                    <div class="event-title">Agricultural Hall Opens</div>
-                    <div class="event-desc">View prize-winning vegetables, baked goods, preserves, quilts, and crafts from local exhibitors.</div>
-                    <span class="event-time">Exhibition Hall</span>
+                <div class="horseshoe">
+                    <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
-
-                <div class="event-card">
-                    <div class="event-date">7:00 PM</div>
-                    <div class="event-title">Opening Ceremonies</div>
-                    <div class="event-desc">Official welcome with local dignitaries, the singing of O Canada, and recognition of volunteers.</div>
-                    <span class="event-time">Main Stage</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">8:00 PM</div>
-                    <div class="event-title">Live Music: Country Crossroads</div>
-                    <div class="event-desc">Local country band performing classic hits and modern favourites. Dance floor open!</div>
-                    <span class="event-time">Main Stage</span>
-                </div>
+                <h2>Featured Events</h2>
+                <p>From Saturday night parties to big-time competitions - here's what you won't want to miss at CCEx 2026.</p>
             </section>
+
+            <!-- Mud Stomp Hero -->
+            <div class="mud-stomp-hero" id="mud-stomp">
+                <div class="mud-stomp-hero-bg"></div>
+                <div class="mud-stomp-hero-overlay"></div>
+                <div class="mud-stomp-hero-content">
+                    <span class="ms-hero-badge">19+ Adults Only</span>
+                    <h2 class="ms-hero-title">Mud Stomp</h2>
+                    <p class="ms-hero-desc">Saturday night at the fair just got a whole lot wilder. The Mud Stomp is CCEx's adults-only evening blowout - cold Coldstream drinks, DJ Dave spinning all night, and a crowd that knows how to have a good time. You don't want to miss this one.</p>
+                    <div class="ms-hero-tags">
+                        <span class="ms-hero-tag">Saturday · 9 PM</span>
+                        <span class="ms-hero-tag">DJ Dave</span>
+                        <span class="ms-hero-tag">Coldstream Drinks</span>
+                        <span class="ms-hero-tag red">19+ Only</span>
+                        <span class="ms-hero-tag gold">$10 Advance</span>
+                        <span class="ms-hero-tag gold">$15 at the Door</span>
+                    </div>
+                </div>
+            </div>
 
             <div class="divider-rope"></div>
 
-            <!-- Saturday -->
-            <section class="panel animate-in">
-                <h2>Saturday - Main Day</h2>
-                <p style="margin-bottom: 1.5rem; color: var(--text-light);">Gates open at 9:00 AM</p>
+            <!-- Other Notable Events -->
+            <h2 style="text-align:center; margin: 2rem 0 0.5rem;">More Great Events</h2>
+            <p style="text-align:center; color:var(--text-light); margin-bottom:1.5rem;">CCEx is packed all week - don't miss these highlights.</p>
 
-                <div class="event-card">
-                    <div class="event-date">9:00 AM</div>
-                    <div class="event-title">Gates Open - Pancake Breakfast</div>
-                    <div class="event-desc">Start your day with a hearty pancake breakfast served by the Lions Club. All proceeds to charity.</div>
-                    <span class="event-time">Food Tent</span>
+            <div class="events-grid">
+
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/draft horse alone.png" alt="Maritime 4 Horse Classic"></div>
+                    <h3>Maritime 4 Horse Classic</h3>
+                    <p>Teams of four draft horses compete in hitch classes as part of the season-long Maritime Classic Series.</p>
+                    <span class="ec-when">During CCEx</span>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-date">10:00 AM</div>
-                    <div class="event-title">Horse Show - Halter Classes</div>
-                    <div class="event-desc">Watch beautiful horses compete in halter and conformation classes. All breeds welcome.</div>
-                    <span class="event-time">Horse Ring</span>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/Horse Pulls.png" alt="Horse Pull"></div>
+                    <h3>Horse Pull</h3>
+                    <p>Watch heavy horses dig in and show their raw power in one of the most exciting traditional competitions at the fair. Always a crowd favourite!</p>
+                    <span class="ec-when">See Schedule</span>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-date">11:00 AM</div>
-                    <div class="event-title">4-H Sheep & Goat Show</div>
-                    <div class="event-desc">4-H members show their sheep and goats in showmanship and breed classes.</div>
-                    <span class="event-time">Livestock Ring</span>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/Live Music.png" alt="Live Music"></div>
+                    <h3>Live Music</h3>
+                    <p>Enjoy live performances from local and regional artists throughout the week on the main stage. Great music every night!</p>
+                    <span class="ec-when">See Schedule</span>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-date">12:00 PM</div>
-                    <div class="event-title">Petting Zoo Opens</div>
-                    <div class="event-desc">Bring the kids to meet friendly farm animals including baby goats, lambs, chicks, and bunnies!</div>
-                    <span class="event-time">Petting Zoo Area</span>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/light horse barrels.png" alt="Light Horse Show"></div>
+                    <h3>Light Horse Show</h3>
+                    <p>English and Western classes including flat classes and gymkhana speed events like barrel racing and pole bending. Something for every horse lover.</p>
+                    <span class="ec-when">During CCEx</span>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-date">1:00 PM</div>
-                    <div class="event-title">Tractor Pull - Antique Class</div>
-                    <div class="event-desc">Vintage tractors compete in this crowd-favourite pulling competition. Great photo opportunities!</div>
-                    <span class="event-time">Pull Track</span>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/foam party.png" alt="Foam Party"></div>
+                    <h3>Foam Party</h3>
+                    <p>A 2-hour foam blast for kids as part of the Fun Zone - wear clothes you don't mind getting soaked! Included with the day bracelet.</p>
+                    <span class="ec-when">Saturday · Family Friendly</span>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-date">2:30 PM</div>
-                    <div class="event-title">Heavy Horse Pull</div>
-                    <div class="event-desc">Powerful draft horses showcase their strength in the traditional horse pull competition.</div>
-                    <span class="event-time">Pull Track</span>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/bouncy castle.png" alt="Fun Zone"></div>
+                    <h3>Fun Zone</h3>
+                    <p>Large and small bouncy castles plus carnival games - all day fun for kids of every size. Just $5 for a full day bracelet.</p>
+                    <span class="ec-when">Daily - $5/Day Bracelet</span>
                 </div>
 
-                <div class="event-card">
-                    <div class="event-date">4:00 PM</div>
-                    <div class="event-title">Poultry Show Awards</div>
-                    <div class="event-desc">Winners announced for best chickens, ducks, turkeys, and other poultry. View exhibits all day.</div>
-                    <span class="event-time">Poultry Barn</span>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/Beef Cow.png" alt="Livestock Shows"></div>
+                    <h3>Livestock Shows</h3>
+                    <p>Beef cattle, dairy display, rabbits, and more. See the best animals from across the region competing for top honours at CCEx.</p>
+                    <span class="ec-when">During CCEx</span>
                 </div>
 
-            </section>
+                <div class="event-card-sm">
+                    <div class="ec-img-frame"><img src="images/art/christmas trees.png" alt="Christmas Tree Competition"></div>
+                    <h3>Christmas Tree Competition</h3>
+                    <p>A festive competition held in loving memory of Keith Moore. Decorated trees on display and judged throughout CCEx.</p>
+                    <span class="ec-when">During CCEx</span>
+                </div>
+
+            </div>
 
             <div class="divider-rope"></div>
 
-            <!-- Sunday -->
-            <section class="panel animate-in">
-                <h2>Sunday - Family Day</h2>
-                <p style="margin-bottom: 1.5rem; color: var(--text-light);">Gates open at 10:00 AM</p>
-
-                <div class="event-card">
-                    <div class="event-date">10:00 AM</div>
-                    <div class="event-title">Church Service</div>
-                    <div class="event-desc">Non-denominational outdoor church service. All welcome. Bring a lawn chair.</div>
-                    <span class="event-time">Main Stage Area</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">11:00 AM</div>
-                    <div class="event-title">4-H Achievement Day</div>
-                    <div class="event-desc">Grand Champion selections and awards for all 4-H livestock classes. Celebrate our young farmers!</div>
-                    <span class="event-time">Livestock Ring</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">12:00 PM</div>
-                    <div class="event-title">Kids' Pedal Tractor Pull</div>
-                    <div class="event-desc">Children ages 4-10 compete in this adorable pedal tractor pulling contest. Prizes for all participants!</div>
-                    <span class="event-time">Pull Track</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">1:30 PM</div>
-                    <div class="event-title">Beef Cattle Show - Open Classes</div>
-                    <div class="event-desc">Open class beef cattle competition featuring the region's finest herds.</div>
-                    <span class="event-time">Livestock Ring</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">3:00 PM</div>
-                    <div class="event-title">Supreme Champion Selection</div>
-                    <div class="event-desc">The best of the best compete for the title of Supreme Champion Livestock.</div>
-                    <span class="event-time">Livestock Ring</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">4:00 PM</div>
-                    <div class="event-title">Livestock Auction</div>
-                    <div class="event-desc">4-H and open class animals go up for auction. Support our young farmers!</div>
-                    <span class="event-time">Auction Ring</span>
-                </div>
-
-                <div class="event-card">
-                    <div class="event-date">6:00 PM</div>
-                    <div class="event-title">Closing Ceremonies & Fireworks</div>
-                    <div class="event-desc">Thank you for attending CCEx! CCEx closes with a spectacular fireworks display.</div>
-                    <span class="event-time">Main Grounds</span>
-                </div>
-            </section>
-
-            <!-- Note -->
-            <section class="panel-rope text-center">
-                <h2>Important Information</h2>
-                <p>Schedule subject to change. Some events may require separate admission. No outside food or beverages permitted.</p>
+            <section class="panel text-center">
+                <h2>See the Full Schedule</h2>
+                <p>Want specific times and days for every event? Check out the full week-by-week schedule.</p>
                 <div class="mt-3">
-                    <a href="contact.html" class="btn">Questions? Contact Us</a>
+                    <a href="schedule-2026.html" class="btn">View Full Schedule</a>
                 </div>
             </section>
 
-        <!-- Become a Sponsor CTA -->
-        <div class="sponsor-cta">
-            <h3>Become a Sponsor!</h3>
-            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
-            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
-        </div>
+            <!-- Become a Sponsor CTA -->
+            <div class="sponsor-cta">
+                <h3>Become a Sponsor!</h3>
+                <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+                <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+            </div>
+
         </div>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-left">
+                <img src="images/art/Try Logo 1 white glow.png" alt="CCEx" class="footer-logo">
                 <div>
                     <span class="footer-title">Cumberland County Exhibition</span>
                     <span class="footer-address">
@@ -283,6 +498,7 @@
                 </div>
             </div>
             <div class="footer-right">
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
                 <p>&copy; 2026 Cumberland County Exhibition</p>
                 <p class="footer-credit">Website by <a href="https://JustinGreeno.dev">Justin Greeno</a></p>
             </div>
@@ -298,15 +514,44 @@
             const style = document.createElement('style');
             style.id = 'parallax-style';
             document.head.appendChild(style);
-
             function updateParallax() {
                 const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.15;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+                style.textContent = `body::before { transform: translateY(-${scrollY * 0.15}px); }`;
             }
-
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
+        })();
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1150) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1150) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        (function() {
+            const animalsRight = ['images/art/cow facing right.png', 'images/art/horse facing right.png', 'images/art/chicken facing right.png', 'images/art/sheep head facing right.png'];
+            const animalsLeft = ['images/art/horse facing left.png', 'images/art/chicken facing left.png'];
+            document.querySelectorAll('.animal-head.left img').forEach(img => { img.src = animalsRight[Math.floor(Math.random() * animalsRight.length)]; });
+            document.querySelectorAll('.animal-head.right img').forEach(img => { img.src = animalsLeft[Math.floor(Math.random() * animalsLeft.length)]; });
         })();
     </script>
 </body>
