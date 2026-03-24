@@ -38,7 +38,6 @@ const searchIndex = [
     { type: 'event', icon: '🎨', title: 'Face Painting', desc: 'Transform into your favorite character', url: 'activities.html', keywords: 'face painting kids art children' },
     { type: 'event', icon: '✏️', title: 'Caricature Drawings', desc: 'Hilarious hand-drawn caricatures for all ages', url: 'activities.html', keywords: 'caricature drawings portraits art kids adults' },
     { type: 'event', icon: '🎄', title: 'Christmas Tree Competition', desc: 'In memory of Keith Moore', url: 'events.html', keywords: 'christmas tree competition keith moore memorial' },
-    { type: 'event', icon: '🎢', title: 'Midway Rides', desc: 'Thrilling rides for all ages', url: 'activities.html', keywords: 'midway rides carnival games thrilling' },
     { type: 'event', icon: '🌾', title: 'Hay Bale Maze', desc: 'Navigate through the maze', url: 'activities.html', keywords: 'hay bale maze adventure kids' },
     { type: 'event', icon: '🐄', title: 'Livestock Shows', desc: 'Beef cattle, horses, dairy display and more', url: 'exhibitors.html', keywords: 'livestock shows cattle horses beef draft horse pull' },
     { type: 'event', icon: '🏆', title: '4-H Competitions', desc: 'Youth agricultural competitions - Aug 31 & Sept 1', url: '4h.html', keywords: '4h 4-h competitions youth showmanship august september' },
