@@ -42,7 +42,6 @@ const searchIndex = [
     { type: 'event', icon: '🐄', title: 'Livestock Shows', desc: 'Beef cattle, horses, dairy display and more', url: 'exhibitors.html', keywords: 'livestock shows cattle horses beef draft horse pull' },
     { type: 'event', icon: '🏆', title: '4-H Competitions', desc: 'Youth agricultural competitions - Aug 31 & Sept 1', url: '4h.html', keywords: '4h 4-h competitions youth showmanship august september' },
     { type: 'event', icon: '🎈', title: 'Balloon Animals', desc: 'Amazing balloon art creations - check the schedule for times', url: 'schedule-2026.html', keywords: 'balloon animals art kids schedule' },
-    { type: 'event', icon: '🏆', title: 'Kids Competitions', desc: 'Pie eating, sack races, and more', url: 'activities.html', keywords: 'kids competitions pie eating sack races' },
 
     // Info & FAQ
     { type: 'info', icon: '💵', title: 'Admission Prices', desc: 'Day $5 · Week Pass $15 · Family Pass $20 · Under 5 Free · Fun Zone $5/day · Mud Stomp $10/$15', url: 'merch.html', keywords: 'admission price cost tickets entry fee day pass week pass family pass fun zone bracelet mud stomp advance door' },
