@@ -43,26 +43,22 @@
             box-shadow: 0 12px 35px var(--shadow-dark);
             border-color: var(--straw);
         }
-        .activity-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         .activity-art-frame {
-            width: 150px;
-            height: 150px;
-            border: 3px solid var(--wood-medium);
-            border-radius: 10px;
-            background: linear-gradient(145deg, var(--cream), var(--cream-dark));
-            box-shadow: 0 4px 12px var(--shadow-medium), inset 0 2px 4px rgba(255,255,255,0.3);
+            width: 160px;
+            height: 160px;
+            border: 5px solid var(--wood-dark);
+            border-radius: 12px;
+            background: var(--cream-dark);
+            box-shadow:
+                0 6px 18px var(--shadow-medium),
+                inset 0 0 0 3px var(--straw),
+                inset 0 0 0 6px var(--wood-medium);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             padding: 0;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .activity-art-frame img {
@@ -72,15 +68,12 @@
             transition: transform 0.3s ease;
         }
         .activity-card:hover .activity-art-frame {
-            transform: scale(1.15);
-            box-shadow: 0 10px 30px var(--shadow-dark);
+            transform: scale(1.12);
+            box-shadow:
+                0 12px 32px var(--shadow-dark),
+                inset 0 0 0 3px var(--hay),
+                inset 0 0 0 6px var(--wood-light);
             border-color: var(--straw);
-        }
-        .ribbon-icon {
-            width: 80px;
-            height: auto;
-            margin: 0 auto 1rem;
-            display: block;
         }
         .activity-card h3 {
             font-family: 'Alfa Slab One', serif;
@@ -209,7 +202,7 @@
                 </div>
 
                 <div class="activity-card">
-                    <div class="activity-icon">🎯</div>
+                    <div class="activity-art-frame"><img src="images/art/carnival games.png" alt="Carnival Games"></div>
                     <h3>Carnival Games</h3>
                     <p>Test your skills and win prizes for the whole family! Fun for all ages.</p>
                     <span class="activity-time">All Day</span>
@@ -223,7 +216,7 @@
                 </div>
 
                 <div class="activity-card">
-                    <img src="images/art/1st ribbon.png" alt="Ribbon" class="ribbon-icon">
+                    <div class="activity-art-frame"><img src="images/art/1st ribbon.png" alt="Kids Competitions"></div>
                     <h3>Kids Competitions</h3>
                     <p>Pie eating contests, sack races, and other fun competitions with ribbons and prizes!</p>
                     <span class="activity-time">See Schedule</span>
@@ -237,14 +230,14 @@
                 </div>
 
                 <div class="activity-card">
-                    <div class="activity-icon">🌲</div>
+                    <div class="activity-art-frame"><img src="images/art/christmas trees.png" alt="Christmas Tree Competition"></div>
                     <h3>Christmas Tree Competition</h3>
                     <p>A festive competition held in loving memory of <strong>Keith Moore</strong>. Celebrate the spirit of the season at the fair!</p>
                     <span class="activity-time">See Schedule</span>
                 </div>
 
                 <div class="activity-card">
-                    <div class="activity-icon">🌽</div>
+                    <div class="activity-art-frame"><img src="images/art/agrculture.png" alt="Agricultural Discovery"></div>
                     <h3>Agricultural Discovery</h3>
                     <p>Learn about farming, plant seeds, and discover where food comes from!</p>
                     <span class="activity-time">Educational Tent</span>
@@ -255,7 +248,7 @@
 
             <!-- Live Music Section -->
             <section class="panel-wooden text-center">
-                <div class="activity-art-frame" style="margin: 0 auto 1rem;"><img src="images/art/Live Music.png" alt="Live Music"></div>
+                <div class="activity-art-frame"><img src="images/art/Live Music.png" alt="Live Music"></div>
                 <h2>Live Music</h2>
                 <p>There's nothing like live music at the fair! Enjoy performances from talented local and regional artists on the main stage throughout the week. Check the schedule for performance times.</p>
                 <div class="mt-3">
