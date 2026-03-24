@@ -11,6 +11,40 @@
     <script src="js/search.js" defer></script>
     <script src="js/countdown.js" defer></script>
     <script src="js/horseshoe.js" defer></script>
+    <style>
+        .fourh-card-img {
+            width: 130px;
+            height: 130px;
+            border: 5px solid var(--wood-dark);
+            border-radius: 10px;
+            box-shadow: 0 4px 14px var(--shadow-medium),
+                        inset 0 0 0 3px var(--straw),
+                        inset 0 0 0 6px var(--wood-medium);
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fourh-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .info-card:hover .fourh-card-img {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px var(--shadow-dark),
+                        inset 0 0 0 3px var(--hay),
+                        inset 0 0 0 6px var(--wood-light);
+            border-color: var(--straw);
+        }
+        .fourh-logo {
+            display: block;
+            width: 120px;
+            margin: 0 auto 1rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -69,6 +103,7 @@
 
     <main>
         <section class="hero">
+            <img src="images/art/4-h logo.png" alt="4-H Logo" class="fourh-logo">
             <h1>4-H at CCEx</h1>
             <p class="tagline">Learn It. Do It. Live It.</p>
         </section>
@@ -108,22 +143,37 @@
                 <p>4-H members are a vital part of the Cumberland County Exhibition. Young participants showcase their skills, knowledge, and dedication across a variety of competitions and demonstrations.</p>
                 <div class="info-cards mt-3">
                     <div class="info-card">
+                        <div class="fourh-card-img">
+                            <img src="images/art/beef showmanship.png" alt="Beef Showmanship">
+                        </div>
                         <h3>Beef Showmanship</h3>
                         <p>Members present and handle cattle, judged on their skill and knowledge.</p>
                     </div>
                     <div class="info-card">
+                        <div class="fourh-card-img">
+                            <img src="images/art/light horse.png" alt="Light Horse Shows">
+                        </div>
                         <h3>Light Horse Shows</h3>
                         <p>Riding and horsemanship competitions across multiple disciplines.</p>
                     </div>
                     <div class="info-card">
+                        <div class="fourh-card-img">
+                            <img src="images/art/dog show.png" alt="Dog Shows">
+                        </div>
                         <h3>Dog Shows</h3>
                         <p>Obedience and handling demonstrations.</p>
                     </div>
                     <div class="info-card">
+                        <div class="fourh-card-img">
+                            <img src="images/art/small animals.png" alt="Small Animals">
+                        </div>
                         <h3>Small Animals</h3>
                         <p>Rabbits and other small animal presentations.</p>
                     </div>
                     <div class="info-card">
+                        <div class="fourh-card-img">
+                            <img src="images/art/lifestyles.png" alt="Lifeskills Displays">
+                        </div>
                         <h3>Lifeskills Displays</h3>
                         <p>4-H members showcase projects from cooking and crafts to community service.</p>
                     </div>
