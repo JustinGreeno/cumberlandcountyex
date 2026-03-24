@@ -10,9 +10,26 @@
     topBtn.innerHTML = '&#8679;';
     document.body.appendChild(topBtn);
 
-    window.addEventListener('scroll', function () {
+    var footer = document.querySelector('footer');
+    var BTN_MARGIN = 20; // px gap between button and footer
+
+    function updateTopBtn() {
         topBtn.classList.toggle('visible', window.scrollY > 380);
-    }, { passive: true });
+
+        if (footer) {
+            var footerTop = footer.getBoundingClientRect().top;
+            var viewportH  = window.innerHeight;
+            if (footerTop < viewportH) {
+                // Footer is partially visible — lift button above it
+                topBtn.style.bottom = (viewportH - footerTop + BTN_MARGIN) + 'px';
+            } else {
+                topBtn.style.bottom = '';
+            }
+        }
+    }
+
+    window.addEventListener('scroll', updateTopBtn, { passive: true });
+    window.addEventListener('resize', updateTopBtn);
 
     topBtn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
