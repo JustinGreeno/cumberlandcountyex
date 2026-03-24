@@ -2,7 +2,7 @@
 const searchIndex = [
     // Pages
     { type: 'page', icon: '🏠', title: 'Home', desc: 'Main page - Welcome to the Fair', url: 'index.html', keywords: 'home main welcome fair exhibition' },
-    { type: 'page', icon: '📅', title: 'Schedule', desc: 'Full event schedule for 2026', url: 'schedule-2025.html', keywords: 'schedule events times calendar when' },
+    { type: 'page', icon: '📅', title: 'Schedule', desc: 'Full event schedule for 2026', url: 'schedule-2026.html', keywords: 'schedule events times calendar when' },
     { type: 'page', icon: '🎠', title: 'Kids Activities', desc: 'Fun activities for children', url: 'activities.html', keywords: 'kids children activities petting zoo face painting games' },
     { type: 'page', icon: '🐄', title: 'Exhibitors', desc: 'Information for exhibitors', url: 'exhibitors.html', keywords: 'exhibitors livestock cattle horses sheep entry' },
     { type: 'page', icon: '🍔', title: 'Vendors', desc: 'Vendor information and pricing', url: 'vendors.html', keywords: 'vendors food booth craft merchandise sell' },
@@ -26,26 +26,27 @@ const searchIndex = [
     { type: 'form', icon: '📄', title: 'Arts & Crafts Entry', desc: 'Handmade arts and crafts', url: 'images/forms and documents/arts and crafts Classes 18-26.pdf', keywords: 'arts crafts handmade classes' },
     { type: 'form', icon: '📄', title: 'Flowers Entry', desc: 'Floral entries and arrangements', url: 'images/forms and documents/flowers Classes 27-33.pdf', keywords: 'flowers floral arrangements classes' },
     { type: 'form', icon: '📄', title: 'Children Competition Entry', desc: 'Youth exhibitor competition', url: 'images/forms and documents/Children\'s competition  Class 34.pdf', keywords: 'children kids competition youth class' },
-    { type: 'form', icon: '📄', title: 'Sponsorship Package', desc: 'Sponsorship opportunities info', url: 'images/forms and documents/2024-Sponsorship-Package.pdf', keywords: 'sponsor sponsorship package business support' },
+    { type: 'form', icon: '📄', title: 'Sponsorship Package', desc: '2026 Sponsorship opportunities info', url: 'images/forms and documents/PDF 2026 Full Sponsorship Package.pdf', keywords: 'sponsor sponsorship package business support 2026' },
 
     // Events & Activities
-    { type: 'event', icon: '🐴', title: 'Heavy Horse Pull', desc: 'Watch powerful draft horses compete', url: 'schedule-2025.html', keywords: 'heavy horse pull draft horses competition' },
-    { type: 'event', icon: '💥', title: 'Demolition Derby', desc: 'High-octane crashes and excitement', url: 'schedule-2025.html', keywords: 'demolition derby cars crash excitement' },
-    { type: 'event', icon: '🏛️', title: 'Agricultural Hall', desc: 'Prize-winning vegetables and crafts', url: 'schedule-2025.html', keywords: 'agricultural hall vegetables preserves crafts display' },
-    { type: 'event', icon: '🎤', title: 'Live Entertainment', desc: 'Local bands on the main stage', url: 'schedule-2025.html', keywords: 'live entertainment music bands stage performers' },
-    { type: 'event', icon: '🐑', title: 'Petting Zoo', desc: 'Get up close with farm animals', url: 'activities.html', keywords: 'petting zoo animals goats lambs bunnies chicks' },
+    { type: 'event', icon: '🐴', title: 'Heavy Horse Pull', desc: 'Watch powerful draft horses compete', url: 'schedule-2026.html', keywords: 'heavy horse pull draft horses competition' },
+    { type: 'event', icon: '🐴', title: 'Light Horse Show', desc: 'English and Western horse show classes', url: 'schedule-2026.html', keywords: 'light horse show western english classes equitation barrel racing' },
+    { type: 'event', icon: '🏛️', title: 'Agricultural Hall', desc: 'Prize-winning vegetables and crafts', url: 'schedule-2026.html', keywords: 'agricultural hall vegetables preserves crafts display' },
+    { type: 'event', icon: '🎤', title: 'Live Music', desc: 'Live music performances on the main stage', url: 'schedule-2026.html', keywords: 'live entertainment music bands stage performers concert' },
+    { type: 'event', icon: '🐾', title: 'Petting Zoo', desc: 'Get up close with fluffy little friends', url: 'activities.html', keywords: 'petting zoo animals fluffy bunnies chicks' },
     { type: 'event', icon: '🍟', title: 'Food Court', desc: 'Fair favorites and treats', url: 'index.html', keywords: 'food court fries cotton candy treats eating' },
     { type: 'event', icon: '🎨', title: 'Face Painting', desc: 'Transform into your favorite character', url: 'activities.html', keywords: 'face painting kids art children' },
+    { type: 'event', icon: '✏️', title: 'Caricature Drawings', desc: 'Hilarious hand-drawn caricatures for all ages', url: 'activities.html', keywords: 'caricature drawings portraits art kids adults' },
+    { type: 'event', icon: '🎄', title: 'Christmas Tree Competition', desc: 'In memory of Keith Moore', url: 'activities.html', keywords: 'christmas tree competition keith moore memorial' },
     { type: 'event', icon: '🎢', title: 'Midway Rides', desc: 'Thrilling rides for all ages', url: 'activities.html', keywords: 'midway rides carnival games thrilling' },
-    { type: 'event', icon: '🐴', title: 'Pony Rides', desc: 'Gentle pony rides for children', url: 'activities.html', keywords: 'pony rides kids horses children' },
     { type: 'event', icon: '🌾', title: 'Hay Bale Maze', desc: 'Navigate through the maze', url: 'activities.html', keywords: 'hay bale maze adventure kids' },
-    { type: 'event', icon: '🐄', title: 'Livestock Shows', desc: 'Cattle, horses, sheep, goats, poultry', url: 'schedule-2025.html', keywords: 'livestock shows cattle horses sheep goats poultry' },
-    { type: 'event', icon: '🏆', title: '4-H Competitions', desc: 'Youth agricultural competitions', url: 'schedule-2025.html', keywords: '4h 4-h competitions youth showmanship' },
+    { type: 'event', icon: '🐄', title: 'Livestock Shows', desc: 'Beef cattle, horses, dairy display and more', url: 'schedule-2026.html', keywords: 'livestock shows cattle horses beef draft horse pull' },
+    { type: 'event', icon: '🏆', title: '4-H Competitions', desc: 'Youth agricultural competitions - Aug 31 & Sept 1', url: 'schedule-2026.html', keywords: '4h 4-h competitions youth showmanship august september' },
     { type: 'event', icon: '🎈', title: 'Balloon Animals', desc: 'Amazing balloon art creations', url: 'activities.html', keywords: 'balloon animals art kids' },
     { type: 'event', icon: '🏆', title: 'Kids Competitions', desc: 'Pie eating, sack races, and more', url: 'activities.html', keywords: 'kids competitions pie eating sack races' },
 
     // Info & FAQ
-    { type: 'info', icon: '💵', title: 'Admission Prices', desc: 'Adults $10, Kids $5, Under 6 Free', url: 'contact.html', keywords: 'admission price cost tickets entry fee' },
+    { type: 'info', icon: '💵', title: 'Admission Prices', desc: 'Day $5 · Week Pass $15 · Family Pass $20 · Under 5 Free', url: 'contact.html', keywords: 'admission price cost tickets entry fee day pass week pass family pass' },
     { type: 'info', icon: '📍', title: 'Location & Directions', desc: 'Exhibition Grounds, Oxford, NS', url: 'contact.html', keywords: 'location directions address map oxford nova scotia' },
     { type: 'info', icon: '🅿️', title: 'Parking Information', desc: 'Free parking, accessible spots available', url: 'contact.html', keywords: 'parking free accessible handicap' },
     { type: 'info', icon: '🐕', title: 'Pet Policy', desc: 'Service animals only permitted', url: 'contact.html', keywords: 'pets dogs animals allowed policy' },
@@ -60,11 +61,9 @@ const searchIndex = [
     { type: 'info', icon: '🙋', title: 'Volunteer', desc: 'Help at the fair', url: 'contact.html', keywords: 'volunteer help work fair' },
 
     // Livestock Categories
-    { type: 'info', icon: '🐄', title: 'Beef Cattle Entry', desc: 'Enter beef cattle in the show', url: 'exhibitors.html', keywords: 'beef cattle entry angus hereford charolais' },
-    { type: 'info', icon: '🐴', title: 'Horse Entry', desc: 'Enter horses in shows', url: 'exhibitors.html', keywords: 'horse entry show light heavy draft' },
-    { type: 'info', icon: '🐑', title: 'Sheep Entry', desc: 'Enter sheep in the show', url: 'exhibitors.html', keywords: 'sheep entry lambs suffolk hampshire' },
-    { type: 'info', icon: '🐐', title: 'Goat Entry', desc: 'Enter goats in the show', url: 'exhibitors.html', keywords: 'goat entry boer nubian alpine' },
-    { type: 'info', icon: '🐔', title: 'Poultry Entry', desc: 'Enter poultry in the show', url: 'exhibitors.html', keywords: 'poultry entry chickens ducks turkeys geese' },
+    { type: 'info', icon: '🐄', title: 'Beef Cattle Entry', desc: 'Enter beef cattle in the show', url: 'exhibitors.html', keywords: 'beef cattle entry show' },
+    { type: 'info', icon: '🐴', title: 'Light Horse Entry', desc: 'Enter light horses in shows', url: 'exhibitors.html', keywords: 'horse entry show light horse western english' },
+    { type: 'info', icon: '🐴', title: 'Draft Horse / Horse Pull Entry', desc: 'Enter draft horses or horse pull', url: 'exhibitors.html', keywords: 'draft horse horse pull entry heavy' },
     { type: 'info', icon: '🐰', title: 'Rabbit Entry', desc: 'Enter rabbits in the show', url: 'exhibitors.html', keywords: 'rabbit entry bunny show' }
 ];
 

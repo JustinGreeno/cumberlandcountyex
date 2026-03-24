@@ -10,7 +10,7 @@
     <meta property="og:type" content="website">
     <meta name="keywords" content="CCEx sponsors, Cumberland County Exhibition sponsors, sponsorship, Oxford NS">
     <link href="css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
+    <link rel="icon" type="image/png" href="images/art/cow facing right.png">
     <script src="js/search.js" defer></script>
     <script src="js/countdown.js" defer></script>
     <script src="js/horseshoe.js" defer></script>
@@ -97,6 +97,57 @@
             object-fit: contain;
             display: block;
         }
+        .sponsor-tier-header.silver {
+            background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 50%, #C0C0C0 100%);
+            color: var(--wood-dark);
+            border-color: #A8A8A8;
+        }
+        .sponsor-tier-header.bronze {
+            background: linear-gradient(135deg, #CD7F32 0%, #A0522D 50%, #CD7F32 100%);
+            color: #fff;
+            border-color: #A0522D;
+        }
+        .sponsor-tier-header.friends {
+            background: linear-gradient(135deg, var(--grass-green, #4a7c4e) 0%, #3a6040 50%, var(--grass-green, #4a7c4e) 100%);
+            color: #fff;
+            border-color: #3a6040;
+        }
+        .sponsor-card.silver {
+            border-color: #A8A8A8;
+            background: linear-gradient(145deg, #f5f5f5, var(--cream));
+        }
+        .sponsor-card.bronze {
+            border-color: #CD7F32;
+            background: linear-gradient(145deg, #fdf5ec, var(--cream));
+        }
+        .sponsor-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.6rem;
+        }
+        .sponsor-name-list {
+            background: var(--cream);
+            border: 2px solid var(--wood-medium);
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.95rem;
+            color: var(--wood-dark);
+            font-weight: 600;
+        }
+        .sponsor-name-list.silver { border-color: #A8A8A8; }
+        .sponsor-name-list.bronze { border-color: #CD7F32; }
+        .sponsor-name-list.friends { border-color: #4a7c4e; background: linear-gradient(145deg, #f0f8f0, var(--cream)); }
+        .year-note {
+            background: var(--straw-light);
+            border: 3px solid var(--straw);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            margin: 1rem 0 2rem;
+            font-style: italic;
+            color: var(--wood-dark);
+        }
     </style>
 </head>
 <body>
@@ -174,95 +225,202 @@
                 <p>The Cumberland County Exhibition would not be possible without the generous support of our sponsors. These local businesses and organizations help us keep this beloved tradition alive for families throughout the region.</p>
             </section>
 
+            <div class="year-note">
+                <strong>The following sponsors reflect our 2025 CCEx supporters.</strong> We are grateful for each and every one of them. Stay tuned for our 2026 sponsor announcements!
+            </div>
+
             <!-- Become a Sponsor CTA (Top) -->
             <div class="sponsor-cta">
                 <h3>Become a 2026 Sponsor!</h3>
-                <p>Join our family of sponsors and help support this cherished community tradition. Sponsorship packages are available at various levels.</p>
-                <a href="images/forms and documents/2024-Sponsorship-Package.pdf" class="btn" target="_blank">Download Sponsorship Package</a>
+                <p>Join our family of sponsors and help support this cherished community tradition. Sponsorship packages are available at various levels to fit every budget.</p>
+                <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank">Download 2026 Sponsorship Package</a>
             </div>
 
-            <!-- Platinum Sponsors -->
+            <!-- PLATINUM Sponsors -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header platinum">Platinum Sponsors</div>
+                <div class="sponsor-tier-header platinum">⭐ Platinum Sponsors</div>
                 <div class="sponsors-grid">
+                    <div class="sponsor-card platinum">
+                        <img src="images/sponser logos/Fort Quipment.png" alt="Fort Equipment" class="sponsor-logo">
+                        <div class="sponsor-name">Fort Equipment</div>
+                    </div>
                     <div class="sponsor-card platinum">
                         <img src="images/sponser logos/cumberland.png" alt="Municipality of Cumberland" class="sponsor-logo">
                         <div class="sponsor-name">Municipality of Cumberland</div>
-                        <div class="sponsor-location">Cumberland County, NS</div>
-                    </div>
-                    <div class="sponsor-card platinum">
-                        <img src="images/sponser logos/Kubota.png" alt="Kubota" class="sponsor-logo">
-                        <div class="sponsor-name">Kubota</div>
-                        <div class="sponsor-location">Agricultural Equipment</div>
                     </div>
                     <div class="sponsor-card platinum">
                         <img src="images/sponser logos/Eastern Power.png" alt="Eastern Powersports" class="sponsor-logo">
                         <div class="sponsor-name">Eastern Powersports</div>
-                        <div class="sponsor-location">Amherst, NS</div>
                     </div>
                     <div class="sponsor-card platinum">
-                        <img src="images/sponser logos/Tantramar.png" alt="Tantramar Chev" class="sponsor-logo">
-                        <div class="sponsor-name">Tantramar Chev</div>
-                        <div class="sponsor-location">Amherst, NS</div>
+                        <img src="images/sponser logos/ReMAX.png" alt="RE/MAX County Line Realty" class="sponsor-logo">
+                        <div class="sponsor-name">RE/MAX County Line Realty, LTD</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Gold Sponsors -->
-            <div class="sponsor-tier">
-                <div class="sponsor-tier-header gold">Gold Sponsors</div>
-                <div class="sponsors-grid">
-                    <div class="sponsor-card gold">
+                    <div class="sponsor-card platinum">
+                        <img src="images/sponser logos/Tantramar.png" alt="Tantramar" class="sponsor-logo">
+                        <div class="sponsor-name">Tantramar (Chevrolet, Buick, GMC)<br><small>Amherst, NS</small></div>
+                    </div>
+                    <div class="sponsor-card platinum">
                         <img src="images/sponser logos/Casey.png" alt="Casey Concrete" class="sponsor-logo">
-                        <div class="sponsor-name">Casey Concrete</div>
-                        <div class="sponsor-location">Concrete Services</div>
-                    </div>
-                    <div class="sponsor-card gold">
-                        <img src="images/sponser logos/Fort Quipment.png" alt="Fort Equipment" class="sponsor-logo">
-                        <div class="sponsor-name">Fort Equipment</div>
-                        <div class="sponsor-location">Equipment Sales & Service</div>
-                    </div>
-                    <div class="sponsor-card gold">
-                        <img src="images/sponser logos/cross roads.png" alt="Cross Roads" class="sponsor-logo">
-                        <div class="sponsor-name">Cross Roads</div>
-                        <div class="sponsor-location">Cumberland County</div>
-                    </div>
-                    <div class="sponsor-card gold">
-                        <div class="sponsor-logo-placeholder">Logo</div>
-                        <div class="sponsor-name">Mervil Rushton Building Movers</div>
-                        <div class="sponsor-location">Building & Moving Services</div>
+                        <div class="sponsor-name">Casey Concrete Ltd.</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Event Sponsors -->
+            <!-- GOLD Sponsors -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header">Event Sponsors</div>
-                <div class="sponsors-grid">
-                    <div class="sponsor-card">
-                        <img src="images/sponser logos/Baxter.png" alt="Baxter Trucking" class="sponsor-logo">
-                        <div class="sponsor-name">Baxter Trucking</div>
-                        <div class="sponsor-location">Barrel Racing Events</div>
+                <div class="sponsor-tier-header gold">🥇 Gold Sponsors</div>
+                <div class="sponsor-columns">
+                    <div>
+                        <div class="sponsor-name-list">Mosaik Credit Union</div>
+                        <div class="sponsor-name-list">Oxford PharmaChoice</div>
+                        <div class="sponsor-name-list">Oxford Firefighters Association</div>
+                        <div class="sponsor-name-list">Clarence Farm Services</div>
                     </div>
-                    <div class="sponsor-card">
-                        <img src="images/sponser logos/royal lepage.png" alt="Royal LePage Cumberland Realty" class="sponsor-logo">
-                        <div class="sponsor-name">Royal LePage Cumberland Realty</div>
-                        <div class="sponsor-location">Pole Bending & Western Pleasure</div>
+                    <div>
+                        <div class="sponsor-name-list">Trouw Nutrition &amp; Feeds N Needs</div>
+                        <div class="sponsor-name-list">DTF Enterprises Ltd.</div>
+                        <div class="sponsor-name-list">BroBots Mowing &amp; Lawn Care</div>
+                        <div class="sponsor-name-list">
+                            <img src="images/sponser logos/Carters.png" alt="Carters Sports Cresting" style="max-height:40px; display:block; margin-bottom:4px;">
+                            Carters Sports Cresting Ltd.
+                        </div>
                     </div>
-                    <div class="sponsor-card">
-                        <img src="images/sponser logos/Carters.png" alt="Carters Sports Cresting" class="sponsor-logo">
-                        <div class="sponsor-name">Carters Sports Cresting</div>
-                        <div class="sponsor-location">Equitation Classes</div>
+                </div>
+            </div>
+
+            <!-- SILVER Sponsors -->
+            <div class="sponsor-tier">
+                <div class="sponsor-tier-header silver">🥈 Silver Sponsors</div>
+                <div class="sponsor-columns">
+                    <div>
+                        <div class="sponsor-name-list silver">Cavendish Farms</div>
+                        <div class="sponsor-name-list silver">Agropur</div>
+                        <div class="sponsor-name-list silver">
+                            <img src="images/sponser logos/Baxter.png" alt="Baxter Trucking" style="max-height:36px; display:block; margin-bottom:4px;">
+                            Baxter Trucking Ltd.
+                        </div>
+                        <div class="sponsor-name-list silver">Timberwood Farms</div>
+                        <div class="sponsor-name-list silver">Amherst Chrysler Limited</div>
+                        <div class="sponsor-name-list silver">Oxford Home Hardware Building Center</div>
+                        <div class="sponsor-name-list silver">Fundy Veterinarians</div>
+                        <div class="sponsor-name-list silver">Back Roots Chiropractic</div>
+                        <div class="sponsor-name-list silver">
+                            <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:36px; display:block; margin-bottom:4px;">
+                            Royal LePage Tony Mitchell
+                        </div>
+                        <div class="sponsor-name-list silver">The Stack Family</div>
                     </div>
-                    <div class="sponsor-card">
-                        <img src="images/sponser logos/royal lepage.png" alt="Tony Mitchell Royal LePage" class="sponsor-logo">
-                        <div class="sponsor-name">Tony Mitchell Royal LePage</div>
-                        <div class="sponsor-location">Western Pleasure Stake</div>
+                    <div>
+                        <div class="sponsor-name-list silver">Brian &amp; Laura Jean Thompson</div>
+                        <div class="sponsor-name-list silver">Ray McCormick and Sons Ltd.</div>
+                        <div class="sponsor-name-list silver">Glady and Charles Thompson</div>
+                        <div class="sponsor-name-list silver">Steven's Lodging</div>
+                        <div class="sponsor-name-list silver">JBX Farm</div>
+                        <div class="sponsor-name-list silver">Hereford Club of Nova Scotia</div>
+                        <div class="sponsor-name-list silver">
+                            <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:36px; display:block; margin-bottom:4px;">
+                            Royal LePage Realty Rod Gilroy
+                        </div>
+                        <div class="sponsor-name-list silver">Emma Dickie</div>
+                        <div class="sponsor-name-list silver">Green Diamond Equipment</div>
+                        <div class="sponsor-name-list silver">Atlantic Stockyards</div>
+                        <div class="sponsor-name-list silver">Adshade Farms</div>
                     </div>
-                    <div class="sponsor-card">
-                        <div class="sponsor-logo-placeholder">Logo</div>
-                        <div class="sponsor-name">Maltby Stables</div>
-                        <div class="sponsor-location">English Pleasure Stake</div>
+                    <div>
+                        <div class="sponsor-name-list silver">Blake's Electric</div>
+                        <div class="sponsor-name-list silver">Parkview Family Restaurant &amp; Inn</div>
+                        <div class="sponsor-name-list silver">G.R. Mitchell Welding &amp; Fabrication</div>
+                        <div class="sponsor-name-list silver">Mark Small</div>
+                        <div class="sponsor-name-list silver">Tidal Tractor</div>
+                        <div class="sponsor-name-list silver">P&amp;S Farms</div>
+                        <div class="sponsor-name-list silver">Coldstream Clear Distillery</div>
+                        <div class="sponsor-name-list silver">Star Creations Leather</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BRONZE Sponsors -->
+            <div class="sponsor-tier">
+                <div class="sponsor-tier-header bronze">🥉 Bronze Sponsors</div>
+                <div class="sponsor-columns">
+                    <div>
+                        <div class="sponsor-name-list bronze">Oxford Frozen Foods</div>
+                        <div class="sponsor-name-list bronze">Moo Meadows Farm Dog Grooming &amp; Boarding</div>
+                        <div class="sponsor-name-list bronze">Agritech Farm Equipment Sales</div>
+                        <div class="sponsor-name-list bronze">Scotiabank Oxford</div>
+                        <div class="sponsor-name-list bronze">D&amp;J Hardware</div>
+                        <div class="sponsor-name-list bronze">Red Rock</div>
+                        <div class="sponsor-name-list bronze">Fortbrook Farm</div>
+                        <div class="sponsor-name-list bronze">OUR Place Livestock and Evangeline Trail Rides</div>
+                        <div class="sponsor-name-list bronze">O'Brien's PharmaChoice</div>
+                        <div class="sponsor-name-list bronze">Samantha Van Den Brand</div>
+                        <div class="sponsor-name-list bronze">Kimberly Allen</div>
+                        <div class="sponsor-name-list bronze">Simmental Association</div>
+                        <div class="sponsor-name-list bronze">KFC Farms Ltd</div>
+                        <div class="sponsor-name-list bronze">Under Hill Farms</div>
+                        <div class="sponsor-name-list bronze">LN C. Cattle Company</div>
+                    </div>
+                    <div>
+                        <div class="sponsor-name-list bronze">Rushton's Truck &amp; Trailer Repair</div>
+                        <div class="sponsor-name-list bronze">Crystal Goodwin</div>
+                        <div class="sponsor-name-list bronze">Halfway Farms</div>
+                        <div class="sponsor-name-list bronze">Milner Hill Farm</div>
+                        <div class="sponsor-name-list bronze">Holly Martin</div>
+                        <div class="sponsor-name-list bronze">HioMat Farms</div>
+                        <div class="sponsor-name-list bronze">Allen's Herefords</div>
+                        <div class="sponsor-name-list bronze">Midway Farms</div>
+                        <div class="sponsor-name-list bronze">Thunderbrook Farms</div>
+                        <div class="sponsor-name-list bronze">Eric Thompson &amp; Kelly Simpson</div>
+                        <div class="sponsor-name-list bronze">Tom Mairo &amp; Catherine Fraser-Mairo</div>
+                        <div class="sponsor-name-list bronze">Hidden Acres</div>
+                        <div class="sponsor-name-list bronze">Aulac Big Stop</div>
+                        <div class="sponsor-name-list bronze">Tim Horton's Oxford</div>
+                    </div>
+                    <div>
+                        <div class="sponsor-name-list bronze">The Copper Tree</div>
+                        <div class="sponsor-name-list bronze">Hillbilly Haven Ranch</div>
+                        <div class="sponsor-name-list bronze">NS Cattle Producers</div>
+                        <div class="sponsor-name-list bronze">Bordertown Angus</div>
+                        <div class="sponsor-name-list bronze">Lutes Chariots</div>
+                        <div class="sponsor-name-list bronze">Jim McInnis Cattle Co.</div>
+                        <div class="sponsor-name-list bronze">Maltby Stables</div>
+                        <div class="sponsor-name-list bronze">Wecan Sales</div>
+                        <div class="sponsor-name-list bronze">Armour Transportation Systems</div>
+                        <div class="sponsor-name-list bronze">Big B Variety</div>
+                        <div class="sponsor-name-list bronze">Amherst Co-op Country Store</div>
+                        <div class="sponsor-name-list bronze">Charles Symes Stables &amp; Transport</div>
+                        <div class="sponsor-name-list bronze">Tim Hortons Oxford</div>
+                        <div class="sponsor-name-list bronze">Lynds Industrial</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRIENDS OF THE EXHIBITION -->
+            <div class="sponsor-tier">
+                <div class="sponsor-tier-header friends">🤝 Friends of the Exhibition</div>
+                <div class="sponsor-columns">
+                    <div>
+                        <div class="sponsor-name-list friends">Alan Pipes</div>
+                        <div class="sponsor-name-list friends">Top of the Hill Farm</div>
+                        <div class="sponsor-name-list friends">TS Performance Horses</div>
+                        <div class="sponsor-name-list friends">Spirit Reins</div>
+                        <div class="sponsor-name-list friends">Atlantic Beef Products</div>
+                        <div class="sponsor-name-list friends">Orchard Hill Farms</div>
+                    </div>
+                    <div>
+                        <div class="sponsor-name-list friends">Ripley's Maple Syrup</div>
+                        <div class="sponsor-name-list friends">Round House Farm</div>
+                        <div class="sponsor-name-list friends">Roslyn Farms</div>
+                        <div class="sponsor-name-list friends">Shipley's Cattle Co</div>
+                        <div class="sponsor-name-list friends">Wheel B Fair Automotive</div>
+                        <div class="sponsor-name-list friends">Pleasant Ridge Saddlery</div>
+                    </div>
+                    <div>
+                        <div class="sponsor-name-list friends">Bahr Saddlery</div>
+                        <div class="sponsor-name-list friends">Cladella Hirschfeld</div>
+                        <div class="sponsor-name-list friends">Gaudet Farrier Service</div>
+                        <div class="sponsor-name-list friends">Breezy Ridge Farm</div>
                     </div>
                 </div>
             </div>
@@ -271,25 +429,25 @@
 
             <!-- Become a Sponsor (Bottom) -->
             <div class="sponsor-cta">
-                <h3>Ready to Become a Sponsor?</h3>
-                <p>Download our sponsorship package for details on levels and benefits, or contact us directly to discuss opportunities!</p>
+                <h3>Ready to Become a 2026 Sponsor?</h3>
+                <p>Download our 2026 sponsorship package for details on levels and benefits, or contact us directly to discuss opportunities!</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="images/forms and documents/2024-Sponsorship-Package.pdf" class="btn" target="_blank">Download Sponsorship Package</a>
+                    <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank">Download 2026 Sponsorship Package</a>
                     <a href="contact.html" class="btn" style="background: var(--cream); color: var(--barn-red);">Contact Us</a>
                 </div>
             </div>
 
             <!-- Sponsorship Tier Perks -->
             <section class="panel">
-                <h2>Sponsorship Tiers & Perks</h2>
+                <h2>Sponsorship Tiers &amp; Perks</h2>
                 <div class="sponsor-tier" style="margin-top: 1.5rem;">
                     <div class="sponsor-tier-header platinum">Platinum Sponsor - $1,000+</div>
                     <div style="background: var(--cream); border: 3px solid #9C9C9C; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Logo on all promotional materials & signage</li>
+                            <li style="padding: 0.4rem 0;">Logo on all promotional materials &amp; signage</li>
                             <li style="padding: 0.4rem 0;">Logo on website with link to your business</li>
                             <li style="padding: 0.4rem 0;">PA announcements throughout CCEx</li>
-                            <li style="padding: 0.4rem 0;">Social media features & shout-outs</li>
+                            <li style="padding: 0.4rem 0;">Social media features &amp; shout-outs</li>
                             <li style="padding: 0.4rem 0;">Complimentary vendor booth space</li>
                             <li style="padding: 0.4rem 0;">Event naming rights (e.g. "Sponsored by...")</li>
                             <li style="padding: 0.4rem 0;">10 complimentary admission passes</li>
@@ -300,7 +458,7 @@
                     <div class="sponsor-tier-header gold">Gold Sponsor - $500+</div>
                     <div style="background: var(--cream); border: 3px solid #DAA520; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Logo on promotional materials & programs</li>
+                            <li style="padding: 0.4rem 0;">Logo on promotional materials &amp; programs</li>
                             <li style="padding: 0.4rem 0;">Logo on website</li>
                             <li style="padding: 0.4rem 0;">PA announcements during CCEx</li>
                             <li style="padding: 0.4rem 0;">Social media recognition</li>
@@ -309,16 +467,36 @@
                     </div>
                 </div>
                 <div class="sponsor-tier">
-                    <div class="sponsor-tier-header">Event Sponsor - $250+</div>
-                    <div style="background: var(--cream); border: 3px solid var(--rope-tan); border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
+                    <div class="sponsor-tier-header silver">Silver Sponsor</div>
+                    <div style="background: var(--cream); border: 3px solid #A8A8A8; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Name on event signage</li>
-                            <li style="padding: 0.4rem 0;">Listed in program as event sponsor</li>
-                            <li style="padding: 0.4rem 0;">PA mention during sponsored event</li>
+                            <li style="padding: 0.4rem 0;">Name on promotional materials</li>
+                            <li style="padding: 0.4rem 0;">Name listed on website</li>
+                            <li style="padding: 0.4rem 0;">PA recognition during CCEx</li>
+                            <li style="padding: 0.4rem 0;">3 complimentary admission passes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sponsor-tier">
+                    <div class="sponsor-tier-header bronze">Bronze Sponsor</div>
+                    <div style="background: var(--cream); border: 3px solid #CD7F32; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0;">Name listed in program</li>
+                            <li style="padding: 0.4rem 0;">Name listed on website</li>
                             <li style="padding: 0.4rem 0;">2 complimentary admission passes</li>
                         </ul>
                     </div>
                 </div>
+                <div class="sponsor-tier">
+                    <div class="sponsor-tier-header friends">Friends of the Exhibition</div>
+                    <div style="background: var(--cream); border: 3px solid #4a7c4e; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.4rem 0;">Name listed on website</li>
+                            <li style="padding: 0.4rem 0;">Community recognition at CCEx</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center mt-3"><em>For full details on sponsorship perks and opportunities, download our 2026 Sponsorship Package or contact us directly.</em></p>
             </section>
         </div>
     </main>
@@ -361,12 +539,12 @@
             </div>
             <div class="footer-right">
                 <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
-                <p>&copy; 2025 Cumberland County Exhibition</p>
-                <p class="footer-credit">Website by <a href="../html/index.html">Justin Greeno</a></p>
+                <p>&copy; 2026 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="https://JustinGreeno.dev">Justin Greeno</a></p>
             </div>
         </div>
         <div class="footer-secret">
-            <a href="../html/index.html" title="JustinGreeno.dev">J</a>
+            <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
         </div>
     </footer>
 
