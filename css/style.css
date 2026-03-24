@@ -137,9 +137,10 @@ header .container {
 
 .header-content {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.25rem 1rem;
     padding: 0;
 }
 
@@ -194,9 +195,10 @@ header .container {
 
 /* Navigation - Clean Simple Tabs */
 nav {
-    align-self: stretch;
+    margin-left: auto;
     position: relative;
-    bottom: 0;
+    bottom: -2px;
+    flex-shrink: 0;
 }
 
 nav ul {
@@ -206,7 +208,6 @@ nav ul {
     margin: 0;
     padding: 0;
     align-items: flex-end;
-    flex-wrap: wrap;
 }
 
 nav li {
@@ -1711,19 +1712,12 @@ main {
 
 /* Tablet and below - show hamburger */
 @media (max-width: 1150px) {
-    .header-content {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
     .hamburger {
         display: flex;
     }
 
     nav {
         position: relative;
-        align-self: auto;
     }
 
     nav ul {
