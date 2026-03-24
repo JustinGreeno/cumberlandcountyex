@@ -183,14 +183,13 @@ header .container {
 }
 
 .logo-tagline {
-    font-family: 'Alfa Slab One', serif;
-    font-size: 2.8rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
     color: var(--straw-light);
     display: block;
-    text-shadow:
-        3px 3px 0 var(--wood-dark),
-        -1px -1px 0 var(--wood-dark);
-    letter-spacing: 1px;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
 }
 
 /* Navigation - Clean Simple Tabs */
@@ -1711,7 +1710,7 @@ main {
    ============================================ */
 
 /* Tablet and below - show hamburger */
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
     .hamburger {
         display: flex;
     }
@@ -1816,7 +1815,7 @@ main {
     }
 
     .logo-tagline {
-        font-size: clamp(1.2rem, 4vw, 2.2rem);
+        font-size: 0.78rem;
     }
 
     .hero h1 {
@@ -1925,7 +1924,7 @@ main {
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 600px) {
     .logo-tagline {
         display: none;
     }

@@ -517,7 +517,7 @@
 
         document.querySelectorAll('.has-dropdown > a').forEach(link => {
             link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 1024) {
+                if (window.innerWidth <= 1150) {
                     e.preventDefault();
                     this.parentElement.classList.toggle('open');
                 }
@@ -527,7 +527,7 @@
         document.addEventListener('click', function(e) {
             const nav = document.querySelector('nav');
             const hamburger = document.querySelector('.hamburger');
-            if (!nav.contains(e.target) && window.innerWidth <= 1024) {
+            if (!nav.contains(e.target) && window.innerWidth <= 1150) {
                 document.getElementById('navMenu').classList.remove('mobile-open');
                 hamburger.classList.remove('active');
             }
