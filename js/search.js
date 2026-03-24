@@ -52,7 +52,7 @@ const searchIndex = [
     { type: 'info', icon: '⏰', title: 'Fair Hours', desc: 'Fri 5-10PM, Sat-Sun 10AM-10PM, Mon 10AM-4PM', url: 'vendors.html', keywords: 'hours times open close schedule' },
     { type: 'info', icon: '🌧️', title: 'Weather Policy', desc: 'Fair runs rain or shine', url: 'contact.html', keywords: 'weather rain policy refund' },
     { type: 'info', icon: '📧', title: 'Email Contact', desc: 'cumberlandexhibition@gmail.com', url: 'contact.html', keywords: 'email contact info address' },
-    { type: 'info', icon: '♿', title: 'Accessibility', desc: 'Accessible facilities on site', url: 'contact.html', keywords: 'accessible accessibility wheelchair handicap' },
+    { type: 'info', icon: '♿', title: 'Accessibility', desc: 'Accessible parking and facilities available on site', url: 'contact.html', keywords: 'accessible accessibility wheelchair handicap parking' },
     { type: 'info', icon: '🍽️', title: 'Food Available', desc: 'Food court with fair favorites', url: 'contact.html', keywords: 'food eating available vendors' },
     { type: 'info', icon: '💼', title: 'Become a Vendor', desc: 'Apply to sell at the fair', url: 'vendor-application.html', keywords: 'vendor apply sell booth' },
     { type: 'info', icon: '🤝', title: 'Become a Sponsor', desc: 'Sponsorship opportunities', url: 'sponsors.html', keywords: 'sponsor sponsorship business partner' },
