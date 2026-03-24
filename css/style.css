@@ -137,10 +137,9 @@ header .container {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: nowrap;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
     padding: 0;
 }
 
@@ -183,21 +182,21 @@ header .container {
 }
 
 .logo-tagline {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
     color: var(--straw-light);
     display: block;
-    letter-spacing: 0.04em;
-    opacity: 0.9;
+    text-shadow:
+        2px 2px 0 var(--wood-dark),
+        -1px -1px 0 var(--wood-dark);
+    letter-spacing: 0.5px;
 }
 
 /* Navigation - Clean Simple Tabs */
 nav {
-    align-self: flex-end;
-    margin-left: auto;
+    align-self: stretch;
     position: relative;
-    bottom: -2px;
+    bottom: 0;
 }
 
 nav ul {
@@ -207,6 +206,7 @@ nav ul {
     margin: 0;
     padding: 0;
     align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 nav li {
@@ -1711,12 +1711,19 @@ main {
 
 /* Tablet and below - show hamburger */
 @media (max-width: 1150px) {
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     .hamburger {
         display: flex;
     }
 
     nav {
         position: relative;
+        align-self: auto;
     }
 
     nav ul {
@@ -1815,7 +1822,7 @@ main {
     }
 
     .logo-tagline {
-        font-size: 0.78rem;
+        font-size: clamp(0.9rem, 3vw, 1.4rem);
     }
 
     .hero h1 {
