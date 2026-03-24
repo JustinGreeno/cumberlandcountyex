@@ -319,6 +319,8 @@ nav a.active {
     background: var(--wood-medium);
     border: 2px solid var(--rope-tan);
     border-radius: 6px;
+    flex-shrink: 0;
+    z-index: 1001;
     margin-bottom: 0;
 }
 
@@ -1908,18 +1910,25 @@ main {
 
 @media (max-width: 480px) {
     .logo-img {
-        height: 60px;
+        height: 50px;
     }
 
     .logo {
         flex-shrink: 1;
         min-width: 0;
+        overflow: hidden;
     }
 
     .logo-tagline {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+    }
+}
+
+@media (max-width: 380px) {
+    .logo-tagline {
+        display: none;
     }
 
     .hero-logo {
