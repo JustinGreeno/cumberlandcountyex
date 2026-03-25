@@ -96,62 +96,65 @@
             margin-top: 1rem;
             font-weight: 600;
         }
-        .mud-stomp-banner {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
-            color: white;
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+        /* ── Mud Stomp Hero ── */
+        .mud-stomp-hero {
             position: relative;
-            overflow: hidden;
-            border: 3px solid rgba(255,255,255,0.1);
-        }
-        .mud-stomp-banner::before {
-            content: '';
-            position: absolute;
-            bottom: -60px; left: -40px;
-            width: 200px; height: 200px;
-            background: rgba(139,37,0,0.15);
-            border-radius: 50%;
-        }
-        .mud-stomp-banner h2 {
-            font-family: 'Alfa Slab One', serif;
-            font-size: 2rem;
-            margin-bottom: 0.25rem;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
-        }
-        .mud-stomp-banner .age-badge {
-            display: inline-block;
-            background: var(--barn-red);
-            color: white;
-            font-weight: bold;
-            font-size: 0.85rem;
-            padding: 0.25rem 0.75rem;
+            width: 100%;
+            min-height: 420px;
             border-radius: 20px;
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
+            overflow: hidden;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-end;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+        }
+        .mud-stomp-hero-bg {
+            position: absolute;
+            inset: -10%;
+            background: url('images/art/mud stomp hero shot.png') center center / cover no-repeat;
+            animation: kenBurnsMS 18s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes kenBurnsMS {
+            0%   { transform: scale(1)    translateX(0)    translateY(0); }
+            100% { transform: scale(1.14) translateX(-2%)  translateY(-2%); }
+        }
+        .mud-stomp-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(20,5,40,0.92) 0%,
+                rgba(60,10,80,0.55) 45%,
+                rgba(10,0,20,0.20) 100%
+            );
+            z-index: 1;
+        }
+        .mud-stomp-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem;
+            width: 100%;
         }
         .mud-stomp-details {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 0.6rem;
+            margin-top: 1.25rem;
         }
         .ms-detail {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            padding: 0.6rem 1.1rem;
-            font-size: 0.95rem;
+            background: rgba(255,255,255,0.15);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: white;
         }
         .ms-price {
             background: var(--straw);
+            border-color: var(--hay);
             color: var(--wood-dark);
-            font-family: 'Alfa Slab One', serif;
-            font-size: 1.1rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
         }
         .safety-note {
             background: var(--cream);
@@ -278,7 +281,7 @@
                     <li><a href="merch.html">Merch</a></li>
                     <li><a href="photos.html">Photos</a></li>
                     <li class="has-dropdown">
-                        <a href="#">Info</a>
+                        <a href="#">Get Involved</a>
                         <ul class="dropdown">
                             <li><a href="exhibitors.html">Exhibitors</a></li>
                             <li><a href="vendors.html">Vendors</a></li>
@@ -451,16 +454,20 @@
 
             <div class="divider-rope"></div>
 
-            <!-- Mud Stomp -->
-            <div class="mud-stomp-banner">
-                <span class="age-badge">19+ ADULTS ONLY</span>
-                <h2>Saturday Night - Mud Stomp</h2>
-                <p style="opacity:0.88; font-size:1.05rem; margin-bottom:1rem;">After the kids go to bed, the adults come out to play. Join us Saturday night for the Mud Stomp - cold Coldstream drinks, DJ Dave on the decks, and a night you won't forget.</p>
-                <div class="mud-stomp-details">
-                    <span class="ms-detail">Saturday · 9 PM</span>
-                    <span class="ms-detail">DJ Dave</span>
-                    <span class="ms-detail">Coldstream Drinks</span>
-                    <span class="ms-price">$10 Advance &nbsp;|&nbsp; $15 at the Door</span>
+            <!-- Mud Stomp Hero -->
+            <div class="mud-stomp-hero" id="mud-stomp">
+                <div class="mud-stomp-hero-bg"></div>
+                <div class="mud-stomp-hero-overlay"></div>
+                <div class="mud-stomp-hero-content">
+                    <span class="fz-hero-badge" style="background: var(--barn-red); border-color: var(--barn-red); color: white;">19+ Adults Only</span>
+                    <h2 class="fz-hero-title">Saturday Night Mud Stomp</h2>
+                    <p class="fz-hero-desc">After the kids go to bed, the adults come out to play. Cold Coldstream drinks, DJ Dave on the decks, and a night you won't forget.</p>
+                    <div class="mud-stomp-details">
+                        <span class="ms-detail">Saturday · 9 PM</span>
+                        <span class="ms-detail">DJ Dave</span>
+                        <span class="ms-detail">Coldstream Drinks</span>
+                        <span class="ms-detail ms-price">$10 Advance &nbsp;|&nbsp; $15 at the Door</span>
+                    </div>
                 </div>
             </div>
 
