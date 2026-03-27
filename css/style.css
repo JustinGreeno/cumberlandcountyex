@@ -320,8 +320,12 @@ nav a.active {
     border: 2px solid var(--rope-tan);
     border-radius: 6px;
     flex-shrink: 0;
+    position: relative;              /* required for z-index to work reliably */
     z-index: 1001;
     margin-bottom: 0;
+    touch-action: manipulation;      /* eliminates 300ms tap delay on mobile */
+    -webkit-tap-highlight-color: transparent; /* removes grey flash on iOS tap */
+    user-select: none;
 }
 
 .hamburger span {
@@ -330,6 +334,7 @@ nav a.active {
     background: var(--cream);
     border-radius: 2px;
     transition: all 0.3s ease;
+    pointer-events: none;            /* clicks pass through spans to the parent div */
 }
 
 .hamburger:hover span {

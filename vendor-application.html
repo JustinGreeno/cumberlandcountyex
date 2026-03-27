@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendor Application | Cumberland County Exhibition</title>
     <meta name="description" content="Apply to become a vendor at the Cumberland County Exhibition 2026 - Food, crafts, merchandise, and more!">
+    <meta property="og:title" content="Vendor Application | Cumberland County Exhibition">
+    <meta property="og:description" content="Apply to become a vendor at the Cumberland County Exhibition 2026 - Food, crafts, merchandise, and more!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:url" content="https://cumberlandcountyex.com/vendor-application.html">
+    <meta property="og:site_name" content="Cumberland County Exhibition">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/search.js" defer></script>
@@ -813,6 +819,34 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1150) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1150) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
         // Parallax background
         (function() {
             const style = document.createElement('style');

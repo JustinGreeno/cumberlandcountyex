@@ -8,6 +8,9 @@
     <meta property="og:title" content="Sponsors | Cumberland County Exhibition">
     <meta property="og:description" content="Our generous sponsors help keep the Cumberland County Exhibition alive. See sponsorship tiers and perks!">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:url" content="https://cumberlandcountyex.com/sponsors.html">
+    <meta property="og:site_name" content="Cumberland County Exhibition">
     <meta name="keywords" content="CCEx sponsors, Cumberland County Exhibition sponsors, sponsorship, Oxford NS">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
@@ -31,15 +34,510 @@
             border: 3px solid var(--rope-tan);
         }
         .sponsor-tier-header.platinum {
-            background: linear-gradient(135deg, #E5E4E2 0%, #9C9C9C 50%, #E5E4E2 100%);
-            color: var(--wood-dark);
-            border-color: #9C9C9C;
+            background: linear-gradient(135deg, #c8c8c8 0%, #888 40%, #d4d4d4 60%, #9a9a9a 100%);
+            color: #1a1a1a;
+            border-color: #888;
+            letter-spacing: 0.08em;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+        }
+
+        /* ── Platinum Hero Banner ── */
+        .plat-hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #555;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(200,200,200,0.15);
+        }
+        .plat-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(140deg, #111 0%, #252525 30%, #1a1a1a 55%, #222 80%, #0d0d0d 100%);
+        }
+        /* brushed metal horizontal lines */
+        .plat-hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 3px,
+                rgba(255,255,255,0.018) 3px,
+                rgba(255,255,255,0.018) 4px
+            );
+        }
+        /* diagonal sheen sweep */
+        .plat-hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                110deg,
+                transparent 20%,
+                rgba(200,200,200,0.05) 40%,
+                rgba(240,240,240,0.12) 50%,
+                rgba(200,200,200,0.05) 60%,
+                transparent 80%
+            );
+        }
+        .plat-hero-corner {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.35;
+        }
+        .plat-hero-corner.tl { top: 14px; left: 14px; border-top: 2px solid #c0c0c0; border-left: 2px solid #c0c0c0; }
+        .plat-hero-corner.tr { top: 14px; right: 14px; border-top: 2px solid #c0c0c0; border-right: 2px solid #c0c0c0; }
+        .plat-hero-corner.bl { bottom: 14px; left: 14px; border-bottom: 2px solid #c0c0c0; border-left: 2px solid #c0c0c0; }
+        .plat-hero-corner.br { bottom: 14px; right: 14px; border-bottom: 2px solid #c0c0c0; border-right: 2px solid #c0c0c0; }
+        .plat-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        .plat-eyebrow {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #888, #ddd, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.6rem;
+        }
+        .plat-hero-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            background: linear-gradient(180deg, #ffffff 0%, #d8d8d8 45%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+        .plat-hero-desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.92rem;
+            font-family: 'Lato', sans-serif;
+            margin-bottom: 0.9rem;
+        }
+        .plat-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            justify-content: center;
+            margin-bottom: 1.75rem;
+        }
+        .plat-pill {
+            background: rgba(190,190,190,0.1);
+            border: 1.5px solid rgba(190,190,190,0.3);
+            border-radius: 20px;
+            padding: 0.38rem 0.95rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.88);
+            font-family: 'Lato', sans-serif;
+            white-space: nowrap;
+        }
+        .plat-pill.top {
+            background: rgba(210,210,210,0.18);
+            border-color: rgba(210,210,210,0.5);
+            color: #fff;
+        }
+        .plat-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #b0b0b0 0%, #e8e8e8 45%, #aaa 100%);
+            color: #111;
+            font-family: 'Roboto Slab', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.85rem 2.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+        .plat-cta:hover {
+            background: linear-gradient(135deg, #cacaca 0%, #fff 45%, #c0c0c0 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.7);
         }
         .sponsor-tier-header.gold {
-            background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #FFD700 100%);
-            color: var(--wood-dark);
-            border-color: #DAA520;
+            background: linear-gradient(135deg, #ffe066 0%, #c8860a 35%, #f5c500 60%, #b87800 100%);
+            color: #2a1500;
+            border-color: #b87800;
+            letter-spacing: 0.07em;
+            text-shadow: 0 1px 3px rgba(255,220,0,0.35);
+            box-shadow: 0 4px 18px rgba(180,120,0,0.3);
         }
+
+        /* ── Gold Sponsor Cards ── */
+        @keyframes gold-shimmer {
+            0%   { transform: translateX(-150%) skewX(-18deg); opacity: 0; }
+            15%  { opacity: 1; }
+            85%  { opacity: 1; }
+            100% { transform: translateX(350%) skewX(-18deg); opacity: 0; }
+        }
+        .gold-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+            gap: 1.1rem;
+        }
+        .sponsor-card.gold {
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #b8860b;
+            background:
+                repeating-linear-gradient(
+                    100deg,
+                    transparent 0px,
+                    transparent 3px,
+                    rgba(255,255,255,0.18) 3px,
+                    rgba(255,255,255,0.18) 4px
+                ),
+                linear-gradient(155deg,
+                    #f7dc6f 0%,
+                    #d4a017 18%,
+                    #f5c842 32%,
+                    #c8900a 52%,
+                    #e8b830 68%,
+                    #d4a220 83%,
+                    #f2cc45 100%
+                );
+            box-shadow:
+                0 4px 16px rgba(160,100,0,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.75),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+            border-radius: 10px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        /* continuous shimmer sweep */
+        .sponsor-card.gold::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 0;
+            width: 28%;
+            height: 160%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,240,120,0.25),
+                rgba(255,255,255,0.55),
+                rgba(255,240,120,0.25),
+                transparent
+            );
+            pointer-events: none;
+            animation: gold-shimmer 2.8s ease-in-out infinite;
+        }
+        /* hover shine sweep */
+        .sponsor-card.gold::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -130%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.7),
+                rgba(255,220,0,0.2),
+                rgba(255,255,255,0.7),
+                transparent
+            );
+            transform: skewX(-18deg);
+            pointer-events: none;
+        }
+        .sponsor-card.gold:hover::after {
+            left: 200%;
+            transition: left 0.5s ease;
+        }
+        .sponsor-card.gold:hover {
+            transform: translateY(-6px);
+            border-color: #8a6000;
+            box-shadow:
+                0 14px 36px rgba(160,100,0,0.35),
+                0 0 0 1px rgba(200,150,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.9),
+                inset 0 -1px 0 rgba(0,0,0,0.12);
+        }
+        .sponsor-card.gold .sponsor-name {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1e0f00;
+            line-height: 1.3;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+        .sponsor-card.gold .gold-logo {
+            max-height: 40px;
+            max-width: 130px;
+            margin: 0 auto 0.6rem;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
+        }
+
+        /* ══════════════════════════════════════
+           TIER HERO BANNERS — shared base
+        ══════════════════════════════════════ */
+        .tier-hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            margin-bottom: 1.25rem;
+        }
+        .tier-hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+        /* brushed-metal lines shared by all */
+        .tier-hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 3px,
+                rgba(255,255,255,0.016) 3px,
+                rgba(255,255,255,0.016) 4px
+            );
+        }
+        /* diagonal sheen shared by all */
+        .tier-hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                112deg,
+                transparent 25%,
+                rgba(255,255,255,0.04) 45%,
+                rgba(255,255,255,0.09) 50%,
+                rgba(255,255,255,0.04) 55%,
+                transparent 75%
+            );
+        }
+        .tier-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 1.8rem 2rem;
+            text-align: center;
+        }
+        .tier-hero-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            line-height: 1.15;
+            margin-bottom: 0.3rem;
+        }
+        .tier-hero-price {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 1.1rem;
+        }
+        .tier-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            justify-content: center;
+        }
+        .tier-pill {
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            white-space: nowrap;
+        }
+        .tier-hero-corner {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            opacity: 0.3;
+        }
+        .tier-hero-corner.tl { top: 10px; left: 10px; }
+        .tier-hero-corner.tr { top: 10px; right: 10px; }
+        .tier-hero-corner.bl { bottom: 10px; left: 10px; }
+        .tier-hero-corner.br { bottom: 10px; right: 10px; }
+
+        /* ── GOLD hero ── */
+        .tier-hero.gold-hero {
+            border: 2px solid #7a5000;
+            box-shadow: 0 10px 32px rgba(140,80,0,0.38);
+        }
+        .tier-hero.gold-hero .tier-hero-bg { background: linear-gradient(140deg, #1e0e00 0%, #321800 40%, #211000 70%, #160a00 100%); }
+        .tier-hero.gold-hero .tier-hero-corner.tl,
+        .tier-hero.gold-hero .tier-hero-corner.bl { border-top: 2px solid #c8900a; border-left: 2px solid #c8900a; }
+        .tier-hero.gold-hero .tier-hero-corner.tl { border-bottom: none; border-right: none; }
+        .tier-hero.gold-hero .tier-hero-corner.bl { border-top: none; border-right: none; border-bottom: 2px solid #c8900a; }
+        .tier-hero.gold-hero .tier-hero-corner.tr { border-top: 2px solid #c8900a; border-right: 2px solid #c8900a; }
+        .tier-hero.gold-hero .tier-hero-corner.br { border-bottom: 2px solid #c8900a; border-right: 2px solid #c8900a; }
+        .tier-hero.gold-hero .tier-hero-title {
+            background: linear-gradient(180deg, #ffe87a 0%, #f5c500 50%, #b87800 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tier-hero.gold-hero .tier-hero-price { color: rgba(240,190,50,0.7); }
+        .tier-hero.gold-hero .tier-pill {
+            background: rgba(220,160,0,0.13);
+            border: 1.5px solid rgba(220,160,0,0.32);
+            color: rgba(255,230,100,0.95);
+        }
+
+        /* ── SILVER hero ── */
+        .tier-hero.silver-hero {
+            border: 2px solid #505050;
+            box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+        }
+        .tier-hero.silver-hero .tier-hero-bg { background: linear-gradient(140deg, #101010 0%, #1c1c1c 40%, #131313 70%, #0a0a0a 100%); }
+        .tier-hero.silver-hero .tier-hero-corner.tl { border-top: 2px solid #a0a0a0; border-left: 2px solid #a0a0a0; }
+        .tier-hero.silver-hero .tier-hero-corner.tr { border-top: 2px solid #a0a0a0; border-right: 2px solid #a0a0a0; }
+        .tier-hero.silver-hero .tier-hero-corner.bl { border-bottom: 2px solid #a0a0a0; border-left: 2px solid #a0a0a0; }
+        .tier-hero.silver-hero .tier-hero-corner.br { border-bottom: 2px solid #a0a0a0; border-right: 2px solid #a0a0a0; }
+        .tier-hero.silver-hero .tier-hero-title {
+            background: linear-gradient(180deg, #f0f0f0 0%, #b8b8b8 50%, #808080 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tier-hero.silver-hero .tier-hero-price { color: rgba(170,170,170,0.7); }
+        .tier-hero.silver-hero .tier-pill {
+            background: rgba(160,160,160,0.1);
+            border: 1.5px solid rgba(160,160,160,0.28);
+            color: rgba(210,210,210,0.92);
+        }
+
+        /* ── BRONZE hero ── */
+        .tier-hero.bronze-hero {
+            border: 2px solid #6a3010;
+            box-shadow: 0 10px 32px rgba(100,40,0,0.38);
+        }
+        .tier-hero.bronze-hero .tier-hero-bg { background: linear-gradient(140deg, #150800 0%, #251200 40%, #1a0c00 70%, #100600 100%); }
+        .tier-hero.bronze-hero .tier-hero-corner.tl { border-top: 2px solid #cd7f32; border-left: 2px solid #cd7f32; }
+        .tier-hero.bronze-hero .tier-hero-corner.tr { border-top: 2px solid #cd7f32; border-right: 2px solid #cd7f32; }
+        .tier-hero.bronze-hero .tier-hero-corner.bl { border-bottom: 2px solid #cd7f32; border-left: 2px solid #cd7f32; }
+        .tier-hero.bronze-hero .tier-hero-corner.br { border-bottom: 2px solid #cd7f32; border-right: 2px solid #cd7f32; }
+        .tier-hero.bronze-hero .tier-hero-title {
+            background: linear-gradient(180deg, #f0a060 0%, #cd7f32 50%, #904020 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tier-hero.bronze-hero .tier-hero-price { color: rgba(190,110,50,0.7); }
+        .tier-hero.bronze-hero .tier-pill {
+            background: rgba(160,80,30,0.12);
+            border: 1.5px solid rgba(160,80,30,0.3);
+            color: rgba(240,170,100,0.95);
+        }
+
+        /* ── FRIENDS hero ── */
+        .tier-hero.friends-hero {
+            border: 2px solid #1e4a20;
+            box-shadow: 0 10px 32px rgba(0,50,0,0.38);
+        }
+        .tier-hero.friends-hero .tier-hero-bg { background: linear-gradient(140deg, #050e05 0%, #0e1e0e 40%, #091209 70%, #050a05 100%); }
+        .tier-hero.friends-hero .tier-hero-corner.tl { border-top: 2px solid #4a8a4a; border-left: 2px solid #4a8a4a; }
+        .tier-hero.friends-hero .tier-hero-corner.tr { border-top: 2px solid #4a8a4a; border-right: 2px solid #4a8a4a; }
+        .tier-hero.friends-hero .tier-hero-corner.bl { border-bottom: 2px solid #4a8a4a; border-left: 2px solid #4a8a4a; }
+        .tier-hero.friends-hero .tier-hero-corner.br { border-bottom: 2px solid #4a8a4a; border-right: 2px solid #4a8a4a; }
+        .tier-hero.friends-hero .tier-hero-title {
+            background: linear-gradient(180deg, #90d890 0%, #4a9a4a 50%, #2a6a2a 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .tier-hero.friends-hero .tier-hero-price { color: rgba(90,160,90,0.7); }
+        .tier-hero.friends-hero .tier-pill {
+            background: rgba(50,120,50,0.13);
+            border: 1.5px solid rgba(50,120,50,0.3);
+            color: rgba(140,210,140,0.95);
+        }
+
+        /* ── + More pill links ── */
+        a.plat-pill, a.tier-pill {
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+        a.plat-pill:hover, a.tier-pill:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* ── Perks Section ── */
+        .perks-section-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 1.8rem;
+            color: var(--wood-dark);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--rope-tan);
+        }
+        .perks-block {
+            margin-bottom: 2rem;
+            scroll-margin-top: 90px;
+        }
+        .perks-block .tier-hero,
+        .perks-block .plat-hero {
+            border-radius: 14px 14px 0 0;
+            margin-bottom: 0;
+            box-shadow: none;
+        }
+        .perks-block .tier-hero-content,
+        .perks-block .plat-hero-content {
+            padding: 1.2rem 2rem;
+        }
+        .perks-block .plat-hero-title,
+        .perks-block .tier-hero-title {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+        }
+        .perks-block .plat-hero-desc { display: none; }
+        .perks-list {
+            padding: 1.25rem 1.75rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.2rem 2rem;
+            border-radius: 0 0 12px 12px;
+            border-width: 0 2px 2px 2px;
+            border-style: solid;
+        }
+        .perk-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.42rem 0;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .perk-item:last-child { border-bottom: none; }
+        .perk-check {
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 1rem;
+            margin-top: 1px;
+        }
+        .perks-list.plat-perks  { background: linear-gradient(145deg, #efefef, #e6e6e6); border-color: #a0a0a0; }
+        .perks-list.plat-perks  .perk-check { color: #707070; }
+        .perks-list.gold-perks  { background: linear-gradient(145deg, #fffde8, #fef5c0); border-color: #c8900a; }
+        .perks-list.gold-perks  .perk-check { color: #c8900a; }
+        .perks-list.silver-perks{ background: linear-gradient(145deg, #f6f6f6, #eeeeee); border-color: #A8A8A8; }
+        .perks-list.silver-perks .perk-check { color: #888; }
+        .perks-list.bronze-perks{ background: linear-gradient(145deg, #fdf5ec, #fcebd8); border-color: #CD7F32; }
+        .perks-list.bronze-perks .perk-check { color: #CD7F32; }
+        .perks-list.friends-perks{ background: linear-gradient(145deg, #f0f8f0, #e4f4e4); border-color: #4a7c4e; }
+        .perks-list.friends-perks .perk-check { color: #4a7c4e; }
         .sponsors-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -59,9 +557,71 @@
             box-shadow: 0 12px 35px var(--shadow-dark);
             border-color: var(--straw);
         }
+        /* Platinum card — textured metal look */
         .sponsor-card.platinum {
-            border-color: #9C9C9C;
-            background: linear-gradient(145deg, #f8f8f8, var(--cream));
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #a0a0a0;
+            background:
+                repeating-linear-gradient(
+                    95deg,
+                    transparent 0px,
+                    transparent 4px,
+                    rgba(255,255,255,0.22) 4px,
+                    rgba(255,255,255,0.22) 5px
+                ),
+                linear-gradient(160deg,
+                    #e2e2e2 0%,
+                    #d0d0d0 18%,
+                    #e8e8e8 32%,
+                    #c8c8c8 50%,
+                    #dcdcdc 66%,
+                    #d4d4d4 82%,
+                    #e4e4e4 100%
+                );
+            box-shadow:
+                0 6px 22px rgba(0,0,0,0.18),
+                inset 0 1px 0 rgba(255,255,255,0.9),
+                inset 0 -1px 0 rgba(0,0,0,0.08);
+        }
+        /* shine sweep on hover */
+        .sponsor-card.platinum::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.65),
+                transparent
+            );
+            transform: skewX(-18deg);
+            pointer-events: none;
+        }
+        .sponsor-card.platinum:hover::before {
+            left: 200%;
+            transition: left 0.55s ease;
+        }
+        .sponsor-card.platinum:hover {
+            border-color: #707070;
+            transform: translateY(-7px);
+            box-shadow:
+                0 16px 40px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(160,160,160,0.4),
+                inset 0 1px 0 rgba(255,255,255,1),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+        .sponsor-card.platinum .sponsor-name { color: #1e1e1e; }
+        .sponsor-card.platinum .sponsor-logo {
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+        }
+        .sponsor-card.platinum.sponsor-placeholder {
+            border-style: dashed;
+            border-color: #b0b0b0;
+            opacity: 0.72;
         }
         .sponsor-card.gold {
             border-color: #DAA520;
@@ -250,9 +810,29 @@
                 <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank">Download 2026 Sponsorship Package</a>
             </div>
 
+            <!-- PLATINUM Hero Banner -->
+            <div class="plat-hero">
+                <div class="plat-hero-bg"></div>
+                <div class="plat-hero-corner tl"></div>
+                <div class="plat-hero-corner tr"></div>
+                <div class="plat-hero-corner bl"></div>
+                <div class="plat-hero-corner br"></div>
+                <div class="plat-hero-content">
+                    <div class="plat-eyebrow">CCEx 2026 &mdash; Premier Partnership &mdash; $1,000+</div>
+                    <h2 class="plat-hero-title">Platinum Sponsorship</h2>
+                    <p class="plat-hero-desc">The highest level of support for Cumberland County's most beloved tradition</p>
+                    <div class="plat-pills">
+                        <span class="plat-pill top">Logo on All Signage &amp; Materials</span>
+                        <span class="plat-pill top">PA Announcements Throughout CCEx</span>
+                        <span class="plat-pill top">Event Naming Rights</span>
+                        <a href="#perks-platinum" class="plat-pill">+ More</a>
+                    </div>
+                    <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="plat-cta" target="_blank">View Full Sponsorship Package</a>
+                </div>
+            </div>
+
             <!-- PLATINUM Sponsors -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header platinum">⭐ Platinum Sponsors</div>
                 <div class="sponsors-grid">
                     <div class="sponsor-card platinum">
                         <img src="images/sponser logos/Fort Quipment.png" alt="Fort Equipment" class="sponsor-logo">
@@ -295,29 +875,67 @@
 
             <!-- GOLD Sponsors -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header gold">🥇 Gold Sponsors</div>
-                <div class="sponsor-columns">
-                    <div>
-                        <div class="sponsor-name-list">Mosaik Credit Union</div>
-                        <div class="sponsor-name-list">Oxford PharmaChoice</div>
-                        <div class="sponsor-name-list">Oxford Firefighters Association</div>
-                        <div class="sponsor-name-list">Clarence Farm Services</div>
-                    </div>
-                    <div>
-                        <div class="sponsor-name-list">Trouw Nutrition &amp; Feeds N Needs</div>
-                        <div class="sponsor-name-list">DTF Enterprises Ltd.</div>
-                        <div class="sponsor-name-list">BroBots Mowing &amp; Lawn Care</div>
-                        <div class="sponsor-name-list" style="display:flex; align-items:center; gap:0.5rem;">
-                            <img src="images/sponser logos/Carters.png" alt="Carters Sports Cresting" style="max-height:28px; flex-shrink:0;">
-                            Carters Sports Cresting Ltd.
+                <div class="tier-hero gold-hero">
+                    <div class="tier-hero-bg"></div>
+                    <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                    <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                    <div class="tier-hero-content">
+                        <div class="tier-hero-title">Gold Sponsorship</div>
+                        <div class="tier-hero-price">$500+</div>
+                        <div class="tier-pills">
+                            <span class="tier-pill">Logo on Materials &amp; Programs</span>
+                            <span class="tier-pill">PA Announcements</span>
+                            <span class="tier-pill">Social Media Recognition</span>
+                            <a href="#perks-gold" class="tier-pill">+ More</a>
                         </div>
+                    </div>
+                </div>
+                <div class="gold-grid">
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">Mosaik Credit Union</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">Oxford PharmaChoice</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">Oxford Firefighters Association</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">Clarence Farm Services</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">Trouw Nutrition &amp; Feeds N Needs</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">DTF Enterprises Ltd.</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <div class="sponsor-name">BroBots Mowing &amp; Lawn Care</div>
+                    </div>
+                    <div class="sponsor-card gold">
+                        <img src="images/sponser logos/Carters.png" alt="Carters Sports Cresting" class="gold-logo">
+                        <div class="sponsor-name">Carters Sports Cresting Ltd.</div>
                     </div>
                 </div>
             </div>
 
             <!-- SILVER Sponsors -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header silver">🥈 Silver Sponsors</div>
+                <div class="tier-hero silver-hero">
+                    <div class="tier-hero-bg"></div>
+                    <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                    <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                    <div class="tier-hero-content">
+                        <div class="tier-hero-title">Silver Sponsorship</div>
+                        <div class="tier-hero-price">Supporting Level</div>
+                        <div class="tier-pills">
+                            <span class="tier-pill">Name on Promotional Materials</span>
+                            <span class="tier-pill">PA Recognition at CCEx</span>
+                            <span class="tier-pill">Website Listing</span>
+                            <a href="#perks-silver" class="tier-pill">+ More</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="sponsor-columns">
                     <div>
                         <div class="sponsor-name-list silver">Cavendish Farms</div>
@@ -368,7 +986,21 @@
 
             <!-- BRONZE Sponsors -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header bronze">🥉 Bronze Sponsors</div>
+                <div class="tier-hero bronze-hero">
+                    <div class="tier-hero-bg"></div>
+                    <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                    <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                    <div class="tier-hero-content">
+                        <div class="tier-hero-title">Bronze Sponsorship</div>
+                        <div class="tier-hero-price">Community Level</div>
+                        <div class="tier-pills">
+                            <span class="tier-pill">Name in Program</span>
+                            <span class="tier-pill">Website Listing</span>
+                            <span class="tier-pill">2 Admission Passes</span>
+                            <a href="#perks-bronze" class="tier-pill">+ More</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="sponsor-columns">
                     <div>
                         <div class="sponsor-name-list bronze">Oxford Frozen Foods</div>
@@ -424,7 +1056,20 @@
 
             <!-- FRIENDS OF THE EXHIBITION -->
             <div class="sponsor-tier">
-                <div class="sponsor-tier-header friends">🤝 Friends of the Exhibition</div>
+                <div class="tier-hero friends-hero">
+                    <div class="tier-hero-bg"></div>
+                    <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                    <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                    <div class="tier-hero-content">
+                        <div class="tier-hero-title">Friends of the Exhibition</div>
+                        <div class="tier-hero-price">Community Supporters</div>
+                        <div class="tier-pills">
+                            <span class="tier-pill">Website Listing</span>
+                            <span class="tier-pill">Community Recognition at CCEx</span>
+                            <a href="#perks-friends" class="tier-pill">+ More</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="sponsor-columns">
                     <div>
                         <div class="sponsor-name-list friends">Alan Pipes</div>
@@ -464,65 +1109,101 @@
             </div>
 
             <!-- Sponsorship Tier Perks -->
-            <section class="panel">
-                <h2>Sponsorship Tiers &amp; Perks</h2>
-                <div class="sponsor-tier" style="margin-top: 1.5rem;">
-                    <div class="sponsor-tier-header platinum">Platinum Sponsor - $1,000+</div>
-                    <div style="background: var(--cream); border: 3px solid #9C9C9C; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Logo on all promotional materials &amp; signage</li>
-                            <li style="padding: 0.4rem 0;">Logo on website with link to your business</li>
-                            <li style="padding: 0.4rem 0;">PA announcements throughout CCEx</li>
-                            <li style="padding: 0.4rem 0;">Social media features &amp; shout-outs</li>
-                            <li style="padding: 0.4rem 0;">Complimentary vendor booth space</li>
-                            <li style="padding: 0.4rem 0;">Event naming rights (e.g. "Sponsored by...")</li>
-                            <li style="padding: 0.4rem 0;">10 complimentary admission passes</li>
-                        </ul>
+            <section id="sponsorship-perks" style="margin-top: 2rem;">
+                <h2 class="perks-section-title">Full Sponsorship Perks</h2>
+
+                <div class="perks-block" id="perks-platinum">
+                    <div class="plat-hero">
+                        <div class="plat-hero-bg"></div>
+                        <div class="plat-hero-corner tl"></div><div class="plat-hero-corner tr"></div>
+                        <div class="plat-hero-corner bl"></div><div class="plat-hero-corner br"></div>
+                        <div class="plat-hero-content">
+                            <div class="plat-eyebrow">CCEx 2026 &mdash; Premier Partnership &mdash; $1,000+</div>
+                            <h3 class="plat-hero-title">Platinum Sponsorship</h3>
+                        </div>
+                    </div>
+                    <div class="perks-list plat-perks">
+                        <div class="perk-item"><span class="perk-check">✓</span>Logo on all promotional materials &amp; signage</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Logo on website with link to your business</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>PA announcements throughout CCEx</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Social media features &amp; shout-outs</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Complimentary vendor booth space</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Event naming rights (e.g. "Sponsored by...")</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>10 complimentary admission passes</div>
                     </div>
                 </div>
-                <div class="sponsor-tier">
-                    <div class="sponsor-tier-header gold">Gold Sponsor - $500+</div>
-                    <div style="background: var(--cream); border: 3px solid #DAA520; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Logo on promotional materials &amp; programs</li>
-                            <li style="padding: 0.4rem 0;">Logo on website</li>
-                            <li style="padding: 0.4rem 0;">PA announcements during CCEx</li>
-                            <li style="padding: 0.4rem 0;">Social media recognition</li>
-                            <li style="padding: 0.4rem 0;">5 complimentary admission passes</li>
-                        </ul>
+
+                <div class="perks-block" id="perks-gold">
+                    <div class="tier-hero gold-hero">
+                        <div class="tier-hero-bg"></div>
+                        <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                        <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                        <div class="tier-hero-content">
+                            <div class="tier-hero-title">Gold Sponsorship</div>
+                            <div class="tier-hero-price">$500+</div>
+                        </div>
+                    </div>
+                    <div class="perks-list gold-perks">
+                        <div class="perk-item"><span class="perk-check">✓</span>Logo on promotional materials &amp; programs</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Logo on website with link to your business</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>PA announcements during CCEx</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Social media recognition</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>5 complimentary admission passes</div>
                     </div>
                 </div>
-                <div class="sponsor-tier">
-                    <div class="sponsor-tier-header silver">Silver Sponsor</div>
-                    <div style="background: var(--cream); border: 3px solid #A8A8A8; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Name on promotional materials</li>
-                            <li style="padding: 0.4rem 0;">Name listed on website</li>
-                            <li style="padding: 0.4rem 0;">PA recognition during CCEx</li>
-                            <li style="padding: 0.4rem 0;">3 complimentary admission passes</li>
-                        </ul>
+
+                <div class="perks-block" id="perks-silver">
+                    <div class="tier-hero silver-hero">
+                        <div class="tier-hero-bg"></div>
+                        <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                        <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                        <div class="tier-hero-content">
+                            <div class="tier-hero-title">Silver Sponsorship</div>
+                            <div class="tier-hero-price">Supporting Level</div>
+                        </div>
+                    </div>
+                    <div class="perks-list silver-perks">
+                        <div class="perk-item"><span class="perk-check">✓</span>Name on promotional materials</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Name listed on website</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>PA recognition during CCEx</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>3 complimentary admission passes</div>
                     </div>
                 </div>
-                <div class="sponsor-tier">
-                    <div class="sponsor-tier-header bronze">Bronze Sponsor</div>
-                    <div style="background: var(--cream); border: 3px solid #CD7F32; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Name listed in program</li>
-                            <li style="padding: 0.4rem 0;">Name listed on website</li>
-                            <li style="padding: 0.4rem 0;">2 complimentary admission passes</li>
-                        </ul>
+
+                <div class="perks-block" id="perks-bronze">
+                    <div class="tier-hero bronze-hero">
+                        <div class="tier-hero-bg"></div>
+                        <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                        <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                        <div class="tier-hero-content">
+                            <div class="tier-hero-title">Bronze Sponsorship</div>
+                            <div class="tier-hero-price">Community Level</div>
+                        </div>
+                    </div>
+                    <div class="perks-list bronze-perks">
+                        <div class="perk-item"><span class="perk-check">✓</span>Name listed in program</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Name listed on website</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>2 complimentary admission passes</div>
                     </div>
                 </div>
-                <div class="sponsor-tier">
-                    <div class="sponsor-tier-header friends">Friends of the Exhibition</div>
-                    <div style="background: var(--cream); border: 3px solid #4a7c4e; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem;">
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="padding: 0.4rem 0;">Name listed on website</li>
-                            <li style="padding: 0.4rem 0;">Community recognition at CCEx</li>
-                        </ul>
+
+                <div class="perks-block" id="perks-friends">
+                    <div class="tier-hero friends-hero">
+                        <div class="tier-hero-bg"></div>
+                        <div class="tier-hero-corner tl"></div><div class="tier-hero-corner tr"></div>
+                        <div class="tier-hero-corner bl"></div><div class="tier-hero-corner br"></div>
+                        <div class="tier-hero-content">
+                            <div class="tier-hero-title">Friends of the Exhibition</div>
+                            <div class="tier-hero-price">Community Supporters</div>
+                        </div>
+                    </div>
+                    <div class="perks-list friends-perks">
+                        <div class="perk-item"><span class="perk-check">✓</span>Name listed on website</div>
+                        <div class="perk-item"><span class="perk-check">✓</span>Community recognition at CCEx</div>
                     </div>
                 </div>
-                <p class="text-center mt-3"><em>For full details on sponsorship perks and opportunities, download our 2026 Sponsorship Package or contact us directly.</em></p>
+
+                <p class="text-center mt-3"><em>For full details, download our <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" style="color: var(--barn-red); font-weight: 600;" target="_blank">2026 Sponsorship Package</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a> directly.</em></p>
             </section>
         </div>
     </main>

@@ -15,8 +15,8 @@ const searchIndex = [
     { type: 'page', icon: '🌿', title: '4-H Programs', desc: 'Youth agricultural development', url: '4h.html', keywords: '4h 4-h youth agriculture clubs pledge head heart hands health' },
 
     // Forms
-    { type: 'form', icon: '📄', title: 'Kids Show N Shine Registration', desc: 'Register for kids car show event', url: 'show-n-shine.html', keywords: 'show shine kids car vehicle registration children' },
-    { type: 'form', icon: '📄', title: 'Horse Show Registration', desc: 'Register for light horse show', url: 'horse-registration.html', keywords: 'horse registration light horse show exhibitor' },
+    { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under", url: 'show-n-shine.html', keywords: 'show shine kids car vehicle registration children 9 under junior entry register' },
+    { type: 'form', icon: '📄', title: 'Horse Show Registration', desc: 'Register for the CCEx Light Horse Show — box stall $30, standing stall $15, deadline Aug 15', url: 'horse-registration.html', keywords: 'horse registration light horse show exhibitor stall box standing deadline register sign up entry' },
     { type: 'form', icon: '📄', title: 'Vendor Application', desc: 'Apply to be a vendor', url: 'vendor-application.html', keywords: 'vendor application food booth merchant apply' },
     { type: 'form', icon: '📄', title: 'Light Horse Show Booklet', desc: 'Rules, classes, and schedule for horses', url: 'images/forms and documents/CCex-Light Horse booklet 2025 .pdf', keywords: 'horse show booklet rules classes schedule light' },
     { type: 'form', icon: '📄', title: 'Livestock Traceability Info', desc: 'Required info for livestock entries', url: 'images/forms and documents/LIVESTOCK TRACEABILITY INFO SHEET 2025 (1).pdf', keywords: 'livestock traceability cattle sheep goat identification' },
@@ -80,7 +80,46 @@ const searchIndex = [
     { type: 'info', icon: '🏪', title: 'Booth Pricing — 10x20', desc: '$70 to reserve ($35 returned at end) — inside or outside', url: 'vendors.html', keywords: 'booth pricing 10x20 cost reserve deposit indoor outdoor vendor' },
     { type: 'info', icon: '🚚', title: 'Food Truck Pricing', desc: '$100/week (no power/water) or $150/week (power & water) — limited hookup spaces', url: 'vendors.html', keywords: 'food truck pricing cost power water hookup week vendor' },
     { type: 'info', icon: '🎁', title: 'Basket Draw — Vendor Requirement', desc: 'All booth vendors must provide one item ($20+ value) for the basket draw', url: 'vendors.html', keywords: 'basket draw vendor requirement item donation prize' },
-    { type: 'info', icon: '🕙', title: 'Vendor Hall Hours', desc: 'Sept 2–5: 10AM–9PM · Sept 6: 10AM–1PM · Setup Sept 1 or 2', url: 'vendors.html', keywords: 'vendor hall hours setup move in september open close times' }
+    { type: 'info', icon: '🕙', title: 'Vendor Hall Hours', desc: 'Sept 2–5: 10AM–9PM · Sept 6: 10AM–1PM · Setup Sept 1 or 2', url: 'vendors.html', keywords: 'vendor hall hours setup move in september open close times' },
+
+    // Horse Show Registration details
+    { type: 'info', icon: '🐴', title: 'Horse Show Stall Fees', desc: 'Box stall $30 · Standing stall $15 — space is limited, register early', url: 'horse-registration.html', keywords: 'horse stall fee box standing stall cost price rent overnight' },
+    { type: 'info', icon: '🐴', title: 'Horse Show Registration Deadline', desc: 'Register by August 15, 2026 — space is limited', url: 'horse-registration.html', keywords: 'horse show registration deadline august 15 register early space limited entry' },
+    { type: 'form', icon: '📄', title: 'Register for Horse Show', desc: 'Light Horse Show registration — box stall $30, standing stall $15', url: 'horse-registration.html', keywords: 'register horse show entry sign up 2026 light horse stall registration form' },
+
+    // Show N Shine
+    { type: 'event', icon: '🚗', title: "Kids Show 'N Shine", desc: "Car and vehicle show for children 9 and under — register to enter", url: 'show-n-shine.html', keywords: "show n shine kids car vehicle truck auto display children 9 under junior register entry shine" },
+
+    // Parking & practical info
+    { type: 'info', icon: '🅿️', title: 'Parking', desc: 'Free on-site parking at the Exhibition Grounds, Oxford NS', url: 'contact.html', keywords: 'parking free lot car truck grounds oxford where park' },
+    { type: 'info', icon: '📍', title: 'Getting There', desc: 'Exhibition Grounds, Oxford, Nova Scotia — directions and maps', url: 'contact.html', keywords: 'directions how to get there drive map oxford nova scotia highway route' },
+    { type: 'info', icon: '💳', title: 'Payment & Cash', desc: 'Bring cash — limited card payment options on site', url: 'contact.html', keywords: 'cash atm card payment money debit credit tap interac' },
+
+    // Admission detail
+    { type: 'info', icon: '🎟️', title: 'Gate / Entry Price', desc: 'Day $5 · Week Pass $15 · Family Pass $20 · Under 5 Free', url: 'merch.html', keywords: 'gate price entry cost how much admission door day pass week family under 5 free child' },
+
+    // 4-H specific
+    { type: 'event', icon: '🌿', title: '4-H Beef Show', desc: 'Youth beef showmanship — Aug 31 & Sept 1', url: '4h.html', keywords: '4h beef show showmanship youth cattle steer heifer junior angus hereford' },
+    { type: 'event', icon: '🌿', title: '4-H Horse Show', desc: 'Youth horse show classes at CCEx', url: '4h.html', keywords: '4h horse show youth junior equine english western showmanship 4-h' },
+    { type: 'event', icon: '🌿', title: '4-H Sheep & Goat', desc: 'Youth sheep and goat competition', url: '4h.html', keywords: '4h sheep goat lamb youth showmanship junior 4-h' },
+    { type: 'event', icon: '🌿', title: '4-H Poultry', desc: 'Youth poultry competition', url: '4h.html', keywords: '4h poultry chicken hen rooster youth 4-h' },
+    { type: 'event', icon: '🌿', title: '4-H Dairy Display', desc: 'Dairy cattle display by 4-H youth', url: '4h.html', keywords: '4h dairy cow display holstein jersey milk youth 4-h' },
+
+    // Livestock specifics
+    { type: 'event', icon: '🐄', title: 'Beef Cattle Show', desc: 'Beef showmanship and cattle competition', url: 'exhibitors.html', keywords: 'beef cattle show showmanship angus hereford simmental competition bull heifer steer cow' },
+    { type: 'event', icon: '🐄', title: 'Dairy Display', desc: 'Dairy cattle display at the exhibition', url: 'exhibitors.html', keywords: 'dairy cow display holstein jersey guernsey milk cattle' },
+    { type: 'event', icon: '🐑', title: 'Sheep Show', desc: 'Sheep and lamb entries in the show', url: 'exhibitors.html', keywords: 'sheep lamb show ewe ram competition entry fleece' },
+    { type: 'event', icon: '🐐', title: 'Goat Show', desc: 'Goat entries in the exhibition', url: 'exhibitors.html', keywords: 'goat show doe buck nanny billy kid entry' },
+
+    // Sponsorship
+    { type: 'info', icon: '🤝', title: 'Sponsorship Packages', desc: 'View 2026 sponsorship tiers and perks — support your local fair', url: 'sponsors.html', keywords: 'sponsor sponsorship package gold silver bronze community tier business logo 2026 donate support' },
+    { type: 'form', icon: '📄', title: 'Sponsorship Package PDF', desc: 'Download the full 2026 sponsorship package', url: 'images/forms and documents/PDF 2026 Full Sponsorship Package.pdf', keywords: 'sponsorship package pdf download 2026 tiers perks business' },
+
+    // Volunteering
+    { type: 'info', icon: '🙋', title: 'Volunteer at CCEx', desc: 'Help make the fair happen — contact us to get involved', url: 'contact.html', keywords: 'volunteer help work fair crew staff assist join involved' },
+
+    // General
+    { type: 'page', icon: '🎡', title: 'Events & Activities Overview', desc: 'Mud Stomp, Live Music, Horse Show, Fun Zone, and more — Aug 31 to Sept 6 2026', url: 'events.html', keywords: 'what to do see activities events overview entertainment all 2026 fair' },
 ];
 
 // Animal synonym groups - searching any term matches all related terms
