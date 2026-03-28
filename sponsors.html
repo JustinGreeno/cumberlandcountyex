@@ -193,6 +193,9 @@
         .sponsor-card.gold {
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             border: 3px solid #b8860b;
             background:
                 repeating-linear-gradient(
@@ -286,6 +289,15 @@
             display: block;
             object-fit: contain;
             filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
+            transition:
+                transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.4s ease;
+        }
+        .sponsor-card.gold:hover .gold-logo {
+            transform: scale(1.22) translateY(-5px);
+            filter:
+                drop-shadow(0 8px 14px rgba(100,60,0,0.35))
+                drop-shadow(0 0 8px rgba(255,220,0,0.7));
         }
 
         /* ══════════════════════════════════════
@@ -562,6 +574,9 @@
             position: relative;
             overflow: hidden;
             border: 3px solid #a0a0a0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background:
                 repeating-linear-gradient(
                     95deg,
@@ -583,45 +598,130 @@
                 0 6px 22px rgba(0,0,0,0.18),
                 inset 0 1px 0 rgba(255,255,255,0.9),
                 inset 0 -1px 0 rgba(0,0,0,0.08);
+            transition:
+                transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
         }
-        /* shine sweep on hover */
+
+        /* Logo — springy pop on hover */
+        .sponsor-card.platinum .sponsor-logo {
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            transition:
+                transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.4s ease;
+        }
+        .sponsor-card.platinum:hover .sponsor-logo {
+            transform: scale(1.18) translateY(-7px);
+            filter:
+                drop-shadow(0 12px 22px rgba(0,0,0,0.32))
+                drop-shadow(0 0 10px rgba(255,255,255,0.9));
+        }
+
+        /* Name — slides up slightly */
+        .sponsor-card.platinum .sponsor-name {
+            color: #1e1e1e;
+            transition: transform 0.4s ease, color 0.3s ease;
+        }
+        .sponsor-card.platinum:hover .sponsor-name {
+            transform: translateY(-3px);
+            color: #000;
+        }
+
+        /* Visit text — always pinned to bottom center */
+        a.sponsor-card.platinum .sponsor-visit-text {
+            margin-top: auto;
+            padding-top: 0.6rem;
+            color: #444;
+        }
+
+        /* Primary shine — fast narrow sweep */
         .sponsor-card.platinum::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -120%;
-            width: 55%;
+            left: -130%;
+            width: 45%;
             height: 100%;
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255,255,255,0.65),
+                rgba(255,255,255,0.5),
+                rgba(255,255,255,0.88),
+                rgba(255,255,255,0.5),
                 transparent
             );
             transform: skewX(-18deg);
             pointer-events: none;
+            z-index: 1;
         }
         .sponsor-card.platinum:hover::before {
-            left: 200%;
-            transition: left 0.55s ease;
+            left: 210%;
+            transition: left 0.45s ease;
         }
+
+        /* Secondary shine — slower, wider, trails behind */
+        .sponsor-card.platinum::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -190%;
+            width: 75%;
+            height: 120%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.12),
+                rgba(255,255,255,0.38),
+                rgba(255,255,255,0.12),
+                transparent
+            );
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .sponsor-card.platinum:hover::after {
+            left: 210%;
+            transition: left 0.8s ease 0.08s;
+        }
+
+        /* Hover state — dramatic lift + glow */
         .sponsor-card.platinum:hover {
-            border-color: #707070;
-            transform: translateY(-7px);
+            border-color: #d8d8d8;
+            transform: translateY(-14px) scale(1.03);
             box-shadow:
-                0 16px 40px rgba(0,0,0,0.25),
-                0 0 0 1px rgba(160,160,160,0.4),
+                0 32px 64px rgba(0,0,0,0.28),
+                0 0 0 1px rgba(220,220,220,0.7),
+                0 0 50px rgba(210,210,210,0.35),
                 inset 0 1px 0 rgba(255,255,255,1),
                 inset 0 -1px 0 rgba(0,0,0,0.1);
         }
-        .sponsor-card.platinum .sponsor-name { color: #1e1e1e; }
-        .sponsor-card.platinum .sponsor-logo {
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
-        }
+
         .sponsor-card.platinum.sponsor-placeholder {
             border-style: dashed;
             border-color: #b0b0b0;
             opacity: 0.72;
+        }
+        /* Gold placeholder card */
+        .sponsor-card.gold.sponsor-placeholder {
+            border-style: dashed;
+            border-color: rgba(160,110,0,0.5);
+            opacity: 0.6;
+        }
+        .sponsor-card.gold.sponsor-placeholder::before,
+        .sponsor-card.gold.sponsor-placeholder::after { display: none; }
+        .sponsor-card.gold .sponsor-logo-placeholder {
+            width: 90px;
+            height: 36px;
+            font-size: 0.72rem;
+            margin-bottom: 0.6rem;
+        }
+        /* Silver placeholder name-list row */
+        .sponsor-name-list.sponsor-placeholder {
+            border-style: dashed;
+            opacity: 0.55;
+            font-style: italic;
+            color: var(--text-light) !important;
         }
         .sponsor-card.gold {
             border-color: #DAA520;
@@ -658,6 +758,33 @@
             object-fit: contain;
             display: block;
         }
+        /* Clickable sponsor cards */
+        a.sponsor-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .sponsor-visit-text {
+            display: block;
+            font-size: 0.68rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 0.55rem;
+            text-align: center;
+            opacity: 0.55;
+            transition: opacity 0.25s ease;
+        }
+        a.sponsor-card:hover .sponsor-visit-text {
+            opacity: 1;
+        }
+        a.sponsor-card.gold .sponsor-visit-text {
+            color: #3a2000;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
         .sponsor-tier-header.silver {
             background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 50%, #C0C0C0 100%);
             color: var(--wood-dark);
@@ -683,8 +810,8 @@
         }
         .sponsor-columns {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.6rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.3rem;
         }
         .sponsor-name-list {
             background: var(--cream);
@@ -706,10 +833,13 @@
         .sponsor-placeholder .sponsor-name {
             color: var(--text-medium);
         }
-        /* Only show placeholders when 4-col grid would have empty spaces (6 real cards) */
+        /* Only hide platinum placeholders at narrower widths */
         @media (max-width: 1095px) {
-            .sponsor-placeholder { display: none; }
+            .sponsor-card.platinum.sponsor-placeholder { display: none; }
         }
+        /* Gold and silver placeholders hidden by default; JS reveals only what's needed */
+        .sponsor-card.gold.sponsor-placeholder,
+        .sponsor-name-list.sponsor-placeholder { display: none; }
         .year-note {
             background: var(--straw-light);
             border: 3px solid var(--straw);
@@ -834,30 +964,36 @@
             <!-- PLATINUM Sponsors -->
             <div class="sponsor-tier">
                 <div class="sponsors-grid">
-                    <div class="sponsor-card platinum">
+                    <a class="sponsor-card platinum" href="https://www.fortequipment.ca/" target="_blank" rel="noopener">
                         <img src="images/sponser logos/Fort Quipment.png" alt="Fort Equipment" class="sponsor-logo">
                         <div class="sponsor-name">Fort Equipment</div>
-                    </div>
-                    <div class="sponsor-card platinum">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card platinum" href="https://www.cumberlandcounty.ns.ca/" target="_blank" rel="noopener">
                         <img src="images/sponser logos/cumberland.png" alt="Municipality of Cumberland" class="sponsor-logo">
                         <div class="sponsor-name">Municipality of Cumberland</div>
-                    </div>
-                    <div class="sponsor-card platinum">
-                        <img src="images/sponser logos/Eastern Power.png" alt="Eastern Powersports" class="sponsor-logo">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card platinum" href="https://www.easternpowersports.ca/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/Eastern Powersports.png" alt="Eastern Powersports" class="sponsor-logo">
                         <div class="sponsor-name">Eastern Powersports</div>
-                    </div>
-                    <div class="sponsor-card platinum">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card platinum" href="https://remaxamherst.ca/" target="_blank" rel="noopener">
                         <img src="images/sponser logos/ReMAX.png" alt="RE/MAX County Line Realty" class="sponsor-logo">
                         <div class="sponsor-name">RE/MAX County Line Realty, LTD</div>
-                    </div>
-                    <div class="sponsor-card platinum">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card platinum" href="https://www.tantramarchev.com/" target="_blank" rel="noopener">
                         <img src="images/sponser logos/Tantramar.png" alt="Tantramar" class="sponsor-logo">
                         <div class="sponsor-name">Tantramar (Chevrolet, Buick, GMC)<br><small>Amherst, NS</small></div>
-                    </div>
-                    <div class="sponsor-card platinum">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card platinum" href="https://caseyconcrete.ca/" target="_blank" rel="noopener">
                         <img src="images/sponser logos/Casey.png" alt="Casey Concrete" class="sponsor-logo">
                         <div class="sponsor-name">Casey Concrete Ltd.</div>
-                    </div>
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
                     <div class="sponsor-card platinum sponsor-placeholder">
                         <div class="sponsor-logo-placeholder">Your Logo Here</div>
                         <div class="sponsor-name">Your Company Here</div>
@@ -891,30 +1027,69 @@
                     </div>
                 </div>
                 <div class="gold-grid">
-                    <div class="sponsor-card gold">
+                    <a class="sponsor-card gold" href="https://www.mosaikcu.com/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/Mosaik Credit Union.png" alt="Mosaik Credit Union" class="gold-logo" style="max-height:80px;max-width:260px;">
                         <div class="sponsor-name">Mosaik Credit Union</div>
-                    </div>
-                    <div class="sponsor-card gold">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card gold" href="https://www.pharmachoice.com/locations/oxford/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/Pharma Choice.png" alt="Oxford PharmaChoice" class="gold-logo">
                         <div class="sponsor-name">Oxford PharmaChoice</div>
-                    </div>
-                    <div class="sponsor-card gold">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card gold" href="https://www.facebook.com/groups/146152605443004/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/Oxford Fire Association.png" alt="Oxford Firefighters Association" class="gold-logo">
                         <div class="sponsor-name">Oxford Firefighters Association</div>
-                    </div>
-                    <div class="sponsor-card gold">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card gold" href="https://www.clarencefarmservices.ca/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/CFS-1.png" alt="Clarence Farm Services" class="gold-logo">
                         <div class="sponsor-name">Clarence Farm Services</div>
-                    </div>
-                    <div class="sponsor-card gold">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card gold" href="https://feedsnneeds.ca/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/Feeds n needs.png" alt="Feeds N Needs" class="gold-logo" style="max-height:80px;max-width:260px;">
                         <div class="sponsor-name">Trouw Nutrition &amp; Feeds N Needs</div>
-                    </div>
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
                     <div class="sponsor-card gold">
+                        <img src="images/sponser logos/DTF.png" alt="DTF Enterprises" class="gold-logo" style="max-height:88px;max-width:286px;">
                         <div class="sponsor-name">DTF Enterprises Ltd.</div>
                     </div>
-                    <div class="sponsor-card gold">
+                    <a class="sponsor-card gold" href="https://www.facebook.com/p/BroBots-Mowing-and-Lawn-Care-100095203269571/" target="_blank" rel="noopener">
+                        <img src="images/sponser logos/bro bot.png" alt="BroBots Mowing & Lawn Care" class="gold-logo">
                         <div class="sponsor-name">BroBots Mowing &amp; Lawn Care</div>
-                    </div>
-                    <div class="sponsor-card gold">
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <a class="sponsor-card gold" href="https://www.carterssportscresting.com/" target="_blank" rel="noopener">
                         <img src="images/sponser logos/Carters.png" alt="Carters Sports Cresting" class="gold-logo">
                         <div class="sponsor-name">Carters Sports Cresting Ltd.</div>
+                        <span class="sponsor-visit-text">Click to visit website</span>
+                    </a>
+                    <div class="sponsor-card gold sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
+                    </div>
+                    <div class="sponsor-card gold sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
+                    </div>
+                    <div class="sponsor-card gold sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
+                    </div>
+                    <div class="sponsor-card gold sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
+                    </div>
+                    <div class="sponsor-card gold sponsor-placeholder">
+                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
+                        <div class="sponsor-name">Your Company</div>
+                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
                     </div>
                 </div>
             </div>
@@ -936,51 +1111,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="sponsor-columns">
-                    <div>
-                        <div class="sponsor-name-list silver">Cavendish Farms</div>
-                        <div class="sponsor-name-list silver">Agropur</div>
-                        <div class="sponsor-name-list silver" style="display:flex; align-items:center; gap:0.5rem;">
-                            <img src="images/sponser logos/Baxter.png" alt="Baxter Trucking" style="max-height:28px; flex-shrink:0;">
-                            Baxter Trucking Ltd.
-                        </div>
-                        <div class="sponsor-name-list silver">Timberwood Farms</div>
-                        <div class="sponsor-name-list silver">Amherst Chrysler Limited</div>
-                        <div class="sponsor-name-list silver">Oxford Home Hardware Building Center</div>
-                        <div class="sponsor-name-list silver">Fundy Veterinarians</div>
-                        <div class="sponsor-name-list silver">Back Roots Chiropractic</div>
-                        <div class="sponsor-name-list silver" style="display:flex; align-items:center; gap:0.5rem;">
-                            <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
-                            Royal LePage Tony Mitchell
-                        </div>
-                        <div class="sponsor-name-list silver">The Stack Family</div>
+                <div class="sponsor-columns" id="silver-grid">
+                    <div class="sponsor-name-list silver">Cavendish Farms</div>
+                    <div class="sponsor-name-list silver">Agropur</div>
+                    <div class="sponsor-name-list silver" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem;">
+                        Baxter Trucking Ltd.
+                        <img src="images/sponser logos/Baxters.png" alt="Baxter Trucking" style="max-height:28px; flex-shrink:0;">
                     </div>
-                    <div>
-                        <div class="sponsor-name-list silver">Brian &amp; Laura Jean Thompson</div>
-                        <div class="sponsor-name-list silver">Ray McCormick and Sons Ltd.</div>
-                        <div class="sponsor-name-list silver">Glady and Charles Thompson</div>
-                        <div class="sponsor-name-list silver">Steven's Lodging</div>
-                        <div class="sponsor-name-list silver">JBX Farm</div>
-                        <div class="sponsor-name-list silver">Hereford Club of Nova Scotia</div>
-                        <div class="sponsor-name-list silver" style="display:flex; align-items:center; gap:0.5rem;">
-                            <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
-                            Royal LePage Realty Rod Gilroy
-                        </div>
-                        <div class="sponsor-name-list silver">Emma Dickie</div>
-                        <div class="sponsor-name-list silver">Green Diamond Equipment</div>
-                        <div class="sponsor-name-list silver">Atlantic Stockyards</div>
-                        <div class="sponsor-name-list silver">Adshade Farms</div>
+                    <div class="sponsor-name-list silver">Timberwood Farms</div>
+                    <div class="sponsor-name-list silver">Amherst Chrysler Limited</div>
+                    <div class="sponsor-name-list silver">Oxford Home Hardware Building Center</div>
+                    <div class="sponsor-name-list silver">Fundy Veterinarians</div>
+                    <div class="sponsor-name-list silver">Back Roots Chiropractic</div>
+                    <div class="sponsor-name-list silver" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem;">
+                        Royal LePage Tony Mitchell
+                        <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
                     </div>
-                    <div>
-                        <div class="sponsor-name-list silver">Blake's Electric</div>
-                        <div class="sponsor-name-list silver">Parkview Family Restaurant &amp; Inn</div>
-                        <div class="sponsor-name-list silver">G.R. Mitchell Welding &amp; Fabrication</div>
-                        <div class="sponsor-name-list silver">Mark Small</div>
-                        <div class="sponsor-name-list silver">Tidal Tractor</div>
-                        <div class="sponsor-name-list silver">P&amp;S Farms</div>
-                        <div class="sponsor-name-list silver">Coldstream Clear Distillery</div>
-                        <div class="sponsor-name-list silver">Star Creations Leather</div>
+                    <div class="sponsor-name-list silver">The Stack Family</div>
+                    <div class="sponsor-name-list silver">Brian &amp; Laura Jean Thompson</div>
+                    <div class="sponsor-name-list silver">Ray McCormick and Sons Ltd.</div>
+                    <div class="sponsor-name-list silver">Glady and Charles Thompson</div>
+                    <div class="sponsor-name-list silver">Steven's Lodging</div>
+                    <div class="sponsor-name-list silver">JBX Farm</div>
+                    <div class="sponsor-name-list silver">Hereford Club of Nova Scotia</div>
+                    <div class="sponsor-name-list silver" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem;">
+                        Royal LePage Realty Rod Gilroy
+                        <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
                     </div>
+                    <div class="sponsor-name-list silver">Emma Dickie</div>
+                    <div class="sponsor-name-list silver">Green Diamond Equipment</div>
+                    <div class="sponsor-name-list silver">Atlantic Stockyards</div>
+                    <div class="sponsor-name-list silver">Adshade Farms</div>
+                    <div class="sponsor-name-list silver">Blake's Electric</div>
+                    <div class="sponsor-name-list silver">Parkview Family Restaurant &amp; Inn</div>
+                    <div class="sponsor-name-list silver">G.R. Mitchell Welding &amp; Fabrication</div>
+                    <div class="sponsor-name-list silver">Mark Small</div>
+                    <div class="sponsor-name-list silver">Tidal Tractor</div>
+                    <div class="sponsor-name-list silver">P&amp;S Farms</div>
+                    <div class="sponsor-name-list silver">Coldstream Clear Distillery</div>
+                    <div class="sponsor-name-list silver">Star Creations Leather</div>
+                    <div class="sponsor-name-list silver sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list silver sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list silver sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list silver sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list silver sponsor-placeholder">Your Company Here</div>
                 </div>
             </div>
 
@@ -1001,56 +1175,55 @@
                         </div>
                     </div>
                 </div>
-                <div class="sponsor-columns">
-                    <div>
-                        <div class="sponsor-name-list bronze">Oxford Frozen Foods</div>
-                        <div class="sponsor-name-list bronze">Moo Meadows Farm Dog Grooming &amp; Boarding</div>
-                        <div class="sponsor-name-list bronze">Agritech Farm Equipment Sales</div>
-                        <div class="sponsor-name-list bronze">Scotiabank Oxford</div>
-                        <div class="sponsor-name-list bronze">D&amp;J Hardware</div>
-                        <div class="sponsor-name-list bronze">Red Rock</div>
-                        <div class="sponsor-name-list bronze">Fortbrook Farm</div>
-                        <div class="sponsor-name-list bronze">OUR Place Livestock and Evangeline Trail Rides</div>
-                        <div class="sponsor-name-list bronze">O'Brien's PharmaChoice</div>
-                        <div class="sponsor-name-list bronze">Samantha Van Den Brand</div>
-                        <div class="sponsor-name-list bronze">Kimberly Allen</div>
-                        <div class="sponsor-name-list bronze">Simmental Association</div>
-                        <div class="sponsor-name-list bronze">KFC Farms Ltd</div>
-                        <div class="sponsor-name-list bronze">Under Hill Farms</div>
-                        <div class="sponsor-name-list bronze">LN C. Cattle Company</div>
-                    </div>
-                    <div>
-                        <div class="sponsor-name-list bronze">Rushton's Truck &amp; Trailer Repair</div>
-                        <div class="sponsor-name-list bronze">Crystal Goodwin</div>
-                        <div class="sponsor-name-list bronze">Halfway Farms</div>
-                        <div class="sponsor-name-list bronze">Milner Hill Farm</div>
-                        <div class="sponsor-name-list bronze">Holly Martin</div>
-                        <div class="sponsor-name-list bronze">HioMat Farms</div>
-                        <div class="sponsor-name-list bronze">Allen's Herefords</div>
-                        <div class="sponsor-name-list bronze">Midway Farms</div>
-                        <div class="sponsor-name-list bronze">Thunderbrook Farms</div>
-                        <div class="sponsor-name-list bronze">Eric Thompson &amp; Kelly Simpson</div>
-                        <div class="sponsor-name-list bronze">Tom Mairo &amp; Catherine Fraser-Mairo</div>
-                        <div class="sponsor-name-list bronze">Hidden Acres</div>
-                        <div class="sponsor-name-list bronze">Aulac Big Stop</div>
-                        <div class="sponsor-name-list bronze">Tim Horton's Oxford</div>
-                    </div>
-                    <div>
-                        <div class="sponsor-name-list bronze">The Copper Tree</div>
-                        <div class="sponsor-name-list bronze">Hillbilly Haven Ranch</div>
-                        <div class="sponsor-name-list bronze">NS Cattle Producers</div>
-                        <div class="sponsor-name-list bronze">Bordertown Angus</div>
-                        <div class="sponsor-name-list bronze">Lutes Chariots</div>
-                        <div class="sponsor-name-list bronze">Jim McInnis Cattle Co.</div>
-                        <div class="sponsor-name-list bronze">Maltby Stables</div>
-                        <div class="sponsor-name-list bronze">Wecan Sales</div>
-                        <div class="sponsor-name-list bronze">Armour Transportation Systems</div>
-                        <div class="sponsor-name-list bronze">Big B Variety</div>
-                        <div class="sponsor-name-list bronze">Amherst Co-op Country Store</div>
-                        <div class="sponsor-name-list bronze">Charles Symes Stables &amp; Transport</div>
-                        <div class="sponsor-name-list bronze">Tim Hortons Oxford</div>
-                        <div class="sponsor-name-list bronze">Lynds Industrial</div>
-                    </div>
+                <div class="sponsor-columns" id="bronze-grid">
+                    <div class="sponsor-name-list bronze">Oxford Frozen Foods</div>
+                    <div class="sponsor-name-list bronze">Moo Meadows Farm Dog Grooming &amp; Boarding</div>
+                    <div class="sponsor-name-list bronze">Agritech Farm Equipment Sales</div>
+                    <div class="sponsor-name-list bronze">Scotiabank Oxford</div>
+                    <div class="sponsor-name-list bronze">D&amp;J Hardware</div>
+                    <div class="sponsor-name-list bronze">Red Rock</div>
+                    <div class="sponsor-name-list bronze">Fortbrook Farm</div>
+                    <div class="sponsor-name-list bronze">OUR Place Livestock and Evangeline Trail Rides</div>
+                    <div class="sponsor-name-list bronze">O'Brien's PharmaChoice</div>
+                    <div class="sponsor-name-list bronze">Samantha Van Den Brand</div>
+                    <div class="sponsor-name-list bronze">Kimberly Allen</div>
+                    <div class="sponsor-name-list bronze">Simmental Association</div>
+                    <div class="sponsor-name-list bronze">KFC Farms Ltd</div>
+                    <div class="sponsor-name-list bronze">Under Hill Farms</div>
+                    <div class="sponsor-name-list bronze">LN C. Cattle Company</div>
+                    <div class="sponsor-name-list bronze">Rushton's Truck &amp; Trailer Repair</div>
+                    <div class="sponsor-name-list bronze">Crystal Goodwin</div>
+                    <div class="sponsor-name-list bronze">Halfway Farms</div>
+                    <div class="sponsor-name-list bronze">Milner Hill Farm</div>
+                    <div class="sponsor-name-list bronze">Holly Martin</div>
+                    <div class="sponsor-name-list bronze">HioMat Farms</div>
+                    <div class="sponsor-name-list bronze">Allen's Herefords</div>
+                    <div class="sponsor-name-list bronze">Midway Farms</div>
+                    <div class="sponsor-name-list bronze">Thunderbrook Farms</div>
+                    <div class="sponsor-name-list bronze">Eric Thompson &amp; Kelly Simpson</div>
+                    <div class="sponsor-name-list bronze">Tom Mairo &amp; Catherine Fraser-Mairo</div>
+                    <div class="sponsor-name-list bronze">Hidden Acres</div>
+                    <div class="sponsor-name-list bronze">Aulac Big Stop</div>
+                    <div class="sponsor-name-list bronze">Tim Horton's Oxford</div>
+                    <div class="sponsor-name-list bronze">The Copper Tree</div>
+                    <div class="sponsor-name-list bronze">Hillbilly Haven Ranch</div>
+                    <div class="sponsor-name-list bronze">NS Cattle Producers</div>
+                    <div class="sponsor-name-list bronze">Bordertown Angus</div>
+                    <div class="sponsor-name-list bronze">Lutes Chariots</div>
+                    <div class="sponsor-name-list bronze">Jim McInnis Cattle Co.</div>
+                    <div class="sponsor-name-list bronze">Maltby Stables</div>
+                    <div class="sponsor-name-list bronze">Wecan Sales</div>
+                    <div class="sponsor-name-list bronze">Armour Transportation Systems</div>
+                    <div class="sponsor-name-list bronze">Big B Variety</div>
+                    <div class="sponsor-name-list bronze">Amherst Co-op Country Store</div>
+                    <div class="sponsor-name-list bronze">Charles Symes Stables &amp; Transport</div>
+                    <div class="sponsor-name-list bronze">Tim Hortons Oxford</div>
+                    <div class="sponsor-name-list bronze">Lynds Industrial</div>
+                    <div class="sponsor-name-list bronze sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list bronze sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list bronze sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list bronze sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list bronze sponsor-placeholder">Your Company Here</div>
                 </div>
             </div>
 
@@ -1070,29 +1243,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="sponsor-columns">
-                    <div>
-                        <div class="sponsor-name-list friends">Alan Pipes</div>
-                        <div class="sponsor-name-list friends">Top of the Hill Farm</div>
-                        <div class="sponsor-name-list friends">TS Performance Horses</div>
-                        <div class="sponsor-name-list friends">Spirit Reins</div>
-                        <div class="sponsor-name-list friends">Atlantic Beef Products</div>
-                        <div class="sponsor-name-list friends">Orchard Hill Farms</div>
-                    </div>
-                    <div>
-                        <div class="sponsor-name-list friends">Ripley's Maple Syrup</div>
-                        <div class="sponsor-name-list friends">Round House Farm</div>
-                        <div class="sponsor-name-list friends">Roslyn Farms</div>
-                        <div class="sponsor-name-list friends">Shipley's Cattle Co</div>
-                        <div class="sponsor-name-list friends">Wheel B Fair Automotive</div>
-                        <div class="sponsor-name-list friends">Pleasant Ridge Saddlery</div>
-                    </div>
-                    <div>
-                        <div class="sponsor-name-list friends">Bahr Saddlery</div>
-                        <div class="sponsor-name-list friends">Cladella Hirschfeld</div>
-                        <div class="sponsor-name-list friends">Gaudet Farrier Service</div>
-                        <div class="sponsor-name-list friends">Breezy Ridge Farm</div>
-                    </div>
+                <div class="sponsor-columns" id="friends-grid">
+                    <div class="sponsor-name-list friends">Alan Pipes</div>
+                    <div class="sponsor-name-list friends">Top of the Hill Farm</div>
+                    <div class="sponsor-name-list friends">TS Performance Horses</div>
+                    <div class="sponsor-name-list friends">Spirit Reins</div>
+                    <div class="sponsor-name-list friends">Atlantic Beef Products</div>
+                    <div class="sponsor-name-list friends">Orchard Hill Farms</div>
+                    <div class="sponsor-name-list friends">Ripley's Maple Syrup</div>
+                    <div class="sponsor-name-list friends">Round House Farm</div>
+                    <div class="sponsor-name-list friends">Roslyn Farms</div>
+                    <div class="sponsor-name-list friends">Shipley's Cattle Co</div>
+                    <div class="sponsor-name-list friends">Wheel B Fair Automotive</div>
+                    <div class="sponsor-name-list friends">Pleasant Ridge Saddlery</div>
+                    <div class="sponsor-name-list friends">Bahr Saddlery</div>
+                    <div class="sponsor-name-list friends">Cladella Hirschfeld</div>
+                    <div class="sponsor-name-list friends">Gaudet Farrier Service</div>
+                    <div class="sponsor-name-list friends">Breezy Ridge Farm</div>
+                    <div class="sponsor-name-list friends sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list friends sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list friends sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list friends sponsor-placeholder">Your Company Here</div>
+                    <div class="sponsor-name-list friends sponsor-placeholder">Your Company Here</div>
                 </div>
             </div>
 
@@ -1298,6 +1470,61 @@
 
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
+        })();
+    </script>
+    <script>
+        // Fill last rows of gold and silver grids with placeholders only when there are empty spaces
+        (function () {
+            function countCols(grid) {
+                // Temporarily show all placeholders so layout is fully populated, then measure
+                const allItems = Array.from(grid.children).filter(el => getComputedStyle(el).display !== 'none');
+                if (allItems.length < 2) return 1;
+                const firstTop = allItems[0].offsetTop;
+                return allItems.filter(el => el.offsetTop === firstTop).length;
+            }
+
+            function balanceGrid(grid, placeholders, realCount, displayValue) {
+                // Hide all placeholders first so they don't skew the column count
+                placeholders.forEach(p => p.style.display = 'none');
+                const cols = countCols(grid);
+                const remainder = realCount % cols;
+                const needed = remainder === 0 ? 0 : cols - remainder;
+                placeholders.forEach((p, i) => {
+                    p.style.display = i < needed ? displayValue : 'none';
+                });
+            }
+
+            function setupNameGrid(id) {
+                const grid = document.getElementById(id);
+                if (!grid) return null;
+                return {
+                    grid,
+                    placeholders: Array.from(grid.querySelectorAll('.sponsor-name-list.sponsor-placeholder')),
+                    realCount: grid.querySelectorAll('.sponsor-name-list:not(.sponsor-placeholder)').length
+                };
+            }
+
+            const goldGrid = document.querySelector('.gold-grid');
+            const goldPlaceholders = goldGrid ? Array.from(goldGrid.querySelectorAll('.sponsor-card.sponsor-placeholder')) : [];
+            const goldReal = goldGrid ? goldGrid.querySelectorAll('.sponsor-card:not(.sponsor-placeholder)').length : 0;
+
+            const silver = setupNameGrid('silver-grid');
+            const bronze = setupNameGrid('bronze-grid');
+            const friends = setupNameGrid('friends-grid');
+
+            function balanceAll() {
+                if (goldGrid) balanceGrid(goldGrid, goldPlaceholders, goldReal, 'flex');
+                if (silver) balanceGrid(silver.grid, silver.placeholders, silver.realCount, 'block');
+                if (bronze) balanceGrid(bronze.grid, bronze.placeholders, bronze.realCount, 'block');
+                if (friends) balanceGrid(friends.grid, friends.placeholders, friends.realCount, 'block');
+            }
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(balanceAll, 80);
+            });
+            balanceAll();
         })();
     </script>
 </body>
