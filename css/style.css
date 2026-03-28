@@ -544,8 +544,8 @@ h1, h2 {
             rgba(25, 22, 20, 0.98) 100%
         ),
         url('../images/art/best floor.png');
-    background-size: cover, cover;
-    background-position: center, center;
+    background-size: cover, 200px 200px;
+    background-position: center, top left;
     background-blend-mode: overlay;
     border: 2px solid #222;
     border-radius: 8px;
