@@ -19,6 +19,7 @@
     <script src="js/horseshoe.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
+        /* ── Sample Banner ── */
         .sample-schedule-banner {
             background: linear-gradient(135deg, var(--straw), var(--straw-light));
             border: 4px solid var(--barn-red);
@@ -33,14 +34,81 @@
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
         }
-        .sample-schedule-banner p {
+        .sample-schedule-banner p { color: var(--text-dark); font-size: 1.05rem; margin: 0; }
+
+        /* ── Day Nav ── */
+        .day-nav-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background: var(--wood-dark);
+            border-bottom: 3px solid var(--barn-red);
+            padding: 0.55rem 1rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+        }
+        .day-nav {
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .day-nav::-webkit-scrollbar { display: none; }
+        .day-nav-pill {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.78);
+            border-radius: 20px;
+            padding: 0.32rem 0.85rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
+            white-space: nowrap;
+        }
+        .day-nav-pill:hover { background: rgba(255,255,255,0.2); color: white; }
+        .day-nav-pill.active { background: var(--barn-red); border-color: var(--barn-red); color: white; }
+        .day-nav-pill.today { background: #1a6a35; border-color: #1a6a35; color: white; }
+        .day-nav-pill.today::after { content: ' ·'; color: var(--straw); }
+
+        /* ── Venue Filter ── */
+        .venue-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 1.25rem 0 1.5rem;
+            align-items: center;
+        }
+        .venue-filter-label {
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+        .venue-filter-pill {
+            background: var(--cream-dark);
+            border: 2px solid var(--wood-medium);
             color: var(--text-dark);
-            font-size: 1.05rem;
-            margin: 0;
+            border-radius: 20px;
+            padding: 0.28rem 0.85rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
         }
-        .day-section {
-            margin-bottom: 2rem;
-        }
+        .venue-filter-pill:hover { border-color: var(--barn-red); color: var(--barn-red); }
+        .venue-filter-pill.active { background: var(--barn-red); border-color: var(--barn-red); color: white; }
+
+        /* ── Day / Venue structure ── */
+        .day-section { margin-bottom: 2rem; }
+        .day-section.day-hidden { display: none; }
+        .venue-group.venue-hidden { display: none; }
         .day-header {
             background: linear-gradient(90deg, var(--barn-red), var(--barn-red-light));
             color: var(--cream);
@@ -50,6 +118,21 @@
             border-radius: 8px 8px 0 0;
             border: 3px solid var(--wood-dark);
             border-bottom: none;
+            position: relative;
+        }
+        .day-section.today .day-header { background: linear-gradient(90deg, #1a6a35, #2a9a50); }
+        .day-section.today .day-header::after {
+            content: 'TODAY';
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            background: var(--straw);
+            color: var(--wood-dark);
+            padding: 0.2rem 0.65rem;
+            border-radius: 12px;
         }
         .day-events {
             background: var(--cream);
@@ -57,37 +140,216 @@
             border-top: none;
             border-radius: 0 0 8px 8px;
             padding: 1rem;
+            overflow: hidden;
         }
+
+        /* ── Schedule Items ── */
         .schedule-item {
             display: flex;
-            padding: 0.75rem 0;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.7rem 0.6rem;
             border-bottom: 1px dashed var(--rope-tan);
+            border-radius: 6px;
+            transition: background 0.18s, padding-left 0.18s;
+            cursor: default;
         }
-        .schedule-item:last-child {
-            border-bottom: none;
-        }
+        .schedule-item:last-child { border-bottom: none; }
+        .schedule-item:hover { background: rgba(139,90,43,0.08); border-bottom-color: transparent; padding-left: 1rem; }
         .schedule-time {
-            min-width: 100px;
+            min-width: 105px;
             font-family: 'Roboto Slab', serif;
             font-weight: 700;
             color: var(--barn-red);
+            flex-shrink: 0;
+            padding-top: 0.05rem;
         }
-        .schedule-event {
-            flex: 1;
-            color: var(--text-dark);
+        .schedule-event { flex: 1; color: var(--text-dark); line-height: 1.45; }
+        .schedule-event-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+        .schedule-location { font-size: 0.88rem; color: var(--text-medium); font-style: italic; }
+
+        /* ── Venue Subheaders ── */
+        .venue-subheader {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            font-size: 0.83rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.75rem;
+            margin: 0.75rem -1rem 0.25rem;
+            border-left: 4px solid var(--barn-red);
+            background: rgba(0,0,0,0.06);
+            color: var(--barn-red);
         }
-        .schedule-location {
-            font-size: 0.9rem;
+        .venue-subheader:first-child { margin-top: 0; }
+        .venue-subheader.arena  { background: rgba(160,30,30,0.07); border-left-color: var(--barn-red); color: #8a1515; }
+        .venue-subheader.music  { background: rgba(175,105,0,0.09); border-left-color: #b06800; color: #7a4800; }
+        .venue-subheader.lifeskills { background: rgba(28,105,60,0.08); border-left-color: #1a6a3a; color: #12512a; }
+        .venue-subheader.barn   { background: rgba(95,60,18,0.08); border-left-color: #7a5028; color: #4a3018; }
+        .venue-subheader.industrial { background: rgba(38,76,128,0.08); border-left-color: #284c80; color: #1a3460; }
+        .venue-icon { font-size: 0.95em; }
+
+        /* ── Inline sponsor logo ── */
+        .event-sponsor-logo-inline {
+            height: 22px;
+            width: auto;
+            border-radius: 3px;
+            opacity: 0.88;
+            transition: opacity 0.2s;
+            vertical-align: middle;
+        }
+        .event-sponsor-logo-inline:hover { opacity: 1; }
+
+        /* ── Calendar link ── */
+        .cal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            border: 1.5px solid var(--wood-medium);
             color: var(--text-medium);
-            font-style: italic;
+            border-radius: 8px;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.73rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.18s;
+            white-space: nowrap;
+            font-family: 'Lato', sans-serif;
         }
+        .cal-link:hover { background: var(--straw); border-color: var(--hay); color: var(--wood-dark); text-decoration: none; }
+        .cal-link-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(255,255,255,0.14);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            color: white;
+            border-radius: 20px;
+            padding: 0.3rem 0.85rem;
+            font-size: 0.83rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.18s;
+            white-space: nowrap;
+            font-family: 'Lato', sans-serif;
+        }
+        .cal-link-hero:hover { background: var(--straw); border-color: var(--hay); color: var(--wood-dark); text-decoration: none; }
+
+        /* ── Schedule Live Music Hero ── */
+        .sched-music-hero {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 14px 45px rgba(0,0,0,0.5);
+        }
+        .sched-music-hero.venue-hidden { display: none; }
+        .sched-music-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/art/Live Music Hero.png') center 20% / cover no-repeat;
+            animation: kenBurnsSMH 20s ease-in-out infinite alternate;
+            transform-origin: 50% 15%;
+            z-index: 0;
+        }
+        @keyframes kenBurnsSMH { 0% { transform: scale(1.05); } 100% { transform: scale(1.14); } }
+        .sched-music-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(40,15,5,0.94) 0%, rgba(80,35,5,0.58) 45%, rgba(20,5,0,0.18) 100%);
+            z-index: 1;
+        }
+        .sched-music-hero-content { position: relative; z-index: 2; padding: 2.5rem; width: 100%; }
+        .smh-badge {
+            display: inline-block;
+            background: var(--straw); color: var(--wood-dark);
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 0.28rem 0.9rem; border-radius: 20px; margin-bottom: 0.6rem;
+        }
+        .smh-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: white; text-shadow: 2px 4px 16px rgba(0,0,0,0.7);
+            margin: 0 0 0.6rem; line-height: 1;
+        }
+        .smh-lineup { list-style: none; padding: 0; margin: 0 0 1rem; }
+        .smh-lineup li { display: flex; align-items: baseline; gap: 0.6rem; color: rgba(255,255,255,0.88); font-size: 0.97rem; line-height: 1.75; }
+        .smh-lineup-time { font-family: 'Roboto Slab', serif; font-weight: 700; color: var(--straw); min-width: 72px; font-size: 0.88rem; flex-shrink: 0; }
+        .smh-location { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+
+        /* ── Mud Stomp inline hero ── */
+        .mud-stomp-schedule-hero {
+            position: relative;
+            width: calc(100% + 2rem);
+            margin-left: -1rem; margin-right: -1rem; margin-top: 0.75rem;
+            min-height: 160px; overflow: hidden;
+            display: flex; align-items: flex-end;
+            box-shadow: inset 0 0 0 3px var(--wood-dark);
+        }
+        .mud-stomp-schedule-hero-bg {
+            position: absolute; inset: -10%;
+            background: url('images/art/mud stomp hero shot.png') center center / cover no-repeat;
+            animation: kenBurnsMSS 18s ease-in-out infinite alternate; z-index: 0;
+            filter: brightness(0.55) saturate(0.7);
+        }
+        @keyframes kenBurnsMSS { 0% { transform: scale(1); } 100% { transform: scale(1.08) translateX(-1%) translateY(-1%); } }
+        .mud-stomp-schedule-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(20,5,40,0.97) 0%, rgba(60,10,80,0.75) 55%, rgba(10,0,20,0.45) 100%);
+            z-index: 1;
+        }
+        .mud-stomp-schedule-hero-content { position: relative; z-index: 2; padding: 1rem 1.25rem; width: 100%; }
+        .mss-time { font-family: 'Roboto Slab', serif; font-weight: 700; color: var(--straw); font-size: 0.8rem; margin-bottom: 0.15rem; }
+        .mss-title { font-family: 'Alfa Slab One', serif; font-size: clamp(1.2rem,3.5vw,1.8rem); color: white; text-shadow: 2px 4px 14px rgba(0,0,0,0.8); margin: 0 0 0.4rem; line-height: 1.05; }
+        .mss-desc { display: none; }
+        .mss-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .mss-pill { background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.22); border-radius: 20px; padding: 0.22rem 0.7rem; font-size: 0.76rem; font-weight: 600; color: rgba(255,255,255,0.88); white-space: nowrap; font-family: 'Lato', sans-serif; }
+        .mss-pill.straw { background: rgba(210,170,60,0.35); border-color: rgba(210,170,60,0.5); color: #f0d878; }
+        .mss-pill.red   { background: rgba(140,20,20,0.5); border-color: rgba(180,30,30,0.6); color: white; }
+
+        /* ── Show N Shine mini hero (inside schedule) ── */
+        .sns-schedule-hero {
+            position: relative;
+            width: calc(100% + 2rem);
+            margin-left: -1rem; margin-right: -1rem;
+            min-height: 160px; overflow: hidden;
+            display: flex; align-items: flex-end;
+        }
+        .sns-schedule-hero-bg {
+            position: absolute; inset: -10%;
+            background: url('images/art/show and shine hero card.png') center 80% / cover no-repeat;
+            animation: kenBurnsSNSS 22s ease-in-out infinite alternate;
+            transform-origin: 50% 80%; z-index: 0;
+            filter: brightness(0.55) saturate(0.7);
+        }
+        @keyframes kenBurnsSNSS { 0% { transform: scale(1); } 100% { transform: scale(1.07) translateY(2%); } }
+        .sns-schedule-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(25,8,2,0.97) 0%, rgba(70,25,8,0.75) 55%, rgba(10,2,0,0.45) 100%);
+            z-index: 1;
+        }
+        .sns-schedule-hero-content { position: relative; z-index: 2; padding: 1rem 1.25rem; width: 100%; }
+        .snss-time { font-family: 'Roboto Slab', serif; font-weight: 700; color: var(--straw); font-size: 0.8rem; margin-bottom: 0.15rem; }
+        .snss-title { font-family: 'Alfa Slab One', serif; font-size: clamp(1.2rem,3.5vw,1.8rem); color: white; text-shadow: 2px 4px 12px rgba(0,0,0,0.75); margin: 0 0 0.4rem; line-height: 1.05; }
+        .snss-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .snss-pill { background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.22); border-radius: 20px; padding: 0.22rem 0.7rem; font-size: 0.76rem; font-weight: 600; color: rgba(255,255,255,0.88); white-space: nowrap; font-family: 'Lato', sans-serif; }
+        .snss-pill.red { background: rgba(140,20,20,0.5); border-color: rgba(180,30,30,0.6); color: white; }
+        .snss-pill.straw { background: rgba(210,170,60,0.35); border-color: rgba(210,170,60,0.5); color: #f0d878; }
+
         @media print {
-            header, footer, .search-bar-container, .hero, .sample-schedule-banner, .panel-rope, .animal-head, .horseshoe, .btn, .btn-outline-light { display: none !important; }
+            header, footer, .search-bar-container, .hero, .sample-schedule-banner, .panel-rope, .animal-head, .horseshoe, .btn, .btn-outline-light, .day-nav-wrapper, .venue-filter-bar, .cal-link, .cal-link-hero { display: none !important; }
             body, body::before { background: white !important; color: black !important; }
             .panel-wooden { display: block !important; background: none !important; border: none !important; padding: 0 !important; }
             .panel-wooden h2 { color: black !important; font-size: 1.3rem; border-bottom: 2px solid #333; padding-bottom: 0.3rem; margin-bottom: 0.5rem; }
-            .panel-wooden p { color: #333 !important; }
             .day-header { background: #333 !important; color: white !important; padding: 0.5rem 1rem !important; font-size: 1.1rem !important; }
+            .day-section.today .day-header::after { display: none; }
             .day-events { border-color: #ccc !important; }
             .schedule-item { padding: 0.3rem 0 !important; }
             .schedule-time { color: black !important; font-size: 0.9rem; }
@@ -97,21 +359,126 @@
             .print-header { display: block !important; text-align: center; margin-bottom: 1rem; }
             .print-header h1 { font-size: 1.5rem; margin: 0; }
             .print-header p { margin: 0.2rem 0; font-size: 0.9rem; }
+            .mud-stomp-schedule-hero, .sched-music-hero, .sns-schedule-hero { display: none !important; }
+            .mud-stomp-print, .music-print, .sns-print { display: block !important; padding: 0.3rem 0; border-bottom: 1px dashed #ccc; font-size: 0.9rem; }
+            .venue-group.venue-hidden, .day-section.day-hidden { display: block !important; }
+            .event-sponsor-logo-inline { display: none; }
         }
         .print-header { display: none; }
-        .venue-subheader {
-            background: rgba(0,0,0,0.08);
-            color: var(--barn-red);
-            font-family: 'Roboto Slab', serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.4rem 0.75rem;
-            margin: 0.75rem -1rem 0.25rem;
-            border-left: 4px solid var(--barn-red);
+        .mud-stomp-print, .music-print, .sns-print { display: none; }
+
+        /* ── Heavy Horse Pull Hero ── */
+        .horse-pull-hero {
+            position: relative;
+            width: 100%;
+            min-height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(150deg, #2c1308 0%, #180804 55%, #0e0502 100%);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.65);
         }
-        .venue-subheader:first-child { margin-top: 0; }
+        .horse-pull-hero-bg {
+            position: absolute;
+            height: 100%;
+            width: auto;
+            bottom: -20%;
+            right: -3%;
+            transform: scaleX(-1);
+            opacity: 0.42;
+            z-index: 0;
+            display: block;
+        }
+        .horse-pull-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                #180804 42%,
+                rgba(24,8,4,0.97) 56%,
+                rgba(55,22,6,0.38) 76%,
+                rgba(30,12,3,0.10) 100%
+            );
+            z-index: 1;
+        }
+        .horse-pull-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem;
+            max-width: 55%;
+        }
+        .hp-badge {
+            display: inline-block;
+            background: var(--straw);
+            color: var(--wood-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 0.65rem;
+        }
+        .hp-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            color: white;
+            text-shadow: 2px 4px 18px rgba(0,0,0,0.9);
+            margin: 0 0 0.65rem;
+            line-height: 1.05;
+        }
+        .hp-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.3rem;
+            max-width: 420px;
+        }
+        .hp-sponsor {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            padding: 0.5rem 1rem 0.5rem 0.8rem;
+            margin-bottom: 1.3rem;
+        }
+        .hp-sponsor-label {
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #666;
+            white-space: nowrap;
+        }
+        .hp-sponsor-logo {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+        .hp-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .hp-pill {
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 0.3rem 0.85rem;
+            font-size: 0.83rem;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+            font-family: 'Lato', sans-serif;
+        }
+        @media (max-width: 600px) {
+            .horse-pull-hero-content { max-width: 100%; padding: 1.5rem; }
+            .horse-pull-hero-bg { opacity: 0.2; right: -20%; }
+        }
     </style>
 </head>
 <body>
@@ -123,9 +490,7 @@
             </a>
             <nav>
                 <div class="hamburger" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
                 <ul id="navMenu">
                     <li><a href="index.html">Home</a></li>
@@ -157,7 +522,6 @@
         </div>
     </header>
 
-    <!-- Full width search bar -->
     <div class="search-bar-container">
         <div class="search-bar">
             <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
@@ -172,461 +536,366 @@
 
     <main>
         <div class="print-header">
-            <h1>Cumberland County Exhibition - 2025 Schedule</h1>
+            <h1>Cumberland County Exhibition — 2025 Schedule</h1>
             <p>August 25–30, 2025 | Exhibition Grounds, Oxford, NS</p>
         </div>
+
         <section class="hero">
             <h1>2025 Schedule</h1>
             <p class="tagline">Last Year's Schedule for Reference</p>
             <div class="date-badge swing">August 25–30, 2025</div>
-            <div style="margin-top: 1.5rem; position: relative; z-index: 2;">
-                <button onclick="printSchedule()" class="btn btn-outline-light" style="font-size: 0.95rem; padding: 0.6rem 1.5rem;">Print Schedule</button>
+            <div style="margin-top:1.5rem;position:relative;z-index:2;">
+                <button onclick="window.print()" class="btn btn-outline-light" style="font-size:0.95rem;padding:0.6rem 1.5rem;">🖨 Print Schedule</button>
             </div>
         </section>
 
+        <!-- Sticky Day Nav -->
+        <div class="day-nav-wrapper" id="dayNavWrapper">
+            <nav class="day-nav" aria-label="Jump to day">
+                <button class="day-nav-pill" data-target="day-aug31">Mon Aug 31 · 4-H</button>
+                <button class="day-nav-pill" data-target="day-sep1">Tue Sep 1 · 4-H</button>
+                <button class="day-nav-pill" data-target="day-aug27">Wed Aug 27</button>
+                <button class="day-nav-pill" data-target="day-aug28">Thu Aug 28</button>
+                <button class="day-nav-pill" data-target="day-aug29">Fri Aug 29</button>
+                <button class="day-nav-pill" data-target="day-aug30">Sat Aug 30</button>
+            </nav>
+        </div>
+
         <div class="container">
-            <!-- 2025 Schedule Notice -->
             <div class="sample-schedule-banner">
-                <h3>2025 Schedule - For Reference Only</h3>
-                <p>This is last year's schedule and will <strong>not</strong> be accurate for 2026. The official 2026 schedule will be posted once finalized - stay tuned!</p>
+                <h3>2025 Schedule — For Reference Only</h3>
+                <p>This is last year's schedule and will <strong>not</strong> be accurate for 2026. The official 2026 schedule will be posted once finalized.</p>
             </div>
-                <section class="panel-wooden section-decorated">
-                    <div class="animal-head left">
-                        <img src="images/art/cow facing right.png" alt="Decorative farm animal">
-                    </div>
-                    <div class="animal-head right">
-                        <img src="images/art/horse facing left.png" alt="Decorative farm animal">
-                    </div>
-                    <div class="horseshoe">
-                        <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
-                    </div>
-                    <h2>4-H Days - August 31 &amp; September 1</h2>
-                    <p>4-H competitions, livestock shows, life skills, dog classes, fashion show, and closing ceremonies.</p>
-                </section>
 
-                <!-- Monday Aug 25 -->
-                <div class="day-section">
-                    <div class="day-header">Monday, August 31  -  4-H Day</div>
-                    <div class="day-events">
-                        <div class="venue-subheader">Arena</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">7:00 AM</span>
-                            <span class="schedule-event">Light Horse Warm Up</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:00 AM</span>
-                            <span class="schedule-event">Draft, Mini, and Light Horse Classes</span>
-                        </div>
+            <!-- Venue Filter -->
+            <div class="venue-filter-bar" id="venueFilterBar">
+                <span class="venue-filter-label">Filter:</span>
+                <button class="venue-filter-pill active" data-venue="all">All Events</button>
+                <button class="venue-filter-pill" data-venue="arena">🏟 Arena</button>
+                <button class="venue-filter-pill" data-venue="music">🎵 Music</button>
+                <button class="venue-filter-pill" data-venue="lifeskills">✂️ Life Skills</button>
+                <button class="venue-filter-pill" data-venue="industrial">🏛 Industrial</button>
+                <button class="venue-filter-pill" data-venue="barn">🐂 Barn</button>
+            </div>
+
+            <section class="panel-wooden section-decorated">
+                <div class="animal-head left"><img src="images/art/cow facing right.png" alt=""></div>
+                <div class="animal-head right"><img src="images/art/horse facing left.png" alt=""></div>
+                <div class="horseshoe"><img src="images/art/horse shoe.png" alt=""></div>
+                <h2>4-H Days — August 31 &amp; September 1</h2>
+                <p>4-H competitions, livestock shows, life skills, dog classes, fashion show, and closing ceremonies.</p>
+            </section>
+
+            <!-- Monday Aug 31 -->
+            <div class="day-section" id="day-aug31">
+                <div class="day-header">Monday, August 31 &nbsp;—&nbsp; 4-H Day</div>
+                <div class="day-events">
+                    <div class="venue-group" data-venue="arena">
+                        <div class="venue-subheader arena"><span class="venue-icon">🏟</span> Arena</div>
+                        <div class="schedule-item"><span class="schedule-time">7:00 AM</span><span class="schedule-event">🐎 Light Horse Warm Up</span></div>
+                        <div class="schedule-item"><span class="schedule-time">8:00 AM</span><span class="schedule-event">🐎 Draft, Mini, and Light Horse Classes</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:00 PM</span><span class="schedule-event">🐂 Beef Showmanship</span></div>
+                        <div class="schedule-item"><span class="schedule-time">7:00 PM</span><span class="schedule-event">🐂 Ring Open for Beef/Dairy Practice</span></div>
+                    </div>
+                    <div class="venue-group" data-venue="lifeskills">
+                        <div class="venue-subheader lifeskills"><span class="venue-icon">✂️</span> Life Skills Building</div>
+                        <div class="schedule-item"><span class="schedule-time">2:00 PM</span><span class="schedule-event">🎂 Cake Decorating Competition</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:30 PM</span><span class="schedule-event">Crafts Competition</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:00 PM</span><span class="schedule-event">Life Skills Building Opens for Decorating</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:30 PM</span><span class="schedule-event">Food Preparation Competition</span></div>
+                    </div>
+                    <div class="venue-group" data-venue="industrial">
+                        <div class="venue-subheader industrial"><span class="venue-icon">🏛</span> Industrial Building</div>
+                        <div class="schedule-item"><span class="schedule-time">9:00 AM</span><span class="schedule-event">📷 Photography Competition</span></div>
+                        <div class="schedule-item"><span class="schedule-time">9:30 AM</span><span class="schedule-event">Orienteering Competition</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-event">🐕 Dog Classes</span></div>
+                        <div class="schedule-item"><span class="schedule-time">6:00 PM</span><span class="schedule-event">✨ Fashion Show</span></div>
+                    </div>
+                    <div class="venue-group" data-venue="barn">
+                        <div class="venue-subheader barn"><span class="venue-icon">🐂</span> Barn</div>
+                        <div class="schedule-item"><span class="schedule-time">1:30–3:30 PM</span><span class="schedule-event">🐂 Beef Clipping Competition</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tuesday Sep 1 -->
+            <div class="day-section" id="day-sep1">
+                <div class="day-header">Tuesday, September 1 &nbsp;—&nbsp; 4-H Day</div>
+                <div class="day-events">
+                    <div class="venue-group" data-venue="arena">
+                        <div class="venue-subheader arena"><span class="venue-icon">🏟</span> Arena</div>
+                        <div class="schedule-item"><span class="schedule-time">8:30 AM</span><span class="schedule-event">🐂 Beef Showmanship &amp; Conformation</span></div>
+                        <div class="schedule-item"><span class="schedule-time">11:30 AM</span><span class="schedule-event">Rabbit &amp; Cavy Showmanship &amp; Conformation</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:00 PM</span><span class="schedule-event">Cloverbud Livestock Showcase</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-event">🏆 Grand Champion Livestock Showmanship</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:00 PM</span><span class="schedule-event">Grand Champion Judging Practice <span class="schedule-location">(open to Cloverbuds and members)</span></span></div>
                         <div class="schedule-item">
                             <span class="schedule-time">5:00 PM</span>
-                            <span class="schedule-event">Beef Showmanship</span>
+                            <span class="schedule-event">
+                                <div class="schedule-event-row">
+                                    <strong>Closing Ceremonies</strong>
+                                    <a href="#" class="cal-link" data-cal="cal-closing" download="4h-closing.ics">📅 Save</a>
+                                </div>
+                                Parade of Clubs &bull; Jr. Ambassador Competition &bull; 4-H Awards
+                            </span>
                         </div>
+                        <div class="schedule-item"><span class="schedule-time">6:00 PM</span><span class="schedule-event">🔨 Doug Carey Memorial 4-H Scholarship Pig Auction</span></div>
+                    </div>
+                    <div class="venue-group" data-venue="lifeskills">
+                        <div class="venue-subheader lifeskills"><span class="venue-icon">✂️</span> Life Skills Building</div>
+                        <div class="schedule-item"><span class="schedule-time">10:00 AM</span><span class="schedule-event">✂️ Scrapbooking Competition</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:00 PM</span><span class="schedule-event">Woodworking &amp; Building Blocks Competition</span></div>
+                    </div>
+                    <div class="venue-group" data-venue="industrial">
+                        <div class="venue-subheader industrial"><span class="venue-icon">🏛</span> Industrial Building</div>
+                        <div class="schedule-item"><span class="schedule-time">10:30 AM</span><span class="schedule-event">Cloverbud Craft</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:00 PM</span><span class="schedule-event">Tractor Driving Competition <span class="schedule-location">(outside)</span></span></div>
+                    </div>
+                    <div class="venue-group" data-venue="barn">
+                        <div class="venue-subheader barn"><span class="venue-icon">🐂</span> Barn</div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="panel-wooden section-decorated">
+                <div class="animal-head left"><img src="images/art/horse facing right.png" alt=""></div>
+                <div class="animal-head right"><img src="images/art/horse facing left.png" alt=""></div>
+                <div class="horseshoe"><img src="images/art/horse shoe.png" alt=""></div>
+                <h2>Horse Shows &amp; Beef Shows — August 27–30</h2>
+                <p>Light horse classes, beef shows, barrel racing, poles, heavy horse pulls, live music, and more.</p>
+            </section>
+
+            <!-- Wednesday Aug 27 -->
+            <div class="day-section" id="day-aug27">
+                <div class="day-header">Wednesday, August 27</div>
+                <div class="day-events">
+                    <div class="venue-group" data-venue="arena">
+                        <div class="venue-subheader arena"><span class="venue-icon">🏟</span> Arena</div>
+                        <div class="schedule-item"><span class="schedule-time">10:00 AM</span><span class="schedule-event">🐎 Halter Mares</span></div>
+                        <div class="schedule-item"><span class="schedule-time">10:20 AM</span><span class="schedule-event">🐎 Halter Geldings</span></div>
+                        <div class="schedule-item"><span class="schedule-time">10:40 AM</span><span class="schedule-event">🐎 Grooming &amp; Conditioning</span></div>
+                        <div class="schedule-item"><span class="schedule-time">11:05 AM</span><span class="schedule-event">🐎 Small Fry, Junior, Senior Showmanship</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:00 PM</span><span class="schedule-event">🐎 Small Fry Pleasure</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:20 PM</span><span class="schedule-event">🐎 Walk/Trot, Junior, Senior English Pleasure</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:15 PM</span><span class="schedule-event">🐎 Junior, Senior Road Hack</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:45 PM</span><span class="schedule-event">🐎 Walk/Trot, Junior, Senior English Equitation</span></div>
+                        <div class="schedule-item"><span class="schedule-time">2:20 PM</span><span class="schedule-event">🐎 Hunter Hack Over Fences</span></div>
+                        <div class="schedule-item"><span class="schedule-time">2:55 PM</span><span class="schedule-event">🐎 Round 1 English Pleasure Stake</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:30 PM</span><span class="schedule-event">🐎 Small Fry Obstacle Course</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-event">🐎 Open &amp; Walk/Trot Keyhole</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:25 PM</span><span class="schedule-event">🐎 Round 1 Western Pleasure Stake</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:50 PM</span><span class="schedule-event">🐎 Round 1 Small Fry, Walk/Trot, Open Barrel</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:50 PM</span><span class="schedule-event">🐎 Round 1 Small Fry, Walk/Trot, Open Poles</span></div>
+                        <div class="schedule-item"><span class="schedule-time">6:40 PM</span><span class="schedule-event">🐎 Dash</span></div>
+                        <div class="schedule-item"><span class="schedule-time">8:00 PM</span><span class="schedule-event">🐎 Blow Up Barrels</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thursday Aug 28 -->
+            <div class="day-section" id="day-aug28">
+                <div class="day-header">Thursday, August 28</div>
+                <div class="day-events">
+                    <div class="venue-group" data-venue="arena">
+                        <div class="venue-subheader arena"><span class="venue-icon">🏟</span> Arena</div>
+                        <div class="schedule-item"><span class="schedule-time">8:00 AM</span><span class="schedule-event">🐂 Beef Show — Simmentals &amp; Angus</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:00 PM</span><span class="schedule-event">🐎 Walk/Trot, Jr, Sr Western Pleasure</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:45 PM</span><span class="schedule-event">🐎 Walk/Trot, Jr, Sr Western Equitation</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:20 PM</span><span class="schedule-event">🐎 Small Fry Equitation</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:50 PM</span><span class="schedule-event">🐎 Round 2 Walk/Trot, Small Fry, Open Poles</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:00 PM</span><span class="schedule-event">⭐ Small Fry Apple Dunking</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:25 PM</span><span class="schedule-event">🐎 Pairs</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:50 PM</span><span class="schedule-event">🐎 Round 2 English Pleasure Stake</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:30 PM</span><span class="schedule-event">🐎 Cumberland County Owned</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:15 PM</span><span class="schedule-event">🐎 Round 2 Small Fry, Walk/Trot, Open Barrels</span></div>
+                        <div class="schedule-item"><span class="schedule-time">6:00 PM</span><span class="schedule-event">🐂 Hereford Futurity</span></div>
+                        <div class="schedule-item"><span class="schedule-time">7:00 PM</span><span class="schedule-event">🏆 Junior Farmer Olympics</span></div>
+                        <div class="schedule-item"><span class="schedule-time">8:00 PM</span><span class="schedule-event"><strong>🏆 Farmer Olympics</strong></span></div>
+                    </div>
+                    <div class="venue-group" data-venue="music">
+                        <div class="venue-subheader music"><span class="venue-icon">🎵</span> Industrial Building — Music</div>
+                        <div class="schedule-item"><span class="schedule-time">3:00 PM</span><span class="schedule-event">🎵 Music by Barry Patriquin &amp; Bill King</span></div>
+                        <div class="schedule-item"><span class="schedule-time">6:00 PM</span><span class="schedule-event">🎵 Best of Jammin' It Up at The Capitol</span></div>
+                    </div>
+                    <!-- Print fallback for Thursday music -->
+                    <div class="music-print">
+                        <strong>Music (Industrial Building):</strong> 3:00 PM – Barry Patriquin &amp; Bill King &nbsp;|&nbsp; 6:00 PM – Best of Jammin' It Up at The Capitol
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thursday Live Music Hero -->
+            <div class="sched-music-hero" data-venue-hero="music">
+                <div class="sched-music-hero-bg"></div>
+                <div class="sched-music-hero-overlay"></div>
+                <div class="sched-music-hero-content">
+                    <span class="smh-badge">Thursday Evening · Industrial Building</span>
+                    <h3 class="smh-title">Live Music</h3>
+                    <ul class="smh-lineup">
+                        <li><span class="smh-lineup-time">3:00 PM</span> Barry Patriquin &amp; Bill King</li>
+                        <li><span class="smh-lineup-time">6:00 PM</span> Best of Jammin' It Up at The Capitol</li>
+                    </ul>
+                    <div class="smh-location">📍 Industrial Building</div>
+                </div>
+            </div>
+
+            <!-- Friday Aug 29 -->
+            <div class="day-section" id="day-aug29">
+                <div class="day-header">Friday, August 29</div>
+                <div class="day-events">
+                    <div class="venue-group" data-venue="arena">
+                        <div class="venue-subheader arena"><span class="venue-icon">🏟</span> Arena</div>
+                        <div class="schedule-item"><span class="schedule-time">8:00 AM</span><span class="schedule-event">🐂 Beef Show — Shorthorn, Speckle Park &amp; Hereford</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:00 PM</span><span class="schedule-event">🐎 Western Pleasure Stake Final</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:30 PM</span><span class="schedule-event">🐎 Ranch Rail</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:55 PM</span><span class="schedule-event">🐎 Ranch Riding</span></div>
+                        <div class="schedule-item"><span class="schedule-time">1:40 PM</span><span class="schedule-event">🐎 Poles Round 3 — Small Fry, Walk/Trot, Open</span></div>
+                        <div class="schedule-item"><span class="schedule-time">2:30 PM</span><span class="schedule-event">🐎 English Pleasure Stake Final</span></div>
+                        <div class="schedule-item"><span class="schedule-time">2:55 PM</span><span class="schedule-event">🐎 Barrels Round 3 — Small Fry, Walk/Trot, Open</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-event">🐎 Lead Line</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:25 PM</span><span class="schedule-event">🐎 Parent Lead Line</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:45 PM</span><span class="schedule-event">🐎 Costume — Small Fry, Open</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:00 PM</span><span class="schedule-event">🔨 Junior Beef Auction</span></div>
                         <div class="schedule-item">
                             <span class="schedule-time">7:00 PM</span>
-                            <span class="schedule-event">Ring Open for Beef/Dairy Practice</span>
+                            <span class="schedule-event">
+                                <div class="schedule-event-row">
+                                    <strong>💪 Tantramar Chevrolet Heavy Horse Pulls</strong>
+                                    <a href="https://www.tantramarchev.com/" target="_blank" rel="noopener">
+                                        <img src="images/sponser logos/Tantramar.png" alt="Tantramar Chevrolet" class="event-sponsor-logo-inline">
+                                    </a>
+                                    <a href="#" class="cal-link" data-cal="cal-horse-pull" download="heavy-horse-pull.ics">📅 Save</a>
+                                </div>
+                            </span>
                         </div>
-                        <div class="venue-subheader">Life Skills Building</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:00 PM</span>
-                            <span class="schedule-event">Cake Decorating Competition</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:30 PM</span>
-                            <span class="schedule-event">Crafts Competition</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:00 PM</span>
-                            <span class="schedule-event">Life Skills Building Opens for Decorating</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:30 PM</span>
-                            <span class="schedule-event">Food Preparation Competition</span>
-                        </div>
-                        <div class="venue-subheader">Industrial Building</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">9:00 AM</span>
-                            <span class="schedule-event">Photography Competition</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">9:30 AM</span>
-                            <span class="schedule-event">Orienteering Competition</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:30 PM</span>
-                            <span class="schedule-event">Dog Classes</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">6:00 PM</span>
-                            <span class="schedule-event">Fashion Show</span>
-                        </div>
-                        <div class="venue-subheader">Barn</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:30–3:30 PM</span>
-                            <span class="schedule-event">Beef Clipping Competition</span>
-                        </div>
+                    </div>
+                    <div class="venue-group" data-venue="music">
+                        <div class="venue-subheader music"><span class="venue-icon">🎵</span> Industrial Building — Music</div>
+                        <div class="schedule-item"><span class="schedule-time">12:30 PM</span><span class="schedule-event">🎵 Barry Patriquin &amp; Bill King</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:00 PM</span><span class="schedule-event">🎵 Kaden Mattinson &amp; Abbey Letcher</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:30 PM</span><span class="schedule-event">🎵 The Golden Strummers</span></div>
+                        <div class="schedule-item"><span class="schedule-time">6:30 PM</span><span class="schedule-event">🎵 Tyler Salsman</span></div>
+                    </div>
+                    <div class="venue-group" data-venue="lifeskills">
+                        <div class="venue-subheader lifeskills"><span class="venue-icon">✂️</span> Life Skills Building</div>
+                        <div class="schedule-item"><span class="schedule-time">1:00 PM</span><span class="schedule-event">🔬 Mad Science Workshops for Kids</span></div>
+                        <div class="schedule-item"><span class="schedule-time">4:00 PM</span><span class="schedule-event">🌸 Flower Workshop</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:00 PM</span><span class="schedule-event">🔬 Mad Science Workshops for Kids</span></div>
+                    </div>
+                    <!-- Print fallback for Friday music -->
+                    <div class="music-print">
+                        <strong>Music (Industrial Building):</strong> 12:30 PM – Barry Patriquin &amp; Bill King &nbsp;|&nbsp; 3:00 PM – Kaden Mattinson &amp; Abbey Letcher &nbsp;|&nbsp; 5:30 PM – The Golden Strummers &nbsp;|&nbsp; 6:30 PM – Tyler Salsman
                     </div>
                 </div>
+            </div>
 
-                <!-- Tuesday Aug 26 -->
-                <div class="day-section">
-                    <div class="day-header">Tuesday, September 1  -  4-H Day</div>
-                    <div class="day-events">
-                        <div class="venue-subheader">Arena</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:30 AM</span>
-                            <span class="schedule-event">Beef Showmanship &amp; Conformation</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">11:30 AM</span>
-                            <span class="schedule-event">Rabbit &amp; Cavy Showmanship &amp; Conformation</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:00 PM</span>
-                            <span class="schedule-event">Cloverbud Livestock Showcase</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:30 PM</span>
-                            <span class="schedule-event">Grand Champion Livestock Showmanship</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:00 PM</span>
-                            <span class="schedule-event">Grand Champion Judging Practice <span class="schedule-location">(open to Cloverbuds and members)</span></span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:00 PM</span>
-                            <span class="schedule-event"><strong>Closing Ceremonies</strong>  -  Parade of Clubs &bull; Jr. Ambassador Competition &bull; 4-H Awards</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">6:00 PM</span>
-                            <span class="schedule-event">Doug Carey Memorial 4-H Scholarship Pig Auction</span>
-                        </div>
-                        <div class="venue-subheader">Life Skills Building</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">10:00 AM</span>
-                            <span class="schedule-event">Scrapbooking Competition</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:00 PM</span>
-                            <span class="schedule-event">Woodworking &amp; Building Blocks Competition</span>
-                        </div>
-                        <div class="venue-subheader">Industrial Building</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">10:30 AM</span>
-                            <span class="schedule-event">Cloverbud Craft</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:00 PM</span>
-                            <span class="schedule-event">Tractor Driving Competition <span class="schedule-location">(outside)</span></span>
-                        </div>
-                        <div class="venue-subheader">Barn</div>
+            <!-- Friday Live Music Hero -->
+            <div class="sched-music-hero" data-venue-hero="music">
+                <div class="sched-music-hero-bg"></div>
+                <div class="sched-music-hero-overlay"></div>
+                <div class="sched-music-hero-content">
+                    <span class="smh-badge">Friday · All Afternoon &amp; Evening · Industrial Building</span>
+                    <h3 class="smh-title">Live Music</h3>
+                    <ul class="smh-lineup">
+                        <li><span class="smh-lineup-time">12:30 PM</span> Barry Patriquin &amp; Bill King</li>
+                        <li><span class="smh-lineup-time">3:00 PM</span> Kaden Mattinson &amp; Abbey Letcher</li>
+                        <li><span class="smh-lineup-time">5:30 PM</span> The Golden Strummers</li>
+                        <li><span class="smh-lineup-time">6:30 PM</span> Tyler Salsman</li>
+                    </ul>
+                    <div class="smh-location">📍 Industrial Building</div>
+                </div>
+            </div>
+
+            <!-- Heavy Horse Pulls Hero -->
+            <div class="horse-pull-hero">
+                <img src="images/art/Horse Pulls.png" alt="" class="horse-pull-hero-bg">
+                <div class="horse-pull-hero-overlay"></div>
+                <div class="horse-pull-hero-content">
+                    <span class="hp-badge">Friday Evening · Arena Grounds</span>
+                    <h2 class="hp-title">Heavy Horse Pulls</h2>
+                    <p class="hp-desc">The mightiest draft horses in the region compete for glory. A crowd favourite and one of the most anticipated events at CCEx.</p>
+                    <div class="hp-sponsor">
+                        <span class="hp-sponsor-label">Presented by</span>
+                        <a href="https://www.tantramarchev.com/" target="_blank" rel="noopener">
+                            <img src="images/sponser logos/Tantramar.png" alt="Tantramar Chevrolet Buick GMC" class="hp-sponsor-logo">
+                        </a>
+                    </div>
+                    <div class="hp-pills">
+                        <span class="hp-pill">Friday · 7:00 PM</span>
+                        <span class="hp-pill">Arena Grounds</span>
+                        <a href="#" class="cal-link-hero" data-cal="cal-horse-pull" download="heavy-horse-pull.ics">📅 Save to Calendar</a>
                     </div>
                 </div>
+            </div>
 
-            <!-- Horse Show Days -->
-                <section class="panel-wooden section-decorated">
-                    <div class="animal-head left">
-                        <img src="images/art/horse facing right.png" alt="Decorative farm animal">
-                    </div>
-                    <div class="animal-head right">
-                        <img src="images/art/horse facing left.png" alt="Decorative farm animal">
-                    </div>
-                    <div class="horseshoe">
-                        <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
-                    </div>
-                    <h2>Horse Shows &amp; Beef Shows - August 27–30</h2>
-                    <p>Light horse classes, beef shows, barrel racing, poles, heavy horse pulls, live music, and more.</p>
-                </section>
+            <!-- Saturday Aug 30 -->
+            <div class="day-section" id="day-aug30">
+                <div class="day-header">Saturday, August 30</div>
+                <div class="day-events">
+                    <div class="venue-group" data-venue="arena">
+                        <div class="venue-subheader arena"><span class="venue-icon">🏟</span> Arena</div>
+                        <div class="schedule-item"><span class="schedule-time">8:00 AM</span><span class="schedule-event">🐂 Beef Show — Charlois &amp; Commercial</span></div>
+                        <div class="schedule-item"><span class="schedule-time">12:00 PM</span><span class="schedule-event">🐎 Trail Class</span></div>
 
-                <!-- Wednesday Aug 27 -->
-                <div class="day-section">
-                    <div class="day-header">Wednesday, August 27</div>
-                    <div class="day-events">
-                        <div class="venue-subheader">Arena</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">10:00 AM</span>
-                            <span class="schedule-event">Halter Mares</span>
+                        <!-- Show N Shine Mini Hero -->
+                        <div class="sns-schedule-hero" data-venue-hero="arena">
+                            <div class="sns-schedule-hero-bg"></div>
+                            <div class="sns-schedule-hero-overlay"></div>
+                            <div class="sns-schedule-hero-content">
+                                <div class="snss-time">Saturday · 1:30 PM · Arena Grounds</div>
+                                <h3 class="snss-title">Kids Show 'N Shine</h3>
+                                <div class="snss-pills">
+                                    <span class="snss-pill red">Ages 9 &amp; Under</span>
+                                    <span class="snss-pill">Bikes &amp; Wagons</span>
+                                    <span class="snss-pill">Toy Cars &amp; Ride-Ons</span>
+                                    <a href="show-n-shine.html" class="snss-pill straw">Register →</a>
+                                    <a href="#" class="cal-link-hero" data-cal="cal-sns" download="show-n-shine.ics">📅 Save to Calendar</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">10:20 AM</span>
-                            <span class="schedule-event">Halter Geldings</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">10:40 AM</span>
-                            <span class="schedule-event">Grooming &amp; Conditioning</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">11:05 AM</span>
-                            <span class="schedule-event">Small Fry, Junior, Senior Showmanship</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:00 PM</span>
-                            <span class="schedule-event">Small Fry Pleasure</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:20 PM</span>
-                            <span class="schedule-event">Walk/Trot, Junior, Senior English Pleasure</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:15 PM</span>
-                            <span class="schedule-event">Junior, Senior Road Hack</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:45 PM</span>
-                            <span class="schedule-event">Walk/Trot, Junior, Senior English Equitation</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:20 PM</span>
-                            <span class="schedule-event">Hunter Hack Over Fences</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:55 PM</span>
-                            <span class="schedule-event">Round 1 English Pleasure Stake</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:30 PM</span>
-                            <span class="schedule-event">Small Fry Obstacle Course</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:00 PM</span>
-                            <span class="schedule-event">Open &amp; Walk/Trot Keyhole</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:25 PM</span>
-                            <span class="schedule-event">Round 1 Western Pleasure Stake</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:50 PM</span>
-                            <span class="schedule-event">Round 1 Small Fry, Walk/Trot, Open Barrel</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:50 PM</span>
-                            <span class="schedule-event">Round 1 Small Fry, Walk/Trot, Open Poles</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">6:40 PM</span>
-                            <span class="schedule-event">Dash</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:00 PM</span>
-                            <span class="schedule-event">Blow Up Barrels</span>
+                        <!-- Print fallback -->
+                        <div class="sns-print">1:30 PM — Kids Show 'N Shine (Arena Grounds) · Ages 9 &amp; Under</div>
+
+                        <div class="schedule-item"><span class="schedule-time">2:00 PM</span><span class="schedule-event">🐎 4 Horse Classic</span></div>
+                        <div class="schedule-item"><span class="schedule-time">2:45 PM</span><span class="schedule-event">🐎 Hobby Horse</span></div>
+                        <div class="schedule-item"><span class="schedule-time">3:00 PM</span><span class="schedule-event">🐎 Prom Barrels — Small Fry, Walk/Trot, Open</span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:00 PM</span><span class="schedule-event"><strong>🏆 Supreme Beef Class</strong></span></div>
+                        <div class="schedule-item"><span class="schedule-time">5:45 PM</span><span class="schedule-event">🎪 Hypnotist and Chain Saw Juggling by Ian Stew</span></div>
+                    </div>
+
+                    <!-- Mud Stomp Hero (always visible — outside venue groups) -->
+                    <div class="mud-stomp-schedule-hero">
+                        <div class="mud-stomp-schedule-hero-bg"></div>
+                        <div class="mud-stomp-schedule-hero-overlay"></div>
+                        <div class="mud-stomp-schedule-hero-content">
+                            <div class="mss-time">Saturday · 9:00 PM · Exhibition Grounds</div>
+                            <h3 class="mss-title">Saturday Night Mud Stomp!</h3>
+                            <p class="mss-desc">After the kids go to bed, the adults come out to play. DJ Dave on the decks, Coldstream drinks, and a night you won't forget.</p>
+                            <div class="mss-pills">
+                                <span class="mss-pill red">19+ Adults Only</span>
+                                <span class="mss-pill">DJ Dave</span>
+                                <span class="mss-pill">Coldstream Drinks</span>
+                                <span class="mss-pill straw">$10 Advance</span>
+                                <span class="mss-pill straw">$15 at the Door</span>
+                                <a href="#" class="cal-link-hero" data-cal="cal-mudstamp" download="mud-stomp.ics">📅 Save to Calendar</a>
+                            </div>
                         </div>
                     </div>
+                    <div class="mud-stomp-print">9:00 PM — Saturday Night Mud Stomp · 19+ · $10 advance / $15 at the door</div>
                 </div>
+            </div>
 
-                <!-- Thursday Aug 28 -->
-                <div class="day-section">
-                    <div class="day-header">Thursday, August 28</div>
-                    <div class="day-events">
-                        <div class="venue-subheader">Arena</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:00 AM</span>
-                            <span class="schedule-event">Beef Show  -  Simmentals &amp; Angus</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:00 PM</span>
-                            <span class="schedule-event">Walk/Trot, Jr, Sr Western Pleasure</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:45 PM</span>
-                            <span class="schedule-event">Walk/Trot, Jr, Sr Western Equitation</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:20 PM</span>
-                            <span class="schedule-event">Small Fry Equitation</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:50 PM</span>
-                            <span class="schedule-event">Round 2 Walk/Trot, Small Fry, Open Poles</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:00 PM</span>
-                            <span class="schedule-event">Small Fry Apple Dunking</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:25 PM</span>
-                            <span class="schedule-event">Pairs</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:50 PM</span>
-                            <span class="schedule-event">Round 2 English Pleasure Stake</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:30 PM</span>
-                            <span class="schedule-event">Cumberland County Owned</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:15 PM</span>
-                            <span class="schedule-event">Round 2 Small Fry, Walk/Trot, Open Barrels</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">6:00 PM</span>
-                            <span class="schedule-event">Hereford Futurity</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">7:00 PM</span>
-                            <span class="schedule-event">Junior Farmer Olympics</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:00 PM</span>
-                            <span class="schedule-event"><strong>Farmer Olympics</strong></span>
-                        </div>
-                        <div class="venue-subheader">Industrial Building</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:00 PM</span>
-                            <span class="schedule-event">Music by Barry Patriquin &amp; Bill King</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">6:00 PM</span>
-                            <span class="schedule-event">Best of Jammin' It Up at The Capitol</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Friday Aug 29 -->
-                <div class="day-section">
-                    <div class="day-header">Friday, August 29</div>
-                    <div class="day-events">
-                        <div class="venue-subheader">Arena</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:00 AM</span>
-                            <span class="schedule-event">Beef Show  -  Shorthorn, Speckle Park &amp; Hereford</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:00 PM</span>
-                            <span class="schedule-event">Western Pleasure Stake Final</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:30 PM</span>
-                            <span class="schedule-event">Ranch Rail</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:55 PM</span>
-                            <span class="schedule-event">Ranch Riding</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:40 PM</span>
-                            <span class="schedule-event">Poles Round 3  -  Small Fry, Walk/Trot, Open</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:30 PM</span>
-                            <span class="schedule-event">English Pleasure Stake Final</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:55 PM</span>
-                            <span class="schedule-event">Barrels Round 3  -  Small Fry, Walk/Trot, Open</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:00 PM</span>
-                            <span class="schedule-event">Lead Line</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:25 PM</span>
-                            <span class="schedule-event">Parent Lead Line</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:45 PM</span>
-                            <span class="schedule-event">Costume  -  Small Fry, Open</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:00 PM</span>
-                            <span class="schedule-event">Junior Beef Auction</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">7:00 PM</span>
-                            <span class="schedule-event"><strong>Tantramar Chevrolet Heavy Horse Pulls</strong></span>
-                        </div>
-                        <div class="venue-subheader">Industrial Building - Music</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:30 PM</span>
-                            <span class="schedule-event">Barry Patriquin &amp; Bill King</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:00 PM</span>
-                            <span class="schedule-event">Kaden Mattinson &amp; Abbey Letcher</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:30 PM</span>
-                            <span class="schedule-event">The Golden Strummers</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">6:30 PM</span>
-                            <span class="schedule-event">Tyler Salsman</span>
-                        </div>
-                        <div class="venue-subheader">Life Skills Building</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:00 PM</span>
-                            <span class="schedule-event">Mad Science Workshops for Kids</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">4:00 PM</span>
-                            <span class="schedule-event">Flower Workshop</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:00 PM</span>
-                            <span class="schedule-event">Mad Science Workshops for Kids</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Saturday Aug 30 -->
-                <div class="day-section">
-                    <div class="day-header">Saturday, August 30</div>
-                    <div class="day-events">
-                        <div class="venue-subheader">Arena</div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">8:00 AM</span>
-                            <span class="schedule-event">Beef Show  -  Charlois &amp; Commercial</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">12:00 PM</span>
-                            <span class="schedule-event">Trail Class</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">1:30 PM</span>
-                            <span class="schedule-event">Kids Show N Shine</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:00 PM</span>
-                            <span class="schedule-event">4 Horse Classic</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">2:45 PM</span>
-                            <span class="schedule-event">Hobby Horse</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">3:00 PM</span>
-                            <span class="schedule-event">Prom Barrels  -  Small Fry, Walk/Trot, Open</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:00 PM</span>
-                            <span class="schedule-event"><strong>Supreme Beef Class</strong></span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">5:45 PM</span>
-                            <span class="schedule-event">Hypnotist and Chain Saw Juggling by Ian Stew</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="schedule-time">9:00 PM</span>
-                            <span class="schedule-event"><strong>MUD STOMP!</strong> <span class="schedule-location">$10 advance &bull; $15 at the door</span></span>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- Note -->
             <section class="panel-rope text-center mt-3">
                 <h2>Note</h2>
                 <p>This is the 2025 schedule and will <strong>not</strong> be accurate for 2026. The official 2026 schedule will be announced once finalized. Times and events are subject to change.</p>
-                <div class="mt-3">
-                    <a href="contact.html" class="btn">Questions? Contact Us</a>
-                </div>
+                <div class="mt-3"><a href="contact.html" class="btn">Questions? Contact Us</a></div>
             </section>
 
-        <!-- Become a Sponsor CTA -->
-        <div class="sponsor-cta">
-            <h3>Become a Sponsor!</h3>
-            <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
-            <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
-        </div>
+            <div class="sponsor-cta">
+                <h3>Become a Sponsor!</h3>
+                <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+                <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+            </div>
         </div>
     </main>
 
@@ -637,9 +906,7 @@
                 <div>
                     <span class="footer-title">Cumberland County Exhibition</span>
                     <span class="footer-address">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
-                            Exhibition Grounds, Oxford, NS
-                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">Exhibition Grounds, Oxford, NS</a>
                     </span>
                 </div>
             </div>
@@ -647,22 +914,10 @@
                 <div class="countdown-container">
                     <div class="countdown-label">Countdown to CCEx 2026</div>
                     <div class="countdown-timer" id="countdown">
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="days">---</span>
-                            <span class="countdown-unit">Days</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="hours">--</span>
-                            <span class="countdown-unit">Hours</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="mins">--</span>
-                            <span class="countdown-unit">Mins</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="secs">--</span>
-                            <span class="countdown-unit">Secs</span>
-                        </div>
+                        <div class="countdown-item"><span class="countdown-number" id="days">---</span><span class="countdown-unit">Days</span></div>
+                        <div class="countdown-item"><span class="countdown-number" id="hours">--</span><span class="countdown-unit">Hours</span></div>
+                        <div class="countdown-item"><span class="countdown-number" id="mins">--</span><span class="countdown-unit">Mins</span></div>
+                        <div class="countdown-item"><span class="countdown-number" id="secs">--</span><span class="countdown-unit">Secs</span></div>
                     </div>
                 </div>
             </div>
@@ -672,31 +927,22 @@
                 <p class="footer-credit">Website by <a href="https://JustinGreeno.dev">Justin Greeno</a></p>
             </div>
         </div>
-        <div class="footer-secret">
-            <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
-        </div>
+        <div class="footer-secret"><a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a></div>
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // ── Mobile menu ──
         function toggleMobileMenu() {
             const menu = document.getElementById('navMenu');
             const hamburger = document.querySelector('.hamburger');
             menu.classList.toggle('mobile-open');
             hamburger.classList.toggle('active');
         }
-
-        // Dropdown toggle for mobile
         document.querySelectorAll('.has-dropdown > a').forEach(link => {
             link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 1150) {
-                    e.preventDefault();
-                    this.parentElement.classList.toggle('open');
-                }
+                if (window.innerWidth <= 1150) { e.preventDefault(); this.parentElement.classList.toggle('open'); }
             });
         });
-
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const nav = document.querySelector('nav');
             const hamburger = document.querySelector('.hamburger');
@@ -706,84 +952,154 @@
             }
         });
 
-        // Print schedule
-        function printSchedule() {
-            window.print();
-        }
-
-        // Parallax background
+        // ── Parallax ──
         (function() {
             const style = document.createElement('style');
             style.id = 'parallax-style';
             document.head.appendChild(style);
-
             function updateParallax() {
-                const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.15;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+                style.textContent = `body::before { transform: translateY(-${window.pageYOffset * 0.15}px); }`;
             }
-
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
         })();
 
-        // Random animal selection
+        // ── Random animals ──
         (function() {
-            const animalsRight = [
-                'images/art/cow facing right.png',
-                'images/art/horse facing right.png',
-                'images/art/chicken facing right.png',
-                'images/art/sheep head facing right.png'
-            ];
-            const animalsLeft = [
-                'images/art/horse facing left.png',
-                'images/art/chicken facing left.png'
-            ];
-
-            function getRandomAnimal(arr) {
-                return arr[Math.floor(Math.random() * arr.length)];
-            }
-
-            document.querySelectorAll('.animal-head.left img').forEach(img => {
-                img.src = getRandomAnimal(animalsRight);
-            });
-
-            document.querySelectorAll('.animal-head.right img').forEach(img => {
-                img.src = getRandomAnimal(animalsLeft);
-            });
+            const right = ['images/art/cow facing right.png','images/art/horse facing right.png','images/art/chicken facing right.png','images/art/sheep head facing right.png'];
+            const left  = ['images/art/horse facing left.png','images/art/chicken facing left.png'];
+            const rnd = arr => arr[Math.floor(Math.random() * arr.length)];
+            document.querySelectorAll('.animal-head.left img').forEach(img => img.src = rnd(right));
+            document.querySelectorAll('.animal-head.right img').forEach(img => img.src = rnd(left));
         })();
 
-        // Scroll-triggered Animal Head Animations
+        // ── Animal head scroll observer ──
         (function() {
-            const animalObserver = new IntersectionObserver((entries) => {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => e.target.classList.toggle('visible', e.isIntersecting));
+            }, { rootMargin: '-50px 0px -50px 0px', threshold: 0.2 });
+            document.querySelectorAll('.animal-head').forEach(a => obs.observe(a));
+        })();
+
+        // ── Search ──
+        function performSearch() {
+            const q = document.getElementById('siteSearch').value.trim().toLowerCase();
+            if (q) window.location.href = 'forms.html?search=' + encodeURIComponent(q);
+        }
+        document.getElementById('siteSearch').addEventListener('keypress', e => { if (e.key === 'Enter') performSearch(); });
+
+        // ── Day Nav: offset below header ──
+        (function() {
+            const header = document.querySelector('header');
+            const nav    = document.getElementById('dayNavWrapper');
+            if (header && nav) nav.style.top = header.offsetHeight + 'px';
+        })();
+
+        // ── Day Nav: scrollspy ──
+        (function() {
+            const pills    = document.querySelectorAll('.day-nav-pill');
+            const sections = document.querySelectorAll('.day-section');
+
+            const obs = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        entry.target.classList.remove('visible');
+                        const id = entry.target.id;
+                        pills.forEach(p => p.classList.toggle('active', p.dataset.target === id));
                     }
                 });
-            }, {
-                root: null,
-                rootMargin: '-50px 0px -50px 0px',
-                threshold: 0.2
-            });
+            }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
-            document.querySelectorAll('.animal-head').forEach(animal => {
-                animalObserver.observe(animal);
+            sections.forEach(s => obs.observe(s));
+
+            pills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    const target = document.getElementById(pill.dataset.target);
+                    if (!target) return;
+                    const offset = (document.getElementById('dayNavWrapper')?.offsetHeight || 0) +
+                                   (document.querySelector('header')?.offsetHeight || 0) + 12;
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+                });
             });
         })();
 
-        // Search function
-        function performSearch() {
-            const query = document.getElementById('siteSearch').value.trim().toLowerCase();
-            if (query) {
-                window.location.href = 'forms.html?search=' + encodeURIComponent(query);
-            }
-        }
-        document.getElementById('siteSearch').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') performSearch();
-        });
+        // ── Happening Now ──
+        (function() {
+            const today = new Date();
+            const m = today.getMonth() + 1;
+            const d = today.getDate();
+            const map = {
+                'day-aug31': { m: 8,  d: 31 },
+                'day-sep1':  { m: 9,  d: 1  },
+                'day-aug27': { m: 8,  d: 27 },
+                'day-aug28': { m: 8,  d: 28 },
+                'day-aug29': { m: 8,  d: 29 },
+                'day-aug30': { m: 8,  d: 30 },
+            };
+            Object.entries(map).forEach(([id, date]) => {
+                if (m === date.m && d === date.d) {
+                    const section = document.getElementById(id);
+                    if (section) section.classList.add('today');
+                    const pill = document.querySelector(`.day-nav-pill[data-target="${id}"]`);
+                    if (pill) { pill.classList.remove('active'); pill.classList.add('today'); }
+                }
+            });
+        })();
+
+        // ── Venue Filter ──
+        (function() {
+            const filterBar = document.getElementById('venueFilterBar');
+            filterBar.addEventListener('click', e => {
+                const pill = e.target.closest('.venue-filter-pill');
+                if (!pill) return;
+                const venue = pill.dataset.venue;
+
+                // Update active pill
+                filterBar.querySelectorAll('.venue-filter-pill').forEach(p => p.classList.toggle('active', p === pill));
+
+                // Show/hide venue groups
+                document.querySelectorAll('.venue-group').forEach(g => {
+                    g.classList.toggle('venue-hidden', venue !== 'all' && g.dataset.venue !== venue);
+                });
+
+                // Show/hide venue-hero elements (live music heroes, SNS mini hero)
+                document.querySelectorAll('[data-venue-hero]').forEach(hero => {
+                    hero.classList.toggle('venue-hidden', venue !== 'all' && hero.dataset.venueHero !== venue);
+                });
+
+                // Hide entire day-sections that have no visible groups
+                document.querySelectorAll('.day-section').forEach(section => {
+                    const groups = section.querySelectorAll('.venue-group');
+                    if (!groups.length) return;
+                    const allHidden = [...groups].every(g => g.classList.contains('venue-hidden'));
+                    section.classList.toggle('day-hidden', allHidden);
+                });
+            });
+        })();
+
+        // ── Add to Google Calendar ──
+        (function() {
+            const loc = 'Exhibition Grounds, Oxford, NS';
+            const events = {
+                'cal-closing':    { text: "4-H Closing Ceremonies — CCEx",               dates: "20250901T170000/20250901T183000", details: "Parade of Clubs, Jr. Ambassador Competition, 4-H Awards." },
+                'cal-horse-pull': { text: "Tantramar Chevrolet Heavy Horse Pulls — CCEx", dates: "20250829T190000/20250829T220000", details: "Sponsored by Tantramar Chevrolet." },
+                'cal-sns':        { text: "Kids Show 'N Shine — CCEx",                   dates: "20250830T133000/20250830T153000", details: "Ages 9 & under. Toy cars, bikes, wagons and more." },
+                'cal-mudstamp':   { text: "Saturday Night Mud Stomp — CCEx",             dates: "20250830T210000/20250831T010000", details: "19+ Adults Only. DJ Dave. $10 Advance / $15 at the Door." },
+            };
+
+            document.querySelectorAll('[data-cal]').forEach(link => {
+                const ev = events[link.dataset.cal];
+                if (!ev) return;
+                const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+                    + '&text='     + encodeURIComponent(ev.text)
+                    + '&dates='    + encodeURIComponent(ev.dates)
+                    + '&details='  + encodeURIComponent(ev.details)
+                    + '&location=' + encodeURIComponent(loc);
+                link.href = url;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.removeAttribute('download');
+            });
+        })();
     </script>
 </body>
 </html>
