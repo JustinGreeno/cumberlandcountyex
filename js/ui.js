@@ -80,7 +80,18 @@
 
 
     /* =============================================
-       3. SCHEDULE: DAY NAVIGATION + EVENT BADGES
+       3. RANDOM RIBBON DECORATIONS
+       Picks a random ribbon for each panel on every page load.
+    ============================================= */
+    var ribbons = ['first', 'second', 'green', 'purple'];
+
+    document.querySelectorAll('.panel, .panel-wooden, .panel-rope').forEach(function (el) {
+        el.setAttribute('data-ribbon', ribbons[Math.floor(Math.random() * ribbons.length)]);
+    });
+
+
+    /* =============================================
+       4. SCHEDULE: DAY NAVIGATION + EVENT BADGES
        (only runs when .day-section elements exist)
     ============================================= */
     var daySections = document.querySelectorAll('.day-section');

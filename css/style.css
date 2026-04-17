@@ -486,7 +486,7 @@ nav a.active {
     box-shadow: 0 8px 30px var(--shadow-medium);
 }
 
-/* Ribbon decoration on panels */
+/* First-place ribbon decoration on panels */
 .panel::after {
     content: '';
     position: absolute;
@@ -494,7 +494,7 @@ nav a.active {
     right: -40px;
     width: 100px;
     height: 140px;
-    background-image: url('../images/art/1st ribbon.png');
+    background-image: url('../images/art/first ribbon.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -555,7 +555,7 @@ h1, h2 {
     box-shadow: 0 8px 30px var(--shadow-medium);
 }
 
-/* Green ribbon on wooden panels */
+/* Second-place ribbon on wooden panels */
 .panel-wooden::after {
     content: '';
     position: absolute;
@@ -563,7 +563,7 @@ h1, h2 {
     right: -40px;
     width: 100px;
     height: 140px;
-    background-image: url('../images/art/green ribbon.png');
+    background-image: url('../images/art/second ribbon.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -2190,6 +2190,12 @@ main {
 .ribbon-purple {
     background-image: url('../images/art/purple ribbon.png');
 }
+
+/* Random ribbon overrides — set by ui.js via data-ribbon attribute */
+[data-ribbon="first"]::after   { background-image: url('../images/art/first ribbon.png') !important; }
+[data-ribbon="second"]::after  { background-image: url('../images/art/second ribbon.png') !important; }
+[data-ribbon="green"]::after   { background-image: url('../images/art/green ribbon.png') !important; }
+[data-ribbon="purple"]::after  { background-image: url('../images/art/purple ribbon.png') !important; }
 
 /* Double ribbon for special sections */
 .ribbon-double {
