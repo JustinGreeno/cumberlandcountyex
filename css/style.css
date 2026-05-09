@@ -1036,6 +1036,19 @@ h1, h2 {
     100% { transform: scale(1)    translate(0, 0); }
 }
 
+/* Slightly more pronounced Ken Burns on blank-profile placeholder images so they feel alive even without a real photo */
+.member-photo img[src*="blank profile"] {
+    animation: kenBurnsBlankProfile 14s ease-in-out infinite alternate;
+    transform-origin: center 35%;
+}
+@keyframes kenBurnsBlankProfile {
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.07); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .member-photo img[src*="blank profile"] { animation: none; }
+}
+
 .member-photo-placeholder {
     width: 120px;
     height: 120px;

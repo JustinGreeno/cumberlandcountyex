@@ -160,6 +160,126 @@
                         <div class="member-expand">Click to expand</div>
                     </div>
 
+                    <!-- Christine Carter -->
+                    <div class="member-card" data-member="christine" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Christine Carter</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Bobi Guzzo -->
+                    <div class="member-card" data-member="bobi" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Bobi Guzzo</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Belle Carter -->
+                    <div class="member-card" data-member="belle" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Belle Carter</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Melissa Rushton -->
+                    <div class="member-card" data-member="melissa" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Melissa Rushton</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Brittany Ripley-Bowden -->
+                    <div class="member-card" data-member="brittany" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Brittany Ripley-Bowden</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Charmain Landry -->
+                    <div class="member-card" data-member="charmain" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Charmain Landry</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Carly Bacon -->
+                    <div class="member-card" data-member="carly" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Carly Bacon</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
+                    <!-- Britt Purdy -->
+                    <div class="member-card" data-member="britt" data-photo="images/profile images/blank profile woman.png">
+                        <div class="member-photo">
+                            <img src="images/profile images/blank profile woman.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Britt Purdy</div>
+                        </div>
+                        <div class="member-bio">
+                            <p>Bio coming soon.</p>
+                            <div class="member-contact"></div>
+                        </div>
+                        <div class="member-expand">Click to expand</div>
+                    </div>
+
                 </div>
             </section>
 
@@ -288,17 +408,51 @@
             updateParallax();
         })();
 
+        // Randomize blank profile holders so each refresh shows a different mix.
+        // Uses a Fisher-Yates shuffle so no two cards on the same page share a face (works for up to 9 placeholder cards).
+        (function() {
+            const variants = [
+                'images/profile images/blank profile woman.png',
+                'images/profile images/blank profile woman 2.png',
+                'images/profile images/blank profile woman 3.png',
+                'images/profile images/blank profile woman 4.png',
+                'images/profile images/blank profile woman 5.png',
+                'images/profile images/blank profile woman 6.png',
+                'images/profile images/blank profile woman 7.png',
+                'images/profile images/blank profile woman 8.png',
+                'images/profile images/blank profile woman 9.png'
+            ];
+            const shuffled = variants.slice();
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            let pickIdx = 0;
+            document.querySelectorAll('.member-card').forEach(card => {
+                const img = card.querySelector('.member-photo img');
+                if (!img) return;
+                const rawSrc = img.getAttribute('src') || '';
+                if (!rawSrc.includes('blank profile woman')) return;
+                const pick = shuffled[pickIdx % shuffled.length];
+                img.setAttribute('src', pick);
+                card.dataset.photo = pick;
+                pickIdx++;
+            });
+        })();
+
         // Member card expansion
         document.querySelectorAll('.member-card').forEach(card => {
             card.addEventListener('click', function() {
                 const name = this.querySelector('.member-name').textContent;
-                const title = this.querySelector('.member-title').textContent;
+                const title = this.querySelector('.member-title')?.textContent || '';
                 const bioHTML = this.querySelector('.member-bio').innerHTML;
                 const contact = this.querySelector('.member-contact').innerHTML;
                 const photo = this.dataset.photo;
 
                 document.getElementById('modalName').textContent = name;
-                document.getElementById('modalTitle').textContent = title;
+                const modalTitle = document.getElementById('modalTitle');
+                modalTitle.textContent = title;
+                modalTitle.style.display = title ? '' : 'none';
                 document.getElementById('modalBio').innerHTML = bioHTML;
                 document.getElementById('modalContact').innerHTML = contact;
 
@@ -311,6 +465,10 @@
                     modalPhoto.style.display = 'block';
                     modalPlaceholder.style.display = 'none';
                 } else {
+                    const cardPlaceholder = this.querySelector('.member-photo-placeholder');
+                    if (cardPlaceholder) {
+                        modalPlaceholder.textContent = cardPlaceholder.textContent;
+                    }
                     modalPhoto.style.display = 'none';
                     modalPlaceholder.style.display = 'block';
                 }

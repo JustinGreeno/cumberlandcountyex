@@ -697,25 +697,15 @@
                 inset 0 -1px 0 rgba(0,0,0,0.1);
         }
 
-        .sponsor-card.platinum.sponsor-placeholder {
-            border-style: dashed;
-            border-color: #b0b0b0;
-            opacity: 0.72;
-        }
-        /* Gold placeholder card */
-        .sponsor-card.gold.sponsor-placeholder {
-            border-style: dashed;
-            border-color: rgba(160,110,0,0.5);
-            opacity: 0.6;
+        /* Sponsor card placeholders render as invisible spacers — they exist only so the grid balancer can fill the last row on any screen size. They occupy grid space but show nothing. */
+        .sponsor-card.sponsor-placeholder {
+            visibility: hidden;
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
         }
         .sponsor-card.gold.sponsor-placeholder::before,
         .sponsor-card.gold.sponsor-placeholder::after { display: none; }
-        .sponsor-card.gold .sponsor-logo-placeholder {
-            width: 90px;
-            height: 36px;
-            font-size: 0.72rem;
-            margin-bottom: 0.6rem;
-        }
         /* Silver placeholder name-list row */
         .sponsor-name-list.sponsor-placeholder {
             border-style: dashed;
@@ -965,47 +955,35 @@
             <div class="sponsor-tier">
                 <div class="sponsors-grid">
                     <a class="sponsor-card platinum" href="https://www.fortequipment.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Fort Quipment.png" alt="Fort Equipment" class="sponsor-logo">
+                        <img src="images/sponsor logos/Fort Quipment.png" alt="Fort Equipment" class="sponsor-logo">
                         <div class="sponsor-name">Fort Equipment</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card platinum" href="https://www.cumberlandcounty.ns.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/cumberland.png" alt="Municipality of Cumberland" class="sponsor-logo">
+                        <img src="images/sponsor logos/cumberland.png" alt="Municipality of Cumberland" class="sponsor-logo">
                         <div class="sponsor-name">Municipality of Cumberland</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card platinum" href="https://www.easternpowersports.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Eastern Powersports.png" alt="Eastern Powersports" class="sponsor-logo">
+                        <img src="images/sponsor logos/Eastern Powersports.png" alt="Eastern Powersports" class="sponsor-logo">
                         <div class="sponsor-name">Eastern Powersports</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card platinum" href="https://remaxamherst.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/ReMAX.png" alt="RE/MAX County Line Realty" class="sponsor-logo">
+                        <img src="images/sponsor logos/ReMAX.png" alt="RE/MAX County Line Realty" class="sponsor-logo">
                         <div class="sponsor-name">RE/MAX County Line Realty, LTD</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card platinum" href="https://www.tantramarchev.com/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Tantramar.png" alt="Tantramar" class="sponsor-logo">
+                        <img src="images/sponsor logos/Tantramar.png" alt="Tantramar" class="sponsor-logo">
                         <div class="sponsor-name">Tantramar (Chevrolet, Buick, GMC)<br><small>Amherst, NS</small></div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card platinum" href="https://caseyconcrete.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Casey.png" alt="Casey Concrete" class="sponsor-logo">
+                        <img src="images/sponsor logos/Casey.png" alt="Casey Concrete" class="sponsor-logo">
                         <div class="sponsor-name">Casey Concrete Ltd.</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
-                    <div class="sponsor-card platinum sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company Here</div>
-                        <div class="sponsor-location">Sponsor Us Now</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top: 0.75rem; font-size: 0.8rem; padding: 0.4rem 0.8rem;">Learn More</a>
-                    </div>
-                    <div class="sponsor-card platinum sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company Here</div>
-                        <div class="sponsor-location">Sponsor Us Now</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top: 0.75rem; font-size: 0.8rem; padding: 0.4rem 0.8rem;">Learn More</a>
-                    </div>
                 </div>
             </div>
 
@@ -1028,69 +1006,50 @@
                 </div>
                 <div class="gold-grid">
                     <a class="sponsor-card gold" href="https://www.mosaikcu.com/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Mosaik Credit Union.png" alt="Mosaik Credit Union" class="gold-logo" style="max-height:80px;max-width:260px;">
+                        <img src="images/sponsor logos/Mosaik Credit Union.png" alt="Mosaik Credit Union" class="gold-logo" style="max-height:80px;max-width:260px;">
                         <div class="sponsor-name">Mosaik Credit Union</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card gold" href="https://www.pharmachoice.com/locations/oxford/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Pharma Choice.png" alt="Oxford PharmaChoice" class="gold-logo">
+                        <img src="images/sponsor logos/Pharma Choice.png" alt="Oxford PharmaChoice" class="gold-logo">
                         <div class="sponsor-name">Oxford PharmaChoice</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card gold" href="https://www.facebook.com/groups/146152605443004/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Oxford Fire Association.png" alt="Oxford Firefighters Association" class="gold-logo">
+                        <img src="images/sponsor logos/Oxford Fire Association.png" alt="Oxford Firefighters Association" class="gold-logo">
                         <div class="sponsor-name">Oxford Firefighters Association</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card gold" href="https://www.clarencefarmservices.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/CFS-1.png" alt="Clarence Farm Services" class="gold-logo">
+                        <img src="images/sponsor logos/CFS-1.png" alt="Clarence Farm Services" class="gold-logo">
                         <div class="sponsor-name">Clarence Farm Services</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card gold" href="https://feedsnneeds.ca/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Feeds n needs.png" alt="Feeds N Needs" class="gold-logo" style="max-height:80px;max-width:260px;">
+                        <img src="images/sponsor logos/Feeds n needs.png" alt="Feeds N Needs" class="gold-logo" style="max-height:80px;max-width:260px;">
                         <div class="sponsor-name">Trouw Nutrition &amp; Feeds N Needs</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <div class="sponsor-card gold">
-                        <img src="images/sponser logos/DTF.png" alt="DTF Enterprises" class="gold-logo" style="max-height:88px;max-width:286px;">
+                        <img src="images/sponsor logos/DTF.png" alt="DTF Enterprises" class="gold-logo" style="max-height:88px;max-width:286px;">
                         <div class="sponsor-name">DTF Enterprises Ltd.</div>
                     </div>
                     <a class="sponsor-card gold" href="https://www.facebook.com/p/BroBots-Mowing-and-Lawn-Care-100095203269571/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/bro bot.png" alt="BroBots Mowing & Lawn Care" class="gold-logo">
+                        <img src="images/sponsor logos/bro bot.png" alt="BroBots Mowing & Lawn Care" class="gold-logo">
                         <div class="sponsor-name">BroBots Mowing &amp; Lawn Care</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
                     <a class="sponsor-card gold" href="https://www.carterssportscresting.com/" target="_blank" rel="noopener">
-                        <img src="images/sponser logos/Carters.png" alt="Carters Sports Cresting" class="gold-logo">
+                        <img src="images/sponsor logos/Carters.png" alt="Carters Sports Cresting" class="gold-logo">
                         <div class="sponsor-name">Carters Sports Cresting Ltd.</div>
                         <span class="sponsor-visit-text">Click to visit website</span>
                     </a>
-                    <div class="sponsor-card gold sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
-                    </div>
-                    <div class="sponsor-card gold sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
-                    </div>
-                    <div class="sponsor-card gold sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
-                    </div>
-                    <div class="sponsor-card gold sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
-                    </div>
-                    <div class="sponsor-card gold sponsor-placeholder">
-                        <div class="sponsor-logo-placeholder">Your Logo Here</div>
-                        <div class="sponsor-name">Your Company</div>
-                        <a href="images/forms and documents/PDF 2026 Full Sponsorship Package.pdf" class="btn" target="_blank" style="margin-top:0.5rem;font-size:0.75rem;padding:0.35rem 0.7rem;">Become a Sponsor</a>
-                    </div>
+                    <!-- Invisible spacer cards: shown only when needed to balance the last row of the gold grid on each screen size. They render no visible content. -->
+                    <div class="sponsor-card gold sponsor-placeholder" aria-hidden="true"></div>
+                    <div class="sponsor-card gold sponsor-placeholder" aria-hidden="true"></div>
+                    <div class="sponsor-card gold sponsor-placeholder" aria-hidden="true"></div>
+                    <div class="sponsor-card gold sponsor-placeholder" aria-hidden="true"></div>
+                    <div class="sponsor-card gold sponsor-placeholder" aria-hidden="true"></div>
                 </div>
             </div>
 
@@ -1116,7 +1075,7 @@
                     <div class="sponsor-name-list silver">Agropur</div>
                     <div class="sponsor-name-list silver" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem;">
                         Baxter Trucking Ltd.
-                        <img src="images/sponser logos/Baxters.png" alt="Baxter Trucking" style="max-height:28px; flex-shrink:0;">
+                        <img src="images/sponsor logos/Baxters.png" alt="Baxter Trucking" style="max-height:28px; flex-shrink:0;">
                     </div>
                     <div class="sponsor-name-list silver">Timberwood Farms</div>
                     <div class="sponsor-name-list silver">Amherst Chrysler Limited</div>
@@ -1125,7 +1084,7 @@
                     <div class="sponsor-name-list silver">Back Roots Chiropractic</div>
                     <div class="sponsor-name-list silver" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem;">
                         Royal LePage Tony Mitchell
-                        <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
+                        <img src="images/sponsor logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
                     </div>
                     <div class="sponsor-name-list silver">The Stack Family</div>
                     <div class="sponsor-name-list silver">Brian &amp; Laura Jean Thompson</div>
@@ -1136,7 +1095,7 @@
                     <div class="sponsor-name-list silver">Hereford Club of Nova Scotia</div>
                     <div class="sponsor-name-list silver" style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem;">
                         Royal LePage Realty Rod Gilroy
-                        <img src="images/sponser logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
+                        <img src="images/sponsor logos/royal lepage.png" alt="Royal LePage" style="max-height:28px; flex-shrink:0;">
                     </div>
                     <div class="sponsor-name-list silver">Emma Dickie</div>
                     <div class="sponsor-name-list silver">Green Diamond Equipment</div>
