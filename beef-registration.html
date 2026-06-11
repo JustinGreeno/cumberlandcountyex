@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beef Show Registration | Cumberland County Exhibition</title>
+    <meta name="description" content="Register for the CCEx Open Beef Show 2026 — September 3–5. $15/head entry. Entries close July 31, 2026. Judge: Sarah Darraugh.">
+    <meta property="og:title" content="Beef Show Registration | Cumberland County Exhibition">
+    <meta property="og:description" content="Register for the CCEx Open Beef Show 2026 — September 3–5. $15/head entry. Entries close July 31, 2026. Judge: Sarah Darraugh.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:url" content="https://cumberlandcountyex.com/beef-registration.html">
+    <meta property="og:site_name" content="Cumberland County Exhibition">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
+    <script src="js/search.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <style>
+        /* Beef Show Hero Card */
+        .bs-hero {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .bs-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a0600 0%, #6b2000 45%, #3d1200 100%);
+        }
+        .bs-hero-cow {
+            position: absolute;
+            right: -20px;
+            bottom: 0;
+            height: 110%;
+            max-height: 340px;
+            opacity: 0.18;
+            pointer-events: none;
+            user-select: none;
+            filter: brightness(1.4);
+        }
+        .bs-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem 2.5rem;
+            color: white;
+            max-width: 75%;
+        }
+        .bs-badge {
+            display: inline-block;
+            background: var(--barn-red);
+            color: var(--cream);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+        .bs-title {
+            font-family: 'Alfa Slab One', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: white;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+        .bs-desc {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin-bottom: 1.4rem;
+            font-family: 'Lato', sans-serif;
+        }
+        .bs-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+        .bs-pill {
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.28);
+            border-radius: 20px;
+            padding: 0.38rem 0.95rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: white;
+            font-family: 'Lato', sans-serif;
+            white-space: nowrap;
+        }
+        .bs-pill.urgent {
+            background: rgba(200, 60, 0, 0.55);
+            border-color: var(--straw);
+            color: var(--straw);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .bs-doc-links {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .bs-doc-link {
+            color: var(--straw);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .bs-doc-link:hover {
+            color: white;
+        }
+
+        /* Key info card grid */
+        .bs-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .bs-info-card {
+            background: var(--cream);
+            border: 3px solid var(--rope-tan);
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+        }
+        .bs-info-card h4 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--barn-red);
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .bs-info-card p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.4;
+        }
+        .bs-info-card .lead {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 1.15rem;
+            color: var(--wood-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        /* Class list */
+        .bs-classes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .bs-class-item {
+            background: var(--cream-dark);
+            border-left: 4px solid var(--barn-red);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .bs-class-item strong {
+            color: var(--barn-red);
+            font-family: 'Roboto Slab', serif;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .bs-champion-row {
+            background: linear-gradient(135deg, var(--straw-light), var(--straw));
+            border-left-color: var(--wood-dark);
+            font-weight: 700;
+            color: var(--wood-dark);
+            text-align: center;
+        }
+
+        /* Rules list */
+        .bs-rules {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+        }
+        .bs-rules li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+        .bs-rules li::before {
+            content: "🐂";
+            position: absolute;
+            left: 0;
+            top: 0.05rem;
+            font-size: 1rem;
+        }
+        .bs-rules strong { color: var(--barn-red); }
+
+        /* JotForm embed */
+        .jotform-embed {
+            background: var(--cream);
+            border: 3px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+        .jotform-embed iframe {
+            display: block;
+            width: 100%;
+            min-height: 1100px;
+            border: none;
+            border-radius: 8px;
+        }
+        .jotform-fallback {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        .jotform-fallback a {
+            color: var(--barn-red);
+            font-weight: 600;
+        }
+
+        /* Highlight prizes */
+        .bs-prizes {
+            background: linear-gradient(135deg, #fff9ea, #f8e7b6);
+            border: 3px solid var(--straw);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .bs-prizes h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--barn-red);
+            margin-bottom: 0.75rem;
+        }
+        .bs-prizes ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .bs-prizes li {
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+        .bs-prizes li:last-child { border-bottom: none; }
+        .bs-prizes li::before { content: "🏆 "; margin-right: 0.3rem; }
+
+        /* Futurity callout */
+        .bs-futurity {
+            background: var(--wood-dark);
+            color: var(--cream);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 6px solid var(--straw);
+        }
+        .bs-futurity h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--straw);
+            margin-bottom: 0.75rem;
+        }
+        .bs-futurity p { color: var(--cream); margin-bottom: 0.5rem; }
+        .bs-futurity strong { color: var(--straw-light); }
+
+        /* Committee */
+        .bs-committee {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .bs-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
+            .bs-hero-cow { opacity: 0.1; right: -40px; }
+            .jotform-embed iframe { min-height: 1400px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/art/Try Logo 1 white glow.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2026.html">Schedule</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="activities.html">Kids Activities</a></li>
+                    <li><a href="merch.html">Merch</a></li>
+                    <li><a href="photos.html">Photos</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Info</a>
+                        <ul class="dropdown">
+                            <li><a href="exhibitors.html">Exhibitors</a></li>
+                            <li><a href="vendors.html">Vendors</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                            <li><a href="forms.html#registration">Register Online</a></li>
+                            <li><a href="4h.html">4-H</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <h1>Beef Show Registration</h1>
+            <p class="tagline">Open Beef Show 2026 — September 3–5</p>
+        </section>
+
+        <div class="container">
+            <!-- Beef Show Hero Card -->
+            <div class="bs-hero" id="beef-show-hero">
+                <div class="bs-hero-bg"></div>
+                <img src="images/art/Beef Cow.png" alt="" class="bs-hero-cow" aria-hidden="true">
+                <div class="bs-hero-content">
+                    <span class="bs-badge">CCEx 2026</span>
+                    <h2 class="bs-title">Open Beef Show</h2>
+                    <p class="bs-desc">Three days of beef cattle competition in Oxford, NS. Judged by Sarah Darraugh of Bar JM Farm — Chair of the Canadian Hereford Youth Foundation.</p>
+                    <div class="bs-pills">
+                        <span class="bs-pill">Sept 3–5, 2026</span>
+                        <span class="bs-pill">$15/head entry</span>
+                        <span class="bs-pill">Min $60/head payout</span>
+                        <span class="bs-pill">Maritime Hereford Futurity</span>
+                        <span class="bs-pill urgent">Entries Close July 31, 2026</span>
+                    </div>
+                    <div class="bs-doc-links">
+                        <a href="images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf" target="_blank" rel="noopener" class="bs-doc-link">Download Rules &amp; Regulations PDF →</a>
+                        <a href="events.html#beef-judge" class="bs-doc-link">Meet the 2026 Judge →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Info Grid -->
+            <section class="panel">
+                <h2>At a Glance</h2>
+                <div class="bs-info-grid">
+                    <div class="bs-info-card">
+                        <h4>Show Dates</h4>
+                        <p class="lead">Sept 3–5, 2026</p>
+                        <p>Thursday, Friday &amp; Saturday</p>
+                    </div>
+                    <div class="bs-info-card">
+                        <h4>Entries Close</h4>
+                        <p class="lead">July 31, 2026</p>
+                        <p>Register early — paper copies available on request.</p>
+                    </div>
+                    <div class="bs-info-card">
+                        <h4>Entry Fee</h4>
+                        <p class="lead">$15 / head</p>
+                        <p>Per animal entered in the show.</p>
+                    </div>
+                    <div class="bs-info-card">
+                        <h4>Cattle Arrival</h4>
+                        <p class="lead">Wed, Sept 2</p>
+                        <p>On grounds by <strong>Thu Sept 3, 8:00 AM SHARP</strong>.</p>
+                    </div>
+                    <div class="bs-info-card">
+                        <h4>Departure</h4>
+                        <p class="lead">Sun, Sept 6</p>
+                        <p>After Junior Beef Show concludes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Registration Form (JotForm embed) -->
+            <section id="registration" class="panel-wooden">
+                <h2>Register Online</h2>
+                <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Open Beef Show. A separate entry form is required for the Junior Beef Show.</p>
+
+                <div class="jotform-embed">
+                    <iframe
+                        id="JotFormIFrame-261487057371260"
+                        title="CCEx Beef Show 2026 Entry Form"
+                        src="https://form.jotform.com/261487057371260"
+                        allow="geolocation; microphone; camera; fullscreen; payment"
+                        scrolling="auto"
+                        loading="lazy">
+                    </iframe>
+                    <noscript>
+                        <div class="jotform-fallback">
+                            JavaScript is required to display this form.
+                            <a href="https://form.jotform.com/261487057371260" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
+                        </div>
+                    </noscript>
+                </div>
+
+                <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                    Having trouble with the embedded form? <a href="https://form.jotform.com/261487057371260" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>.
+                </p>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Classes -->
+            <section class="panel">
+                <h2>Show Classes</h2>
+                <p>Full descriptions, age requirements, and group-class rules are in the <a href="images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf" target="_blank" rel="noopener" style="color: var(--barn-red); font-weight: 600;">Rules &amp; Regulations PDF</a>.</p>
+
+                <div class="bs-classes">
+                    <div class="bs-class-item"><strong>Class 1</strong>Bull calf — born current year (min. 3 months on judging day)</div>
+                    <div class="bs-class-item"><strong>Class 2</strong>Yearling bull — born previous year</div>
+                    <div class="bs-class-item bs-champion-row">🏆 Grand &amp; Reserve Grand Champion Male</div>
+                    <div class="bs-class-item"><strong>Class 3</strong>Heifer calf — born current year (min. 3 months on show day)</div>
+                    <div class="bs-class-item"><strong>Class 4</strong>Yearling heifer — born previous year</div>
+                    <div class="bs-class-item bs-champion-row">🏆 Grand &amp; Reserve Grand Champion Female</div>
+                    <div class="bs-class-item"><strong>Class 5A</strong>Female (born Jan 1 – Dec 31, 2024) with 2026 natural <em>purebred tattooed</em> calf at foot — shown as a unit</div>
+                    <div class="bs-class-item"><strong>Class 5B</strong>Female (born Jan 1 – Dec 31, 2024) with 2026 natural calf at foot — shown as a unit</div>
+                    <div class="bs-class-item"><strong>Class 6A</strong>Female (born prior to Jan 1, 2023) with 2026 natural <em>purebred</em> calf at foot</div>
+                    <div class="bs-class-item"><strong>Class 6B</strong>Female (born prior to Jan 1, 2023) with 2026 natural calf at foot</div>
+                    <div class="bs-class-item"><strong>Class 7</strong>Commercial Steer — born current year (min. 3 months on judging day)</div>
+                    <div class="bs-class-item"><strong>Class 8</strong>Breeders Herd — 4 animals bred by one breeder, both sexes, shown in previous classes</div>
+                    <div class="bs-class-item"><strong>Class 9</strong>Get of Sire — 3 animals from the same sire, both sexes, shown in previous classes</div>
+                </div>
+            </section>
+
+            <!-- Prizes -->
+            <div class="bs-prizes">
+                <h3>Entry Fees &amp; Prizes</h3>
+                <ul>
+                    <li><strong>Entry fee:</strong> $15 per head</li>
+                    <li><strong>Minimum $60/head payout</strong></li>
+                    <li>Overall Supreme &amp; Reserve Supreme Male and Female — <strong>Custom Molly's CCEx Belt Buckle</strong></li>
+                    <li>1 piece of apparel per farm — <strong>Sponsored by Fort Equipment</strong></li>
+                    <li>Champion &amp; Reserve prizes for each breed</li>
+                </ul>
+            </div>
+
+            <!-- Maritime Hereford Futurity -->
+            <section class="bs-futurity">
+                <h3>Maritime Hereford Futurity</h3>
+                <p><strong>Thursday evening</strong> — open to anyone who owns a purebred Hereford female in the Maritimes.</p>
+                <p><strong>Age:</strong> Senior yearling (born Jan 1 – Mar 31 of the year prior to the show). Junior Yearlings may show if exhibitor wishes.</p>
+                <p>Animals must be registered to the entering exhibitor. Any exhibitor may nominate and show as many entries as they wish. <strong>No substitutions or additions</strong> after the initial entry.</p>
+                <p>Prize money comes from a donation by major sponsor <strong>MIP Show Supplies</strong> (Marvin Peters, Kensington, PEI) plus exhibitor entry fees. Special thanks to the Nova Scotia Hereford Club for their annual support.</p>
+                <p style="margin-top:0.75rem;"><em>To participate, please see <strong>Brian Trueman Thursday evening</strong> for entry requirements.</em></p>
+            </section>
+
+            <!-- Rules -->
+            <section class="panel">
+                <h2>General Rules</h2>
+                <ul class="bs-rules">
+                    <li><strong>Sportsmanship required.</strong> Exhibitors, family, and supporters must show courtesy and respect to participants, judges, volunteers, and officials. Unsportsmanlike conduct may result in removal from the show and future shows.</li>
+                    <li>All cattle must be <strong>properly entered on forms provided</strong>.</li>
+                    <li>Registered purebred animals may keep horns if consistent with the breed standard. All other cattle (including commercial) must be <strong>polled or dehorned</strong>.</li>
+                    <li>Cattle can arrive <strong>Wednesday, September 2</strong> anytime. All beef entries must be on the grounds by <strong>Thursday, September 3 at 8:00 AM SHARP</strong>, and remain on the grounds until <strong>Sunday, September 6 after the Junior Beef Show concludes</strong>.</li>
+                    <li>Breed classes run for breeds with a minimum <strong>10 head and 2 exhibitors</strong>. Under 10 head moves to an <strong>All-Other Breed class</strong>.</li>
+                    <li><strong>Registration papers may be randomly checked</strong> to confirm purebred status — please have copies available.</li>
+                    <li>To be eligible for <strong>Premier Breeder and Premier Exhibitor</strong>, a farm must exhibit at least 5 animals in one breed.</li>
+                    <li>The <strong>Junior Show</strong> runs throughout the weekend — a separate entry form is required.</li>
+                    <li>Thursday, Friday &amp; Saturday: light snacks and beverages in the barn for exhibitors (donations from <strong>Tim Hortons, Midway Farms, Fort Brook</strong> and the <strong>Maritime Simmental Association</strong>).</li>
+                    <li>A meal voucher for the <strong>Oxford Fire Department</strong> will be in your welcome package.</li>
+                    <li>A schedule of which breeds show which days will be provided before the event.</li>
+                </ul>
+            </section>
+
+            <!-- Committee -->
+            <section class="panel-rope text-center">
+                <h2>Beef Committee</h2>
+                <p>Tayler Bezubiak &middot; Christine Carter &middot; Belle Carter &middot; Michelle Casey &middot; Brittany Purdy &middot; Josh Greeno &middot; Bobi Guzzo</p>
+                <p style="margin-top: 0.75rem;">Questions? Email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a> or mail P.O. Box 516, Oxford, NS  B0M 1P0.</p>
+                <p style="margin-top: 0.5rem;"><em>Paper copies of the entry form are available on request.</em></p>
+            </section>
+
+            <!-- Become a Sponsor CTA -->
+            <div class="sponsor-cta">
+                <h3>Become a Sponsor!</h3>
+                <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+                <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="images/art/Try Logo 1 white glow.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
+                <p>&copy; 2026 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="https://JustinGreeno.dev">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <!-- JotForm iframe resize handler -->
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+    <script>
+        if (window.jotformEmbedHandler) {
+            window.jotformEmbedHandler("iframe[id='JotFormIFrame-261487057371260']", "https://form.jotform.com/");
+        }
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1150) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1150) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Parallax background
+        (function() {
+            const style = document.createElement('style');
+            style.id = 'parallax-style';
+            document.head.appendChild(style);
+
+            function updateParallax() {
+                const scrollY = window.pageYOffset;
+                const translateY = scrollY * 0.15;
+                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+            }
+
+            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            updateParallax();
+        })();
+    </script>
+</body>
+</html>
