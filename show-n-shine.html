@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Show 'N Shine Registration | Cumberland County Exhibition</title>
-    <meta name="description" content="Register for the CCEx Kids Show 'N Shine 2026 - for children 9 years and younger!">
+    <meta name="description" content="Register for the CCEx 3rd Annual Kids Show 'N Shine 2026 — a free, kids-only car show for children 9 years and younger. Pre-registration required.">
     <meta property="og:title" content="Kids Show 'N Shine Registration | Cumberland County Exhibition">
-    <meta property="og:description" content="Register for the CCEx Kids Show 'N Shine 2026 - for children 9 years and younger!">
+    <meta property="og:description" content="Register for the CCEx 3rd Annual Kids Show 'N Shine 2026 — a free, kids-only car show for children 9 years and younger!">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/posters/poster%20show%20and%20shine%202026.jpeg">
     <meta property="og:url" content="https://cumberlandcountyex.com/show-n-shine.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link href="css/style.css" rel="stylesheet">
@@ -17,151 +17,6 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
-        .registration-form {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            font-family: 'Roboto Slab', serif;
-            font-weight: 600;
-            color: var(--wood-dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .panel-wooden .form-group label {
-            color: var(--straw-light);
-        }
-        .form-group label .required {
-            color: var(--barn-red);
-            margin-left: 0.25rem;
-        }
-        .panel-wooden .form-group label .required {
-            color: #ff8a80;
-        }
-        .form-group .hint {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 0.25rem;
-            font-style: italic;
-        }
-        .panel-wooden .form-group .hint {
-            color: var(--cream);
-            opacity: 0.75;
-        }
-        .panel-wooden .radio-option span {
-            color: var(--cream);
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 3px solid var(--rope-tan);
-            border-radius: 8px;
-            font-family: 'Lato', sans-serif;
-            font-size: 1.1rem;
-            background: var(--cream);
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--barn-red);
-            box-shadow: 0 0 0 4px rgba(139, 37, 0, 0.15), inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .radio-group {
-            display: flex;
-            gap: 2rem;
-            margin-top: 0.5rem;
-        }
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-        .radio-option input[type="radio"] {
-            width: auto;
-            cursor: pointer;
-            accent-color: var(--barn-red);
-            transform: scale(1.3);
-        }
-        .radio-option span {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-        .conditional-field {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: var(--cream-dark);
-            border-radius: 8px;
-            border: 2px dashed var(--rope-tan);
-            display: none;
-        }
-        .conditional-field.visible {
-            display: block;
-        }
-        .form-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        .btn-submit {
-            background: linear-gradient(180deg, var(--barn-red-light), var(--barn-red));
-            color: var(--cream);
-            padding: 1rem 3rem;
-            border: 4px solid var(--straw);
-            border-radius: 8px;
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px var(--shadow-medium);
-        }
-        .btn-submit:hover {
-            background: linear-gradient(180deg, var(--wood-light), var(--wood-medium));
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px var(--shadow-dark);
-        }
-        .btn-clear {
-            background: transparent;
-            color: var(--text-light);
-            padding: 1rem 2rem;
-            border: 2px solid var(--rope-tan);
-            border-radius: 8px;
-            font-family: 'Roboto Slab', serif;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-clear:hover {
-            background: var(--cream-dark);
-            border-color: var(--wood-medium);
-        }
-        .form-note {
-            text-align: center;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: var(--straw-light);
-            border-radius: 8px;
-            border: 2px solid var(--straw);
-            font-size: 0.95rem;
-            color: var(--wood-dark);
-        }
         .eligibility-box {
             background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
             border: 4px solid var(--wood-medium);
@@ -280,47 +135,115 @@
             border-color: var(--hay);
             color: var(--wood-dark);
         }
-        .field-error {
-            color: #ff8a80;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin: 0.25rem 0 0.35rem;
-            display: none;
-        }
-        .field-error.visible {
+
+        /* ── Poster ── */
+        .sns-poster {
             display: block;
+            max-width: 520px;
+            width: 100%;
+            margin: 1.25rem auto 0.5rem;
+            border-radius: 12px;
+            border: 4px solid var(--wood-medium);
+            box-shadow: 0 10px 30px var(--shadow-medium);
         }
-        .form-group.has-error input,
-        .form-group.has-error textarea,
-        .form-group.has-error select {
-            border-color: #ff6060 !important;
-            box-shadow: 0 0 0 3px rgba(255,60,60,0.3), inset 0 2px 4px rgba(0,0,0,0.15) !important;
+        .sns-poster-link { display: inline-block; transition: transform 0.3s ease; }
+        .sns-poster-link:hover { transform: translateY(-4px); }
+        .sns-poster-cap {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 0.25rem;
         }
-        .form-group.has-error .radio-group {
-            outline: 3px solid #ff6060;
-            outline-offset: 4px;
-            border-radius: 6px;
+
+        /* ── Info cards ── */
+        .sns-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
         }
-        .panel-wooden .btn-clear {
-            color: var(--cream);
-            border-color: rgba(255,255,255,0.35);
+        .sns-info-card {
+            background: var(--cream);
+            border: 3px solid var(--rope-tan);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 14px var(--shadow-medium);
         }
-        .panel-wooden .btn-clear:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--cream);
-            color: white;
+        .sns-info-icon {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 0.5rem;
         }
-        .panel-wooden .form-error-banner {
-            background: linear-gradient(135deg, #c0392b, #7b1a0a);
-            border: 3px solid #f5a623;
-            color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(245,166,35,0.4), 0 6px 24px rgba(0,0,0,0.5);
+        .sns-info-card h3 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--barn-red);
+            margin-bottom: 0.5rem;
+        }
+        .sns-info-card p {
+            color: var(--text-dark);
             font-size: 1rem;
-            font-weight: 600;
-            padding: 1.2rem 1.5rem;
+            line-height: 1.5;
         }
-        .panel-wooden .form-error-banner a {
-            color: #f5d78a;
+
+        /* ── Google Form embed ── */
+        .gform-intro {
+            color: var(--cream);
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 1.5rem;
+        }
+        .gform-embed {
+            background: var(--cream);
+            border: 3px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 0.5rem;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+        .gform-embed iframe {
+            display: block;
+            width: 100%;
+            min-height: 1400px;
+            border: none;
+            border-radius: 8px;
+            background: var(--cream);
+        }
+        .gform-fallback {
+            text-align: center;
+            padding: 1.25rem 1rem 0;
+            color: var(--cream);
+            font-size: 0.95rem;
+        }
+        .gform-fallback a {
+            color: var(--straw);
+            font-weight: 600;
+        }
+
+        /* ── Sponsor ── */
+        .sns-sponsor {
+            background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
+            border: 4px solid var(--wood-medium);
+            border-radius: 12px;
+        }
+        .sns-sponsor-label {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--wood-dark);
+            margin-bottom: 0.4rem;
+        }
+        .sns-sponsor-name {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--barn-red);
+            margin: 0 0 0.5rem;
+        }
+        .sns-sponsor p { color: var(--wood-dark); }
+
+        @media (max-width: 600px) {
+            .gform-embed iframe { min-height: 1600px; }
         }
     </style>
 </head>
@@ -382,17 +305,18 @@
                 <div class="sns-hero-bg"></div>
                 <div class="sns-hero-overlay"></div>
                 <div class="sns-hero-content">
-                    <span class="sns-badge">CCEx 2026 &mdash; Kids Event</span>
+                    <span class="sns-badge">CCEx 2026 &mdash; 3rd Annual Kids Event</span>
                     <h1 class="sns-title">Kids Show 'N Shine</h1>
-                    <p class="sns-desc">Show off your favourite ride — electric cars &amp; trucks! Drive it and show it to the crowd.</p>
+                    <p class="sns-desc">A kids-only car show! Bring an electric powered vehicle your child can operate (or steer by remote) and show it off to the crowd. No vehicle? Come be a judge — every child gets a treat bag!</p>
                     <div class="sns-pills">
                         <span class="sns-pill red">Ages 9 &amp; Under</span>
-                        <span class="sns-pill">Electric Cars &amp; Trucks</span>
-                        <span class="sns-pill">No Vehicle? Judge Instead!</span>
-                        <a href="#showNShineForm" class="sns-pill straw">Register Now →</a>
+                        <span class="sns-pill">Free Event</span>
+                        <span class="sns-pill">Treat Bag for Every Child</span>
+                        <a href="#register" class="sns-pill straw">Register Now →</a>
                     </div>
                 </div>
             </div>
+
             <!-- Info Panel -->
             <section class="panel section-decorated">
                 <div class="animal-head left">
@@ -404,8 +328,46 @@
                 <div class="horseshoe">
                     <img src="images/art/horse shoe.png" alt="Decorative horseshoe">
                 </div>
-                <h2>Register Your Little Car Enthusiast!</h2>
-                <p>Welcome to the CCEx Kids Show 'N Shine! This is a fun event for children to show off their favourite ride-on electric cars or trucks.</p>
+                <h2>3rd Annual Kids Show 'N Shine</h2>
+                <p>Welcome to the Cumberland County Exhibition Kids Show 'N Shine — a kids-only car show for children 9 years and under! Bring an electric powered vehicle your child can operate (or that an adult steers by remote) and show it off to the crowd. No vehicle? No problem — come be a judge and pick your favourite ride. <strong>Every child goes home with a treat bag full of goodies!</strong></p>
+                <p style="text-align:center; margin-top:1.25rem;"><a href="#register" class="btn">Register Now</a></p>
+            </section>
+
+            <!-- Event Poster -->
+            <section class="panel text-center">
+                <h2>Event Poster</h2>
+                <p>All makes and models accepted — here are all the details for this year's event.</p>
+                <a href="images/posters/poster show and shine 2026.jpeg" target="_blank" rel="noopener" class="sns-poster-link">
+                    <img src="images/posters/poster show and shine 2026.jpeg" alt="3rd Annual Cumberland County Exhibition Kids Show 'N Shine poster — open to children 9 and under, free event, pre-registration required, sponsored by DG Sons Trucking Ltd" class="sns-poster">
+                </a>
+                <p class="sns-poster-cap">Tap the poster to view it full size.</p>
+            </section>
+
+            <!-- Event Details -->
+            <section class="panel">
+                <h2 class="text-center">Event Details</h2>
+                <div class="sns-info-grid">
+                    <div class="sns-info-card">
+                        <span class="sns-info-icon">🚗</span>
+                        <h3>Bring Your Ride</h3>
+                        <p>Open to all children 9 years and under. Bring an electric powered vehicle your child can operate, or that an adult steers via remote, for a kids-only car show!</p>
+                    </div>
+                    <div class="sns-info-card">
+                        <span class="sns-info-icon">⚖️</span>
+                        <h3>No Vehicle? Be a Judge!</h3>
+                        <p>A powered vehicle is not required to take part. Any child 9 &amp; under can come, be a judge, pick their favourite vehicle — and still receive a treat bag!</p>
+                    </div>
+                    <div class="sns-info-card">
+                        <span class="sns-info-icon">🎁</span>
+                        <h3>Treat Bags for All</h3>
+                        <p>Every child who takes part will receive a treat bag full of goodies. It's a fun day for the whole family.</p>
+                    </div>
+                    <div class="sns-info-card">
+                        <span class="sns-info-icon">✅</span>
+                        <h3>Free — But Pre-Register</h3>
+                        <p>This is a free event, but pre-registration is required. All makes and models are accepted. Register online below to save your spot!</p>
+                    </div>
+                </div>
             </section>
 
             <!-- Eligibility -->
@@ -417,144 +379,33 @@
 
             <div class="divider-rope"></div>
 
-            <!-- Registration Form -->
-            <section class="panel-wooden">
+            <!-- Registration Form (Google Form embed) -->
+            <section class="panel-wooden" id="register">
                 <h2>Registration Form</h2>
-
-                <!-- SUCCESS MESSAGE -->
-                <div class="form-success-panel" id="showNShineSuccess" style="display:none;">
-                    <span class="success-check">✓</span>
-                    <h2>Registration Submitted!</h2>
-                    <p>Thanks for registering for the Kids Show 'N Shine! We'll send a confirmation to the email you provided.</p>
-                    <a href="index.html" class="btn">Back to Home</a>
+                <p class="gform-intro">Pre-registration is required for this free event. Fill out the form below to register your child for the Kids Show 'N Shine.</p>
+                <div class="gform-embed">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLScyK6QPvSM7ByLQFelg6q5phYh_aRrauOKL0zIqY9tkQUtu2w/viewform?embedded=true"
+                        title="Kids Show 'N Shine Registration Form"
+                        loading="lazy">Loading…</iframe>
                 </div>
-
-                <!-- ERROR MESSAGE -->
-                <div class="form-error-banner" id="showNShineError" style="display:none;">
-                    <strong>Something went wrong.</strong> Please try again or email us at <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a>.
+                <div class="gform-fallback">
+                    Having trouble with the embedded form?
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScyK6QPvSM7ByLQFelg6q5phYh_aRrauOKL0zIqY9tkQUtu2w/viewform" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
                 </div>
+            </section>
 
-                <!-- To activate: replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
-                <form class="registration-form" id="showNShineForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-                    <!-- Email -->
-                    <div class="form-group" id="fg-email">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <p class="field-error" id="err-email"></p>
-                        <input type="email" id="email" name="email" required placeholder="your@email.com">
-                        <p class="hint">We'll send a confirmation to this address</p>
-                    </div>
-
-                    <!-- Confirm Email -->
-                    <div class="form-group" id="fg-confirmEmail">
-                        <label for="confirmEmail">Confirm Email Address <span class="required">*</span></label>
-                        <p class="field-error" id="err-confirmEmail"></p>
-                        <input type="email" id="confirmEmail" name="confirmEmail" required placeholder="your@email.com">
-                    </div>
-
-                    <!-- Participant Name -->
-                    <div class="form-group" id="fg-participantName">
-                        <label for="participantName">Name of Participant <span class="required">*</span></label>
-                        <p class="field-error" id="err-participantName"></p>
-                        <input type="text" id="participantName" name="participantName" required placeholder="Child's full name">
-                    </div>
-
-                    <!-- Participant Age -->
-                    <div class="form-group" id="fg-participantAge">
-                        <label for="participantAge">Age of Participant <span class="required">*</span></label>
-                        <p class="field-error" id="err-participantAge"></p>
-                        <input type="number" id="participantAge" name="participantAge" required min="1" max="9" placeholder="Age (9 or younger)">
-                    </div>
-
-                    <!-- Parent/Guardian Name -->
-                    <div class="form-group" id="fg-guardianName">
-                        <label for="guardianName">Full Name of Parent or Guardian <span class="required">*</span></label>
-                        <p class="field-error" id="err-guardianName"></p>
-                        <input type="text" id="guardianName" name="guardianName" required placeholder="Parent/Guardian's full name">
-                    </div>
-
-                    <!-- Phone Number -->
-                    <div class="form-group" id="fg-phone">
-                        <label for="phone">Phone Number <span class="required">*</span></label>
-                        <p class="field-error" id="err-phone"></p>
-                        <input type="tel" id="phone" name="phone" required placeholder="(902) 555-1234">
-                    </div>
-
-                    <!-- Bringing Vehicle? -->
-                    <div class="form-group" id="fg-bringingVehicle">
-                        <label>Are you bringing a vehicle? <span class="required">*</span></label>
-                        <p class="field-error" id="err-bringingVehicle"></p>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="bringingVehicle" value="yes" required onchange="toggleVehicleType()">
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="bringingVehicle" value="no" required onchange="toggleVehicleType()">
-                                <span>No (participating as judge)</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Vehicle Type (conditional) -->
-                    <div class="form-group conditional-field" id="vehicleTypeField">
-                        <label for="vehicleType">If you are bringing a vehicle, what type?</label>
-                        <input type="text" id="vehicleType" name="vehicleType" placeholder="e.g., Power Wheels truck, electric car, ride-on truck, etc.">
-                    </div>
-
-                    <!-- Comments -->
-                    <div class="form-group">
-                        <label for="comments">Comments</label>
-                        <textarea id="comments" name="comments" placeholder="Any additional information, special requests, or questions..."></textarea>
-                    </div>
-
-                    <input type="hidden" name="_subject" value="CCEx Kids Show 'N Shine Registration">
-
-                    <!-- Form Buttons -->
-                    <div class="form-buttons">
-                        <button type="submit" class="btn-submit" id="showNShineSubmitBtn">Submit Registration</button>
-                        <button type="reset" class="btn-clear" onclick="resetForm()">Clear Form</button>
-                    </div>
-
-                    <div class="form-note">
-                        A confirmation will be emailed to the address you provided.
-                    </div>
-                </form>
-
-                <script>
-                document.getElementById('showNShineForm').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    const btn = document.getElementById('showNShineSubmitBtn');
-                    btn.textContent = 'Submitting...';
-                    btn.disabled = true;
-                    btn.classList.add('btn-submit-loading');
-                    document.getElementById('showNShineError').style.display = 'none';
-                    try {
-                        const res = await fetch(this.action, {
-                            method: 'POST',
-                            body: new FormData(this),
-                            headers: { 'Accept': 'application/json' }
-                        });
-                        if (res.ok) {
-                            this.style.display = 'none';
-                            document.getElementById('showNShineSuccess').style.display = 'block';
-                            document.getElementById('showNShineSuccess').scrollIntoView({ behavior: 'smooth' });
-                        } else {
-                            throw new Error('Server error');
-                        }
-                    } catch(err) {
-                        document.getElementById('showNShineError').style.display = 'block';
-                        btn.textContent = 'Submit Registration';
-                        btn.disabled = false;
-                        btn.classList.remove('btn-submit-loading');
-                    }
-                });
-                </script>
+            <!-- Sponsor -->
+            <section class="panel text-center sns-sponsor">
+                <span class="sns-sponsor-label">Proudly Sponsored By</span>
+                <h2 class="sns-sponsor-name">DG Sons Trucking Ltd</h2>
+                <p>The Kids Show 'N Shine is made possible thanks to the generous support of DG Sons Trucking Ltd.</p>
             </section>
 
             <!-- Contact Info -->
             <section class="panel text-center">
                 <h2>Questions?</h2>
-                <p>For more information about the Kids Show 'N Shine, <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a> — we're happy to help!</p>
+                <p>All makes and models accepted! For more information about the Kids Show 'N Shine, email us at <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a> — we're happy to help!</p>
             </section>
 
         <!-- Become a Sponsor CTA -->
@@ -657,148 +508,6 @@
             window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
             updateParallax();
         })();
-
-        // Toggle vehicle type field
-        function toggleVehicleType() {
-            const yesRadio = document.querySelector('input[name="bringingVehicle"][value="yes"]');
-            const vehicleField = document.getElementById('vehicleTypeField');
-
-            if (yesRadio.checked) {
-                vehicleField.classList.add('visible');
-            } else {
-                vehicleField.classList.remove('visible');
-                document.getElementById('vehicleType').value = '';
-            }
-        }
-
-        // Reset form
-        function resetForm() {
-            document.getElementById('vehicleTypeField').classList.remove('visible');
-        }
-
-        // Field error helpers
-        function showFieldError(fieldId, message) {
-            const err = document.getElementById('err-' + fieldId);
-            const fg = document.getElementById('fg-' + fieldId);
-            if (err) { err.textContent = message; err.classList.add('visible'); }
-            if (fg) fg.classList.add('has-error');
-        }
-        function clearFieldError(fieldId) {
-            const err = document.getElementById('err-' + fieldId);
-            const fg = document.getElementById('fg-' + fieldId);
-            if (err) { err.textContent = ''; err.classList.remove('visible'); }
-            if (fg) fg.classList.remove('has-error');
-        }
-
-        // Clear errors live as user fixes fields
-        ['email','confirmEmail','participantName','participantAge','guardianName','phone'].forEach(function(id) {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('input', function() { clearFieldError(id); });
-        });
-        document.querySelectorAll('input[name="bringingVehicle"]').forEach(function(r) {
-            r.addEventListener('change', function() { clearFieldError('bringingVehicle'); });
-        });
-
-        // Form submission - creates mailto link
-        document.getElementById('showNShineForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Clear all errors first
-            ['email','confirmEmail','participantName','participantAge','guardianName','phone','bringingVehicle'].forEach(clearFieldError);
-
-            const email = document.getElementById('email').value.trim();
-            const confirmEmail = document.getElementById('confirmEmail').value.trim();
-            const participantName = document.getElementById('participantName').value.trim();
-            const participantAge = document.getElementById('participantAge').value;
-            const guardianName = document.getElementById('guardianName').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const vehicleRadio = document.querySelector('input[name="bringingVehicle"]:checked');
-
-            let hasErrors = false;
-
-            if (!email) {
-                showFieldError('email', 'Please enter your email address.'); hasErrors = true;
-            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                showFieldError('email', 'Please enter a valid email address.'); hasErrors = true;
-            }
-
-            if (!confirmEmail) {
-                showFieldError('confirmEmail', 'Please confirm your email address.'); hasErrors = true;
-            } else if (email && confirmEmail !== email) {
-                showFieldError('confirmEmail', 'Email addresses do not match.'); hasErrors = true;
-            }
-
-            if (!participantName) {
-                showFieldError('participantName', 'Please enter the child\'s name.'); hasErrors = true;
-            }
-
-            if (!participantAge) {
-                showFieldError('participantAge', 'Please enter the participant\'s age.'); hasErrors = true;
-            } else if (parseInt(participantAge) < 1 || parseInt(participantAge) > 9) {
-                showFieldError('participantAge', 'Participant must be 9 years or younger.'); hasErrors = true;
-            }
-
-            if (!guardianName) {
-                showFieldError('guardianName', 'Please enter the parent or guardian\'s name.'); hasErrors = true;
-            }
-
-            if (!phone) {
-                showFieldError('phone', 'Please enter a phone number.'); hasErrors = true;
-            }
-
-            if (!vehicleRadio) {
-                showFieldError('bringingVehicle', 'Please select yes or no.'); hasErrors = true;
-            }
-
-            if (hasErrors) {
-                // Scroll to first error
-                const firstError = document.querySelector('.field-error.visible');
-                if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                return;
-            }
-
-            const bringingVehicle = vehicleRadio.value;
-            const vehicleType = document.getElementById('vehicleType').value;
-            const comments = document.getElementById('comments').value;
-
-            // Build email subject
-            const subject = `SHOW AND SHINE REGISTRATION FOR ${participantName}`;
-
-            // Build email body
-            let body = `CCEx Kids Show 'N Shine 2026 Registration\n`;
-            body += `========================================\n\n`;
-            body += `PARTICIPANT INFORMATION\n`;
-            body += `-----------------------\n`;
-            body += `Name: ${participantName}\n`;
-            body += `Age: ${participantAge}\n\n`;
-            body += `PARENT/GUARDIAN INFORMATION\n`;
-            body += `---------------------------\n`;
-            body += `Name: ${guardianName}\n`;
-            body += `Email: ${email}\n`;
-            body += `Phone: ${phone}\n\n`;
-            body += `VEHICLE INFORMATION\n`;
-            body += `-------------------\n`;
-            body += `Bringing a vehicle: ${bringingVehicle === 'yes' ? 'Yes' : 'No (participating as judge)'}\n`;
-            if (bringingVehicle === 'yes' && vehicleType) {
-                body += `Vehicle type: ${vehicleType}\n`;
-            }
-            if (comments) {
-                body += `\nCOMMENTS\n`;
-                body += `--------\n`;
-                body += `${comments}\n`;
-            }
-            body += `\n========================================\n`;
-            body += `Submitted via cumberlandcountyex.com`;
-
-            // Create mailto link
-            const mailtoLink = `mailto:cumberlandexhibition@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            // Open email client
-            window.location.href = mailtoLink;
-
-            // Show confirmation
-            alert('Your email client will open with the registration details. Please send the email to complete your registration.\n\nIf your email client doesn\'t open, please email cumberlandexhibition@gmail.com directly with your registration information.');
-        });
     </script>
 </body>
 </html>

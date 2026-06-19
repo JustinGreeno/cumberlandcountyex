@@ -15,7 +15,7 @@ const searchIndex = [
     { type: 'page', icon: '🌿', title: '4-H Programs', desc: 'Youth agricultural development', url: '4h.html', keywords: '4h 4-h youth agriculture clubs pledge head heart hands health' },
 
     // Forms
-    { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under", url: 'show-n-shine.html', keywords: 'show shine kids car vehicle registration children 9 under junior entry register' },
+    { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under", url: 'show-n-shine.html#register', keywords: 'show shine kids car vehicle registration children 9 under junior entry register' },
     { type: 'form', icon: '📄', title: 'Horse Show Registration', desc: 'Register for the CCEx Light Horse Show — box stall $30, standing stall $15, deadline Aug 15', url: 'horse-registration.html', keywords: 'horse registration light horse show exhibitor stall box standing deadline register sign up entry' },
     { type: 'form', icon: '📄', title: 'Beef Show Registration', desc: 'Register for the 2026 Open Beef Show — Sept 3–5 · Entries close July 31, 2026', url: 'beef-registration.html', keywords: 'beef show registration cattle entry exhibitor open 2026 hereford angus simmental shorthorn speckle park charolais commercial steer heifer bull cow yearling calf futurity maritime junior register sign up entry form jotform' },
     { type: 'form', icon: '📄', title: 'Vendor Application', desc: 'Apply to be a vendor', url: 'vendor-application.html', keywords: 'vendor application food booth merchant apply' },
