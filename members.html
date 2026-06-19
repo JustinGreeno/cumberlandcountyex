@@ -139,7 +139,7 @@
                     </div>
 
                     <!-- Kylynne Sheffield -->
-                    <div class="member-card" data-member="kylynne" data-photo="images/profile images/Kylynne Sheffield.jpg" data-photo-position="center 5%">
+                    <div class="member-card" id="kylynne" data-member="kylynne" data-photo="images/profile images/Kylynne Sheffield.jpg" data-photo-position="center 5%">
                         <div class="member-photo">
                             <img src="images/profile images/Kylynne Sheffield.jpg" alt="Kylynne Sheffield" style="width:100%;height:100%;object-fit:cover;object-position:center 5%;">
                         </div>
@@ -150,8 +150,9 @@
                         <div class="member-bio">
                             <p>Kylynne lives in Linden, NS with her partner Josh Greeno &ndash; CCEX Chair Person. Kylynne works in Pugwash, NS at Sunset as a Residential Counsellor.</p>
                             <p>When she's not working at Sunset she's farm or pet sitting in the area, or helping out on Josh's farm. Kylynne is also on the board of directors for the Maritime Shorthorn Association as well as a leader in the Linden 4-H Club.</p>
-                            <p><strong>Committees:</strong> Sponsorship &bull; Vendor Hall &bull; Show'N Shine &bull; Youth Dairy Show</p>
-                            <div class="member-contact"></div>
+                            <p><strong>Committees:</strong> Sponsorship &bull; Vendor Hall &bull; <a href="show-n-shine.html">Show 'N Shine</a> &bull; Youth Dairy Show</p>
+                            <p>Kylynne is the organizer of the <a href="show-n-shine.html">Kids Show 'N Shine</a>.</p>
+                            <div class="member-contact"><a href="mailto:ky536048@dal.ca">ky536048@dal.ca</a></div>
                         </div>
                         <div class="member-expand">Click to expand</div>
                     </div>
@@ -481,6 +482,19 @@
             document.getElementById('memberModal').classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // Open a member's bio directly via URL hash (e.g. members.html#kylynne)
+        function openMemberFromHash() {
+            const key = decodeURIComponent(location.hash.replace('#', ''));
+            if (!key) return;
+            const card = document.querySelector('.member-card[data-member="' + key + '"]');
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.click();
+            }
+        }
+        window.addEventListener('load', openMemberFromHash);
+        window.addEventListener('hashchange', openMemberFromHash);
 
         // Close modal on overlay click
         document.getElementById('memberModal').addEventListener('click', function(e) {
