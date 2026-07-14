@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(carter\")",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"index.html\"\\)[0..3]; Write-Output \"After strip - First bytes: $\\($bytes -join ', '\\)\")",
+      "Bash(ls posters *)",
+      "Bash(ls images/posters)",
+      "WebFetch(domain:form.jotform.com)"
     ]
   }
 }
