@@ -3401,3 +3401,69 @@ html {
     background: var(--straw);
     color: var(--wood-dark);
 }
+
+/* ── Event Posters (reusable) ── */
+.poster-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+.poster-thumb {
+    display: block;
+    width: 210px;
+    max-width: 46%;
+    border: 5px solid var(--wood-dark);
+    border-radius: 10px;
+    background: var(--cream);
+    box-shadow: 0 6px 18px var(--shadow-medium), inset 0 0 0 3px var(--straw);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.poster-thumb img { width: 100%; height: auto; display: block; }
+.poster-thumb:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 34px var(--shadow-dark), inset 0 0 0 3px var(--hay);
+    border-color: var(--straw);
+}
+.poster-caption {
+    display: block;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--wood-dark);
+    background: var(--cream);
+    padding: 0.5rem 0.4rem;
+    line-height: 1.25;
+}
+
+/* Single feature poster (larger, for topic pages) */
+.poster-single {
+    display: block;
+    max-width: 460px;
+    margin: 1.5rem auto;
+    border: 6px solid var(--wood-dark);
+    border-radius: 12px;
+    background: var(--cream);
+    box-shadow: 0 10px 30px var(--shadow-dark), inset 0 0 0 4px var(--straw);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.poster-single img { width: 100%; height: auto; display: block; }
+.poster-single:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 42px var(--shadow-dark), inset 0 0 0 4px var(--hay);
+}
+.poster-view-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-light, #6b5942);
+    font-style: italic;
+    margin-top: 0.4rem;
+}
+@media (max-width: 600px) {
+    .poster-thumb { width: 44%; }
+}

@@ -16,11 +16,11 @@ const searchIndex = [
 
     // Forms
     { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under", url: 'show-n-shine.html#register', keywords: 'show shine kids car vehicle registration children 9 under junior entry register' },
-    { type: 'form', icon: '📄', title: 'Horse Show Registration', desc: 'Register for the CCEx Light Horse Show — box stall $30, standing stall $15, deadline Aug 15', url: 'horse-registration.html', keywords: 'horse registration light horse show exhibitor stall box standing deadline register sign up entry' },
+    { type: 'form', icon: '📄', title: 'Horse Show Registration', desc: 'Register for the CCEx Light Horse Show — box stall $30, standing stall $20, deadline Aug 15', url: 'horse-registration.html', keywords: 'horse registration light horse show exhibitor stall box standing deadline register sign up entry' },
     { type: 'form', icon: '📄', title: 'Beef Show Registration', desc: 'Register for the 2026 Open Beef Show — Sept 3–5 · Entries close July 31, 2026', url: 'beef-registration.html', keywords: 'beef show registration cattle entry exhibitor open 2026 hereford angus simmental shorthorn speckle park charolais commercial steer heifer bull cow yearling calf futurity maritime junior register sign up entry form jotform' },
     { type: 'form', icon: '📄', title: 'Vendor Application', desc: 'Apply to be a vendor', url: 'vendor-application.html', keywords: 'vendor application food booth merchant apply' },
     { type: 'form', icon: '📄', title: 'Beef Show Rules & Regulations 2026', desc: 'Full rules, classes 1–9, Maritime Hereford Futurity, prize info', url: 'images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf', keywords: 'beef show rules regulations classes 2026 pdf cattle hereford angus simmental shorthorn speckle park charolais commercial breeders herd get of sire futurity maritime junior brian trueman mip show supplies' },
-    { type: 'form', icon: '📄', title: 'Light Horse Show Booklet', desc: 'Rules, classes, and schedule for horses', url: 'images/forms and documents/CCex-Light Horse booklet 2025 .pdf', keywords: 'horse show booklet rules classes schedule light' },
+    { type: 'form', icon: '📄', title: 'Light Horse Show Booklet 2026', desc: 'Rules, classes, and schedule for horses', url: 'images/forms and documents/CCex-Light Horse booklet 2026 (1).pdf', keywords: 'horse show booklet rules classes schedule light 2026' },
     { type: 'form', icon: '📄', title: 'Livestock Traceability Info', desc: 'Required info for livestock entries', url: 'images/forms and documents/LIVESTOCK TRACEABILITY INFO SHEET 2025 (1).pdf', keywords: 'livestock traceability cattle sheep goat identification' },
     { type: 'form', icon: '📄', title: 'Exhibition Hall Entry Form', desc: 'General entry form for exhibition hall', url: 'images/forms and documents/Ex Hall entry form.pdf', keywords: 'exhibition hall entry form general' },
     { type: 'form', icon: '📄', title: 'Vegetables Entry 2026', desc: 'Garden department — Classes 1-2', url: 'images/forms and documents/1-2 vegetables  2026-1.pdf', keywords: 'vegetables garden produce department entry 2026 classes 1 2' },
@@ -91,9 +91,9 @@ const searchIndex = [
     { type: 'info', icon: '🕙', title: 'Vendor Hall Hours', desc: 'Sept 2–5: 10AM–9PM · Sept 6: 10AM–1PM · Setup Sept 1 or 2', url: 'vendors.html', keywords: 'vendor hall hours setup move in september open close times' },
 
     // Horse Show Registration details
-    { type: 'info', icon: '🐴', title: 'Horse Show Stall Fees', desc: 'Box stall $30 · Standing stall $15 — space is limited, register early', url: 'horse-registration.html', keywords: 'horse stall fee box standing stall cost price rent overnight' },
+    { type: 'info', icon: '🐴', title: 'Horse Show Stall Fees', desc: 'Box stall $30 · Standing stall $20 — space is limited, register early', url: 'horse-registration.html', keywords: 'horse stall fee box standing stall cost price rent overnight' },
     { type: 'info', icon: '🐴', title: 'Horse Show Registration Deadline', desc: 'Register by August 15, 2026 — space is limited', url: 'horse-registration.html', keywords: 'horse show registration deadline august 15 register early space limited entry' },
-    { type: 'form', icon: '📄', title: 'Register for Horse Show', desc: 'Light Horse Show registration — box stall $30, standing stall $15', url: 'horse-registration.html', keywords: 'register horse show entry sign up 2026 light horse stall registration form' },
+    { type: 'form', icon: '📄', title: 'Register for Horse Show', desc: 'Light Horse Show registration — box stall $30, standing stall $20', url: 'horse-registration.html', keywords: 'register horse show entry sign up 2026 light horse stall registration form' },
 
     // Show N Shine
     { type: 'event', icon: '🚗', title: "Kids Show 'N Shine", desc: "Car and vehicle show for children 9 and under — register to enter", url: 'show-n-shine.html', keywords: "show n shine kids car vehicle truck auto display children 9 under junior register entry shine" },

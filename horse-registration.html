@@ -6,7 +6,7 @@
     <title>Horse Show Exhibitor Registration | Cumberland County Exhibition</title>
     <meta name="description" content="Register for the CCEx Light Horse Show 2026 - Classes for all ages and skill levels!">
     <meta property="og:title" content="Horse Show Registration | Cumberland County Exhibition">
-    <meta property="og:description" content="Register for the CCEx Light Horse Show 2026. Box stall $30, standing stall $15. Space is limited — register early!">
+    <meta property="og:description" content="Register for the CCEx Light Horse Show 2026. Box stall $30, standing stall $20. Space is limited — register early!">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
     <meta property="og:url" content="https://cumberlandcountyex.com/horse-registration.html">
@@ -334,6 +334,33 @@
             .hs-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
             .hs-hero-horse { opacity: 0.1; right: -40px; }
         }
+
+        /* JotForm embed */
+        .jotform-embed {
+            background: var(--cream);
+            border: 3px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+        .jotform-embed iframe {
+            display: block;
+            width: 100%;
+            min-height: 1100px;
+            border: none;
+            border-radius: 8px;
+        }
+        .jotform-fallback {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        .jotform-fallback a {
+            color: var(--barn-red);
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -406,23 +433,39 @@
                     <div class="hs-pills">
                         <span class="hs-pill">Aug 31 – Sept 6, 2026</span>
                         <span class="hs-pill">Box Stall: $30</span>
-                        <span class="hs-pill">Standing Stall: $15</span>
+                        <span class="hs-pill">Standing Stall: $20</span>
                         <span class="hs-pill">Registration Deadline: Aug 15</span>
                         <span class="hs-pill urgent">Space Is Limited — Register Early!</span>
                     </div>
-                    <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" class="hs-booklet-link">Download Show Booklet * <em style="font-weight:400;">(2025 version — 2026 coming soon)</em></a>
+                    <a href="images/forms and documents/CCex-Light Horse booklet 2026 (1).pdf" class="hs-booklet-link">Download 2026 Show Booklet</a>
                 </div>
             </div>
 
-            <!-- Registration Form -->
-            <section class="panel-wooden">
-                <h2>Exhibitor Registration Form</h2>
+            <!-- Registration Form (JotForm embed) -->
+            <section id="registration" class="panel-wooden">
+                <h2>Register Online</h2>
+                <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Light Horse Show. Select your division, classes, and stabling. Standing stall $20 · Box stall $30.</p>
 
-                <!-- 2026 Registration Coming Soon -->
-                <div style="text-align: center; padding: 2rem 1rem;">
-                    <p style="font-size: 1.3rem; font-family: 'Roboto Slab', serif; color: var(--straw-light); margin-bottom: 1rem;">2026 Registration Form Coming Soon</p>
-                    <p style="font-size: 1rem; color: var(--cream);">For more information, email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--straw); font-weight: 600;">cumberlandexhibition@gmail.com</a></p>
+                <div class="jotform-embed">
+                    <iframe
+                        id="JotFormIFrame-252124378353052"
+                        title="CCEx Light Horse Registration Form 2026"
+                        src="https://form.jotform.com/252124378353052"
+                        allow="geolocation; microphone; camera; fullscreen; payment"
+                        scrolling="auto"
+                        loading="lazy">
+                    </iframe>
+                    <noscript>
+                        <div class="jotform-fallback">
+                            JavaScript is required to display this form.
+                            <a href="https://form.jotform.com/252124378353052" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
+                        </div>
+                    </noscript>
                 </div>
+
+                <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                    Having trouble with the embedded form? <a href="https://form.jotform.com/252124378353052" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>.
+                </p>
 
                 <!-- FORM SAVED — keep in case we want to use it or swap for another form later -->
                 <template id="horse-registration-form-saved">
@@ -732,7 +775,7 @@
             <!-- Contact Info -->
             <section class="panel text-center">
                 <h2>Questions?</h2>
-                <p>For more information about the Light Horse Show, download the <a href="images/forms and documents/CCex-Light Horse booklet 2025 .pdf" style="color: var(--barn-red); font-weight: 600;">Show Booklet *</a> <em>(2025 version - 2026 coming soon)</em> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
+                <p>For more information about the Light Horse Show, download the <a href="images/forms and documents/CCex-Light Horse booklet 2026 (1).pdf" style="color: var(--barn-red); font-weight: 600;">2026 Show Booklet</a> or <a href="contact.html" style="color: var(--barn-red); font-weight: 600;">contact us</a>.</p>
             </section>
 
         <!-- Become a Sponsor CTA -->
@@ -790,6 +833,14 @@
             <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
         </div>
     </footer>
+
+    <!-- JotForm iframe resize handler -->
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+    <script>
+        if (window.jotformEmbedHandler) {
+            window.jotformEmbedHandler("iframe[id='JotFormIFrame-252124378353052']", "https://form.jotform.com/");
+        }
+    </script>
 
     <script>
         // Mobile menu toggle
