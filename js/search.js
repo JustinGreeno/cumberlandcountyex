@@ -186,6 +186,28 @@ document.addEventListener('DOMContentLoaded', function() {
             return [...terms].some(term => searchText.includes(term));
         });
 
+        // Rank by relevance: whole-phrase and word matches in the title count most,
+        // then the description, then keywords. Keeps "junior beef show" on the Junior
+        // Beef page instead of the first item that merely mentions "beef".
+        const qLower = query.toLowerCase().trim();
+        const queryWords = qLower.split(/\s+/).filter(Boolean);
+        function scoreItem(item) {
+            const title = item.title.toLowerCase();
+            const desc = item.desc.toLowerCase();
+            const keywords = (item.keywords || '').toLowerCase();
+            let score = 0;
+            if (title === qLower) score += 200;
+            if (title.includes(qLower)) score += 100;
+            if (`${title} ${desc} ${keywords}`.includes(qLower)) score += 15;
+            for (const w of queryWords) {
+                if (title.includes(w)) score += 10;
+                else if (desc.includes(w)) score += 3;
+                else if (keywords.includes(w)) score += 1;
+            }
+            return score;
+        }
+        results.sort((a, b) => scoreItem(b) - scoreItem(a));
+
         if (results.length === 0) {
             searchDropdown.innerHTML = `
                 <div class="search-no-results">
