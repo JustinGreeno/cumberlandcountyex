@@ -104,6 +104,74 @@
             border-color: var(--straw);
             color: var(--straw);
         }
+        /* ── Exhibitor Entry Forms CTA ── */
+        .entry-forms-cta {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 2rem 0;
+            padding: 2.75rem 2.5rem;
+            background:
+                linear-gradient(135deg, rgba(90,26,10,0.94), rgba(58,20,10,0.94)),
+                repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 26px);
+            border: 3px solid var(--straw);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        .entry-forms-cta .efc-text { max-width: 620px; }
+        .entry-forms-cta .efc-badge {
+            display: inline-block;
+            background: var(--straw);
+            color: var(--wood-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+        .entry-forms-cta h2 {
+            font-family: 'Alfa Slab One', serif;
+            color: #fff;
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            line-height: 1.1;
+            margin: 0 0 0.6rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .entry-forms-cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+        .entry-forms-cta .efc-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .entry-forms-cta .efc-tag {
+            background: rgba(255,255,255,0.14);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 0.3rem 0.85rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .entry-forms-cta .btn {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            padding: 0.9rem 1.9rem;
+        }
+        @media (max-width: 700px) {
+            .entry-forms-cta { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+        }
         /* ── Mud Stomp Hero ── */
         .mud-stomp-hero {
             position: relative;
@@ -340,6 +408,23 @@
                     <h3>Carnival Games</h3>
                     <p>Carnival games and family fun for visitors of all ages!</p>
                 </div>
+            </div>
+
+            <!-- Exhibitor Entry Forms CTA -->
+            <div class="entry-forms-cta">
+                <div class="efc-text">
+                    <span class="efc-badge">Exhibitors &amp; Competitors</span>
+                    <h2>Exhibitor's Entry Forms</h2>
+                    <p>Showing an animal, entering the Exhibition Hall, or signing up for a competition? Every entry form and registration — livestock, horse, beef, junior beef, exhibition hall and more — is in one place. Find yours and we'll take you right where you need to go.</p>
+                    <div class="efc-tags">
+                        <span class="efc-tag">Beef &amp; Junior Beef</span>
+                        <span class="efc-tag">Light Horse Show</span>
+                        <span class="efc-tag">Exhibition Hall</span>
+                        <span class="efc-tag">Show 'N Shine</span>
+                        <span class="efc-tag">Vendors</span>
+                    </div>
+                </div>
+                <a href="forms.html" class="btn">View All Entry Forms →</a>
             </div>
 
             <!-- Fun Zone Hero -->

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beef Show Registration | Cumberland County Exhibition</title>
-    <meta name="description" content="Register for the CCEx Open Beef Show 2026 — September 3–5. $15/head entry. Entries close July 31, 2026. Judge: Sarah Darraugh.">
-    <meta property="og:title" content="Beef Show Registration | Cumberland County Exhibition">
-    <meta property="og:description" content="Register for the CCEx Open Beef Show 2026 — September 3–5. $15/head entry. Entries close July 31, 2026. Judge: Sarah Darraugh.">
+    <title>Junior Beef Show Registration | Cumberland County Exhibition</title>
+    <meta name="description" content="Register for the CCEx Junior Beef Show 2026 — Sept 3–6. $25 registration, t-shirt included. Entries due August 10, 2026 (no late entries). Showmanship, conformation, sales talk, cow costume parade & more.">
+    <meta property="og:title" content="Junior Beef Show Registration | Cumberland County Exhibition">
+    <meta property="og:description" content="Register for the CCEx Junior Beef Show 2026 — Sept 3–6. $25 registration, t-shirt included. Entries due August 10, 2026. Showmanship, conformation, sales talk, cow costume parade & more.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
-    <meta property="og:url" content="https://cumberlandcountyex.com/beef-registration.html">
+    <meta property="og:url" content="https://cumberlandcountyex.com/junior-beef-registration.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
@@ -17,7 +17,7 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
-        /* Beef Show Hero Card */
+        /* Junior Beef Show Hero Card */
         .bs-hero {
             position: relative;
             border-radius: 16px;
@@ -31,7 +31,7 @@
         .bs-hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #1a0600 0%, #6b2000 45%, #3d1200 100%);
+            background: linear-gradient(135deg, #123006 0%, #2f6b1a 45%, #163d0c 100%);
         }
         .bs-hero-cow {
             position: absolute;
@@ -39,22 +39,22 @@
             bottom: 0;
             height: 110%;
             max-height: 340px;
-            opacity: 0.18;
+            opacity: 0.20;
             pointer-events: none;
             user-select: none;
-            filter: brightness(1.4);
+            filter: brightness(1.5);
         }
         .bs-hero-content {
             position: relative;
             z-index: 2;
             padding: 2.5rem 2.5rem;
             color: white;
-            max-width: 75%;
+            max-width: 78%;
         }
         .bs-badge {
             display: inline-block;
-            background: var(--barn-red);
-            color: var(--cream);
+            background: var(--straw);
+            color: var(--wood-dark);
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.12em;
@@ -72,7 +72,7 @@
             line-height: 1.1;
         }
         .bs-desc {
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,0.88);
             font-size: 1rem;
             margin-bottom: 1.4rem;
             font-family: 'Lato', sans-serif;
@@ -94,7 +94,7 @@
             white-space: nowrap;
         }
         .bs-pill.urgent {
-            background: rgba(200, 60, 0, 0.55);
+            background: rgba(160, 30, 0, 0.6);
             border-color: var(--straw);
             color: var(--straw);
             font-weight: 700;
@@ -152,6 +152,51 @@
             margin-bottom: 0.2rem;
         }
 
+        /* Competition list */
+        .jb-comps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .jb-comp {
+            background: var(--cream);
+            border: 3px solid var(--rope-tan);
+            border-top: 5px solid var(--barn-red);
+            border-radius: 10px;
+            padding: 1rem 1.15rem;
+        }
+        .jb-comp h4 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--barn-red);
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+        .jb-comp .when {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--wood-dark);
+            background: var(--straw-light);
+            border-radius: 12px;
+            padding: 0.15rem 0.7rem;
+            margin-bottom: 0.55rem;
+        }
+        .jb-comp p {
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.5;
+        }
+        .jb-comp .scoring {
+            margin-top: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--wood-dark);
+            font-style: italic;
+        }
+
         /* Class list */
         .bs-classes {
             display: grid;
@@ -173,35 +218,6 @@
             display: block;
             margin-bottom: 0.2rem;
         }
-        .bs-champion-row {
-            background: linear-gradient(135deg, var(--straw-light), var(--straw));
-            border-left-color: var(--wood-dark);
-            font-weight: 700;
-            color: var(--wood-dark);
-            text-align: center;
-        }
-
-        /* Rules list */
-        .bs-rules {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 0;
-        }
-        .bs-rules li {
-            position: relative;
-            padding-left: 1.75rem;
-            margin-bottom: 0.85rem;
-            line-height: 1.5;
-            color: var(--text-dark);
-        }
-        .bs-rules li::before {
-            content: "🐂";
-            position: absolute;
-            left: 0;
-            top: 0.05rem;
-            font-size: 1rem;
-        }
-        .bs-rules strong { color: var(--barn-red); }
 
         /* JotForm embed */
         .jotform-embed {
@@ -230,7 +246,7 @@
             font-weight: 600;
         }
 
-        /* Highlight prizes */
+        /* Aggregate / prizes highlight */
         .bs-prizes {
             background: linear-gradient(135deg, #fff9ea, #f8e7b6);
             border: 3px solid var(--straw);
@@ -255,35 +271,28 @@
         .bs-prizes li:last-child { border-bottom: none; }
         .bs-prizes li::before { content: "🏆 "; margin-right: 0.3rem; }
 
-        /* Futurity callout */
-        .bs-futurity {
-            background: var(--wood-dark);
+        /* Deadline callout */
+        .jb-deadline {
+            background: var(--barn-red);
             color: var(--cream);
             border-radius: 10px;
             padding: 1.25rem 1.5rem;
             margin: 1.5rem 0;
             border-left: 6px solid var(--straw);
         }
-        .bs-futurity h3 {
+        .jb-deadline h3 {
             font-family: 'Alfa Slab One', serif;
             color: var(--straw);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
-        .bs-futurity p { color: var(--cream); margin-bottom: 0.5rem; }
-        .bs-futurity strong { color: var(--straw-light); }
-
-        /* Committee */
-        .bs-committee {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            font-style: italic;
-            text-align: center;
-            margin-top: 0.5rem;
-        }
+        .jb-deadline p { color: var(--cream); margin-bottom: 0.5rem; }
+        .jb-deadline p:last-child { margin-bottom: 0; }
+        .jb-deadline strong { color: var(--straw-light); }
+        .jb-deadline a { color: var(--straw); font-weight: 700; }
 
         @media (max-width: 600px) {
             .bs-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
-            .bs-hero-cow { opacity: 0.1; right: -40px; }
+            .bs-hero-cow { opacity: 0.12; right: -40px; }
             .jotform-embed iframe { min-height: 1400px; }
         }
     </style>
@@ -342,29 +351,29 @@
 
     <main>
         <section class="hero">
-            <h1>Beef Show Registration</h1>
-            <p class="tagline">Open Beef Show 2026 — September 3–5</p>
+            <h1>Junior Beef Show Registration</h1>
+            <p class="tagline">Junior Beef Show 2026 — September 3–6</p>
         </section>
 
         <div class="container">
-            <!-- Beef Show Hero Card -->
-            <div class="bs-hero" id="beef-show-hero">
+            <!-- Junior Beef Show Hero Card -->
+            <div class="bs-hero" id="junior-beef-hero">
                 <div class="bs-hero-bg"></div>
                 <img src="images/art/Beef Cow.png" alt="" class="bs-hero-cow" aria-hidden="true">
                 <div class="bs-hero-content">
-                    <span class="bs-badge">CCEx 2026</span>
-                    <h2 class="bs-title">Open Beef Show</h2>
-                    <p class="bs-desc">Three days of beef cattle competition in Oxford, NS. Judged by Sarah Darraugh of Bar JM Farm — Chair of the Canadian Hereford Youth Foundation.</p>
+                    <span class="bs-badge">CCEx 2026 · Youth</span>
+                    <h2 class="bs-title">Junior Beef Show</h2>
+                    <p class="bs-desc">A weekend built for young cattle exhibitors in Oxford, NS. Showmanship, conformation, sales talk, a farm advertisement contest, our first-ever Cow Costume Parade and more — all working toward the Champion &amp; Reserve Champion Aggregate.</p>
                     <div class="bs-pills">
-                        <span class="bs-pill">Sept 3–5, 2026</span>
-                        <span class="bs-pill">$15/head entry</span>
-                        <span class="bs-pill">Min $60/head payout</span>
-                        <span class="bs-pill">Maritime Hereford Futurity</span>
-                        <span class="bs-pill urgent">Entries Close July 31, 2026</span>
+                        <span class="bs-pill">Sept 3–6, 2026</span>
+                        <span class="bs-pill">$25 registration</span>
+                        <span class="bs-pill">T-shirt included</span>
+                        <span class="bs-pill">All youth welcome</span>
+                        <span class="bs-pill urgent">Entries Due Aug 10, 2026</span>
                     </div>
                     <div class="bs-doc-links">
-                        <a href="images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf" target="_blank" rel="noopener" class="bs-doc-link">Download Rules &amp; Regulations PDF →</a>
-                        <a href="events.html#beef-judge" class="bs-doc-link">Meet the 2026 Judge →</a>
+                        <a href="images/forms and documents/CCEX JUNIOR SHOW 2026.pdf" target="_blank" rel="noopener" class="bs-doc-link">Download Full Details &amp; Paper Entry Form →</a>
+                        <a href="beef-registration.html" class="bs-doc-link">See the Open Beef Show →</a>
                     </div>
                 </div>
             </div>
@@ -374,31 +383,38 @@
                 <h2>At a Glance</h2>
                 <div class="bs-info-grid">
                     <div class="bs-info-card">
-                        <h4>Show Dates</h4>
-                        <p class="lead">Sept 3–5, 2026</p>
-                        <p>Thursday, Friday &amp; Saturday</p>
+                        <h4>Registration Fee</h4>
+                        <p class="lead">$25</p>
+                        <p>Cash, cheque, or e-transfer payable to <strong>Cumberland Junior Beef Show</strong>.</p>
                     </div>
                     <div class="bs-info-card">
-                        <h4>Entries Close</h4>
-                        <p class="lead">July 31, 2026</p>
-                        <p>Register early — paper copies available on request.</p>
+                        <h4>Entries Due</h4>
+                        <p class="lead">August 10, 2026</p>
+                        <p><strong>No late entries</strong> — deadline ensures t-shirts arrive in time.</p>
                     </div>
                     <div class="bs-info-card">
-                        <h4>Entry Fee</h4>
-                        <p class="lead">$15 / head</p>
-                        <p>Per animal entered in the show.</p>
+                        <h4>Show Days</h4>
+                        <p class="lead">Sept 3–6, 2026</p>
+                        <p>Competitions run Thursday through Sunday.</p>
                     </div>
                     <div class="bs-info-card">
-                        <h4>Cattle Arrival</h4>
-                        <p class="lead">Wed, Sept 2</p>
-                        <p>On grounds by <strong>Thu Sept 3, 8:00 AM SHARP</strong>.</p>
-                    </div>
-                    <div class="bs-info-card">
-                        <h4>Departure</h4>
+                        <h4>Showmanship</h4>
                         <p class="lead">Sun, Sept 6</p>
-                        <p>After Junior Beef Show concludes.</p>
+                        <p>Starts 8:00 AM — senior, intermediate, junior &amp; pee wee.</p>
+                    </div>
+                    <div class="bs-info-card">
+                        <h4>One Animal</h4>
+                        <p class="lead">Per Junior</p>
+                        <p>Each junior exhibits a single animal in the show.</p>
                     </div>
                 </div>
+            </section>
+
+            <!-- Deadline callout -->
+            <section class="jb-deadline">
+                <h3>Don't Miss the Deadline</h3>
+                <p>Completed forms <strong>and</strong> the $25 registration fee are due <strong>no later than August 10, 2026</strong> so your show t-shirt arrives before the fair. No late entries will be accepted.</p>
+                <p>Mail to: <strong>Cumberland County Exhibition, P.O. Box 516, Oxford, NS&nbsp; B0M 1P0</strong> &nbsp;·&nbsp; Questions? <a href="mailto:cumberlandexhibition@gmail.com">cumberlandexhibition@gmail.com</a></p>
             </section>
 
             <div class="divider-rope"></div>
@@ -406,13 +422,13 @@
             <!-- Registration Form (JotForm embed) -->
             <section id="registration" class="panel-wooden">
                 <h2>Register Online</h2>
-                <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Open Beef Show. A separate entry form is required for the <a href="junior-beef-registration.html" style="color: var(--straw); font-weight: 600;">Junior Beef Show</a>.</p>
+                <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Junior Beef Show. Remember to send your <strong>$25 registration fee</strong> by August 10 to secure your spot and your t-shirt.</p>
 
                 <div class="jotform-embed">
                     <iframe
-                        id="JotFormIFrame-261487057371260"
-                        title="CCEx Beef Show 2026 Entry Form"
-                        src="https://form.jotform.com/261487057371260"
+                        id="JotFormIFrame-262006948599269"
+                        title="CCEx Junior Beef Show 2026 Entry Form"
+                        src="https://form.jotform.com/262006948599269"
                         allow="geolocation; microphone; camera; fullscreen; payment"
                         scrolling="auto"
                         loading="lazy">
@@ -420,86 +436,104 @@
                     <noscript>
                         <div class="jotform-fallback">
                             JavaScript is required to display this form.
-                            <a href="https://form.jotform.com/261487057371260" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
+                            <a href="https://form.jotform.com/262006948599269" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
                         </div>
                     </noscript>
                 </div>
 
                 <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    Having trouble with the embedded form? <a href="https://form.jotform.com/261487057371260" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>.
+                    Having trouble with the embedded form? <a href="https://form.jotform.com/262006948599269" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>, or download the <a href="images/forms and documents/CCEX JUNIOR SHOW 2026.pdf" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">paper entry form</a>.
                 </p>
             </section>
 
             <div class="divider-rope"></div>
 
-            <!-- Classes -->
+            <!-- Competitions -->
             <section class="panel">
-                <h2>Show Classes</h2>
-                <p>Full descriptions, age requirements, and group-class rules are in the <a href="images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf" target="_blank" rel="noopener" style="color: var(--barn-red); font-weight: 600;">Rules &amp; Regulations PDF</a>.</p>
+                <h2>Competitions</h2>
+                <p>Juniors take part across the weekend. To be eligible for the <strong>Champion &amp; Reserve Champion Aggregate</strong> awards, members must participate in <strong>all</strong> competitions (the Cow Costume Parade is optional). Full details are in the <a href="images/forms and documents/CCEX JUNIOR SHOW 2026.pdf" target="_blank" rel="noopener" style="color: var(--barn-red); font-weight: 600;">show package</a>.</p>
 
-                <div class="bs-classes">
-                    <div class="bs-class-item"><strong>Class 1</strong>Bull calf — born current year (min. 3 months on judging day)</div>
-                    <div class="bs-class-item"><strong>Class 2</strong>Yearling bull — born previous year</div>
-                    <div class="bs-class-item bs-champion-row">🏆 Grand &amp; Reserve Grand Champion Male</div>
-                    <div class="bs-class-item"><strong>Class 3</strong>Heifer calf — born current year (min. 3 months on show day)</div>
-                    <div class="bs-class-item"><strong>Class 4</strong>Yearling heifer — born previous year</div>
-                    <div class="bs-class-item bs-champion-row">🏆 Grand &amp; Reserve Grand Champion Female</div>
-                    <div class="bs-class-item"><strong>Class 5A</strong>Female (born Jan 1 – Dec 31, 2024) with 2026 natural <em>purebred tattooed</em> calf at foot — shown as a unit</div>
-                    <div class="bs-class-item"><strong>Class 5B</strong>Female (born Jan 1 – Dec 31, 2024) with 2026 natural calf at foot — shown as a unit</div>
-                    <div class="bs-class-item"><strong>Class 6A</strong>Female (born prior to Jan 1, 2023) with 2026 natural <em>purebred</em> calf at foot</div>
-                    <div class="bs-class-item"><strong>Class 6B</strong>Female (born prior to Jan 1, 2023) with 2026 natural calf at foot</div>
-                    <div class="bs-class-item"><strong>Class 7</strong>Prospect Steer — born current year (min. 3 months on judging day)</div>
-                    <div class="bs-class-item"><strong>Class 8</strong>Breeders Herd — 4 animals bred by one breeder, both sexes, shown in previous classes</div>
-                    <div class="bs-class-item"><strong>Class 9</strong>Get of Sire — 3 animals from the same sire, both sexes, shown in previous classes</div>
+                <div class="jb-comps">
+                    <div class="jb-comp">
+                        <h4>🐄 Cow Costume Parade</h4>
+                        <span class="when">Sat, Sept 5 · 11:30 AM</span>
+                        <p>Our first-ever cow parade — open to all ages. This class is optional and just for fun!</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>📷 Photography</h4>
+                        <span class="when">Due Thu, Sept 3 · Noon</span>
+                        <p>One photo per member, taken by the junior, representing the farming and show industry in the Maritimes.</p>
+                        <p class="scoring">Judged by People's Choice.</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>📝 Farm Advertisement</h4>
+                        <span class="when">Due Thu, Sept 3 · Noon</span>
+                        <p>Design an ad for your farm (real or imaginary) on 8½×11 paper — include farm name, owner, address, phone and email. Hand-drawn or computer-generated.</p>
+                        <p class="scoring">Composition 30% · Originality 30% · Creativity 20% · Professional Appearance 20%.</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>🎤 Sales Talk</h4>
+                        <span class="when">Thu Evening · Barn</span>
+                        <p>Market your animal to the judge (announced day-of — it's up to you to find them). Use photos, registration papers, EPDs, etc. No time limit. Dress in Western attire.</p>
+                        <p class="scoring">Knowledge 50% · Relaying information 25% · Poise &amp; delivery 25%.</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>⚖️ Judging</h4>
+                        <span class="when">During the Weekend</span>
+                        <p>Test your eye for cattle in the junior judging competition — one of the events counting toward Aggregate.</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>✂️ Fitting</h4>
+                        <span class="when">During Showmanship</span>
+                        <p>Members are judged on the presentation of their animal. Juniors must prepare their own animal for the show ring.</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>🏅 Showmanship</h4>
+                        <span class="when">Sun, Sept 6 · 8:00 AM</span>
+                        <p>Classes run senior, intermediate, junior, then pee wee. <strong>Members must wear the supplied t-shirt.</strong></p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>🐮 Conformation</h4>
+                        <span class="when">Sun, Sept 6 · After Showmanship</span>
+                        <p>Juniors show one animal. Order: bull calves, prospect steers, heifer calves, yearlings.</p>
+                    </div>
+                    <div class="jb-comp">
+                        <h4>💰 Junior Auction</h4>
+                        <span class="when">Fri, Sept 4 · Before Horse Pulls</span>
+                        <p>Every participating member brings an item to auction off, raising money for next year's show. You must be present to auction your own item to qualify for Aggregate.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- Prizes -->
+            <!-- Conformation Classes -->
+            <section class="panel">
+                <h2>Conformation Classes</h2>
+                <p><em>Juniors may show one animal only.</em></p>
+                <div class="bs-classes">
+                    <div class="bs-class-item"><strong>Class 1</strong>Bull calf — born in the current year (min. 3 months of age on judging day)</div>
+                    <div class="bs-class-item"><strong>Class 2</strong>Heifer calf — born in the current year (min. 3 months of age on judging day)</div>
+                    <div class="bs-class-item"><strong>Class 3</strong>Yearling heifer — born in the previous year</div>
+                    <div class="bs-class-item"><strong>Class 4</strong>Inclusion Class — for individuals of all abilities who need as much or as little support in the show ring</div>
+                </div>
+            </section>
+
+            <!-- Aggregate / Awards -->
             <div class="bs-prizes">
-                <h3>Entry Fees &amp; Prizes</h3>
+                <h3>Champion &amp; Reserve Champion Aggregate</h3>
                 <ul>
-                    <li><strong>Entry fee:</strong> $15 per head</li>
-                    <li><strong>Minimum $60/head payout</strong></li>
-                    <li>Overall Supreme &amp; Reserve Supreme Male and Female — <strong>Custom Molly's CCEx Belt Buckle</strong></li>
-                    <li>1 piece of apparel per farm — <strong>Sponsored by Fort Equipment</strong></li>
-                    <li>Champion &amp; Reserve prizes for each breed</li>
+                    <li>Members must take part in <strong>all competitions</strong> to be eligible for the Aggregate awards</li>
+                    <li>You must be present to auction your own item at the Junior Auction to qualify</li>
+                    <li>The Cow Costume Parade is optional and does not affect eligibility</li>
+                    <li>Every junior receives a <strong>show t-shirt</strong> (required for showmanship) — order your size on the entry form</li>
                 </ul>
             </div>
 
-            <!-- Maritime Hereford Futurity -->
-            <section class="bs-futurity">
-                <h3>Maritime Hereford Futurity</h3>
-                <p><strong>Thursday evening</strong> — open to anyone who owns a purebred Hereford female in the Maritimes.</p>
-                <p><strong>Age:</strong> Senior yearling (born Jan 1 – Mar 31 of the year prior to the show). Junior Yearlings may show if exhibitor wishes.</p>
-                <p>Animals must be registered to the entering exhibitor. Any exhibitor may nominate and show as many entries as they wish. <strong>No substitutions or additions</strong> after the initial entry.</p>
-                <p>Prize money comes from a donation by major sponsor <strong>MIP Show Supplies</strong> (Marvin Peters, Kensington, PEI) plus exhibitor entry fees. Special thanks to the Nova Scotia Hereford Club for their annual support.</p>
-                <p style="margin-top:0.75rem;"><em>To participate, please see <strong>Brian Trueman Thursday evening</strong> for entry requirements.</em></p>
-            </section>
-
-            <!-- Rules -->
-            <section class="panel">
-                <h2>General Rules</h2>
-                <ul class="bs-rules">
-                    <li><strong>Sportsmanship required.</strong> Exhibitors, family, and supporters must show courtesy and respect to participants, judges, volunteers, and officials. Unsportsmanlike conduct may result in removal from the show and future shows.</li>
-                    <li>All cattle must be <strong>properly entered on forms provided</strong>.</li>
-                    <li>Registered purebred animals may keep horns if consistent with the breed standard. All other cattle (including commercial) must be <strong>polled or dehorned</strong>.</li>
-                    <li>Cattle can arrive <strong>Wednesday, September 2</strong> anytime. All beef entries must be on the grounds by <strong>Thursday, September 3 at 8:00 AM SHARP</strong>, and remain on the grounds until <strong>Sunday, September 6 after the Junior Beef Show concludes</strong>.</li>
-                    <li>Breed classes run for breeds with a minimum <strong>10 head and 2 exhibitors</strong>. Under 10 head moves to an <strong>All-Other Breed class</strong>.</li>
-                    <li><strong>Registration papers may be randomly checked</strong> to confirm purebred status — please have copies available.</li>
-                    <li>To be eligible for <strong>Premier Breeder and Premier Exhibitor</strong>, a farm must exhibit at least 5 animals in one breed.</li>
-                    <li>The <strong>Junior Show</strong> runs throughout the weekend — a <a href="junior-beef-registration.html" style="color: var(--barn-red); font-weight: 600;">separate entry form</a> is required.</li>
-                    <li>Thursday, Friday &amp; Saturday: light snacks and beverages in the barn for exhibitors (donations from <strong>Tim Hortons, Midway Farms, Fort Brook</strong> and the <strong>Maritime Simmental Association</strong>).</li>
-                    <li>A meal voucher for the <strong>Oxford Fire Department</strong> will be in your welcome package.</li>
-                    <li>A schedule of which breeds show which days will be provided before the event.</li>
-                </ul>
-            </section>
-
-            <!-- Committee -->
+            <!-- How to Enter -->
             <section class="panel-rope text-center">
-                <h2>Beef Committee</h2>
-                <p>Tayler Bezubiak &middot; Christine Carter &middot; Belle Carter &middot; Michelle Casey &middot; Brittany Purdy &middot; Josh Greeno &middot; Bobi Guzzo</p>
-                <p style="margin-top: 0.75rem;">Questions? Email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a> or mail P.O. Box 516, Oxford, NS  B0M 1P0.</p>
-                <p style="margin-top: 0.5rem;"><em>Paper copies of the entry form are available on request.</em></p>
+                <h2>How to Enter</h2>
+                <p>Fill out the online form above (or the <a href="images/forms and documents/CCEX JUNIOR SHOW 2026.pdf" target="_blank" rel="noopener" style="color: var(--barn-red); font-weight: 600;">printable entry form</a>), then send your <strong>$25 registration fee</strong> — cash, cheque, or e-transfer payable to <strong>Cumberland Junior Beef Show</strong>.</p>
+                <p style="margin-top: 0.75rem;">Mail entries &amp; fees to <strong>P.O. Box 516, Oxford, NS&nbsp; B0M 1P0</strong>, or email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a>.</p>
+                <p style="margin-top: 0.5rem;"><strong>Deadline: August 10, 2026 — no late entries.</strong></p>
             </section>
 
             <!-- Become a Sponsor CTA -->
@@ -562,7 +596,7 @@
     <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
     <script>
         if (window.jotformEmbedHandler) {
-            window.jotformEmbedHandler("iframe[id='JotFormIFrame-261487057371260']", "https://form.jotform.com/");
+            window.jotformEmbedHandler("iframe[id='JotFormIFrame-262006948599269']", "https://form.jotform.com/");
         }
     </script>
 
