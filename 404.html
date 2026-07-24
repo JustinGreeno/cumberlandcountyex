@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Cumberland County Exhibition</title>
+    <meta name="description" content="That page took a wrong turn at the barn. Search the site or pick a destination below.">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="Page Not Found | Cumberland County Exhibition">
+    <meta property="og:description" content="That page took a wrong turn at the barn. Search the site or pick a destination below.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:site_name" content="Cumberland County Exhibition">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/art/Try Logo 1 white glow.png">
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/search.js" defer></script>
+    <script src="/js/countdown.js" defer></script>
+    <script src="/js/ui.js" defer></script>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="container header-content">
+            <a href="/index.html" class="logo">
+                <img src="/images/art/Try Logo 1 white glow.png" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/schedule-2026.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="/events.html">See &amp; Do</a>
+                        <ul class="dropdown">
+                            <li><a href="/events.html">All Events</a></li>
+                            <li><a href="/activities.html">Kids Activities &amp; Fun Zone</a></li>
+                            <li><a href="/show-n-shine.html">Kids Show 'N Shine</a></li>
+                            <li><a href="/events.html#mud-stomp">Mud Stomp (19+)</a></li>
+                            <li><a href="/photos.html">Photo Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/exhibitors.html">Shows &amp; Entries</a>
+                        <ul class="dropdown">
+                            <li><a href="/exhibitors.html">Exhibitor Info</a></li>
+                            <li><a href="/beef-registration.html">Open Beef Show</a></li>
+                            <li><a href="/junior-beef-show.html">Junior Beef Show</a></li>
+                            <li><a href="/horse-registration.html">Light Horse Show</a></li>
+                            <li><a href="/4h.html">4-H Programs</a></li>
+                            <li class="dropdown-sep"><a href="/forms.html">All Entry Forms</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/vendors.html">Vendors</a>
+                        <ul class="dropdown">
+                            <li><a href="/vendors.html">Booth Info &amp; Pricing</a></li>
+                            <li><a href="/vendor-application.html">Vendor Application</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/merch.html">Tickets &amp; Merch</a></li>
+                    <li class="has-dropdown">
+                        <a href="/contact.html">About</a>
+                        <ul class="dropdown">
+                            <li><a href="/sponsors.html">Sponsors</a></li>
+                            <li><a href="/members.html">Board Members</a></li>
+                            <li><a href="/contact.html">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <main id="main">
+        <section class="hero">
+            <h1>Well, Shoot!</h1>
+            <p class="tagline">We couldn't find that page</p>
+        </section>
+
+        <div class="container">
+            <section class="panel text-center">
+                <h2>That trail led to an empty field</h2>
+                <p>The page you were looking for may have been renamed, moved, or retired after last year's fair. Use the search bar above, or pick where you'd like to go from the directory below.</p>
+                <div class="mt-3">
+                    <a href="/index.html" class="btn">Back to Home</a>
+                    <a href="/schedule-2026.html" class="btn btn-outline ml-2">2026 Schedule</a>
+                    <a href="/contact.html" class="btn ml-2">Contact Us</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Site Directory - every page, one click away -->
+        <nav class="site-directory" aria-label="Site directory">
+            <h2 class="site-directory-title">Find It Fast</h2>
+            <div class="site-directory-grid">
+                <div class="site-directory-col">
+                    <h3>Visit the Fair</h3>
+                    <a href="/index.html">Home</a>
+                    <a href="/schedule-2026.html">Schedule</a>
+                    <a href="/events.html">All Events</a>
+                    <a href="/activities.html">Kids Activities &amp; Fun Zone</a>
+                    <a href="/show-n-shine.html">Kids Show 'N Shine</a>
+                    <a href="/events.html#mud-stomp">Mud Stomp (19+)</a>
+                    <a href="/merch.html">Tickets &amp; Merch</a>
+                    <a href="/photos.html">Photo Gallery</a>
+                </div>
+                <div class="site-directory-col">
+                    <h3>Shows &amp; Entries</h3>
+                    <a href="/exhibitors.html">Exhibitor Info</a>
+                    <a href="/beef-registration.html">Open Beef Show</a>
+                    <a href="/junior-beef-show.html">Junior Beef Show</a>
+                    <a href="/horse-registration.html">Light Horse Show</a>
+                    <a href="/4h.html">4-H Programs</a>
+                    <a href="/forms.html">All Entry Forms &amp; Documents</a>
+                </div>
+                <div class="site-directory-col">
+                    <h3>Get Involved</h3>
+                    <a href="/vendors.html">Booth Info &amp; Pricing</a>
+                    <a href="/vendor-application.html">Vendor Application</a>
+                    <a href="/sponsors.html">Sponsors</a>
+                    <a href="/members.html">Board Members</a>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="/contact.html">Volunteer With Us</a>
+                </div>
+            </div>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="/images/art/Try Logo 1 white glow.png" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
+                <p>&copy; 2026 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="https://JustinGreeno.dev">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1150) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1150) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

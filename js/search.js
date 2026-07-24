@@ -13,6 +13,12 @@ const searchIndex = [
     { type: 'page', icon: '👥', title: 'Board Members', desc: 'Meet the exhibition board', url: 'members.html', keywords: 'board members directors committee team' },
     { type: 'page', icon: '✉️', title: 'Contact Us', desc: 'Get in touch with us', url: 'contact.html', keywords: 'contact email phone address location directions' },
     { type: 'page', icon: '🌿', title: '4-H Programs', desc: 'Youth agricultural development', url: '4h.html', keywords: '4h 4-h youth agriculture clubs pledge head heart hands health' },
+    { type: 'page', icon: '🎡', title: 'Events', desc: 'Everything happening at the fair — Mud Stomp, live music, horse pulls and more', url: 'events.html', keywords: 'events happening whats on entertainment shows attractions lineup' },
+    { type: 'page', icon: '🐂', title: 'Open Beef Show', desc: 'The 2026 Open Beef Show — details, rules, and online entry', url: 'beef-registration.html', keywords: 'open beef show page cattle 2026 information details entry' },
+    { type: 'page', icon: '🐮', title: 'Junior Beef Show', desc: 'The 2026 Junior Beef Show — youth classes, details, and online entry', url: 'junior-beef-show.html', keywords: 'junior beef show page youth kids 2026 information details entry jr' },
+    { type: 'page', icon: '🐴', title: 'Light Horse Show', desc: 'Light Horse Show details, stall fees, and online registration', url: 'horse-registration.html', keywords: 'light horse show page english western information details entry stalls' },
+    { type: 'page', icon: '🚗', title: "Kids Show 'N Shine", desc: "Vehicle show for kids 9 and under — details and registration", url: 'show-n-shine.html', keywords: "show n shine page kids car vehicle children information details entry" },
+    { type: 'page', icon: '💼', title: 'Vendor Application', desc: 'Apply for a booth or food truck spot at the fair', url: 'vendor-application.html', keywords: 'vendor application page apply booth food truck form sign up' },
 
     // Forms
     { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under", url: 'show-n-shine.html#register', keywords: 'show shine kids car vehicle registration children 9 under junior entry register' },
