@@ -701,6 +701,12 @@ h1, h2 {
     text-decoration: underline;
 }
 
+.contact-phone-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 /* ============================================
    FEATURE GRID - Farm Icons
    ============================================ */
@@ -1027,13 +1033,30 @@ h1, h2 {
     height: 100%;
     object-fit: cover;
     transform-origin: center 30%;
-    animation: kenBurnsMini 20s ease-in-out infinite;
+    animation: kenBurnsMini 18s ease-in-out infinite alternate;
+    will-change: transform;
 }
 
+/* Subtle but active zoom + drift. Min scale stays above 1 so the pan
+   never reveals an edge. */
 @keyframes kenBurnsMini {
-    0%   { transform: scale(1)    translate(0, 0); }
-    50%  { transform: scale(1.05) translate(0, -0.5%); }
-    100% { transform: scale(1)    translate(0, 0); }
+    0%   { transform: scale(1.04) translate(-1%, -0.5%); }
+    100% { transform: scale(1.12) translate(1.5%,  1%);  }
+}
+
+/* Stagger cards with negative delays so they drift out of sync and
+   start mid-motion (no synchronized "breathing", no dead pause). */
+.members-grid .member-card:nth-child(3n) .member-photo img {
+    animation-duration: 22s;
+    animation-delay: -7s;
+}
+.members-grid .member-card:nth-child(3n+1) .member-photo img {
+    animation-duration: 26s;
+    animation-delay: -14s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .member-photo img { animation: none; }
 }
 
 /* Slightly more pronounced Ken Burns on blank-profile placeholder images so they feel alive even without a real photo */
@@ -1458,11 +1481,28 @@ main {
 .footer-right p {
     font-size: 1rem;
     color: var(--cream);
+    margin: 0.1rem 0;
+    line-height: 1.25;
+}
+
+.footer-phone a {
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--straw-light);
+    text-decoration: none;
+    margin-bottom: 0.15rem;
+    white-space: nowrap;
+}
+
+.footer-phone a:hover {
+    text-decoration: underline;
 }
 
 .footer-credit {
     font-size: 0.9rem;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
 }
 
 .footer-credit a {
