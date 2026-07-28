@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beef Show Registration | Cumberland County Exhibition</title>
-    <meta name="description" content="Register for the CCEx Open Beef Show 2026 — September 3–5. $15/head entry. Entries close July 31, 2026. Judge: Sarah Darraugh.">
-    <meta property="og:title" content="Beef Show Registration | Cumberland County Exhibition">
-    <meta property="og:description" content="Register for the CCEx Open Beef Show 2026 — September 3–5. $15/head entry. Entries close July 31, 2026. Judge: Sarah Darraugh.">
+    <title>Christmas Tree Competition | Cumberland County Exhibition</title>
+    <meta name="description" content="Enter the CCEx Christmas Tree Competition 2026, held in loving memory of Keith Moore of ShelBell Farm. $5 per entry, up to 10 entries. Register online today.">
+    <meta property="og:title" content="Christmas Tree Competition | Cumberland County Exhibition">
+    <meta property="og:description" content="Enter the CCEx Christmas Tree Competition 2026, held in loving memory of Keith Moore of ShelBell Farm. $5 per entry, up to 10 entries. Register online today.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
-    <meta property="og:url" content="https://cumberlandcountyex.com/beef-registration.html">
+    <meta property="og:url" content="https://cumberlandcountyex.com/christmas-tree.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
-    <link rel="preload" as="image" href="images/art/Beef Cow.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/art/christmas trees.webp" fetchpriority="high">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/nav.js" defer></script>
@@ -19,8 +19,8 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
-        /* Beef Show Hero Card */
-        .bs-hero {
+        /* Christmas Tree Competition Hero Card */
+        .ct-hero {
             position: relative;
             border-radius: 16px;
             overflow: hidden;
@@ -30,33 +30,33 @@
             margin-bottom: 2rem;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        .bs-hero-bg {
+        .ct-hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #1a0600 0%, #6b2000 45%, #3d1200 100%);
+            background: linear-gradient(135deg, #0d2b1a 0%, #1f5b34 45%, #0a2415 100%);
         }
-        .bs-hero-cow {
+        .ct-hero-trees {
             position: absolute;
-            right: -20px;
+            right: -25px;
             bottom: 0;
-            height: 110%;
-            max-height: 340px;
-            opacity: 0.18;
+            height: 112%;
+            max-height: 360px;
+            opacity: 0.22;
             pointer-events: none;
             user-select: none;
             filter: brightness(1.4);
         }
-        .bs-hero-content {
+        .ct-hero-content {
             position: relative;
             z-index: 2;
             padding: 2.5rem 2.5rem;
             color: white;
-            max-width: 75%;
+            max-width: 78%;
         }
-        .bs-badge {
+        .ct-badge {
             display: inline-block;
-            background: var(--barn-red);
-            color: var(--cream);
+            background: var(--straw);
+            color: var(--wood-dark);
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.12em;
@@ -65,26 +65,33 @@
             border-radius: 20px;
             margin-bottom: 0.8rem;
         }
-        .bs-title {
+        .ct-title {
             font-family: 'Alfa Slab One', serif;
             font-size: clamp(1.8rem, 4vw, 2.8rem);
             color: white;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.6);
             line-height: 1.1;
         }
-        .bs-desc {
-            color: rgba(255,255,255,0.85);
+        .ct-memorial {
+            font-family: 'Roboto Slab', serif;
+            font-style: italic;
+            color: var(--straw-light);
+            font-size: 1.02rem;
+            margin-bottom: 0.7rem;
+        }
+        .ct-desc {
+            color: rgba(255,255,255,0.88);
             font-size: 1rem;
             margin-bottom: 1.4rem;
             font-family: 'Lato', sans-serif;
         }
-        .bs-pills {
+        .ct-pills {
             display: flex;
             flex-wrap: wrap;
             gap: 0.55rem;
         }
-        .bs-pill {
+        .ct-pill {
             background: rgba(255,255,255,0.12);
             border: 1.5px solid rgba(255,255,255,0.28);
             border-radius: 20px;
@@ -95,20 +102,19 @@
             font-family: 'Lato', sans-serif;
             white-space: nowrap;
         }
-        .bs-pill.urgent {
-            background: rgba(200, 60, 0, 0.55);
+        .ct-pill.gold {
+            background: rgba(196, 142, 30, 0.35);
             border-color: var(--straw);
-            color: var(--straw);
+            color: var(--straw-light);
             font-weight: 700;
-            letter-spacing: 0.02em;
         }
-        .bs-doc-links {
+        .ct-doc-links {
             margin-top: 1.2rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .bs-doc-link {
+        .ct-doc-link {
             color: var(--straw);
             font-family: 'Lato', sans-serif;
             font-size: 0.9rem;
@@ -116,24 +122,22 @@
             text-decoration: underline;
             text-underline-offset: 3px;
         }
-        .bs-doc-link:hover {
-            color: white;
-        }
+        .ct-doc-link:hover { color: white; }
 
         /* Key info card grid */
-        .bs-info-grid {
+        .ct-info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
-        .bs-info-card {
+        .ct-info-card {
             background: var(--cream);
             border: 3px solid var(--rope-tan);
             border-radius: 10px;
             padding: 1rem 1.1rem;
         }
-        .bs-info-card h4 {
+        .ct-info-card h4 {
             font-family: 'Roboto Slab', serif;
             color: var(--barn-red);
             font-size: 0.95rem;
@@ -141,69 +145,77 @@
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }
-        .bs-info-card p {
+        .ct-info-card p {
             font-size: 1rem;
             color: var(--text-dark);
             margin: 0;
             line-height: 1.4;
         }
-        .bs-info-card .lead {
+        .ct-info-card .lead {
             font-family: 'Alfa Slab One', serif;
             font-size: 1.15rem;
             color: var(--wood-dark);
             margin-bottom: 0.2rem;
         }
 
-        /* Class list */
-        .bs-classes {
+        /* Memorial panel */
+        .ct-memorial-panel {
+            background: linear-gradient(135deg, #fff9ea, #f0e4c4);
+            border: 3px solid var(--straw);
+            border-left: 6px solid #1f5b34;
+            border-radius: 10px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.5rem 0;
+        }
+        .ct-memorial-panel h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: #1f5b34;
+            margin-bottom: 0.6rem;
+        }
+        .ct-memorial-panel p {
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+        }
+        .ct-memorial-panel p:last-child { margin-bottom: 0; }
+
+        /* How it works steps */
+        .ct-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.9rem;
             margin-top: 1rem;
         }
-        .bs-class-item {
-            background: var(--cream-dark);
-            border-left: 4px solid var(--barn-red);
-            padding: 0.75rem 1rem;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            color: var(--text-dark);
+        .ct-step {
+            background: var(--cream);
+            border: 3px solid var(--rope-tan);
+            border-top: 5px solid #1f5b34;
+            border-radius: 10px;
+            padding: 1rem 1.15rem;
         }
-        .bs-class-item strong {
-            color: var(--barn-red);
+        .ct-step h4 {
             font-family: 'Roboto Slab', serif;
-            display: block;
-            margin-bottom: 0.2rem;
+            color: var(--barn-red);
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
         }
-        .bs-champion-row {
-            background: linear-gradient(135deg, var(--straw-light), var(--straw));
-            border-left-color: var(--wood-dark);
+        .ct-step .step-num {
+            display: inline-block;
+            font-size: 0.78rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             color: var(--wood-dark);
-            text-align: center;
+            background: var(--straw-light);
+            border-radius: 12px;
+            padding: 0.15rem 0.7rem;
+            margin-bottom: 0.55rem;
         }
-
-        /* Rules list */
-        .bs-rules {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0 0;
-        }
-        .bs-rules li {
-            position: relative;
-            padding-left: 1.75rem;
-            margin-bottom: 0.85rem;
-            line-height: 1.5;
+        .ct-step p {
+            font-size: 0.92rem;
             color: var(--text-dark);
+            margin: 0;
+            line-height: 1.5;
         }
-        .bs-rules li::before {
-            content: "🐂";
-            position: absolute;
-            left: 0;
-            top: 0.05rem;
-            font-size: 1rem;
-        }
-        .bs-rules strong { color: var(--barn-red); }
 
         /* JotForm embed */
         .jotform-embed {
@@ -217,7 +229,7 @@
         .jotform-embed iframe {
             display: block;
             width: 100%;
-            min-height: 1100px;
+            min-height: 900px;
             border: none;
             border-radius: 8px;
         }
@@ -232,61 +244,10 @@
             font-weight: 600;
         }
 
-        /* Highlight prizes */
-        .bs-prizes {
-            background: linear-gradient(135deg, #fff9ea, #f8e7b6);
-            border: 3px solid var(--straw);
-            border-radius: 10px;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-        .bs-prizes h3 {
-            font-family: 'Alfa Slab One', serif;
-            color: var(--barn-red);
-            margin-bottom: 0.75rem;
-        }
-        .bs-prizes ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .bs-prizes li {
-            padding: 0.4rem 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-        }
-        .bs-prizes li:last-child { border-bottom: none; }
-        .bs-prizes li::before { content: "🏆 "; margin-right: 0.3rem; }
-
-        /* Futurity callout */
-        .bs-futurity {
-            background: var(--wood-dark);
-            color: var(--cream);
-            border-radius: 10px;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-            border-left: 6px solid var(--straw);
-        }
-        .bs-futurity h3 {
-            font-family: 'Alfa Slab One', serif;
-            color: var(--straw);
-            margin-bottom: 0.75rem;
-        }
-        .bs-futurity p { color: var(--cream); margin-bottom: 0.5rem; }
-        .bs-futurity strong { color: var(--straw-light); }
-
-        /* Committee */
-        .bs-committee {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            font-style: italic;
-            text-align: center;
-            margin-top: 0.5rem;
-        }
-
         @media (max-width: 600px) {
-            .bs-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
-            .bs-hero-cow { opacity: 0.1; right: -40px; }
-            .jotform-embed iframe { min-height: 1400px; }
+            .ct-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
+            .ct-hero-trees { opacity: 0.13; right: -45px; }
+            .jotform-embed iframe { min-height: 1100px; }
         }
     </style>
 </head>
@@ -321,11 +282,11 @@
                         <a href="exhibitors.html" class="active">Shows &amp; Entries</a>
                         <ul class="dropdown">
                             <li><a href="exhibitors.html">Exhibitor Info</a></li>
-                            <li><a href="beef-registration.html" class="active">Open Beef Show</a></li>
+                            <li><a href="beef-registration.html">Open Beef Show</a></li>
                             <li><a href="junior-beef-show.html">Junior Beef Show</a></li>
                             <li><a href="horse-registration.html">Light Horse Show</a></li>
                             <li><a href="4h.html">4-H Programs</a></li>
-                            <li><a href="christmas-tree.html">Christmas Tree Competition</a></li>
+                            <li><a href="christmas-tree.html" class="active">Christmas Tree Competition</a></li>
                             <li class="dropdown-sep"><a href="forms.html">All Entry Forms</a></li>
                         </ul>
                     </li>
@@ -361,29 +322,30 @@
 
     <main id="main">
         <section class="hero">
-            <h1>Beef Show Registration</h1>
-            <p class="tagline">Open Beef Show 2026 — September 3–5</p>
+            <h1>Christmas Tree Competition</h1>
+            <p class="tagline">In loving memory of Keith Moore &mdash; CCEx 2026</p>
         </section>
 
         <div class="container">
-            <!-- Beef Show Hero Card -->
-            <div class="bs-hero" id="beef-show-hero">
-                <div class="bs-hero-bg"></div>
-                <img decoding="async" fetchpriority="high" src="images/art/Beef Cow.webp" alt="" class="bs-hero-cow" aria-hidden="true">
-                <div class="bs-hero-content">
-                    <span class="bs-badge">CCEx 2026</span>
-                    <h2 class="bs-title">Open Beef Show</h2>
-                    <p class="bs-desc">Three days of beef cattle competition in Oxford, NS. Judged by Sarah Darraugh of Bar JM Farm — Chair of the Canadian Hereford Youth Foundation.</p>
-                    <div class="bs-pills">
-                        <span class="bs-pill">Sept 3–5, 2026</span>
-                        <span class="bs-pill">$15/head entry</span>
-                        <span class="bs-pill">Min $60/head payout</span>
-                        <span class="bs-pill">Maritime Hereford Futurity</span>
-                        <span class="bs-pill urgent">Entries Close July 31, 2026</span>
+            <!-- Christmas Tree Hero Card -->
+            <div class="ct-hero" id="christmas-tree-hero">
+                <div class="ct-hero-bg"></div>
+                <img decoding="async" fetchpriority="high" src="images/art/christmas trees.webp" alt="" class="ct-hero-trees" aria-hidden="true">
+                <div class="ct-hero-content">
+                    <span class="ct-badge">CCEx 2026 &middot; New Competition</span>
+                    <h2 class="ct-title">Christmas Tree Competition</h2>
+                    <p class="ct-memorial">In loving memory of Keith Moore of ShelBell Farm</p>
+                    <p class="ct-desc">A little bit of Christmas in the middle of the fair. Growers of every size &mdash; big lots, small woodlots and backyard rows alike &mdash; are invited to bring their best trees to Oxford and put them up against the county's finest.</p>
+                    <div class="ct-pills">
+                        <span class="ct-pill gold">$5 per entry</span>
+                        <span class="ct-pill">Up to 10 entries</span>
+                        <span class="ct-pill">Judged during CCEx</span>
+                        <span class="ct-pill">Open to everyone</span>
+                        <span class="ct-pill">Oxford, NS</span>
                     </div>
-                    <div class="bs-doc-links">
-                        <a href="images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf" target="_blank" rel="noopener" class="bs-doc-link">Download Rules &amp; Regulations PDF →</a>
-                        <a href="events.html#beef-judge" class="bs-doc-link">Meet the 2026 Judge →</a>
+                    <div class="ct-doc-links">
+                        <a href="#registration" class="ct-doc-link">Enter Online Now &rarr;</a>
+                        <a href="schedule-2026.html" class="ct-doc-link">See the Fair Schedule &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -391,47 +353,59 @@
             <!-- Quick Info Grid -->
             <section class="panel">
                 <h2>At a Glance</h2>
-                <div class="bs-info-grid">
-                    <div class="bs-info-card">
-                        <h4>Show Dates</h4>
-                        <p class="lead">Sept 3–5, 2026</p>
-                        <p>Thursday, Friday &amp; Saturday</p>
-                    </div>
-                    <div class="bs-info-card">
-                        <h4>Entries Close</h4>
-                        <p class="lead">July 31, 2026</p>
-                        <p>Register early — paper copies available on request.</p>
-                    </div>
-                    <div class="bs-info-card">
+                <div class="ct-info-grid">
+                    <div class="ct-info-card">
                         <h4>Entry Fee</h4>
-                        <p class="lead">$15 / head</p>
-                        <p>Per animal entered in the show.</p>
+                        <p class="lead">$5 per entry</p>
+                        <p>Enter one tree or several &mdash; the fee applies to each entry.</p>
                     </div>
-                    <div class="bs-info-card">
-                        <h4>Cattle Arrival</h4>
-                        <p class="lead">Wed, Sept 2</p>
-                        <p>On grounds by <strong>Thu Sept 3, 8:00 AM SHARP</strong>.</p>
+                    <div class="ct-info-card">
+                        <h4>How Many</h4>
+                        <p class="lead">1 to 10 Trees</p>
+                        <p>Choose your number of entries right on the registration form.</p>
                     </div>
-                    <div class="bs-info-card">
-                        <h4>Departure</h4>
-                        <p class="lead">Sun, Sept 6</p>
-                        <p>After Junior Beef Show concludes.</p>
+                    <div class="ct-info-card">
+                        <h4>When</h4>
+                        <p class="lead">See Schedule</p>
+                        <p>Judging takes place during the fair, <strong>Aug 31 &ndash; Sept 6, 2026</strong>. Times are posted on the <a href="schedule-2026.html" style="color:var(--barn-red);font-weight:600;">2026 schedule</a>.</p>
+                    </div>
+                    <div class="ct-info-card">
+                        <h4>Where</h4>
+                        <p class="lead">Exhibition Grounds</p>
+                        <p>Oxford, NS. Drop-off details are confirmed with you after you register.</p>
+                    </div>
+                    <div class="ct-info-card">
+                        <h4>Who Can Enter</h4>
+                        <p class="lead">Everyone</p>
+                        <p>Commercial growers, woodlot owners and backyard growers are all welcome.</p>
+                    </div>
+                    <div class="ct-info-card">
+                        <h4>Entry Deadline</h4>
+                        <p class="lead">Enter Early</p>
+                        <p>A closing date will be posted here once it's set &mdash; get your entry in ahead of the fair.</p>
                     </div>
                 </div>
+            </section>
+
+            <!-- Memorial -->
+            <section class="ct-memorial-panel">
+                <h3>&#127876; In Memory of Keith Moore</h3>
+                <p>The Christmas Tree Competition is held in loving memory of <strong>Keith Moore of ShelBell Farm</strong>. Keith's love of the land and of a well-grown tree is something a lot of families in Cumberland County remember fondly, and this competition is our way of keeping that going year after year.</p>
+                <p>Every tree entered is a small tribute &mdash; we'd love to see the barn full of them.</p>
             </section>
 
             <div class="divider-rope"></div>
 
             <!-- Registration Form (JotForm embed) -->
             <section id="registration" class="panel-wooden">
-                <h2>Register Online</h2>
-                <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Open Beef Show. A separate entry form is required for the <a href="junior-beef-show.html" style="color: var(--straw); font-weight: 600;">Junior Beef Show</a>.</p>
+                <h2>Enter Online</h2>
+                <p style="color: var(--cream); margin-bottom: 1rem;">Fill out the form below to enter the 2026 Christmas Tree Competition. Tell us your name, the best number to reach you at, and how many trees you're entering &mdash; that's it.</p>
 
                 <div class="jotform-embed">
                     <iframe
-                        id="JotFormIFrame-261487057371260"
-                        title="CCEx Beef Show 2026 Entry Form"
-                        src="https://form.jotform.com/261487057371260"
+                        id="JotFormIFrame-262083189435058"
+                        title="CCEx Christmas Tree Competition Entry Form"
+                        src="https://form.jotform.com/262083189435058"
                         allow="geolocation; microphone; camera; fullscreen; payment"
                         scrolling="auto"
                         loading="lazy">
@@ -439,86 +413,51 @@
                     <noscript>
                         <div class="jotform-fallback">
                             JavaScript is required to display this form.
-                            <a href="https://form.jotform.com/261487057371260" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
+                            <a href="https://form.jotform.com/262083189435058" target="_blank" rel="noopener">Open the entry form in a new tab &rarr;</a>
                         </div>
                     </noscript>
                 </div>
 
                 <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    Having trouble with the embedded form? <a href="https://form.jotform.com/261487057371260" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>.
+                    Having trouble with the embedded form? <a href="https://form.jotform.com/262083189435058" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>, or give us a call at <a href="tel:+19024473285" style="color: var(--straw); font-weight: 600;">(902) 447-3285</a>.
                 </p>
             </section>
 
             <div class="divider-rope"></div>
 
-            <!-- Classes -->
+            <!-- How It Works -->
             <section class="panel">
-                <h2>Show Classes</h2>
-                <p>Full descriptions, age requirements, and group-class rules are in the <a href="images/forms and documents/Cumberland County Exhibition Beef Show 2026 .pdf" target="_blank" rel="noopener" style="color: var(--barn-red); font-weight: 600;">Rules &amp; Regulations PDF</a>.</p>
-
-                <div class="bs-classes">
-                    <div class="bs-class-item"><strong>Class 1</strong>Bull calf — born current year (min. 3 months on judging day)</div>
-                    <div class="bs-class-item"><strong>Class 2</strong>Yearling bull — born previous year</div>
-                    <div class="bs-class-item bs-champion-row">🏆 Grand &amp; Reserve Grand Champion Male</div>
-                    <div class="bs-class-item"><strong>Class 3</strong>Heifer calf — born current year (min. 3 months on show day)</div>
-                    <div class="bs-class-item"><strong>Class 4</strong>Yearling heifer — born previous year</div>
-                    <div class="bs-class-item bs-champion-row">🏆 Grand &amp; Reserve Grand Champion Female</div>
-                    <div class="bs-class-item"><strong>Class 5A</strong>Female (born Jan 1 – Dec 31, 2024) with 2026 natural <em>purebred tattooed</em> calf at foot — shown as a unit</div>
-                    <div class="bs-class-item"><strong>Class 5B</strong>Female (born Jan 1 – Dec 31, 2024) with 2026 natural calf at foot — shown as a unit</div>
-                    <div class="bs-class-item"><strong>Class 6A</strong>Female (born prior to Jan 1, 2023) with 2026 natural <em>purebred</em> calf at foot</div>
-                    <div class="bs-class-item"><strong>Class 6B</strong>Female (born prior to Jan 1, 2023) with 2026 natural calf at foot</div>
-                    <div class="bs-class-item"><strong>Class 7</strong>Prospect Steer — born current year (min. 3 months on judging day)</div>
-                    <div class="bs-class-item"><strong>Class 8</strong>Breeders Herd — 4 animals bred by one breeder, both sexes, shown in previous classes</div>
-                    <div class="bs-class-item"><strong>Class 9</strong>Get of Sire — 3 animals from the same sire, both sexes, shown in previous classes</div>
+                <h2>How It Works</h2>
+                <div class="ct-steps">
+                    <div class="ct-step">
+                        <span class="step-num">Step 1</span>
+                        <h4>Register</h4>
+                        <p>Complete the entry form above with your name, phone number, email and how many trees you plan to enter (1&ndash;10).</p>
+                    </div>
+                    <div class="ct-step">
+                        <span class="step-num">Step 2</span>
+                        <h4>Pay Your Entry Fee</h4>
+                        <p>Entries are <strong>$5 each</strong>. We'll confirm payment with you after you register &mdash; cash, cheque or e-transfer to the Cumberland County Exhibition.</p>
+                    </div>
+                    <div class="ct-step">
+                        <span class="step-num">Step 3</span>
+                        <h4>Bring Your Trees</h4>
+                        <p>Deliver your trees to the Exhibition Grounds in Oxford during fair week. We'll be in touch with the drop-off time and spot.</p>
+                    </div>
+                    <div class="ct-step">
+                        <span class="step-num">Step 4</span>
+                        <h4>Judging &amp; Display</h4>
+                        <p>Trees are judged during CCEx and stay on display for fairgoers to enjoy. Check the <a href="schedule-2026.html" style="color:var(--barn-red);font-weight:600;">schedule</a> for times.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- Prizes -->
-            <div class="bs-prizes">
-                <h3>Entry Fees &amp; Prizes</h3>
-                <ul>
-                    <li><strong>Entry fee:</strong> $15 per head</li>
-                    <li><strong>Minimum $60/head payout</strong></li>
-                    <li>Overall Supreme &amp; Reserve Supreme Male and Female — <strong>Custom Molly's CCEx Belt Buckle</strong></li>
-                    <li>1 piece of apparel per farm — <strong>Sponsored by Fort Equipment</strong></li>
-                    <li>Champion &amp; Reserve prizes for each breed</li>
-                </ul>
-            </div>
-
-            <!-- Maritime Hereford Futurity -->
-            <section class="bs-futurity">
-                <h3>Maritime Hereford Futurity</h3>
-                <p><strong>Thursday evening</strong> — open to anyone who owns a purebred Hereford female in the Maritimes.</p>
-                <p><strong>Age:</strong> Senior yearling (born Jan 1 – Mar 31 of the year prior to the show). Junior Yearlings may show if exhibitor wishes.</p>
-                <p>Animals must be registered to the entering exhibitor. Any exhibitor may nominate and show as many entries as they wish. <strong>No substitutions or additions</strong> after the initial entry.</p>
-                <p>Prize money comes from a donation by major sponsor <strong>MIP Show Supplies</strong> (Marvin Peters, Kensington, PEI) plus exhibitor entry fees. Special thanks to the Nova Scotia Hereford Club for their annual support.</p>
-                <p style="margin-top:0.75rem;"><em>To participate, please see <strong>Brian Trueman Thursday evening</strong> for entry requirements.</em></p>
-            </section>
-
-            <!-- Rules -->
-            <section class="panel">
-                <h2>General Rules</h2>
-                <ul class="bs-rules">
-                    <li><strong>Sportsmanship required.</strong> Exhibitors, family, and supporters must show courtesy and respect to participants, judges, volunteers, and officials. Unsportsmanlike conduct may result in removal from the show and future shows.</li>
-                    <li>All cattle must be <strong>properly entered on forms provided</strong>.</li>
-                    <li>Registered purebred animals may keep horns if consistent with the breed standard. All other cattle (including commercial) must be <strong>polled or dehorned</strong>.</li>
-                    <li>Cattle can arrive <strong>Wednesday, September 2</strong> anytime. All beef entries must be on the grounds by <strong>Thursday, September 3 at 8:00 AM SHARP</strong>, and remain on the grounds until <strong>Sunday, September 6 after the Junior Beef Show concludes</strong>.</li>
-                    <li>Breed classes run for breeds with a minimum <strong>10 head and 2 exhibitors</strong>. Under 10 head moves to an <strong>All-Other Breed class</strong>.</li>
-                    <li><strong>Registration papers may be randomly checked</strong> to confirm purebred status — please have copies available.</li>
-                    <li>To be eligible for <strong>Premier Breeder and Premier Exhibitor</strong>, a farm must exhibit at least 5 animals in one breed.</li>
-                    <li>The <strong>Junior Show</strong> runs throughout the weekend — a <a href="junior-beef-show.html" style="color: var(--barn-red); font-weight: 600;">separate entry form</a> is required.</li>
-                    <li>Thursday, Friday &amp; Saturday: light snacks and beverages in the barn for exhibitors (donations from <strong>Tim Hortons, Midway Farms, Fort Brook</strong> and the <strong>Maritime Simmental Association</strong>).</li>
-                    <li>A meal voucher for the <strong>Oxford Fire Department</strong> will be in your welcome package.</li>
-                    <li>A schedule of which breeds show which days will be provided before the event.</li>
-                </ul>
-            </section>
-
-            <!-- Committee -->
+            <!-- Questions -->
             <section class="panel-rope text-center">
-                <h2>Beef Committee</h2>
-                <p>Tayler Bezubiak &middot; Christine Carter &middot; Belle Carter &middot; Michelle Casey &middot; Brittany Purdy &middot; Josh Greeno &middot; Bobi Guzzo</p>
-                <p style="margin-top: 0.75rem;">Questions? Email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a> or mail P.O. Box 516, Oxford, NS  B0M 1P0.</p>
-                <p style="margin-top: 0.5rem;"><em>Paper copies of the entry form are available on request.</em></p>
+                <h2>Questions?</h2>
+                <p>The Christmas Tree Competition is chaired by <a href="members.html" style="color: var(--barn-red); font-weight: 600;">Christine Carter</a>. If you're not sure about anything &mdash; tree size, how many to bring, or when to drop them off &mdash; just reach out and we'll walk you through it.</p>
+                <p style="margin-top: 0.75rem;">Email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a> &nbsp;&middot;&nbsp; Call <a href="tel:+19024473285" style="color: var(--barn-red); font-weight: 600;">(902) 447-3285</a></p>
+                <p style="margin-top: 0.75rem;">Mail: <strong>Cumberland County Exhibition, P.O. Box 516, Oxford, NS&nbsp; B0M 1P0</strong></p>
             </section>
 
             <!-- Become a Sponsor CTA -->
@@ -618,7 +557,7 @@
     <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
     <script>
         if (window.jotformEmbedHandler) {
-            window.jotformEmbedHandler("iframe[id='JotFormIFrame-261487057371260']", "https://form.jotform.com/");
+            window.jotformEmbedHandler("iframe[id='JotFormIFrame-262083189435058']", "https://form.jotform.com/");
         }
     </script>
 
