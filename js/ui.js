@@ -91,63 +91,16 @@
 
 
     /* =============================================
-       4. SCHEDULE: DAY NAVIGATION + EVENT BADGES
+       4. SCHEDULE: EVENT BADGES
        (only runs when .day-section elements exist)
+
+       NOTE: the sticky day navigation lives in schedule-2026.html, which
+       owns the pill markup, the scrollspy and the "happening now" highlight.
+       This file must NOT build a second nav or reassign .day-section ids,
+       because doing so broke the pills' jump-to-day targets.
     ============================================= */
     var daySections = document.querySelectorAll('.day-section');
     if (!daySections.length) return;
-
-    // --- Day navigation bar ---
-    var header = document.querySelector('header');
-    var headerH = header ? header.offsetHeight : 0;
-
-    var dayNav = document.createElement('div');
-    dayNav.className = 'schedule-day-nav';
-    dayNav.style.top = headerH + 'px';
-
-    daySections.forEach(function (section, i) {
-        var dayHeader = section.querySelector('.day-header');
-        if (!dayHeader) return;
-
-        var id = 'day-' + (i + 1);
-        section.id = id;
-
-        // Extract "Mon 25" style label
-        var text = dayHeader.textContent.trim();
-        var m = text.match(/^(\w{3})\w*,?\s+\w+\s+(\d+)/);
-        var label = m ? m[1] + ' ' + m[2] : 'Day ' + (i + 1);
-
-        var link = document.createElement('a');
-        link.href = '#' + id;
-        link.textContent = label;
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            var target = document.getElementById(id);
-            if (target) {
-                var offset = headerH + dayNav.offsetHeight + 8;
-                var top = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top: top, behavior: 'smooth' });
-            }
-        });
-        dayNav.appendChild(link);
-    });
-
-    var main = document.querySelector('main');
-    var container = main ? main.querySelector('.container') : null;
-    if (main && container) {
-        main.insertBefore(dayNav, container);
-    }
-
-    // Highlight active day as user scrolls
-    var navLinks = dayNav.querySelectorAll('a');
-    var sectionObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            var link = dayNav.querySelector('a[href="#' + entry.target.id + '"]');
-            if (link) link.classList.toggle('active', entry.isIntersecting);
-        });
-    }, { rootMargin: '-15% 0px -75% 0px' });
-
-    daySections.forEach(function (s) { sectionObserver.observe(s); });
 
 
     // --- Event category badges ---

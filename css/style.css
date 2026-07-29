@@ -3413,38 +3413,6 @@ html {
 .badge-special      { background: #1a7a6e; color: #fff; }
 .badge-entertainment{ background: #6b3fa0; color: #fff; }
 
-/* =============================================
-   SCHEDULE: DAY NAVIGATION BAR
-============================================= */
-.schedule-day-nav {
-    position: sticky;
-    z-index: 90;
-    background: var(--wood-dark);
-    border-top: 2px solid rgba(255,255,255,0.08);
-    border-bottom: 3px solid var(--straw);
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-.schedule-day-nav::-webkit-scrollbar { display: none; }
-.schedule-day-nav a {
-    flex: 0 0 auto;
-    padding: 0.6rem 1.1rem;
-    font-family: 'Alfa Slab One', serif;
-    font-size: 0.7rem;
-    color: var(--cream);
-    text-decoration: none;
-    border-right: 1px solid rgba(255,255,255,0.1);
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-.schedule-day-nav a:last-child { border-right: none; }
-.schedule-day-nav a:hover,
-.schedule-day-nav a.active {
-    background: var(--straw);
-    color: var(--wood-dark);
-}
-
 /* ── Event Posters (reusable) ── */
 .poster-strip {
     display: flex;
