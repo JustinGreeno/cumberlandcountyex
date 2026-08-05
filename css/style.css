@@ -1001,6 +1001,118 @@ h1, h2 {
     margin: 2rem 0;
 }
 
+/* ============================================
+   PARADE PROMO BANNER - home page / cross links
+   ============================================ */
+.parade-promo {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 1.75rem;
+    align-items: center;
+    background: linear-gradient(135deg, #5c1a1a 0%, #98301f 48%, #3d1010 100%);
+    border-radius: 16px;
+    padding: 2rem 2.25rem;
+    margin: 2rem 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.parade-promo-badge {
+    display: inline-block;
+    background: var(--straw);
+    color: var(--wood-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+}
+.parade-promo-title {
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    color: white;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    line-height: 1.1;
+}
+.parade-promo-theme {
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+    color: var(--straw-light);
+    font-size: 1.08rem;
+    margin-bottom: 0.7rem;
+}
+.parade-promo-desc {
+    color: rgba(255,255,255,0.88);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.98rem;
+    margin-bottom: 1.2rem;
+}
+.parade-promo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+.parade-promo-tag {
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.28);
+    border-radius: 20px;
+    padding: 0.38rem 0.95rem;
+    font-size: 0.87rem;
+    font-weight: 600;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    white-space: nowrap;
+}
+a.parade-promo-tag.gold {
+    background: rgba(196, 142, 30, 0.35);
+    border-color: var(--straw);
+    color: var(--straw-light);
+    font-weight: 700;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+a.parade-promo-tag.gold:hover {
+    background: var(--straw);
+    color: var(--wood-dark);
+}
+.parade-promo-map {
+    display: block;
+    border: 3px solid rgba(255,255,255,0.35);
+    border-radius: 10px;
+    overflow: hidden;
+    line-height: 0;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.parade-promo-map:hover {
+    border-color: var(--straw);
+    transform: translateY(-3px);
+}
+.parade-promo-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.parade-promo-map-cap {
+    display: block;
+    background: rgba(0,0,0,0.35);
+    color: var(--straw-light);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.45rem 0.5rem;
+    line-height: 1.3;
+}
+
+@media (max-width: 850px) {
+    .parade-promo {
+        grid-template-columns: 1fr;
+        padding: 1.6rem 1.35rem;
+    }
+}
+
 /* Chair and Vice Chair sit in their own centred row above the rest of the board */
 .members-grid-leadership {
     grid-template-columns: repeat(auto-fit, minmax(250px, 300px));

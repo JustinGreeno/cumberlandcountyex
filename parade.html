@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas Tree Competition | Cumberland County Exhibition</title>
-    <meta name="description" content="Enter the CCEx Christmas Tree Competition 2026, held in loving memory of Keith Moore of ShelBell Farm. $5 per tree, no registration deadline. Judged Thursday morning and on display through Sunday.">
-    <meta property="og:title" content="Christmas Tree Competition | Cumberland County Exhibition">
-    <meta property="og:description" content="Enter the CCEx Christmas Tree Competition 2026, held in loving memory of Keith Moore of ShelBell Farm. $5 per tree, no registration deadline. Judged Thursday morning and on display through Sunday.">
+    <title>CCEx Parade | Cumberland County Exhibition</title>
+    <meta name="description" content="Enter the 2026 CCEx Parade — Saturday, September 5, 2026 at 1:00 PM in Oxford, NS. Theme: Sew it, Grow it, Show it. No registration deadline. Free online entry form.">
+    <meta property="og:title" content="CCEx Parade | Cumberland County Exhibition">
+    <meta property="og:description" content="Enter the 2026 CCEx Parade — Saturday, September 5, 2026 at 1:00 PM in Oxford, NS. Theme: Sew it, Grow it, Show it. No registration deadline.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
-    <meta property="og:url" content="https://cumberlandcountyex.com/christmas-tree.html">
+    <meta property="og:url" content="https://cumberlandcountyex.com/parade.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
-    <link rel="preload" as="image" href="images/art/christmas trees.webp" fetchpriority="high">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/nav.js" defer></script>
@@ -19,8 +18,8 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
-        /* Christmas Tree Competition Hero Card */
-        .ct-hero {
+        /* Parade Hero Card */
+        .pd-hero {
             position: relative;
             border-radius: 16px;
             overflow: hidden;
@@ -30,30 +29,19 @@
             margin-bottom: 2rem;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        .ct-hero-bg {
+        .pd-hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #0d2b1a 0%, #1f5b34 45%, #0a2415 100%);
+            background: linear-gradient(135deg, #5c1a1a 0%, #98301f 45%, #3d1010 100%);
         }
-        .ct-hero-trees {
-            position: absolute;
-            right: -25px;
-            bottom: 0;
-            height: 112%;
-            max-height: 360px;
-            opacity: 0.22;
-            pointer-events: none;
-            user-select: none;
-            filter: brightness(1.4);
-        }
-        .ct-hero-content {
+        .pd-hero-content {
             position: relative;
             z-index: 2;
             padding: 2.5rem 2.5rem;
             color: white;
-            max-width: 78%;
+            max-width: 85%;
         }
-        .ct-badge {
+        .pd-badge {
             display: inline-block;
             background: var(--straw);
             color: var(--wood-dark);
@@ -65,7 +53,7 @@
             border-radius: 20px;
             margin-bottom: 0.8rem;
         }
-        .ct-title {
+        .pd-title {
             font-family: 'Alfa Slab One', serif;
             font-size: clamp(1.8rem, 4vw, 2.8rem);
             color: white;
@@ -73,25 +61,25 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.6);
             line-height: 1.1;
         }
-        .ct-memorial {
+        .pd-theme {
             font-family: 'Roboto Slab', serif;
             font-style: italic;
             color: var(--straw-light);
-            font-size: 1.02rem;
+            font-size: 1.15rem;
             margin-bottom: 0.7rem;
         }
-        .ct-desc {
+        .pd-desc {
             color: rgba(255,255,255,0.88);
             font-size: 1rem;
             margin-bottom: 1.4rem;
             font-family: 'Lato', sans-serif;
         }
-        .ct-pills {
+        .pd-pills {
             display: flex;
             flex-wrap: wrap;
             gap: 0.55rem;
         }
-        .ct-pill {
+        .pd-pill {
             background: rgba(255,255,255,0.12);
             border: 1.5px solid rgba(255,255,255,0.28);
             border-radius: 20px;
@@ -102,19 +90,19 @@
             font-family: 'Lato', sans-serif;
             white-space: nowrap;
         }
-        .ct-pill.gold {
+        .pd-pill.gold {
             background: rgba(196, 142, 30, 0.35);
             border-color: var(--straw);
             color: var(--straw-light);
             font-weight: 700;
         }
-        .ct-doc-links {
+        .pd-doc-links {
             margin-top: 1.2rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .ct-doc-link {
+        .pd-doc-link {
             color: var(--straw);
             font-family: 'Lato', sans-serif;
             font-size: 0.9rem;
@@ -122,22 +110,22 @@
             text-decoration: underline;
             text-underline-offset: 3px;
         }
-        .ct-doc-link:hover { color: white; }
+        .pd-doc-link:hover { color: white; }
 
         /* Key info card grid */
-        .ct-info-grid {
+        .pd-info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
-        .ct-info-card {
+        .pd-info-card {
             background: var(--cream);
             border: 3px solid var(--rope-tan);
             border-radius: 10px;
             padding: 1rem 1.1rem;
         }
-        .ct-info-card h4 {
+        .pd-info-card h4 {
             font-family: 'Roboto Slab', serif;
             color: var(--barn-red);
             font-size: 0.95rem;
@@ -145,60 +133,191 @@
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }
-        .ct-info-card p {
+        .pd-info-card p {
             font-size: 1rem;
             color: var(--text-dark);
             margin: 0;
             line-height: 1.4;
         }
-        .ct-info-card .lead {
+        .pd-info-card .lead {
             font-family: 'Alfa Slab One', serif;
             font-size: 1.15rem;
             color: var(--wood-dark);
             margin-bottom: 0.2rem;
         }
 
-        /* Memorial panel */
-        .ct-memorial-panel {
+        /* Theme panel */
+        .pd-theme-panel {
             background: linear-gradient(135deg, #fff9ea, #f0e4c4);
             border: 3px solid var(--straw);
-            border-left: 6px solid #1f5b34;
+            border-left: 6px solid var(--barn-red);
             border-radius: 10px;
             padding: 1.4rem 1.6rem;
             margin: 1.5rem 0;
         }
-        .ct-memorial-panel h3 {
+        .pd-theme-panel h3 {
             font-family: 'Alfa Slab One', serif;
-            color: #1f5b34;
+            color: var(--barn-red);
             margin-bottom: 0.6rem;
         }
-        .ct-memorial-panel p {
+        .pd-theme-panel p {
             color: var(--text-dark);
             margin-bottom: 0.6rem;
         }
-        .ct-memorial-panel p:last-child { margin-bottom: 0; }
+        .pd-theme-panel p:last-child { margin-bottom: 0; }
+        .pd-theme-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1rem 0 0.9rem;
+        }
+        .pd-theme-word {
+            background: var(--barn-red);
+            color: var(--cream);
+            font-family: 'Alfa Slab One', serif;
+            font-size: 1.05rem;
+            padding: 0.4rem 1.1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 0 rgba(0,0,0,0.18);
+        }
+
+        /* Parade route map */
+        .pd-map-panel {
+            background: linear-gradient(135deg, #fffdf6, #f3e9cf);
+            border: 4px solid var(--wood-medium);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 28px var(--shadow-medium);
+        }
+        .pd-map-panel h2 {
+            text-align: center;
+            margin-bottom: 0.35rem;
+        }
+        .pd-map-sub {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.1rem;
+        }
+        .pd-map-frame {
+            display: block;
+            border: 3px solid var(--rope-tan);
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--cream);
+            line-height: 0;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .pd-map-frame:hover {
+            border-color: var(--barn-red);
+            transform: translateY(-2px);
+        }
+        .pd-map-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .pd-map-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.7rem;
+        }
+        .pd-map-caption a {
+            color: var(--barn-red);
+            font-weight: 600;
+        }
+        .pd-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+            gap: 0.85rem;
+            margin-top: 1.3rem;
+        }
+        .pd-legend-item {
+            background: var(--cream);
+            border: 2px solid var(--rope-tan);
+            border-left: 5px solid var(--wood-medium);
+            border-radius: 8px;
+            padding: 0.75rem 0.9rem;
+        }
+        .pd-legend-item h4 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.95rem;
+            color: var(--barn-red);
+            margin-bottom: 0.2rem;
+        }
+        .pd-legend-item p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.45;
+        }
+        .pd-legend-item.start { border-left-color: #e2711d; }
+        .pd-legend-item.quiet { border-left-color: #d94a6a; }
+        .pd-legend-item.judges { border-left-color: #7a4bb5; }
+        .pd-legend-item.finish { border-left-color: #1f7a3d; }
+
+        /* Please Note — rules callouts */
+        .pd-rules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .pd-rule {
+            background: var(--cream);
+            border: 3px solid var(--rope-tan);
+            border-top: 5px solid var(--barn-red);
+            border-radius: 10px;
+            padding: 1.1rem 1.25rem;
+        }
+        .pd-rule h4 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--barn-red);
+            font-size: 1.08rem;
+            margin-bottom: 0.5rem;
+        }
+        .pd-rule p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin: 0 0 0.6rem;
+            line-height: 1.55;
+        }
+        .pd-rule p:last-child { margin-bottom: 0; }
+        .pd-rule .pd-route {
+            display: block;
+            background: rgba(0,0,0,0.05);
+            border-left: 4px solid var(--wood-medium);
+            border-radius: 0 6px 6px 0;
+            padding: 0.6rem 0.85rem;
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.92rem;
+            color: var(--wood-dark);
+            line-height: 1.5;
+        }
 
         /* How it works steps */
-        .ct-steps {
+        .pd-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 0.9rem;
             margin-top: 1rem;
         }
-        .ct-step {
+        .pd-step {
             background: var(--cream);
             border: 3px solid var(--rope-tan);
-            border-top: 5px solid #1f5b34;
+            border-top: 5px solid var(--wood-medium);
             border-radius: 10px;
             padding: 1rem 1.15rem;
         }
-        .ct-step h4 {
+        .pd-step h4 {
             font-family: 'Roboto Slab', serif;
             color: var(--barn-red);
             font-size: 1.05rem;
             margin-bottom: 0.35rem;
         }
-        .ct-step .step-num {
+        .pd-step .step-num {
             display: inline-block;
             font-size: 0.78rem;
             font-weight: 700;
@@ -210,15 +329,15 @@
             padding: 0.15rem 0.7rem;
             margin-bottom: 0.55rem;
         }
-        .ct-step p {
+        .pd-step p {
             font-size: 0.92rem;
             color: var(--text-dark);
             margin: 0;
             line-height: 1.5;
         }
 
-        /* JotForm embed */
-        .jotform-embed {
+        /* Microsoft Forms embed */
+        .msforms-embed {
             background: var(--cream);
             border: 3px solid var(--wood-medium);
             border-radius: 12px;
@@ -226,28 +345,17 @@
             margin-top: 1rem;
             box-shadow: 0 6px 20px var(--shadow-medium);
         }
-        .jotform-embed iframe {
+        .msforms-embed iframe {
             display: block;
             width: 100%;
-            min-height: 900px;
+            height: 900px;
             border: none;
             border-radius: 8px;
         }
-        .jotform-fallback {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-        .jotform-fallback a {
-            color: var(--barn-red);
-            font-weight: 600;
-        }
 
         @media (max-width: 600px) {
-            .ct-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
-            .ct-hero-trees { opacity: 0.13; right: -45px; }
-            .jotform-embed iframe { min-height: 1100px; }
+            .pd-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
+            .msforms-embed iframe { height: 1100px; }
         }
     </style>
 </head>
@@ -269,10 +377,10 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="schedule-2026.html">Schedule</a></li>
                     <li class="has-dropdown">
-                        <a href="events.html">See &amp; Do</a>
+                        <a href="events.html" class="active">See &amp; Do</a>
                         <ul class="dropdown">
                             <li><a href="events.html">All Events</a></li>
-                            <li><a href="parade.html">CCEx Parade</a></li>
+                            <li><a href="parade.html" class="active">CCEx Parade</a></li>
                             <li><a href="activities.html">Kids Activities &amp; Fun Zone</a></li>
                             <li><a href="show-n-shine.html">Kids Show 'N Shine</a></li>
                             <li><a href="events.html#mud-stomp">Mud Stomp (19+)</a></li>
@@ -280,14 +388,14 @@
                         </ul>
                     </li>
                     <li class="has-dropdown">
-                        <a href="exhibitors.html" class="active">Shows &amp; Entries</a>
+                        <a href="exhibitors.html">Shows &amp; Entries</a>
                         <ul class="dropdown">
                             <li><a href="exhibitors.html">Exhibitor Info</a></li>
                             <li><a href="beef-registration.html">Open Beef Show</a></li>
                             <li><a href="junior-beef-show.html">Junior Beef Show</a></li>
                             <li><a href="horse-registration.html">Light Horse Show</a></li>
                             <li><a href="4h.html">4-H Programs</a></li>
-                            <li><a href="christmas-tree.html" class="active">Christmas Tree Competition</a></li>
+                            <li><a href="christmas-tree.html">Christmas Tree Competition</a></li>
                             <li class="dropdown-sep"><a href="forms.html">All Entry Forms</a></li>
                         </ul>
                     </li>
@@ -323,109 +431,155 @@
 
     <main id="main">
         <section class="hero">
-            <h1>Christmas Tree Competition</h1>
-            <p class="tagline">In loving memory of Keith Moore &middot; CCEx 2026</p>
+            <h1>CCEx Parade</h1>
+            <p class="tagline">Sew it, Grow it, Show it &middot; Saturday, September 5, 2026</p>
         </section>
 
         <div class="container">
-            <!-- Christmas Tree Hero Card -->
-            <div class="ct-hero" id="christmas-tree-hero">
-                <div class="ct-hero-bg"></div>
-                <img decoding="async" fetchpriority="high" src="images/art/christmas trees.webp" alt="" class="ct-hero-trees" aria-hidden="true">
-                <div class="ct-hero-content">
-                    <span class="ct-badge">CCEx 2026 &middot; New Competition</span>
-                    <h2 class="ct-title">Christmas Tree Competition</h2>
-                    <p class="ct-memorial">In loving memory of Keith Moore of ShelBell Farm</p>
-                    <p class="ct-desc">A little bit of Christmas in the middle of the fair. Growers of every size, from big lots to small woodlots to backyard rows, are invited to bring their best trees to Oxford and put them up against the county's finest.</p>
-                    <div class="ct-pills">
-                        <span class="ct-pill gold">$5 per tree</span>
-                        <span class="ct-pill">No registration deadline</span>
-                        <span class="ct-pill">Judged Thursday morning</span>
-                        <span class="ct-pill">On display through Sunday</span>
-                        <span class="ct-pill">Open to everyone</span>
+            <!-- Parade Hero Card -->
+            <div class="pd-hero" id="parade-hero">
+                <div class="pd-hero-bg"></div>
+                <div class="pd-hero-content">
+                    <span class="pd-badge">CCEx 2026 &middot; Saturday, Sept 5</span>
+                    <h2 class="pd-title">The CCEx Parade</h2>
+                    <p class="pd-theme">This year's theme: &ldquo;Sew it, Grow it, Show it&rdquo;</p>
+                    <p class="pd-desc">Floats, tractors, horses, clubs, businesses and anyone else who wants to join in. The parade rolls through Oxford on Saturday afternoon, and there's no deadline to sign up, so get your entry in whenever you're ready.</p>
+                    <div class="pd-pills">
+                        <span class="pd-pill gold">Saturday, Sept 5 &middot; 1:00 PM</span>
+                        <span class="pd-pill">No registration deadline</span>
+                        <span class="pd-pill">Everyone welcome</span>
+                        <span class="pd-pill">Quiet zone on Water St.</span>
                     </div>
-                    <div class="ct-doc-links">
-                        <a href="#registration" class="ct-doc-link">Register Online Now &rarr;</a>
-                        <a href="schedule-2026.html" class="ct-doc-link">See the Fair Schedule &rarr;</a>
+                    <div class="pd-doc-links">
+                        <a href="#registration" class="pd-doc-link">Enter the Parade &rarr;</a>
+                        <a href="#route" class="pd-doc-link">See the Parade Route &rarr;</a>
+                        <a href="#please-note" class="pd-doc-link">Read the Two Rules &rarr;</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Info Grid -->
-            <section class="panel">
-                <h2>At a Glance</h2>
-                <div class="ct-info-grid">
-                    <div class="ct-info-card">
-                        <h4>Entry Fee</h4>
-                        <p class="lead">$5 per tree</p>
-                        <p>Enter one tree or several. The fee applies to each tree you bring.</p>
+            <!-- Parade Route Map -->
+            <section class="pd-map-panel" id="route">
+                <h2>The Parade Route</h2>
+                <p class="pd-map-sub">West along Water Street, around Main and Duke, then back up past the Exhibition Grounds. Tap the map to open it full size.</p>
+                <a href="images/art/Parade Route.png" target="_blank" rel="noopener" class="pd-map-frame" aria-label="Open the full size Oxford parade route map">
+                    <img loading="lazy" decoding="async" width="1400" height="788" src="images/art/Parade Route.jpg" alt="Map of the Oxford parade route. Entries line up at the east end of Water Street, travel west along Water Street and across the bridge over the Black River, carry on west through the quiet zone between Waverly and Main, turn south down Main Street, head east along Duke Street past the judges, then turn north and come back out onto Water Street by the Exhibition Grounds, where the parade ends.">
+                </a>
+                <p class="pd-map-caption"><a href="images/art/Parade Route.png" target="_blank" rel="noopener">Open the full size route map &rarr;</a></p>
+
+                <div class="pd-legend">
+                    <div class="pd-legend-item start">
+                        <h4>&#128681; Parade Line Up</h4>
+                        <p>East end of Water Street, out past Station Street.</p>
                     </div>
-                    <div class="ct-info-card">
-                        <h4>Registration Deadline</h4>
-                        <p class="lead">None</p>
-                        <p>There's no deadline to register. Sign up whenever you're ready, right up to drop-off.</p>
+                    <div class="pd-legend-item quiet">
+                        <h4>&#128263; Quiet Zone</h4>
+                        <p>Water Street, from Waverly to Main. Keep the noise down through here.</p>
                     </div>
-                    <div class="ct-info-card">
-                        <h4>Drop Off Your Trees</h4>
-                        <p class="lead">Tuesday or Wednesday</p>
-                        <p><strong>Tuesday, Sept 1 after 5:00 PM</strong> or <strong>Wednesday, Sept 2 before 8:00 AM</strong>.</p>
+                    <div class="pd-legend-item judges">
+                        <h4>&#11088; Judges</h4>
+                        <p>Main Street at Duke Street. Give them your best as you go by!</p>
                     </div>
-                    <div class="ct-info-card">
-                        <h4>Judging</h4>
-                        <p class="lead">Thursday Morning</p>
-                        <p>Trees are judged the morning of <strong>Thursday, Sept 3, 2026</strong>.</p>
-                    </div>
-                    <div class="ct-info-card">
-                        <h4>On Display</h4>
-                        <p class="lead">Through Sunday</p>
-                        <p>Trees stay up for fairgoers to enjoy until <strong>Sunday, Sept 6</strong>, the last day of the fair.</p>
-                    </div>
-                    <div class="ct-info-card">
-                        <h4>Where</h4>
-                        <p class="lead">Exhibition Grounds</p>
-                        <p>Oxford, NS. We'll confirm your drop-off spot when you register.</p>
-                    </div>
-                    <div class="ct-info-card">
-                        <h4>Who Can Enter</h4>
-                        <p class="lead">Everyone</p>
-                        <p>Commercial growers, woodlot owners and backyard growers are all welcome.</p>
+                    <div class="pd-legend-item finish">
+                        <h4>&#127937; End of Parade</h4>
+                        <p>Back out onto Water Street by the Exhibition Grounds.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Memorial -->
-            <section class="ct-memorial-panel">
-                <h3>&#127876; In Memory of Keith Moore</h3>
-                <p>The Christmas Tree Competition is held in loving memory of <strong>Keith Moore of ShelBell Farm</strong>. Keith's love of the land and of a well-grown tree is something a lot of families in Cumberland County remember fondly, and this competition is our way of keeping that going year after year.</p>
-                <p>Every tree entered is a small tribute, and we'd love to see the barn full of them.</p>
+            <!-- Quick Info Grid -->
+            <section class="panel">
+                <h2>At a Glance</h2>
+                <div class="pd-info-grid">
+                    <div class="pd-info-card">
+                        <h4>Date</h4>
+                        <p class="lead">Saturday, Sept 5</p>
+                        <p>Parade day is <strong>Saturday, September 5, 2026</strong>.</p>
+                    </div>
+                    <div class="pd-info-card">
+                        <h4>Start Time</h4>
+                        <p class="lead">1:00 PM</p>
+                        <p>The parade steps off at <strong>1:00 PM</strong>.</p>
+                    </div>
+                    <div class="pd-info-card">
+                        <h4>Theme</h4>
+                        <p class="lead">Sew it, Grow it, Show it</p>
+                        <p>Build your entry around the theme however you like.</p>
+                    </div>
+                    <div class="pd-info-card">
+                        <h4>Registration Deadline</h4>
+                        <p class="lead">None</p>
+                        <p>There's no cut-off to register. Sign up whenever you're ready.</p>
+                    </div>
+                    <div class="pd-info-card">
+                        <h4>Where</h4>
+                        <p class="lead">Downtown Oxford</p>
+                        <p>Water Street, Main Street and Duke Street. <a href="#route" style="color: var(--barn-red); font-weight: 600;">See the route map &rarr;</a></p>
+                    </div>
+                    <div class="pd-info-card">
+                        <h4>Line Up</h4>
+                        <p class="lead">East End of Water St</p>
+                        <p>Entries gather at the east end of Water Street, out past Station Street.</p>
+                    </div>
+                    <div class="pd-info-card">
+                        <h4>Who Can Enter</h4>
+                        <p class="lead">Everyone</p>
+                        <p>Families, farms, clubs, businesses, community groups &ndash; all welcome.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Theme -->
+            <section class="pd-theme-panel">
+                <h3>&#127881; This Year's Theme</h3>
+                <div class="pd-theme-words">
+                    <span class="pd-theme-word">Sew it</span>
+                    <span class="pd-theme-word">Grow it</span>
+                    <span class="pd-theme-word">Show it</span>
+                </div>
+                <p>Every entry is invited to work the theme into their float, vehicle, costume or display. Sewing, quilting and crafts; gardens, crops and woodlots; and everything folks in Cumberland County are proud to show off &ndash; there's a lot of room to have fun with it.</p>
+                <p>Go big with a full float or keep it simple with a decorated truck and a good sign. Either way, we'd love to have you in the line-up.</p>
             </section>
 
             <div class="divider-rope"></div>
 
-            <!-- Registration Form (JotForm embed) -->
-            <section id="registration" class="panel-wooden">
-                <h2>Register Online</h2>
-                <p style="color: var(--cream); margin-bottom: 1rem;">Fill out the form below to enter the 2026 Christmas Tree Competition. Tell us your name, the best number to reach you at, and how many trees you're entering. That's it.</p>
+            <!-- Please Note -->
+            <section class="panel" id="please-note">
+                <h2>Please Note</h2>
+                <p>Two things every parade entry needs to know before Saturday:</p>
+                <div class="pd-rules">
+                    <div class="pd-rule">
+                        <h4>&#128263; Quiet Zone on Water Street</h4>
+                        <p>There is a <strong>quiet zone</strong> along part of the route. Please keep the noise down through this stretch &ndash; no sirens, horns or loud music.</p>
+                        <span class="pd-route">Water Street &ndash; from the stop sign at Waverly Street to the three-way stop at Main Street.</span>
+                        <p style="margin-top: 0.6rem;"><a href="#route" style="color: var(--barn-red); font-weight: 600;">See it marked on the route map &rarr;</a></p>
+                    </div>
+                    <div class="pd-rule">
+                        <h4>&#9940; No Handing Out Items</h4>
+                        <p>Participants are <strong>not</strong> allowed to hand out items during the parade. That includes candy, treats, flyers and giveaways, whether thrown to the crowd or passed out along the route.</p>
+                        <p>Please pass this along to everyone riding or walking with your entry.</p>
+                    </div>
+                </div>
+            </section>
 
-                <div class="jotform-embed">
+            <div class="divider-rope"></div>
+
+            <!-- Registration Form (Microsoft Forms embed) -->
+            <section id="registration" class="panel-wooden">
+                <h2>Enter the Parade</h2>
+                <p style="color: var(--cream); margin-bottom: 1rem;">Fill out the form below to enter your float, vehicle, group or club in the 2026 CCEx Parade. There's no deadline, so sign up whenever you're ready.</p>
+
+                <div class="msforms-embed">
                     <iframe
-                        id="JotFormIFrame-262083189435058"
-                        title="CCEx Christmas Tree Competition Entry Form"
-                        src="https://form.jotform.com/262083189435058"
-                        allow="geolocation; microphone; camera; fullscreen; payment"
-                        scrolling="auto"
-                        loading="lazy">
+                        title="CCEx Parade Entry Form"
+                        src="https://forms.cloud.microsoft/r/N4PBLuUvzD?embed=true"
+                        loading="lazy"
+                        allowfullscreen>
                     </iframe>
-                    <noscript>
-                        <div class="jotform-fallback">
-                            JavaScript is required to display this form.
-                            <a href="https://form.jotform.com/262083189435058" target="_blank" rel="noopener">Open the entry form in a new tab &rarr;</a>
-                        </div>
-                    </noscript>
                 </div>
 
                 <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    Having trouble with the embedded form? <a href="https://form.jotform.com/262083189435058" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>, or give us a call at <a href="tel:+19024473285" style="color: var(--straw); font-weight: 600;">(902) 447-3285</a>.
+                    Having trouble with the embedded form? <a href="https://forms.cloud.microsoft/r/N4PBLuUvzD" target="_blank" rel="noopener" style="color: var(--straw); font-weight: 600;">Open it in a new tab</a>, or give us a call at <a href="tel:+19024473285" style="color: var(--straw); font-weight: 600;">(902) 447-3285</a>.
                 </p>
             </section>
 
@@ -434,26 +588,26 @@
             <!-- How It Works -->
             <section class="panel">
                 <h2>How It Works</h2>
-                <div class="ct-steps">
-                    <div class="ct-step">
+                <div class="pd-steps">
+                    <div class="pd-step">
                         <span class="step-num">Step 1</span>
                         <h4>Register</h4>
-                        <p>Complete the entry form above with your name, phone number, email and how many trees you plan to enter (1&ndash;10). There's no deadline, so sign up whenever you're ready.</p>
+                        <p>Complete the entry form above and tell us about your entry. There's no cut-off date, so you can sign up any time right up to parade day.</p>
                     </div>
-                    <div class="ct-step">
+                    <div class="pd-step">
                         <span class="step-num">Step 2</span>
-                        <h4>Pay Your Entry Fee</h4>
-                        <p>Entries are <strong>$5 per tree</strong>. We'll confirm payment with you after you register. Cash, cheque or e-transfer to the Cumberland County Exhibition.</p>
+                        <h4>Build Your Entry</h4>
+                        <p>Work this year's theme &ndash; <strong>Sew it, Grow it, Show it</strong> &ndash; into your float, vehicle, costume or display however you like.</p>
                     </div>
-                    <div class="ct-step">
+                    <div class="pd-step">
                         <span class="step-num">Step 3</span>
-                        <h4>Drop Off Your Trees</h4>
-                        <p>Bring your trees to the Exhibition Grounds in Oxford <strong>Tuesday, Sept 1 after 5:00 PM</strong> or <strong>Wednesday, Sept 2 before 8:00 AM</strong>.</p>
+                        <h4>Line Up Saturday</h4>
+                        <p>Entries gather at the <strong>east end of Water Street</strong> and the parade steps off at <strong>1:00 PM on Saturday, September 5</strong>. <a href="#route" style="color: var(--barn-red); font-weight: 600;">Check the route map &rarr;</a></p>
                     </div>
-                    <div class="ct-step">
+                    <div class="pd-step">
                         <span class="step-num">Step 4</span>
-                        <h4>Judging &amp; Display</h4>
-                        <p>Judging takes place <strong>Thursday morning, Sept 3</strong>. Trees stay on display for fairgoers to enjoy until <strong>Sunday, Sept 6</strong>.</p>
+                        <h4>Roll Out</h4>
+                        <p>Keep it quiet through the Water Street quiet zone, don't hand anything out along the route, wave to the judges at Main &amp; Duke, and enjoy the crowd.</p>
                     </div>
                 </div>
             </section>
@@ -461,7 +615,7 @@
             <!-- Questions -->
             <section class="panel-rope text-center">
                 <h2>Questions?</h2>
-                <p>The Christmas Tree Competition is chaired by <a href="members.html" style="color: var(--barn-red); font-weight: 600;">Christine Carter</a>. If you're not sure about anything, like tree size, how many to bring, or when to drop them off, just reach out and we'll walk you through it.</p>
+                <p>Not sure whether your idea fits, or need a hand sorting out the details? Just reach out and we'll help you get into the line-up.</p>
                 <p style="margin-top: 0.75rem;">Email <a href="mailto:cumberlandexhibition@gmail.com" style="color: var(--barn-red); font-weight: 600;">cumberlandexhibition@gmail.com</a> &nbsp;&middot;&nbsp; Call <a href="tel:+19024473285" style="color: var(--barn-red); font-weight: 600;">(902) 447-3285</a></p>
                 <p style="margin-top: 0.75rem;">Mail: <strong>Cumberland County Exhibition, P.O. Box 516, Oxford, NS&nbsp; B0M 1P0</strong></p>
             </section>
@@ -559,14 +713,6 @@
             <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
         </div>
     </footer>
-
-    <!-- JotForm iframe resize handler -->
-    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-    <script>
-        if (window.jotformEmbedHandler) {
-            window.jotformEmbedHandler("iframe[id='JotFormIFrame-262083189435058']", "https://form.jotform.com/");
-        }
-    </script>
 
     <script>
         // Mobile menu toggle
