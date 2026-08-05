@@ -23,7 +23,7 @@ const searchIndex = [
     { type: 'page', icon: '💼', title: 'Vendor Application', desc: 'Apply for a booth or food truck spot at the fair', url: 'vendor-application.html', keywords: 'vendor application page apply booth food truck form sign up' },
 
     // Forms
-    { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under", url: 'show-n-shine.html#register', keywords: 'show shine kids car vehicle registration children 9 under junior entry register' },
+    { type: 'form', icon: '📄', title: "Kids Show 'N Shine Registration", desc: "Register your child's car or vehicle — 9 years and under · Free, but closes Aug 15, 2026", url: 'show-n-shine.html#register', keywords: 'show shine kids car vehicle registration children 9 under junior entry register free pre-register pre registration deadline closing date august 15 2026' },
     { type: 'form', icon: '📄', title: 'Horse Show Registration', desc: 'Register for the CCEx Light Horse Show — box stall $30, standing stall $20, closes Aug 10, 2026', url: 'horse-registration.html', keywords: 'horse registration light horse show exhibitor stall box standing deadline closing date august 10 register sign up entry' },
     { type: 'form', icon: '📄', title: 'Beef Show Registration', desc: 'Register for the 2026 Open Beef Show — Sept 3–5 · Entries close July 31, 2026', url: 'beef-registration.html', keywords: 'beef show registration cattle entry exhibitor open 2026 hereford angus simmental shorthorn speckle park charolais commercial steer heifer bull cow yearling calf futurity maritime junior register sign up entry form jotform' },
     { type: 'form', icon: '🎄', title: 'Christmas Tree Competition Entry', desc: 'Register for the CCEx Christmas Tree Competition. $5 per tree, no deadline. In memory of Keith Moore.', url: 'christmas-tree.html#registration', keywords: 'christmas tree competition entry registration register sign up form jotform xmas evergreen fir spruce balsam grower woodlot keith moore shelbell farm memorial 5 dollars five per tree entry no deadline 2026' },
@@ -111,6 +111,7 @@ const searchIndex = [
     // Horse Show Registration details
     { type: 'info', icon: '🐴', title: 'Horse Show Stall Fees', desc: 'Box stall $30 · Standing stall $20 — space is limited, register early', url: 'horse-registration.html', keywords: 'horse stall fee box standing stall cost price rent overnight' },
     { type: 'info', icon: '🐴', title: 'Horse Show Registration Deadline', desc: 'Registration closes August 10, 2026 — space is limited', url: 'horse-registration.html', keywords: 'horse show registration deadline closing date august 10 register early space limited entry light horse' },
+    { type: 'info', icon: '🚗', title: "Kids Show 'N Shine Deadline", desc: 'Registration closes August 15, 2026 — free, but pre-registration is required', url: 'show-n-shine.html#register', keywords: "show n shine kids deadline registration closes closing date august 15 2026 pre-register pre registration required free children 9 under vehicle car" },
     { type: 'form', icon: '📄', title: 'Register for Horse Show', desc: 'Light Horse Show registration — box stall $30, standing stall $20', url: 'horse-registration.html', keywords: 'register horse show entry sign up 2026 light horse stall registration form' },
 
     // Show N Shine
