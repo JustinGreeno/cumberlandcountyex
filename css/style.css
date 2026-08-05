@@ -1001,6 +1001,13 @@ h1, h2 {
     margin: 2rem 0;
 }
 
+/* Chair and Vice Chair sit in their own centred row above the rest of the board */
+.members-grid-leadership {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+    justify-content: center;
+    margin-bottom: 0;
+}
+
 .member-card {
     background: var(--cream);
     border: 4px solid var(--wood-medium);
