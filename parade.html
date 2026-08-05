@@ -19,133 +19,11 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
-        /* Parade Hero Card */
-        .pd-hero {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
+        /* Page-specific only - shared event page components live in css/style.css (.evt-*) */
         .pd-hero-bg {
-            position: absolute;
-            inset: 0;
             background: linear-gradient(135deg, #5c1a1a 0%, #98301f 45%, #3d1010 100%);
         }
-        .pd-hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2.5rem 2.5rem;
-            color: white;
-            max-width: 85%;
-        }
-        .pd-badge {
-            display: inline-block;
-            background: var(--straw);
-            color: var(--wood-dark);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 0.8rem;
-        }
-        .pd-title {
-            font-family: 'Alfa Slab One', serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            color: white;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-            line-height: 1.1;
-        }
-        .pd-theme {
-            font-family: 'Roboto Slab', serif;
-            font-style: italic;
-            color: var(--straw-light);
-            font-size: 1.15rem;
-            margin-bottom: 0.7rem;
-        }
-        .pd-desc {
-            color: rgba(255,255,255,0.88);
-            font-size: 1rem;
-            margin-bottom: 1.4rem;
-            font-family: 'Lato', sans-serif;
-        }
-        .pd-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-        .pd-pill {
-            background: rgba(255,255,255,0.12);
-            border: 1.5px solid rgba(255,255,255,0.28);
-            border-radius: 20px;
-            padding: 0.38rem 0.95rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: white;
-            font-family: 'Lato', sans-serif;
-            white-space: nowrap;
-        }
-        .pd-pill.gold {
-            background: rgba(196, 142, 30, 0.35);
-            border-color: var(--straw);
-            color: var(--straw-light);
-            font-weight: 700;
-        }
-        .pd-doc-links {
-            margin-top: 1.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .pd-doc-link {
-            color: var(--straw);
-            font-family: 'Lato', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        .pd-doc-link:hover { color: white; }
-
-        /* Key info card grid */
-        .pd-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .pd-info-card {
-            background: var(--cream);
-            border: 3px solid var(--rope-tan);
-            border-radius: 10px;
-            padding: 1rem 1.1rem;
-        }
-        .pd-info-card h4 {
-            font-family: 'Roboto Slab', serif;
-            color: var(--barn-red);
-            font-size: 0.95rem;
-            margin-bottom: 0.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .pd-info-card p {
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.4;
-        }
-        .pd-info-card .lead {
-            font-family: 'Alfa Slab One', serif;
-            font-size: 1.15rem;
-            color: var(--wood-dark);
-            margin-bottom: 0.2rem;
-        }
+        .evt-tagline { font-size: 1.15rem; }
 
         /* Theme panel */
         .pd-theme-panel {
@@ -259,7 +137,7 @@
         .pd-legend-item.judges { border-left-color: #7a4bb5; }
         .pd-legend-item.finish { border-left-color: #1f7a3d; }
 
-        /* Please Note — rules callouts */
+        /* Please Note - rules callouts */
         .pd-rules {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -298,46 +176,9 @@
             line-height: 1.5;
         }
 
-        /* How it works steps */
-        .pd-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 0.9rem;
-            margin-top: 1rem;
-        }
-        .pd-step {
-            background: var(--cream);
-            border: 3px solid var(--rope-tan);
-            border-top: 5px solid var(--wood-medium);
-            border-radius: 10px;
-            padding: 1rem 1.15rem;
-        }
-        .pd-step h4 {
-            font-family: 'Roboto Slab', serif;
-            color: var(--barn-red);
-            font-size: 1.05rem;
-            margin-bottom: 0.35rem;
-        }
-        .pd-step .step-num {
-            display: inline-block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--wood-dark);
-            background: var(--straw-light);
-            border-radius: 12px;
-            padding: 0.15rem 0.7rem;
-            margin-bottom: 0.55rem;
-        }
-        .pd-step p {
-            font-size: 0.92rem;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Microsoft Forms embed */
+        /* Microsoft Forms has no auto-resize handler, so the iframe is sized to
+           the viewport instead of a fixed height - it must never grow taller
+           than the browser window or the page scroll gets trapped. */
         .msforms-embed {
             background: var(--cream);
             border: 3px solid var(--wood-medium);
@@ -346,9 +187,6 @@
             margin-top: 1rem;
             box-shadow: 0 6px 20px var(--shadow-medium);
         }
-        /* Microsoft Forms has no auto-resize handler, so the iframe is sized to
-           the viewport instead of a fixed height - it must never grow taller
-           than the browser window or the page scroll gets trapped. */
         .msforms-embed iframe {
             display: block;
             width: 100%;
@@ -360,7 +198,6 @@
         }
 
         @media (max-width: 600px) {
-            .pd-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
             .msforms-embed iframe { height: 80vh; max-height: none; }
         }
     </style>
@@ -444,23 +281,23 @@
 
         <div class="container">
             <!-- Parade Hero Card -->
-            <div class="pd-hero" id="parade-hero">
-                <div class="pd-hero-bg"></div>
-                <div class="pd-hero-content">
-                    <span class="pd-badge">CCEx 2026 &middot; Saturday, Sept 5</span>
-                    <h2 class="pd-title">The CCEx Parade</h2>
-                    <p class="pd-theme">This year's theme: &ldquo;Sew it, Grow it, Show it&rdquo;</p>
-                    <p class="pd-desc">Floats, tractors, horses, clubs, businesses and anyone else who wants to join in. The parade rolls through Oxford on Saturday afternoon, and there's no deadline to sign up, so get your entry in whenever you're ready.</p>
-                    <div class="pd-pills">
-                        <span class="pd-pill gold">Saturday, Sept 5 &middot; 1:00 PM</span>
-                        <span class="pd-pill">No registration deadline</span>
-                        <span class="pd-pill">Everyone welcome</span>
-                        <span class="pd-pill">Quiet zone on Water St.</span>
+            <div class="evt-hero" id="parade-hero">
+                <div class="evt-hero-bg pd-hero-bg"></div>
+                <div class="evt-hero-content">
+                    <span class="evt-badge">CCEx 2026 &middot; Saturday, Sept 5</span>
+                    <h2 class="evt-title">The CCEx Parade</h2>
+                    <p class="evt-tagline">This year's theme: &ldquo;Sew it, Grow it, Show it&rdquo;</p>
+                    <p class="evt-desc">Floats, tractors, horses, clubs, businesses and anyone else who wants to join in. The parade rolls through Oxford on Saturday afternoon, and there's no deadline to sign up, so get your entry in whenever you're ready.</p>
+                    <div class="evt-pills">
+                        <span class="evt-pill gold">Saturday, Sept 5 &middot; 1:00 PM</span>
+                        <span class="evt-pill">No registration deadline</span>
+                        <span class="evt-pill">Everyone welcome</span>
+                        <span class="evt-pill">Quiet zone on Water St.</span>
                     </div>
-                    <div class="pd-doc-links">
-                        <a href="#registration" class="pd-doc-link">Enter the Parade &rarr;</a>
-                        <a href="#route" class="pd-doc-link">See the Parade Route &rarr;</a>
-                        <a href="#please-note" class="pd-doc-link">Read the Two Rules &rarr;</a>
+                    <div class="evt-doc-links">
+                        <a href="#registration" class="evt-doc-link">Enter the Parade &rarr;</a>
+                        <a href="#route" class="evt-doc-link">See the Parade Route &rarr;</a>
+                        <a href="#please-note" class="evt-doc-link">Read the Two Rules &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -497,38 +334,38 @@
             <!-- Quick Info Grid -->
             <section class="panel">
                 <h2>At a Glance</h2>
-                <div class="pd-info-grid">
-                    <div class="pd-info-card">
+                <div class="evt-info-grid">
+                    <div class="evt-info-card">
                         <h4>Date</h4>
                         <p class="lead">Saturday, Sept 5</p>
                         <p>Parade day is <strong>Saturday, September 5, 2026</strong>.</p>
                     </div>
-                    <div class="pd-info-card">
+                    <div class="evt-info-card">
                         <h4>Start Time</h4>
                         <p class="lead">1:00 PM</p>
                         <p>The parade steps off at <strong>1:00 PM</strong>.</p>
                     </div>
-                    <div class="pd-info-card">
+                    <div class="evt-info-card">
                         <h4>Theme</h4>
                         <p class="lead">Sew it, Grow it, Show it</p>
                         <p>Build your entry around the theme however you like.</p>
                     </div>
-                    <div class="pd-info-card">
+                    <div class="evt-info-card">
                         <h4>Registration Deadline</h4>
                         <p class="lead">None</p>
                         <p>There's no cut-off to register. Sign up whenever you're ready.</p>
                     </div>
-                    <div class="pd-info-card">
+                    <div class="evt-info-card">
                         <h4>Where</h4>
                         <p class="lead">Downtown Oxford</p>
                         <p>Water Street, Main Street and Duke Street. <a href="#route" style="color: var(--barn-red); font-weight: 600;">See the route map &rarr;</a></p>
                     </div>
-                    <div class="pd-info-card">
+                    <div class="evt-info-card">
                         <h4>Line Up</h4>
                         <p class="lead">East End of Water St</p>
                         <p>Entries gather at the east end of Water Street, out past Station Street.</p>
                     </div>
-                    <div class="pd-info-card">
+                    <div class="evt-info-card">
                         <h4>Who Can Enter</h4>
                         <p class="lead">Everyone</p>
                         <p>Families, farms, clubs, businesses, community groups &ndash; all welcome.</p>
@@ -595,23 +432,23 @@
             <!-- How It Works -->
             <section class="panel">
                 <h2>How It Works</h2>
-                <div class="pd-steps">
-                    <div class="pd-step">
+                <div class="evt-steps">
+                    <div class="evt-step">
                         <span class="step-num">Step 1</span>
                         <h4>Register</h4>
                         <p>Complete the entry form above and tell us about your entry. There's no cut-off date, so you can sign up any time right up to parade day.</p>
                     </div>
-                    <div class="pd-step">
+                    <div class="evt-step">
                         <span class="step-num">Step 2</span>
                         <h4>Build Your Entry</h4>
                         <p>Work this year's theme &ndash; <strong>Sew it, Grow it, Show it</strong> &ndash; into your float, vehicle, costume or display however you like.</p>
                     </div>
-                    <div class="pd-step">
+                    <div class="evt-step">
                         <span class="step-num">Step 3</span>
                         <h4>Line Up Saturday</h4>
                         <p>Entries gather at the <strong>east end of Water Street</strong> and the parade steps off at <strong>1:00 PM on Saturday, September 5</strong>. <a href="#route" style="color: var(--barn-red); font-weight: 600;">Check the route map &rarr;</a></p>
                     </div>
-                    <div class="pd-step">
+                    <div class="evt-step">
                         <span class="step-num">Step 4</span>
                         <h4>Roll Out</h4>
                         <p>Keep it quiet through the Water Street quiet zone, don't hand anything out along the route, wave to the judges at Main &amp; Duke, and enjoy the crowd.</p>

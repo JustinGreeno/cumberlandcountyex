@@ -20,22 +20,13 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/ui.js" defer></script>
     <style>
-        /* Christmas Tree Competition Hero Card */
-        .ct-hero {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
+        /* Page-specific only - shared event page components live in css/style.css (.evt-*) */
         .ct-hero-bg {
-            position: absolute;
-            inset: 0;
             background: linear-gradient(135deg, #0d2b1a 0%, #1f5b34 45%, #0a2415 100%);
         }
+        .evt-hero-content { max-width: 78%; }
+        .evt-tagline { font-size: 1.02rem; }
+        .evt-step { border-top-color: #1f5b34; }
         .ct-hero-trees {
             position: absolute;
             right: -25px;
@@ -46,117 +37,6 @@
             pointer-events: none;
             user-select: none;
             filter: brightness(1.4);
-        }
-        .ct-hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 2.5rem 2.5rem;
-            color: white;
-            max-width: 78%;
-        }
-        .ct-badge {
-            display: inline-block;
-            background: var(--straw);
-            color: var(--wood-dark);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            margin-bottom: 0.8rem;
-        }
-        .ct-title {
-            font-family: 'Alfa Slab One', serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            color: white;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-            line-height: 1.1;
-        }
-        .ct-memorial {
-            font-family: 'Roboto Slab', serif;
-            font-style: italic;
-            color: var(--straw-light);
-            font-size: 1.02rem;
-            margin-bottom: 0.7rem;
-        }
-        .ct-desc {
-            color: rgba(255,255,255,0.88);
-            font-size: 1rem;
-            margin-bottom: 1.4rem;
-            font-family: 'Lato', sans-serif;
-        }
-        .ct-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-        .ct-pill {
-            background: rgba(255,255,255,0.12);
-            border: 1.5px solid rgba(255,255,255,0.28);
-            border-radius: 20px;
-            padding: 0.38rem 0.95rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: white;
-            font-family: 'Lato', sans-serif;
-            white-space: nowrap;
-        }
-        .ct-pill.gold {
-            background: rgba(196, 142, 30, 0.35);
-            border-color: var(--straw);
-            color: var(--straw-light);
-            font-weight: 700;
-        }
-        .ct-doc-links {
-            margin-top: 1.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .ct-doc-link {
-            color: var(--straw);
-            font-family: 'Lato', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        .ct-doc-link:hover { color: white; }
-
-        /* Key info card grid */
-        .ct-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .ct-info-card {
-            background: var(--cream);
-            border: 3px solid var(--rope-tan);
-            border-radius: 10px;
-            padding: 1rem 1.1rem;
-        }
-        .ct-info-card h4 {
-            font-family: 'Roboto Slab', serif;
-            color: var(--barn-red);
-            font-size: 0.95rem;
-            margin-bottom: 0.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .ct-info-card p {
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.4;
-        }
-        .ct-info-card .lead {
-            font-family: 'Alfa Slab One', serif;
-            font-size: 1.15rem;
-            color: var(--wood-dark);
-            margin-bottom: 0.2rem;
         }
 
         /* Memorial panel */
@@ -178,45 +58,6 @@
             margin-bottom: 0.6rem;
         }
         .ct-memorial-panel p:last-child { margin-bottom: 0; }
-
-        /* How it works steps */
-        .ct-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 0.9rem;
-            margin-top: 1rem;
-        }
-        .ct-step {
-            background: var(--cream);
-            border: 3px solid var(--rope-tan);
-            border-top: 5px solid #1f5b34;
-            border-radius: 10px;
-            padding: 1rem 1.15rem;
-        }
-        .ct-step h4 {
-            font-family: 'Roboto Slab', serif;
-            color: var(--barn-red);
-            font-size: 1.05rem;
-            margin-bottom: 0.35rem;
-        }
-        .ct-step .step-num {
-            display: inline-block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--wood-dark);
-            background: var(--straw-light);
-            border-radius: 12px;
-            padding: 0.15rem 0.7rem;
-            margin-bottom: 0.55rem;
-        }
-        .ct-step p {
-            font-size: 0.92rem;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.5;
-        }
 
         /* JotForm embed */
         .jotform-embed {
@@ -246,7 +87,6 @@
         }
 
         @media (max-width: 600px) {
-            .ct-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
             .ct-hero-trees { opacity: 0.13; right: -45px; }
             .jotform-embed iframe { min-height: 1100px; }
         }
@@ -331,24 +171,24 @@
 
         <div class="container">
             <!-- Christmas Tree Hero Card -->
-            <div class="ct-hero" id="christmas-tree-hero">
-                <div class="ct-hero-bg"></div>
+            <div class="evt-hero" id="christmas-tree-hero">
+                <div class="evt-hero-bg ct-hero-bg"></div>
                 <img decoding="async" fetchpriority="high" src="images/art/christmas trees.webp" alt="" class="ct-hero-trees" aria-hidden="true">
-                <div class="ct-hero-content">
-                    <span class="ct-badge">CCEx 2026 &middot; New Competition</span>
-                    <h2 class="ct-title">Christmas Tree Competition</h2>
-                    <p class="ct-memorial">In loving memory of Keith Moore of ShelBell Farm</p>
-                    <p class="ct-desc">A little bit of Christmas in the middle of the fair. Growers of every size, from big lots to small woodlots to backyard rows, are invited to bring their best trees to Oxford and put them up against the county's finest.</p>
-                    <div class="ct-pills">
-                        <span class="ct-pill gold">$5 per tree</span>
-                        <span class="ct-pill">No registration deadline</span>
-                        <span class="ct-pill">Judged Thursday morning</span>
-                        <span class="ct-pill">On display through Sunday</span>
-                        <span class="ct-pill">Open to everyone</span>
+                <div class="evt-hero-content">
+                    <span class="evt-badge">CCEx 2026 &middot; New Competition</span>
+                    <h2 class="evt-title">Christmas Tree Competition</h2>
+                    <p class="evt-tagline">In loving memory of Keith Moore of ShelBell Farm</p>
+                    <p class="evt-desc">A little bit of Christmas in the middle of the fair. Growers of every size, from big lots to small woodlots to backyard rows, are invited to bring their best trees to Oxford and put them up against the county's finest.</p>
+                    <div class="evt-pills">
+                        <span class="evt-pill gold">$5 per tree</span>
+                        <span class="evt-pill">No registration deadline</span>
+                        <span class="evt-pill">Judged Thursday morning</span>
+                        <span class="evt-pill">On display through Sunday</span>
+                        <span class="evt-pill">Open to everyone</span>
                     </div>
-                    <div class="ct-doc-links">
-                        <a href="#registration" class="ct-doc-link">Register Online Now &rarr;</a>
-                        <a href="schedule-2026.html" class="ct-doc-link">See the Fair Schedule &rarr;</a>
+                    <div class="evt-doc-links">
+                        <a href="#registration" class="evt-doc-link">Register Online Now &rarr;</a>
+                        <a href="schedule-2026.html" class="evt-doc-link">See the Fair Schedule &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -356,38 +196,38 @@
             <!-- Quick Info Grid -->
             <section class="panel">
                 <h2>At a Glance</h2>
-                <div class="ct-info-grid">
-                    <div class="ct-info-card">
+                <div class="evt-info-grid">
+                    <div class="evt-info-card">
                         <h4>Entry Fee</h4>
                         <p class="lead">$5 per tree</p>
                         <p>Enter one tree or several. The fee applies to each tree you bring.</p>
                     </div>
-                    <div class="ct-info-card">
+                    <div class="evt-info-card">
                         <h4>Registration Deadline</h4>
                         <p class="lead">None</p>
                         <p>There's no deadline to register. Sign up whenever you're ready, right up to drop-off.</p>
                     </div>
-                    <div class="ct-info-card">
+                    <div class="evt-info-card">
                         <h4>Drop Off Your Trees</h4>
                         <p class="lead">Tuesday or Wednesday</p>
                         <p><strong>Tuesday, Sept 1 after 5:00 PM</strong> or <strong>Wednesday, Sept 2 before 8:00 AM</strong>.</p>
                     </div>
-                    <div class="ct-info-card">
+                    <div class="evt-info-card">
                         <h4>Judging</h4>
                         <p class="lead">Thursday Morning</p>
                         <p>Trees are judged the morning of <strong>Thursday, Sept 3, 2026</strong>.</p>
                     </div>
-                    <div class="ct-info-card">
+                    <div class="evt-info-card">
                         <h4>On Display</h4>
                         <p class="lead">Through Sunday</p>
                         <p>Trees stay up for fairgoers to enjoy until <strong>Sunday, Sept 6</strong>, the last day of the fair.</p>
                     </div>
-                    <div class="ct-info-card">
+                    <div class="evt-info-card">
                         <h4>Where</h4>
                         <p class="lead">Exhibition Grounds</p>
                         <p>Oxford, NS. We'll confirm your drop-off spot when you register.</p>
                     </div>
-                    <div class="ct-info-card">
+                    <div class="evt-info-card">
                         <h4>Who Can Enter</h4>
                         <p class="lead">Everyone</p>
                         <p>Commercial growers, woodlot owners and backyard growers are all welcome.</p>
@@ -436,23 +276,23 @@
             <!-- How It Works -->
             <section class="panel">
                 <h2>How It Works</h2>
-                <div class="ct-steps">
-                    <div class="ct-step">
+                <div class="evt-steps">
+                    <div class="evt-step">
                         <span class="step-num">Step 1</span>
                         <h4>Register</h4>
                         <p>Complete the entry form above with your name, phone number, email and how many trees you plan to enter (1&ndash;10). There's no deadline, so sign up whenever you're ready.</p>
                     </div>
-                    <div class="ct-step">
+                    <div class="evt-step">
                         <span class="step-num">Step 2</span>
                         <h4>Pay Your Entry Fee</h4>
                         <p>Entries are <strong>$5 per tree</strong>. We'll confirm payment with you after you register. Cash, cheque or e-transfer to the Cumberland County Exhibition.</p>
                     </div>
-                    <div class="ct-step">
+                    <div class="evt-step">
                         <span class="step-num">Step 3</span>
                         <h4>Drop Off Your Trees</h4>
                         <p>Bring your trees to the Exhibition Grounds in Oxford <strong>Tuesday, Sept 1 after 5:00 PM</strong> or <strong>Wednesday, Sept 2 before 8:00 AM</strong>.</p>
                     </div>
-                    <div class="ct-step">
+                    <div class="evt-step">
                         <span class="step-num">Step 4</span>
                         <h4>Judging &amp; Display</h4>
                         <p>Judging takes place <strong>Thursday morning, Sept 3</strong>. Trees stay on display for fairgoers to enjoy until <strong>Sunday, Sept 6</strong>.</p>
