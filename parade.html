@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCEx Parade | Cumberland County Exhibition</title>
+    <link rel="canonical" href="https://cumberlandcountyex.com/parade.html">
     <meta name="description" content="Enter the 2026 CCEx Parade — Saturday, September 5, 2026 at 1:00 PM in Oxford, NS. Theme: Sew it, Grow it, Show it. No registration deadline. Free online entry form.">
     <meta property="og:title" content="CCEx Parade | Cumberland County Exhibition">
     <meta property="og:description" content="Enter the 2026 CCEx Parade — Saturday, September 5, 2026 at 1:00 PM in Oxford, NS. Theme: Sew it, Grow it, Show it. No registration deadline.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/Parade%20Route.jpg">
     <meta property="og:url" content="https://cumberlandcountyex.com/parade.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link href="css/style.css" rel="stylesheet">
@@ -345,17 +346,22 @@
             margin-top: 1rem;
             box-shadow: 0 6px 20px var(--shadow-medium);
         }
+        /* Microsoft Forms has no auto-resize handler, so the iframe is sized to
+           the viewport instead of a fixed height - it must never grow taller
+           than the browser window or the page scroll gets trapped. */
         .msforms-embed iframe {
             display: block;
             width: 100%;
-            height: 900px;
+            height: 78vh;
+            min-height: 420px;
+            max-height: 900px;
             border: none;
             border-radius: 8px;
         }
 
         @media (max-width: 600px) {
             .pd-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
-            .msforms-embed iframe { height: 1100px; }
+            .msforms-embed iframe { height: 80vh; max-height: none; }
         }
     </style>
 </head>
@@ -396,6 +402,7 @@
                             <li><a href="horse-registration.html">Light Horse Show</a></li>
                             <li><a href="4h.html">4-H Programs</a></li>
                             <li><a href="christmas-tree.html">Christmas Tree Competition</a></li>
+                            <li><a href="parade.html">CCEx Parade</a></li>
                             <li class="dropdown-sep"><a href="forms.html">All Entry Forms</a></li>
                         </ul>
                     </li>
@@ -462,10 +469,10 @@
             <section class="pd-map-panel" id="route">
                 <h2>The Parade Route</h2>
                 <p class="pd-map-sub">West along Water Street, around Main and Duke, then back up past the Exhibition Grounds. Tap the map to open it full size.</p>
-                <a href="images/art/Parade Route.png" target="_blank" rel="noopener" class="pd-map-frame" aria-label="Open the full size Oxford parade route map">
+                <a href="images/art/Parade Route full.jpg" target="_blank" rel="noopener" class="pd-map-frame">
                     <img loading="lazy" decoding="async" width="1400" height="788" src="images/art/Parade Route.jpg" alt="Map of the Oxford parade route. Entries line up at the east end of Water Street, travel west along Water Street and across the bridge over the Black River, carry on west through the quiet zone between Waverly and Main, turn south down Main Street, head east along Duke Street past the judges, then turn north and come back out onto Water Street by the Exhibition Grounds, where the parade ends.">
                 </a>
-                <p class="pd-map-caption"><a href="images/art/Parade Route.png" target="_blank" rel="noopener">Open the full size route map &rarr;</a></p>
+                <p class="pd-map-caption"><a href="images/art/Parade Route full.jpg" target="_blank" rel="noopener">Open the full size route map &rarr;</a></p>
 
                 <div class="pd-legend">
                     <div class="pd-legend-item start">
