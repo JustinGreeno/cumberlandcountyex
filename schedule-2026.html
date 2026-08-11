@@ -632,6 +632,8 @@
             .mud-stomp-schedule-hero, .sched-music-hero, .sns-schedule-hero, .parade-schedule-hero { display: none !important; }
             .mud-stomp-print, .music-print, .sns-print, .parade-print { display: block !important; padding: 0.3rem 0; border-bottom: 1px dashed #ccc; font-size: 0.9rem; }
             .venue-group.venue-hidden, .day-section.day-hidden { display: block !important; }
+            /* Never let off-screen skipping swallow a day on paper */
+            .day-section { content-visibility: visible !important; contain-intrinsic-size: none !important; }
             .event-sponsor-logo-inline { display: none; }
         }
         .print-header { display: none; }
