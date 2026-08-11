@@ -64,7 +64,13 @@
       "Bash(sed -n '/\\\\.footer-logo\\\\s*{/,/}/p' css/style.css)",
       "Bash(sed -n '/\\\\.logo-img\\\\s*{/,/}/p' css/style.css)",
       "Bash(awk '/\\\\{/,/\\\\}/' css/style.css)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(awk 'NR>=1330 && NR<=1350 {print NR\": \"$0}' css/style.css)",
+      "Bash(awk '/^\\(html|body\\)[ ,{]/{sel=$0; inrule=1} inrule && /\\(transform|filter|perspective|contain|will-change\\)[ ]*:/{print NR\": [\"sel\"] \"$0} /^}/{inrule=0}' css/style.css)",
+      "Bash(curl -s -H \"Cache-Control: no-cache\" https://cumberlandcountyex.com/css/style.css)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://cumberlandcountyex.com/js/lightbox.js)",
+      "Bash(awk 'NR>=2140 && NR<=2156 {print NR\": \"$0}' css/style.css)",
+      "Bash(curl -s \"https://cumberlandcountyex.com/js/lightbox.js\")"
     ]
   }
 }

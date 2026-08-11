@@ -3765,32 +3765,12 @@ html {
     box-shadow: 0 14px 34px var(--shadow-dark), inset 0 0 0 3px var(--hay);
     border-color: var(--straw);
 }
-/* ── Poster lightbox ── */
-.plb-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-    background: rgba(20, 12, 6, 0.94);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-}
-.plb-overlay.is-open { display: flex; opacity: 1; }
-.plb-overlay.no-anim { transition: none; }
-.plb-figure {
-    margin: 0;
-    max-width: min(94vw, 900px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-}
+/* ── Poster lightbox ──
+   Placement and the backdrop are set inline by js/lightbox.js, because this
+   overlay is injected at the end of <body> and a stale or slow stylesheet
+   would otherwise leave it as an unstyled block at the foot of the page.
+   Everything below is decoration layered on top of that. */
 .plb-img {
-    max-width: 100%;
-    max-height: 82vh;
     border: 5px solid var(--wood-dark);
     border-radius: 10px;
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7), inset 0 0 0 3px var(--straw);
@@ -3806,42 +3786,18 @@ html {
 }
 .plb-close,
 .plb-nav {
-    position: fixed;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    cursor: pointer;
-    line-height: 1;
     border-radius: 50%;
-    transition: background 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+    padding: 0;
+    transition: background 0.2s ease;
 }
 .plb-close:hover,
-.plb-nav:hover { background: rgba(255, 255, 255, 0.26); }
+.plb-nav:hover { background: rgba(255, 255, 255, 0.3); }
 .plb-close:focus-visible,
 .plb-nav:focus-visible { outline: 3px solid var(--straw); outline-offset: 2px; }
-.plb-close {
-    top: 1rem;
-    right: 1.25rem;
-    width: 44px;
-    height: 44px;
-    font-size: 1.9rem;
-}
-.plb-nav {
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    font-size: 2rem;
-}
-.plb-nav:hover { transform: translateY(-50%) scale(1.08); }
-.plb-prev { left: 1rem; }
-.plb-next { right: 1rem; }
-.plb-nav[hidden] { display: none; }
-@media (max-width: 600px) {
-    .plb-nav { width: 40px; height: 40px; font-size: 1.6rem; }
-    .plb-prev { left: 0.4rem; }
-    .plb-next { right: 0.4rem; }
-}
 
 .poster-caption {
     display: block;
