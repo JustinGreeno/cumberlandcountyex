@@ -91,7 +91,26 @@
 
 
     /* =============================================
-       4. SCHEDULE: EVENT BADGES
+       4. DEADLINE PASSED BANNERS
+       Marked up with data-deadline="YYYY-MM-DD". Revealed once that day is
+       over, so a deadline can be set in advance and its banner appears by
+       itself. Banners for deadlines already gone by ship visible in the HTML,
+       so they still show even if this script never runs.
+
+       Must stay ABOVE the day-section early return below - these banners live
+       on registration pages, which have no schedule on them.
+    ============================================= */
+    document.querySelectorAll('.deadline-passed[data-deadline]').forEach(function (el) {
+        var parts = el.getAttribute('data-deadline').split('-');
+        if (parts.length !== 3) return;
+        // End of the deadline day, on the visitor's own clock
+        var cutoff = new Date(+parts[0], +parts[1] - 1, +parts[2], 23, 59, 59);
+        el.hidden = Date.now() <= cutoff.getTime();
+    });
+
+
+    /* =============================================
+       5. SCHEDULE: EVENT BADGES
        (only runs when .day-section elements exist)
 
        NOTE: the sticky day navigation lives in schedule-2026.html, which

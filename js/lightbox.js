@@ -11,8 +11,10 @@
 (function () {
     'use strict';
 
+    // Grouped posters (a strip browses with arrows) and standalone ones
     var strips = document.querySelectorAll('.poster-strip');
-    if (!strips.length) return;
+    var singles = document.querySelectorAll('a.poster-single[href], a.sns-poster-link[href]');
+    if (!strips.length && !singles.length) return;
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var overlay = null;
@@ -184,16 +186,22 @@
         }
     }
 
+    function wire(links, i) {
+        links[i].addEventListener('click', function (e) {
+            // Let people open posters in a new tab the normal ways
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+            e.preventDefault();
+            open(links, i);
+        });
+    }
+
     Array.prototype.forEach.call(strips, function (strip) {
         var links = strip.querySelectorAll('a.poster-thumb[href]');
-        if (!links.length) return;
-        Array.prototype.forEach.call(links, function (link, i) {
-            link.addEventListener('click', function (e) {
-                // Let people open posters in a new tab the normal ways
-                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-                e.preventDefault();
-                open(links, i);
-            });
-        });
+        for (var i = 0; i < links.length; i++) wire(links, i);
+    });
+
+    // Each standalone poster is a group of one, so the arrows stay hidden
+    Array.prototype.forEach.call(singles, function (link) {
+        wire([link], 0);
     });
 })();
