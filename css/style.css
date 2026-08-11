@@ -3832,41 +3832,56 @@ html {
    this sets expectations. js/ui.js shows or hides it based on data-deadline,
    so a future deadline can be marked up now and appear on its own. */
 .deadline-passed {
-    background: linear-gradient(135deg, #8b2500, #a63d1f);
-    border: 4px solid #5e1900;
-    border-left-width: 10px;
+    /* Flat colour, not a gradient - a gradient behind white text muddies it */
+    background: #7d2008;
+    border: 3px solid #4d1304;
+    border-left: 10px solid var(--straw);
     border-radius: 10px;
-    padding: 1.15rem 1.5rem;
-    margin: 0 0 1.5rem;
+    padding: 1.4rem 1.6rem;
+    margin: 0 0 1.75rem;
     color: #fff;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
 }
 .deadline-passed[hidden] { display: none; }
 .deadline-passed h3 {
-    font-family: 'Alfa Slab One', serif;
-    font-size: 1.15rem;
-    margin: 0 0 0.4rem;
+    /* Roboto Slab, not Alfa Slab One. The display face is far too heavy at
+       this size and turns to mush as white-on-red. */
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    letter-spacing: 0.005em;
+    margin: 0 0 0.6rem;
     color: #fff;
+    text-shadow: none;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: baseline;
+    gap: 0.55rem;
+}
+.deadline-passed .dp-icon {
+    font-size: 1.1em;
+    line-height: 1;
+    flex-shrink: 0;
 }
 .deadline-passed p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.94);
-    line-height: 1.6;
-    font-size: 0.97rem;
+    color: #fdf6ec;
+    line-height: 1.65;
+    font-size: 1rem;
 }
-.deadline-passed p + p { margin-top: 0.5rem; }
+.deadline-passed p + p { margin-top: 0.6rem; }
+.deadline-passed strong { color: #fff; }
 .deadline-passed a {
     color: var(--straw-light);
     font-weight: 700;
     text-decoration: underline;
+    text-underline-offset: 2px;
 }
 .deadline-passed a:hover { color: #fff; }
 @media (max-width: 600px) {
-    .deadline-passed { padding: 1rem 1.1rem; border-left-width: 7px; }
-    .deadline-passed h3 { font-size: 1.02rem; }
+    .deadline-passed { padding: 1.15rem 1.15rem; border-left-width: 7px; }
+    .deadline-passed h3 { font-size: 1.1rem; }
+    .deadline-passed p { font-size: 0.96rem; }
 }
 
 /* ── Poster lightbox ──
