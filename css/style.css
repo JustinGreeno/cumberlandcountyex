@@ -2062,6 +2062,10 @@ main {
 .ml-2 { margin-left: 1rem; }
 .ml-3 { margin-left: 1.5rem; }
 
+/* Inline text links in body copy — barn-red on light panels, straw on dark */
+.link-accent { color: var(--barn-red); font-weight: 600; }
+.link-accent-straw { color: var(--straw); font-weight: 600; }
+
 /* ============================================
    RESPONSIVE - MOBILE FIRST
    ============================================ */
