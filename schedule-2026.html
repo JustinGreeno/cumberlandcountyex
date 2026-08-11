@@ -23,6 +23,7 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/horseshoe.js" defer></script>
     <script src="js/ui.js" defer></script>
+    <script src="js/lightbox.js" defer></script>
     <style>
         /* ── Sample Banner ── */
         .sample-schedule-banner {
@@ -109,6 +110,106 @@
         }
         .venue-filter-pill:hover { border-color: var(--barn-red); color: var(--barn-red); }
         .venue-filter-pill.active { background: var(--barn-red); border-color: var(--barn-red); color: white; }
+
+        /* Event count on each filter pill */
+        .pill-count {
+            display: inline-block;
+            margin-left: 0.4rem;
+            padding: 0 0.4rem;
+            min-width: 1.35em;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.12);
+            font-size: 0.78em;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .venue-filter-pill.active .pill-count { background: rgba(255,255,255,0.28); }
+
+        /* Shown when a filter matches nothing */
+        .venue-empty {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-bottom: 2rem;
+            background: var(--cream);
+            border: 3px dashed var(--rope-tan);
+            border-radius: 12px;
+        }
+        .venue-empty p { margin: 0; color: var(--text-dark); }
+        .venue-empty .ve-hint { margin-top: 0.5rem; font-size: 0.92rem; color: var(--text-light); }
+
+        /* Copy-a-link button on each day header */
+        .day-link-btn {
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.14);
+            color: var(--cream);
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease;
+        }
+        /* Shift clear of the TODAY badge on the current fair day */
+        .day-section.today .day-link-btn { right: 6.25rem; }
+        .day-header:hover .day-link-btn,
+        .day-link-btn:focus-visible { opacity: 1; }
+        .day-link-btn:hover { background: rgba(255,255,255,0.3); }
+        .day-link-btn:focus-visible { outline: 3px solid var(--straw); outline-offset: 2px; }
+        .day-link-btn.copied {
+            opacity: 1;
+            background: var(--straw);
+            border-color: var(--straw);
+            color: var(--wood-dark);
+        }
+        .day-link-btn.copied::after {
+            content: 'Link copied';
+            position: absolute;
+            right: calc(100% + 0.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+        /* Touch devices get no hover, so keep it permanently visible there */
+        @media (hover: none) {
+            .day-link-btn { opacity: 0.75; }
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            right: 1.25rem;
+            bottom: 1.25rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 3px solid var(--wood-dark);
+            background: var(--barn-red);
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            z-index: 95;
+        }
+        .back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background: var(--barn-red-light); }
+        .back-to-top:focus-visible { outline: 3px solid var(--straw); outline-offset: 3px; }
+        @media print { .back-to-top, .day-link-btn { display: none !important; } }
 
         /* ── Day / Venue structure ── */
         .day-section {
@@ -923,6 +1024,11 @@
                 <button class="venue-filter-pill" data-venue="outside">🌤 Outside</button>
             </div>
 
+            <div class="venue-empty" id="venueEmpty" hidden>
+                <p>Nothing scheduled under <strong class="ve-what"></strong> yet.</p>
+                <p class="ve-hint">Try <strong>All Events</strong>, or <a href="contact.html" class="link-accent">get in touch</a> if you're looking for something specific.</p>
+            </div>
+
             <section class="panel-wooden section-decorated">
                 <div class="animal-head left"><img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/cow facing right.webp" alt="" aria-hidden="true"></div>
                 <div class="animal-head right"><img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse facing left.webp" alt="" aria-hidden="true"></div>
@@ -1491,6 +1597,10 @@
         </nav>
     </main>
 
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top of the schedule">
+        <span aria-hidden="true">&#8593;</span>
+    </button>
+
     <footer>
         <div class="footer-content">
             <div class="footer-left">
@@ -1663,6 +1773,27 @@
         // ── Venue Filter ──
         (function() {
             const filterBar = document.getElementById('venueFilterBar');
+            const emptyState = document.getElementById('venueEmpty');
+
+            // Label each pill with how many events sit behind it, so people know
+            // before they tap. Counted from the DOM so it can't drift.
+            (function label() {
+                const totals = {};
+                let all = 0;
+                document.querySelectorAll('.venue-group').forEach(g => {
+                    const n = g.querySelectorAll('.schedule-item').length;
+                    totals[g.dataset.venue] = (totals[g.dataset.venue] || 0) + n;
+                    all += n;
+                });
+                filterBar.querySelectorAll('.venue-filter-pill').forEach(p => {
+                    const n = p.dataset.venue === 'all' ? all : (totals[p.dataset.venue] || 0);
+                    const badge = document.createElement('span');
+                    badge.className = 'pill-count';
+                    badge.textContent = n;
+                    p.appendChild(badge);
+                });
+            })();
+
             filterBar.addEventListener('click', e => {
                 const pill = e.target.closest('.venue-filter-pill');
                 if (!pill) return;
@@ -1682,12 +1813,74 @@
                 });
 
                 // Hide entire day-sections that have no visible groups
+                let visibleDays = 0;
                 document.querySelectorAll('.day-section').forEach(section => {
                     const groups = section.querySelectorAll('.venue-group');
                     if (!groups.length) return;
                     const allHidden = [...groups].every(g => g.classList.contains('venue-hidden'));
                     section.classList.toggle('day-hidden', allHidden);
+                    if (!allHidden) visibleDays++;
                 });
+
+                // Never leave the visitor staring at a blank page
+                if (emptyState) {
+                    emptyState.hidden = visibleDays > 0;
+                    emptyState.querySelector('.ve-what').textContent =
+                        pill.textContent.replace(/\d+$/, '').trim();
+                }
+            });
+        })();
+
+        // ── Back to top ──
+        (function() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let ticking = false;
+            function check() {
+                btn.classList.toggle('is-visible', window.pageYOffset > 900);
+                ticking = false;
+            }
+            window.addEventListener('scroll', () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(check); }
+            }, { passive: true });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+            });
+            check();
+        })();
+
+        // ── Copy a link straight to one day ──
+        (function() {
+            document.querySelectorAll('.day-section').forEach(section => {
+                const header = section.querySelector('.day-header');
+                if (!header || !section.id) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'day-link-btn';
+                btn.title = 'Copy a link to this day';
+                btn.setAttribute('aria-label', 'Copy a link to this day');
+                btn.innerHTML = '<span aria-hidden="true">&#128279;</span>';
+                btn.addEventListener('click', async () => {
+                    const url = location.origin + location.pathname + '#' + section.id;
+                    try {
+                        await navigator.clipboard.writeText(url);
+                    } catch (err) {
+                        // Clipboard API needs a secure context; fall back to a temp field
+                        const tmp = document.createElement('textarea');
+                        tmp.value = url;
+                        tmp.setAttribute('readonly', '');
+                        tmp.style.position = 'fixed';
+                        tmp.style.opacity = '0';
+                        document.body.appendChild(tmp);
+                        tmp.select();
+                        try { document.execCommand('copy'); } catch (e) { /* nothing more to try */ }
+                        document.body.removeChild(tmp);
+                    }
+                    btn.classList.add('copied');
+                    setTimeout(() => btn.classList.remove('copied'), 1600);
+                });
+                header.appendChild(btn);
             });
         })();
 
