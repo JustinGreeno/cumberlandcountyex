@@ -1,5 +1,4 @@
 /* Cumberland County Exhibition - Country Fair Theme */
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@400;500;600;700&family=Lato:wght@400;600;700&display=swap');
 
 :root {
     /* Wood & Earth Tones */
@@ -95,6 +94,10 @@ body::before {
         radial-gradient(ellipse at bottom center, rgba(0, 0, 0, 0.2) 0%, transparent 40%);
     z-index: -2;
     pointer-events: none;
+    /* Parallax: JS only writes --scroll-y on the root; the maths happens here,
+       so scrolling never re-parses a stylesheet. */
+    transform: translate3d(0, calc(var(--scroll-y, 0px) * -0.15), 0);
+    will-change: transform;
 }
 
 /* Subtle texture overlay */
@@ -3628,6 +3631,12 @@ main {
     .particles-container {
         display: none;
     }
+
+    /* Hold the background still rather than drifting it on scroll */
+    body::before {
+        transform: none !important;
+        will-change: auto;
+    }
 }
 
 /* =============================================
@@ -3635,6 +3644,13 @@ main {
 ============================================= */
 html {
     scroll-behavior: smooth;
+}
+
+/* Anything linkable stops clear of the sticky header instead of
+   sliding underneath it. Pages with their own taller sticky bar
+   (e.g. the schedule day nav) override this locally. */
+[id] {
+    scroll-margin-top: 96px;
 }
 
 /* =============================================

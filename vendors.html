@@ -13,6 +13,9 @@
     <meta property="og:url" content="https://cumberlandcountyex.com/vendors.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <meta name="keywords" content="CCEx vendors, vendor, food booth, craft vendor, Oxford NS">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@400;500;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/nav.js" defer></script>
@@ -209,7 +212,7 @@
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
+                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
                 <span class="logo-tagline">Cumberland County Exhibition</span>
             </a>
             <nav>
@@ -284,13 +287,13 @@
         <div class="container">
             <section class="panel animate-in section-decorated">
                 <div class="animal-head left">
-                    <img loading="lazy" decoding="async" src="images/art/chicken facing right.webp" alt="Decorative farm animal">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/chicken facing right.webp" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img loading="lazy" decoding="async" src="images/art/horse facing left.webp" alt="Decorative farm animal">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse facing left.webp" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img loading="lazy" decoding="async" src="images/art/horse shoe.webp" alt="Decorative horseshoe">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse shoe.webp" alt="Decorative horseshoe">
                 </div>
                 <h2>Become a Vendor</h2>
                 <p>The Cumberland County Exhibition attracts thousands of visitors each year, making it an excellent opportunity for vendors to showcase their products and services. We welcome food vendors, craft sellers, agricultural suppliers, and more!</p>
@@ -388,7 +391,7 @@
 
             <!-- Vendor Hall Poster -->
             <a href="images/posters/vender hall 2026.webp" target="_blank" class="poster-single" aria-label="View the full Vendor Hall 2026 poster">
-                <img loading="lazy" decoding="async" src="images/posters/vender hall 2026.webp" alt="Cumberland County Exhibition Vendor Hall — September 2 to 6, 2026, 10 AM to 9 PM. 10x10 booth $50, 10x20 booth $70, 50% returned on Sunday for staying the full time, power hookup available. Contact Kylynne Sheffield, CCEx Director, Ky536048@dal.ca, 902-790-1054.">
+                <img width="1024" height="1536" loading="lazy" decoding="async" src="images/posters/vender hall 2026.webp" alt="Cumberland County Exhibition Vendor Hall — September 2 to 6, 2026, 10 AM to 9 PM. 10x10 booth $50, 10x20 booth $70, 50% returned on Sunday for staying the full time, power hookup available. Contact Kylynne Sheffield, CCEx Director, Ky536048@dal.ca, 902-790-1054.">
             </a>
             <p class="poster-view-note">Tap the poster to view full size</p>
 
@@ -534,7 +537,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-left">
-                <img loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
+                <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
                 <div>
                     <span class="footer-title">Cumberland County Exhibition</span>
                     <span class="footer-address">
@@ -582,17 +585,15 @@
     <script>
         // Parallax background
         (function() {
-            const style = document.createElement('style');
-            style.id = 'parallax-style';
-            document.head.appendChild(style);
-
+            const root = document.documentElement;
+            let ticking = false;
             function updateParallax() {
-                const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.15;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+                root.style.setProperty('--scroll-y', window.pageYOffset + 'px');
+                ticking = false;
             }
-
-            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            window.addEventListener('scroll', () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+            }, { passive: true });
             updateParallax();
         })();
 

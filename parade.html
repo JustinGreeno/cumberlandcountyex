@@ -12,6 +12,9 @@
     <meta property="og:image" content="https://cumberlandcountyex.com/images/art/Parade%20Route.jpg">
     <meta property="og:url" content="https://cumberlandcountyex.com/parade.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@400;500;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/nav.js" defer></script>
@@ -207,7 +210,7 @@
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
+                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
                 <span class="logo-tagline">Cumberland County Exhibition</span>
             </a>
             <nav>
@@ -513,7 +516,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-left">
-                <img loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
+                <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
                 <div>
                     <span class="footer-title">Cumberland County Exhibition</span>
                     <span class="footer-address">
@@ -589,17 +592,15 @@
 
         // Parallax background
         (function() {
-            const style = document.createElement('style');
-            style.id = 'parallax-style';
-            document.head.appendChild(style);
-
+            const root = document.documentElement;
+            let ticking = false;
             function updateParallax() {
-                const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.15;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+                root.style.setProperty('--scroll-y', window.pageYOffset + 'px');
+                ticking = false;
             }
-
-            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            window.addEventListener('scroll', () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+            }, { passive: true });
             updateParallax();
         })();
     </script>

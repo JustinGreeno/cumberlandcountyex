@@ -12,6 +12,9 @@
     <meta property="og:image" content="https://cumberlandcountyex.com/images/posters/poster%20show%20and%20shine%202026.jpeg">
     <meta property="og:url" content="https://cumberlandcountyex.com/show-n-shine.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@400;500;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <script src="js/nav.js" defer></script>
@@ -271,7 +274,7 @@
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
+                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
                 <span class="logo-tagline">Cumberland County Exhibition</span>
             </a>
             <nav>
@@ -359,13 +362,13 @@
             <!-- Info Panel -->
             <section class="panel section-decorated">
                 <div class="animal-head left">
-                    <img loading="lazy" decoding="async" src="images/art/cow facing right.webp" alt="Decorative farm animal">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/cow facing right.webp" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
-                    <img loading="lazy" decoding="async" src="images/art/horse facing left.webp" alt="Decorative farm animal">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse facing left.webp" alt="Decorative farm animal">
                 </div>
                 <div class="horseshoe">
-                    <img loading="lazy" decoding="async" src="images/art/horse shoe.webp" alt="Decorative horseshoe">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse shoe.webp" alt="Decorative horseshoe">
                 </div>
                 <h2>3rd Annual Kids Show 'N Shine</h2>
                 <p>Welcome to the Cumberland County Exhibition Kids Show 'N Shine — a kids-only car show for children 9 years and under! Bring an electric powered vehicle your child can operate (or that an adult steers by remote) and show it off to the crowd. No vehicle? No problem — come be a judge and pick your favourite ride. <strong>Every child goes home with a treat bag full of goodies!</strong></p>
@@ -377,7 +380,7 @@
                 <h2>Event Poster</h2>
                 <p>All makes and models accepted — here are all the details for this year's event.</p>
                 <a href="images/posters/poster show and shine 2026.webp" target="_blank" rel="noopener" class="sns-poster-link">
-                    <img loading="lazy" decoding="async" src="images/posters/poster show and shine 2026.webp" alt="3rd Annual Cumberland County Exhibition Kids Show 'N Shine poster — open to children 9 and under, free event, pre-registration required, sponsored by DG Sons Trucking Ltd" class="sns-poster">
+                    <img width="1024" height="1536" loading="lazy" decoding="async" src="images/posters/poster show and shine 2026.webp" alt="3rd Annual Cumberland County Exhibition Kids Show 'N Shine poster — open to children 9 and under, free event, pre-registration required, sponsored by DG Sons Trucking Ltd" class="sns-poster">
                 </a>
                 <p class="sns-poster-cap">Tap the poster to view it full size.</p>
             </section>
@@ -504,7 +507,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-left">
-                <img loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
+                <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
                 <div>
                     <span class="footer-title">Cumberland County Exhibition</span>
                     <span class="footer-address">
@@ -580,17 +583,15 @@
 
         // Parallax background
         (function() {
-            const style = document.createElement('style');
-            style.id = 'parallax-style';
-            document.head.appendChild(style);
-
+            const root = document.documentElement;
+            let ticking = false;
             function updateParallax() {
-                const scrollY = window.pageYOffset;
-                const translateY = scrollY * 0.15;
-                style.textContent = `body::before { transform: translateY(-${translateY}px); }`;
+                root.style.setProperty('--scroll-y', window.pageYOffset + 'px');
+                ticking = false;
             }
-
-            window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+            window.addEventListener('scroll', () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+            }, { passive: true });
             updateParallax();
         })();
     </script>

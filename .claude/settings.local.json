@@ -58,7 +58,9 @@
       "Bash(awk '{print $5, $9, $10, $11, $12, $13}')",
       "Bash(command -v convert)",
       "Bash(convert --version)",
-      "Bash(awk '{print \"new thumb:\", $5, \"bytes\"}')"
+      "Bash(awk '{print \"new thumb:\", $5, \"bytes\"}')",
+      "Bash(sed -n '/^        .day-section {/,/}/p' schedule-2026.html)",
+      "Bash(sed -n '/^        .day-header {/,/}/p' schedule-2026.html)"
     ]
   }
 }
