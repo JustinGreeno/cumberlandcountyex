@@ -60,7 +60,11 @@
       "Bash(convert --version)",
       "Bash(awk '{print \"new thumb:\", $5, \"bytes\"}')",
       "Bash(sed -n '/^        .day-section {/,/}/p' schedule-2026.html)",
-      "Bash(sed -n '/^        .day-header {/,/}/p' schedule-2026.html)"
+      "Bash(sed -n '/^        .day-header {/,/}/p' schedule-2026.html)",
+      "Bash(sed -n '/\\\\.footer-logo\\\\s*{/,/}/p' css/style.css)",
+      "Bash(sed -n '/\\\\.logo-img\\\\s*{/,/}/p' css/style.css)",
+      "Bash(awk '/\\\\{/,/\\\\}/' css/style.css)",
+      "Bash(node -e ' *)"
     ]
   }
 }

@@ -579,12 +579,30 @@
             'images/photos/540679364_1237405831748484_3796079270512153002_n.webp'
         ];
 
+        // Intrinsic sizes, so the masonry columns reserve the right height before
+        // a photo loads instead of reshuffling as each one lands.
+        const photoSizes = {
+            'images/photos/545156113_1246012797554454_527781887835607702_n.webp': [1536, 2048],
+            'images/photos/543497687_1242125264609874_44714512599230991_n.webp':  [1536, 2048],
+            'images/photos/540765803_1236975308458203_6091504835305573349_n.webp': [960, 535],
+            'images/photos/541431021_1240062554816145_56214555998529616_n.webp':  [1365, 2048],
+            'images/photos/541628005_1240062544816146_8144413268111688797_n.webp': [2048, 1365],
+            'images/photos/541850042_1240062514816149_8630535708679409303_n.webp': [2048, 1365],
+            'images/photos/541432915_1240062481482819_7195246031313494511_n.webp': [1365, 2048],
+            'images/photos/541803018_1240062224816178_6600364531752553213_n.webp': [2048, 1365],
+            'images/photos/541523478_1239239061565161_6143454027555148766_n.webp': [1365, 2048],
+            'images/photos/540910359_1239238608231873_3250056663851460604_n.webp': [1365, 2048],
+            'images/photos/540900031_1238835624938838_8040224643733435944_n.webp': [2048, 1151],
+            'images/photos/540679364_1237405831748484_3796079270512153002_n.webp': [2048, 1536]
+        };
+        const dim = p => photoSizes[p] ? ` width="${photoSizes[p][0]}" height="${photoSizes[p][1]}"` : '';
+
         // Hero colour collage - full-colour filmstrip behind the title card
         (function() {
             const collage = document.getElementById('heroCollage');
             if (!collage) return;
             collage.innerHTML = allPhotos
-                .map(p => `<img loading="lazy" decoding="async" src="${p}" alt="">`)
+                .map(p => `<img loading="lazy" decoding="async"${dim(p)} src="${p}" alt="">`)
                 .join('');
         })();
 
@@ -593,7 +611,7 @@
             const grid = document.getElementById('galleryGrid');
             if (!grid) return;
             grid.innerHTML = allPhotos
-                .map((photo, idx) => `<div class="gallery-item" data-idx="${idx}"><img src="${photo}" alt="Exhibition photo ${idx + 1}" loading="lazy"></div>`)
+                .map((photo, idx) => `<div class="gallery-item" data-idx="${idx}"><img${dim(photo)} src="${photo}" alt="Exhibition photo ${idx + 1}" loading="lazy"></div>`)
                 .join('');
             grid.addEventListener('click', (e) => {
                 const item = e.target.closest('.gallery-item');
@@ -611,7 +629,7 @@
             let html = '';
             for (let i = 0; i < 10; i++) {
                 allPhotos.forEach((photo, idx) => {
-                    html += `<div class="carousel-item" data-photo="${photo}"><img loading="lazy" decoding="async" src="${photo}" alt="Exhibition photo ${idx + 1}"></div>`;
+                    html += `<div class="carousel-item" data-photo="${photo}"><img loading="lazy" decoding="async"${dim(photo)} src="${photo}" alt="Exhibition photo ${idx + 1}"></div>`;
                 });
             }
             track.innerHTML = html;
@@ -668,7 +686,7 @@
             overlay.innerHTML = `
                 <button class="lightbox-close" title="Close">&times;</button>
                 <button class="lightbox-nav prev" title="Previous">&#8249;</button>
-                <img loading="lazy" decoding="async" src="${allPhotos[idx]}" alt="Exhibition photo" class="lightbox-img" id="lightboxImg">
+                <img loading="lazy" decoding="async"${dim(allPhotos[idx])} src="${allPhotos[idx]}" alt="Exhibition photo" class="lightbox-img" id="lightboxImg">
                 <button class="lightbox-nav next" title="Next">&#8250;</button>
             `;
             document.body.appendChild(overlay);
@@ -689,7 +707,14 @@
         function navLightbox(dir) {
             currentLightboxIdx = (currentLightboxIdx + dir + allPhotos.length) % allPhotos.length;
             const img = document.getElementById('lightboxImg');
-            if (img) img.src = allPhotos[currentLightboxIdx];
+            if (!img) return;
+            const next = allPhotos[currentLightboxIdx];
+            // Keep the dimensions in step with the src, or the previous photo's
+            // aspect ratio briefly shapes the new one.
+            const size = photoSizes[next];
+            if (size) { img.width = size[0]; img.height = size[1]; }
+            else { img.removeAttribute('width'); img.removeAttribute('height'); }
+            img.src = next;
         }
 
         function lightboxKeyHandler(e) {

@@ -81,6 +81,17 @@ body {
     overflow-x: hidden;
 }
 
+/* Images carry intrinsic width/height attributes so the browser can reserve
+   space before they load. Those attributes are presentational hints, which
+   means an image sized by CSS on ONE axis would take its raw pixel width on
+   the other and squash. Resetting both to auto keeps the attributes doing
+   only what we want - supplying the aspect ratio. Any real CSS sizing has
+   higher specificity than this bare element selector and still wins. */
+img {
+    width: auto;
+    height: auto;
+}
+
 /* Subtle lighting overlay for wood background */
 body::before {
     content: '';

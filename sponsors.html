@@ -26,6 +26,16 @@
     <style>
         .sponsor-tier {
             margin: 2rem 0;
+            /* Five big logo grids stack up on this page; skip rendering the
+               tiers that are off-screen. */
+            content-visibility: auto;
+            contain-intrinsic-size: auto 700px;
+        }
+        @media print {
+            .sponsor-tier { content-visibility: visible !important; contain-intrinsic-size: none !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .sponsor-tier { content-visibility: visible; }
         }
         .sponsor-tier-header {
             background: linear-gradient(90deg, var(--wood-dark), var(--wood-medium));
