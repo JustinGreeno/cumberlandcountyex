@@ -1,0 +1,47 @@
+Webfonts self-hosted by Cumberland County Exhibition (cumberlandcountyex.com)
+Downloaded from Google Fonts on August 15, 2026.
+
+All three families are open-licensed and explicitly permit self-hosting and
+redistribution. Retaining this notice is part of satisfying those licences.
+
+────────────────────────────────────────────────────────────────────────────
+Alfa Slab One
+  Files:    alfa-slab-one-400-latin.woff2, alfa-slab-one-400-latin-ext.woff2
+  Designer: Jovanny Lemonad
+  Licence:  SIL Open Font License, Version 1.1
+  Text:     https://scripts.sil.org/OFL
+  Source:   https://fonts.google.com/specimen/Alfa+Slab+One
+
+────────────────────────────────────────────────────────────────────────────
+Lato
+  Files:    lato-400-latin.woff2, lato-400-latin-ext.woff2,
+            lato-700-latin.woff2, lato-700-latin-ext.woff2
+  Designer: Lukasz Dziedzic
+  Licence:  SIL Open Font License, Version 1.1
+  Text:     https://scripts.sil.org/OFL
+  Source:   https://fonts.google.com/specimen/Lato
+
+────────────────────────────────────────────────────────────────────────────
+Roboto Slab
+  Files:    roboto-slab-var-latin.woff2, roboto-slab-var-latin-ext.woff2
+  Designer: Christian Robertson
+  Licence:  Apache License, Version 2.0
+  Text:     https://www.apache.org/licenses/LICENSE-2.0
+  Source:   https://fonts.google.com/specimen/Roboto+Slab
+
+────────────────────────────────────────────────────────────────────────────
+Notes
+
+The SIL OFL permits use, embedding and redistribution, with two conditions
+that matter here: the licence notice must travel with the font files (this
+file), and the fonts must not be sold on their own. Neither restricts use on
+a website. The OFL also forbids using the Reserved Font Name for a modified
+version - these files are unmodified Google Fonts subsets, so that does not
+arise.
+
+The Apache 2.0 licence covering Roboto Slab requires the licence notice be
+retained; it places no restriction on web use.
+
+Only the latin and latin-ext subsets are included. The cyrillic, greek and
+vietnamese subsets Google also serves were omitted as unused. Subsetting is
+permitted under both licences.
