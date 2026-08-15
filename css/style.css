@@ -39,12 +39,67 @@
     --text-medium: #4a3728;
     --text-light: #5a4336;
 
-    /* Shadows - EXTRA HARD (Dirty/Dusty) */
-    --shadow-soft: rgba(0, 0, 0, 0.45);
-    --shadow-medium: rgba(0, 0, 0, 0.65);
-    --shadow-dark: rgba(0, 0, 0, 0.85);
-    --shadow-warm: rgba(61, 41, 20, 0.6);
-    --shadow-dust: rgba(92, 64, 51, 0.4);
+    /* Shadow tints. These are colours, not whole shadows - they get dropped
+       into `0 8px 30px var(--shadow-medium)` style rules all over the file.
+       They used to run 0.45-0.85 alpha, which read as mud rather than depth.
+       Depth comes from the layering in --elev-* below, not from opacity. */
+    --shadow-soft: rgba(0, 0, 0, 0.10);
+    --shadow-medium: rgba(0, 0, 0, 0.16);
+    --shadow-dark: rgba(0, 0, 0, 0.26);
+    --shadow-warm: rgba(61, 41, 20, 0.18);
+    --shadow-dust: rgba(92, 64, 51, 0.14);
+
+    /* Elevation. Each step pairs a tight contact shadow with a wide ambient
+       one - that pairing is what reads as "lifted" instead of "outlined".
+       Prefer these over hand-rolled single-layer shadows. */
+    --elev-1: 0 1px 2px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.07);
+    --elev-2: 0 1px 3px rgba(0, 0, 0, 0.07), 0 6px 18px rgba(0, 0, 0, 0.09);
+    --elev-3: 0 2px 6px rgba(0, 0, 0, 0.08), 0 14px 36px rgba(0, 0, 0, 0.12);
+    --elev-4: 0 4px 12px rgba(0, 0, 0, 0.10), 0 28px 64px rgba(0, 0, 0, 0.18);
+
+    /* Hairlines. Warm-tinted so borders sit in the wood/straw family instead
+       of the cold #333 they used to be. */
+    --line: rgba(61, 41, 20, 0.18);
+    --line-strong: rgba(61, 41, 20, 0.34);
+    --line-light: rgba(255, 255, 255, 0.16);
+
+    /* Corner radii - four steps, replacing the ~18 ad-hoc values. */
+    --r-xs: 4px;
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 18px;
+    --r-pill: 999px;
+
+    /* Spacing scale. */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --sp-7: 3rem;
+
+    /* Motion. --ease-out is the "settle" curve: fast departure, gentle
+       arrival. Small elements get --t-fast so they feel responsive, not
+       sluggish; only large moving things earn --t-slow. */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --t-fast: 0.15s;
+    --t-mid: 0.25s;
+    --t-slow: 0.4s;
+
+    /* The standard interactive transition, replacing `transition: all`.
+       Naming the properties keeps the browser off layout-triggering ones and
+       stops unrelated changes animating by accident. `visibility` is in the
+       list on purpose: the dropdowns fade out via opacity while flipping
+       visibility, and omitting it would snap them away mid-fade. */
+    --t-ui: transform var(--t-mid) var(--ease-out),
+            box-shadow var(--t-mid) var(--ease-out),
+            background-color var(--t-fast) var(--ease),
+            border-color var(--t-fast) var(--ease),
+            color var(--t-fast) var(--ease),
+            opacity var(--t-fast) var(--ease),
+            visibility var(--t-fast) var(--ease);
 }
 
 * {
@@ -76,9 +131,19 @@ body {
     background-attachment: fixed;
     color: var(--text-dark);
     min-height: 100vh;
-    line-height: 1.8;
+    line-height: 1.75;
     position: relative;
     overflow-x: hidden;
+}
+
+/* `background-attachment: fixed` forces the texture to repaint on every
+   scroll frame. On a desktop pointer that buys a nice parallax; on touch it
+   is a well-known jank source, and iOS Safari declines to honour it anyway.
+   Scroll it with the page there and lose nothing visible. */
+@media (hover: none), (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
 }
 
 /* Images carry intrinsic width/height attributes so the browser can reserve
@@ -249,12 +314,12 @@ nav .dropdown {
     background: var(--wood-dark);
     border: 2px solid var(--rope-tan);
     border-top: none;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 var(--r-sm) var(--r-sm);
     box-shadow: 0 8px 20px var(--shadow-dark);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-5px);
-    transition: all 0.2s ease;
+    transition: var(--t-ui);
     z-index: 100;
     padding: 0.4rem 0;
 }
@@ -306,8 +371,8 @@ nav a {
     background: var(--wood-medium);
     border: 2px solid var(--rope-tan);
     border-bottom: none;
-    border-radius: 8px 8px 0 0;
-    transition: all 0.2s ease;
+    border-radius: var(--r-sm) var(--r-sm) 0 0;
+    transition: var(--t-ui);
     white-space: nowrap;
     position: relative;
 }
@@ -332,7 +397,7 @@ nav a.active {
     padding: 10px;
     background: var(--wood-medium);
     border: 2px solid var(--rope-tan);
-    border-radius: 6px;
+    border-radius: var(--r-xs);
     flex-shrink: 0;
     position: relative;              /* required for z-index to work reliably */
     z-index: 1001;
@@ -347,7 +412,7 @@ nav a.active {
     height: 3px;
     background: var(--cream);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     pointer-events: none;            /* clicks pass through spans to the parent div */
 }
 
@@ -410,7 +475,7 @@ nav a.active {
     right: 10px;
     bottom: 10px;
     border: 4px dashed var(--rope-tan);
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     opacity: 0.4;
     pointer-events: none;
     z-index: 1;
@@ -449,8 +514,8 @@ nav a.active {
     color: var(--cream);
     font-family: 'Alfa Slab One', serif;
     font-size: 1.3rem;
-    border-radius: 8px;
-    border: 4px solid var(--straw);
+    border-radius: var(--r-sm);
+    border: 2px solid var(--straw);
     box-shadow: 0 8px 25px var(--shadow-dark);
     transform: rotate(-2deg);
     position: relative;
@@ -492,36 +557,49 @@ nav a.active {
         var(--cream-dark) 50%,
         var(--parchment) 100%
     );
-    border: 2px solid #333;
-    border-radius: 8px;
-    padding: 2.5rem;
-    margin: 2rem 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: var(--sp-6);
+    margin: var(--sp-6) 0;
     position: relative;
-    box-shadow: 0 8px 30px var(--shadow-medium);
+    box-shadow: var(--elev-3);
 }
 
-/* First-place ribbon decoration on panels */
-.panel::after {
+/* Award-ribbon decoration on panels.
+   This used to fire on EVERY panel, which put five ribbons down a single
+   page and turned a charming detail into wallpaper. It is opt-in now: add
+   `ribboned` to the one panel per page that deserves the flourish. The
+   ribbon art and placement are unchanged - only how often it appears. */
+.panel.ribboned::after,
+.panel-wooden.ribboned::after,
+.panel-rope.ribboned::after {
     content: '';
     position: absolute;
     bottom: -40px;
     right: -40px;
     width: 100px;
     height: 140px;
-    background-image: url('../images/art/first ribbon.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
     z-index: 5;
     pointer-events: none;
 }
 
-/* Deep shadow for all headings */
+.panel.ribboned::after { background-image: url('../images/art/first ribbon.webp'); }
+.panel-rope.ribboned::after { background-image: url('../images/art/purple ribbon.webp'); }
+.panel-wooden.ribboned::after {
+    background-image: url('../images/art/second ribbon.webp');
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45)) saturate(1.6);
+}
+
+/* Headings sit on busy wood, so they still need separation from the
+   background - but a hard 3px offset reads as a drop-shadow effect rather
+   than depth. One soft shadow does the legibility work on its own; Alfa
+   Slab One is heavy enough that it does not need propping up. */
 h1, h2 {
-    text-shadow:
-        3px 3px 0 rgba(0, 0, 0, 0.3),
-        5px 5px 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
 }
 
 .panel h2 {
@@ -530,7 +608,7 @@ h1, h2 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 4px solid var(--straw);
+    border-bottom: 3px solid var(--straw);
     position: relative;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
@@ -561,37 +639,20 @@ h1, h2 {
     background-size: cover, 200px 200px;
     background-position: center, top left;
     background-blend-mode: overlay;
-    border: 2px solid #222;
-    border-radius: 8px;
-    padding: 2.5rem;
-    margin: 2rem 0;
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-md);
+    padding: var(--sp-6);
+    margin: var(--sp-6) 0;
     position: relative;
-    box-shadow: 0 8px 30px var(--shadow-medium);
-}
-
-/* Second-place ribbon on wooden panels */
-.panel-wooden::after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    right: -40px;
-    width: 100px;
-    height: 140px;
-    background-image: url('../images/art/second ribbon.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.6)) saturate(2);
-    z-index: 5;
-    pointer-events: none;
+    box-shadow: var(--elev-3);
 }
 
 .panel-wooden h2 {
     font-family: 'Alfa Slab One', serif;
     color: var(--straw-light);
     font-size: 2.4rem;
-    text-shadow: 3px 3px 0 var(--wood-dark);
-    border-bottom: 4px solid var(--straw);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    border-bottom: 3px solid var(--straw);
     padding-bottom: 0.75rem;
     margin-bottom: 1.5rem;
 }
@@ -630,29 +691,12 @@ h1, h2 {
         #f5f0e8 50%,
         #faf8f5 100%
     );
-    border: 2px solid #333;
-    border-radius: 8px;
-    padding: 2rem;
-    margin: 2rem 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: var(--sp-6);
+    margin: var(--sp-6) 0;
     position: relative;
-    box-shadow: 0 8px 30px var(--shadow-medium);
-}
-
-/* Purple ribbon on rope panels */
-.panel-rope::after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    right: -40px;
-    width: 100px;
-    height: 140px;
-    background-image: url('../images/art/purple ribbon.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.5));
-    z-index: 5;
-    pointer-events: none;
+    box-shadow: var(--elev-3);
 }
 
 .panel-rope h2 {
@@ -678,18 +722,19 @@ h1, h2 {
 
 .info-card {
     background: var(--cream);
-    border: 2px solid #333;
-    border-radius: 8px;
-    padding: 1.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: var(--sp-5);
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px var(--shadow-medium);
+    transition: transform var(--t-mid) var(--ease-out),
+                box-shadow var(--t-mid) var(--ease-out);
+    box-shadow: var(--elev-2);
     position: relative;
 }
 
 .info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px var(--shadow-dark);
+    transform: translateY(-4px);
+    box-shadow: var(--elev-3);
 }
 
 .info-card h3 {
@@ -734,10 +779,10 @@ h1, h2 {
 .feature-item {
     background: var(--cream);
     border: 3px solid var(--rope-tan);
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     padding: 1.5rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     box-shadow: 0 6px 20px var(--shadow-soft);
 }
 
@@ -765,13 +810,13 @@ h1, h2 {
 .carousel-section {
     background:
         linear-gradient(145deg, var(--wood-medium), var(--wood-dark));
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
     padding: 2rem;
     margin: 2rem 0;
     position: relative;
     overflow: visible;
-    box-shadow: 0 8px 30px var(--shadow-medium);
+    box-shadow: var(--elev-3);
 }
 
 .carousel-section h2 {
@@ -780,12 +825,12 @@ h1, h2 {
     text-align: center;
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
-    text-shadow: 3px 3px 0 var(--wood-dark);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
 }
 
 .carousel-wrapper {
     position: relative;
-    border-radius: 6px;
+    border-radius: var(--r-xs);
 }
 
 /* New carousel structure */
@@ -795,7 +840,7 @@ h1, h2 {
 
 .carousel-viewport {
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: var(--r-xs);
 }
 
 .carousel-track {
@@ -818,7 +863,7 @@ h1, h2 {
     font-weight: bold;
     cursor: pointer;
     z-index: 100;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
 }
 
 .carousel-nav.left {
@@ -851,9 +896,9 @@ h1, h2 {
     flex-shrink: 0;
     width: 300px;
     height: 220px;
-    border-radius: 6px;
+    border-radius: var(--r-xs);
     overflow: hidden;
-    border: 4px solid var(--rope-tan);
+    border: 2px solid var(--rope-tan);
     box-shadow: 0 8px 30px var(--shadow-dark);
     background: var(--cream);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -945,13 +990,13 @@ h1, h2 {
    ============================================ */
 .event-card {
     background: var(--cream);
-    border: 4px solid var(--wood-medium);
+    border: 2px solid var(--wood-medium);
     border-left: 8px solid var(--barn-red);
     border-radius: 0 8px 8px 0;
     padding: 1.5rem 2rem;
     margin: 1.5rem 0;
     box-shadow: 0 8px 25px var(--shadow-medium);
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     position: relative;
 }
 
@@ -964,7 +1009,7 @@ h1, h2 {
     width: 24px;
     height: 24px;
     background: var(--barn-red);
-    border: 4px solid var(--straw);
+    border: 2px solid var(--straw);
     border-radius: 50%;
     box-shadow: 0 4px 10px var(--shadow-medium);
 }
@@ -1000,7 +1045,7 @@ h1, h2 {
     padding: 0.4rem 1rem;
     background: var(--straw-light);
     color: var(--wood-dark);
-    border-radius: 20px;
+    border-radius: var(--r-pill);
     font-size: 0.95rem;
     font-weight: 600;
 }
@@ -1023,13 +1068,13 @@ h1, h2 {
    ============================================ */
 .evt-hero {
     position: relative;
-    border-radius: 16px;
+    border-radius: var(--r-lg);
     overflow: hidden;
     min-height: 300px;
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: var(--elev-3);
 }
 .evt-hero-bg {
     position: absolute;
@@ -1051,7 +1096,7 @@ h1, h2 {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.3rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--r-pill);
     margin-bottom: 0.8rem;
 }
 .evt-title {
@@ -1084,7 +1129,7 @@ h1, h2 {
 .evt-pill {
     background: rgba(255,255,255,0.12);
     border: 1.5px solid rgba(255,255,255,0.28);
-    border-radius: 20px;
+    border-radius: var(--r-pill);
     padding: 0.38rem 0.95rem;
     font-size: 0.88rem;
     font-weight: 600;
@@ -1124,7 +1169,7 @@ h1, h2 {
 .evt-info-card {
     background: var(--cream);
     border: 3px solid var(--rope-tan);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     padding: 1rem 1.1rem;
 }
 .evt-info-card h4 {
@@ -1159,7 +1204,7 @@ h1, h2 {
     background: var(--cream);
     border: 3px solid var(--rope-tan);
     border-top: 5px solid var(--wood-medium);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     padding: 1rem 1.15rem;
 }
 .evt-step h4 {
@@ -1176,7 +1221,7 @@ h1, h2 {
     letter-spacing: 0.05em;
     color: var(--wood-dark);
     background: var(--straw-light);
-    border-radius: 12px;
+    border-radius: var(--r-md);
     padding: 0.15rem 0.7rem;
     margin-bottom: 0.55rem;
 }
@@ -1201,10 +1246,10 @@ h1, h2 {
     gap: 1.75rem;
     align-items: center;
     background: linear-gradient(135deg, #5c1a1a 0%, #98301f 48%, #3d1010 100%);
-    border-radius: 16px;
+    border-radius: var(--r-lg);
     padding: 2rem 2.25rem;
     margin: 2rem 0;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: var(--elev-3);
     overflow: hidden;
 }
 .parade-promo-badge {
@@ -1216,7 +1261,7 @@ h1, h2 {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.3rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--r-pill);
     margin-bottom: 0.8rem;
 }
 .parade-promo-title {
@@ -1248,7 +1293,7 @@ h1, h2 {
 .parade-promo-tag {
     background: rgba(255,255,255,0.12);
     border: 1.5px solid rgba(255,255,255,0.28);
-    border-radius: 20px;
+    border-radius: var(--r-pill);
     padding: 0.38rem 0.95rem;
     font-size: 0.87rem;
     font-weight: 600;
@@ -1270,7 +1315,7 @@ a.parade-promo-tag.gold:hover {
 .parade-promo-map {
     display: block;
     border: 3px solid rgba(255,255,255,0.35);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     overflow: hidden;
     line-height: 0;
     transition: border-color 0.2s ease, transform 0.2s ease;
@@ -1312,11 +1357,11 @@ a.parade-promo-tag.gold:hover {
 
 .member-card {
     background: var(--cream);
-    border: 4px solid var(--wood-medium);
-    border-radius: 8px;
+    border: 2px solid var(--wood-medium);
+    border-radius: var(--r-sm);
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: var(--t-ui);
     box-shadow: 0 8px 25px var(--shadow-medium);
 }
 
@@ -1334,7 +1379,7 @@ a.parade-promo-tag.gold:hover {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-bottom: 4px solid var(--rope-tan);
+    border-bottom: 2px solid var(--rope-tan);
 }
 
 .member-photo img {
@@ -1392,7 +1437,7 @@ a.parade-promo-tag.gold:hover {
     justify-content: center;
     font-size: 3rem;
     color: var(--cream);
-    border: 4px solid var(--rope-tan);
+    border: 2px solid var(--rope-tan);
 }
 
 .member-info {
@@ -1494,8 +1539,8 @@ a.parade-promo-tag.gold:hover {
 
 .modal-content {
     background: var(--cream);
-    border: 6px solid var(--wood-medium);
-    border-radius: 12px;
+    border: 2px solid var(--wood-medium);
+    border-radius: var(--r-md);
     max-width: 600px;
     width: 100%;
     max-height: 90vh;
@@ -1531,7 +1576,7 @@ a.parade-promo-tag.gold:hover {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 15px var(--shadow-medium);
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
 }
 
 .modal-close:hover {
@@ -1546,7 +1591,7 @@ a.parade-promo-tag.gold:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 4px solid var(--rope-tan);
+    border-bottom: 2px solid var(--rope-tan);
 }
 
 .modal-photo img {
@@ -1605,12 +1650,12 @@ a.parade-promo-tag.gold:hover {
     width: 100%;
     padding: 1rem;
     border: 3px solid var(--rope-tan);
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     font-family: 'Lato', sans-serif;
     font-size: 1.1rem;
     background: var(--cream);
     color: var(--text-dark);
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
 }
 
 .form-group input:focus,
@@ -1634,29 +1679,37 @@ a.parade-promo-tag.gold:hover {
     background:
         linear-gradient(180deg, var(--barn-red-light), var(--barn-red));
     color: var(--cream);
-    padding: 0.9rem 2.5rem;
-    border: 4px solid var(--straw);
-    border-radius: 8px;
+    padding: 0.9rem 2.25rem;
+    border: 2px solid var(--straw);
+    border-radius: var(--r-pill);
     font-family: 'Roboto Slab', serif;
     font-size: 1.15rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     text-decoration: none;
-    box-shadow: 0 6px 20px var(--shadow-medium);
+    box-shadow: var(--elev-2);
 }
 
 .btn:hover {
     background:
         linear-gradient(180deg, var(--wood-light), var(--wood-medium));
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px var(--shadow-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--elev-3);
+}
+
+/* Press state - without one, the button keeps floating while you click it
+   and the interaction feels detached from the pointer. */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: var(--elev-1);
+    transition-duration: var(--t-fast);
 }
 
 .btn-outline {
     background: transparent;
     color: var(--barn-red);
-    border: 4px solid var(--barn-red);
+    border: 2px solid var(--barn-red);
 }
 
 .btn-outline:hover {
@@ -1668,7 +1721,7 @@ a.parade-promo-tag.gold:hover {
 .btn-outline-light {
     background: transparent;
     color: var(--cream);
-    border: 4px solid var(--cream);
+    border: 2px solid var(--cream);
 }
 
 .btn-outline-light:hover {
@@ -1681,7 +1734,7 @@ a.parade-promo-tag.gold:hover {
 .panel-wooden .btn:not(:first-of-type) {
     background: transparent;
     color: var(--straw-light);
-    border: 4px solid var(--straw-light);
+    border: 2px solid var(--straw-light);
 }
 
 .panel-wooden .btn-outline:hover,
@@ -1710,14 +1763,14 @@ footer {
             var(--wood-medium) 0%,
             var(--wood-dark) 100%
         );
-    border-top: 2px solid #333;
+    border-top: 1px solid var(--line-light);
     padding: 1rem 0;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.10), 0 -12px 32px rgba(0, 0, 0, 0.14);
 }
 
 /* Add padding to main content so footer doesn't cover it */
@@ -1840,7 +1893,7 @@ main {
     line-height: 24px;
     font-size: 0.7rem;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: var(--r-xs);
     text-decoration: none;
     opacity: 0.3;
     transition: opacity 0.3s ease;
@@ -1982,7 +2035,7 @@ main {
 /* Glass frame effect */
 .glass-frame {
     position: relative;
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     overflow: hidden;
     box-shadow:
         inset 0 0 30px rgba(255, 255, 255, 0.1),
@@ -2102,7 +2155,7 @@ main {
         align-items: stretch;
         background: var(--wood-dark);
         border: 2px solid var(--rope-tan);
-        border-radius: 8px;
+        border-radius: var(--r-sm);
         padding: 0.5rem;
         gap: 2px;
         min-width: 200px;
@@ -2110,7 +2163,7 @@ main {
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
-        transition: all 0.2s ease;
+        transition: var(--t-ui);
         z-index: 1000;
     }
 
@@ -2125,7 +2178,7 @@ main {
     }
 
     nav a {
-        border-radius: 6px;
+        border-radius: var(--r-xs);
         border: none;
         font-size: 0.85rem;
         padding: 0.6rem 1rem;
@@ -2175,7 +2228,7 @@ main {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
         background: transparent;
-        border-radius: 4px;
+        border-radius: var(--r-xs);
     }
 }
 
@@ -2267,12 +2320,12 @@ main {
     }
 
     .search-bar input {
-        border-radius: 25px;
+        border-radius: var(--r-pill);
         border-right: 3px solid var(--rope-tan);
     }
 
     .search-bar button {
-        border-radius: 25px;
+        border-radius: var(--r-pill);
         width: 100%;
     }
 
@@ -2470,7 +2523,7 @@ main {
     background: linear-gradient(135deg, var(--barn-red), #6b1a00);
     color: var(--cream);
     padding: 0.3rem 0.8rem;
-    border-radius: 4px;
+    border-radius: var(--r-xs);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -2484,7 +2537,7 @@ main {
     background: var(--wood-medium);
     color: var(--straw-light);
     padding: 0.25rem 0.6rem;
-    border-radius: 4px;
+    border-radius: var(--r-xs);
     font-size: 0.8rem;
     font-weight: 600;
 }
@@ -2639,7 +2692,7 @@ main {
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
 }
 
 .search-bar button:hover {
@@ -2673,7 +2726,7 @@ main {
     overflow-y: auto;
     display: none;
     z-index: 1000;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: var(--elev-3);
 }
 
 .search-dropdown.active {
@@ -2722,7 +2775,7 @@ main {
     width: 36px;
     height: 36px;
     background: var(--wood-light);
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2762,7 +2815,7 @@ main {
     color: var(--barn-red);
     background: var(--cream-dark);
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--r-xs);
     margin-left: 0.5rem;
     flex-shrink: 0;
 }
@@ -2810,7 +2863,7 @@ main {
 .countdown-number {
     font-size: 1.4rem;
     color: var(--straw-light);
-    text-shadow: 2px 2px 0 var(--wood-dark);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .countdown-unit {
@@ -2844,10 +2897,10 @@ main {
     background: linear-gradient(135deg, var(--barn-red) 0%, #6b1a00 100%);
     color: var(--cream);
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: var(--r-md);
     text-align: center;
     margin: 2rem 0;
-    border: 4px solid var(--straw);
+    border: 2px solid var(--straw);
     box-shadow: 0 8px 30px var(--shadow-dark);
 }
 
@@ -2886,11 +2939,11 @@ main {
     width: 50px;
     height: 50px;
     background: rgba(51, 51, 51, 0.6);
-    border: 2px solid #333;
+    border: 1px solid var(--line);
     border-radius: 50%;
     cursor: pointer;
     opacity: 0.5;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     z-index: 20;
 }
 
@@ -2955,7 +3008,7 @@ main {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--cream);
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     box-shadow: 0 4px 15px var(--shadow-dark);
     pointer-events: all;
     opacity: 0.8;
@@ -3003,7 +3056,7 @@ main {
     max-width: 90vw;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     transform: scale(0.9);
     transition: transform 0.3s ease;
@@ -3025,7 +3078,7 @@ main {
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--t-ui);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3239,7 +3292,7 @@ main {
 
 .flip-card .top {
     top: 0;
-    border-radius: 8px 8px 0 0;
+    border-radius: var(--r-sm) var(--r-sm) 0 0;
     border-bottom: 1px solid #000;
     align-items: flex-end;
     padding-bottom: 2px;
@@ -3247,7 +3300,7 @@ main {
 
 .flip-card .bottom {
     bottom: 0;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 var(--r-sm) var(--r-sm);
     border-top: 1px solid #555;
     align-items: flex-start;
     padding-top: 2px;
@@ -3266,7 +3319,7 @@ main {
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 2px;
-    border-radius: 8px 8px 0 0;
+    border-radius: var(--r-sm) var(--r-sm) 0 0;
     border: 2px solid #444;
     border-bottom: 1px solid #000;
     transform-origin: bottom;
@@ -3330,8 +3383,8 @@ main {
     width: 45%;
     padding: 1.5rem;
     background: var(--cream);
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
     margin-bottom: 2rem;
     box-shadow: 0 4px 15px var(--shadow-medium);
 }
@@ -3351,7 +3404,7 @@ main {
     width: 20px;
     height: 20px;
     background: var(--barn-red);
-    border: 4px solid var(--straw);
+    border: 2px solid var(--straw);
     border-radius: 50%;
     box-shadow: 0 3px 10px var(--shadow-medium);
 }
@@ -3432,8 +3485,8 @@ main {
 
 .faq-item {
     background: var(--cream);
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
     margin-bottom: 1rem;
     overflow: hidden;
 }
@@ -3520,9 +3573,9 @@ main {
 }
 
 .map-wrapper {
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     overflow: hidden;
-    border: 4px solid var(--rope-tan);
+    border: 2px solid var(--rope-tan);
 }
 
 .footer-social-link {
@@ -3569,8 +3622,8 @@ main {
    ============================================ */
 .form-success-panel {
     background: linear-gradient(135deg, #1a6b1a, #0e4a0e);
-    border: 4px solid var(--straw);
-    border-radius: 12px;
+    border: 2px solid var(--straw);
+    border-radius: var(--r-md);
     padding: 3rem 2rem;
     text-align: center;
     color: var(--cream);
@@ -3606,7 +3659,7 @@ main {
     background: linear-gradient(135deg, var(--barn-red), #6b1a00);
     color: var(--cream);
     border: 3px solid var(--straw);
-    border-radius: 8px;
+    border-radius: var(--r-sm);
     padding: 1rem 1.5rem;
     margin-top: 1rem;
     font-size: 0.95rem;
@@ -3637,6 +3690,13 @@ main {
 
     .hero::after {
         animation: none;
+    }
+
+    /* The background parallax is driven by --scroll-y from JS, so killing
+       transitions above does not stop it. Neutralise the maths instead. */
+    body::before {
+        transform: none;
+        will-change: auto;
     }
 
     .particles-container {
@@ -3752,7 +3812,7 @@ html {
     width: 210px;
     max-width: 46%;
     border: 5px solid var(--wood-dark);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     background: var(--cream);
     box-shadow: 0 6px 18px var(--shadow-medium), inset 0 0 0 3px var(--straw);
     overflow: hidden;
@@ -3776,7 +3836,7 @@ html {
     border-bottom: 4px solid #124a25;
     padding: 0.9rem 1.5rem;
     color: #fff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--elev-2);
 }
 .hn-dot {
     flex-shrink: 0;
@@ -3810,7 +3870,7 @@ html {
     font-size: 0.9rem;
     text-decoration: none;
     padding: 0.5rem 1.1rem;
-    border-radius: 20px;
+    border-radius: var(--r-pill);
     border: 2px solid var(--hay);
     transition: background 0.2s ease, transform 0.2s ease;
 }
@@ -3836,11 +3896,11 @@ html {
     background: #7d2008;
     border: 3px solid #4d1304;
     border-left: 10px solid var(--straw);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     padding: 1.4rem 1.6rem;
     margin: 0 0 1.75rem;
     color: #fff;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--elev-3);
 }
 .deadline-passed[hidden] { display: none; }
 .deadline-passed h3 {
@@ -3891,7 +3951,7 @@ html {
    Everything below is decoration layered on top of that. */
 .plb-img {
     border: 5px solid var(--wood-dark);
-    border-radius: 10px;
+    border-radius: var(--r-md);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7), inset 0 0 0 3px var(--straw);
     background: var(--cream);
 }
@@ -3936,7 +3996,7 @@ html {
     max-width: 460px;
     margin: 1.5rem auto;
     border: 6px solid var(--wood-dark);
-    border-radius: 12px;
+    border-radius: var(--r-md);
     background: var(--cream);
     box-shadow: 0 10px 30px var(--shadow-dark), inset 0 0 0 4px var(--straw);
     overflow: hidden;
@@ -4006,7 +4066,7 @@ nav .dropdown li.dropdown-sep {
     padding: 1.75rem 1.5rem 2rem;
     background: linear-gradient(180deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
     border: 3px solid var(--rope-tan);
-    border-radius: 12px;
+    border-radius: var(--r-md);
     box-shadow: 0 10px 28px var(--shadow-dark);
 }
 
@@ -4017,7 +4077,7 @@ nav .dropdown li.dropdown-sep {
     text-align: center;
     margin: 0 0 1.5rem;
     letter-spacing: 0.5px;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .site-directory-grid {
@@ -4046,7 +4106,7 @@ nav .dropdown li.dropdown-sep {
     font-size: 0.92rem;
     color: var(--cream);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: var(--r-xs);
     transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
