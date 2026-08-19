@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Farmer Competition | Cumberland County Exhibition</title>
+    <link rel="canonical" href="https://cumberlandcountyex.com/future-farmer.html">
+    <meta name="description" content="Enter the CCEx Future Farmer Competition 2026 — open to youth ages 7 to 21. $5 entry. Show livestock, enter a Christmas tree and a Life Skills project, attend the speaker session and quiz. Prizes courtesy of Farm Credit Canada.">
+    <meta property="og:title" content="Future Farmer Competition | Cumberland County Exhibition">
+    <meta property="og:description" content="Enter the CCEx Future Farmer Competition 2026 — open to youth ages 7 to 21. $5 entry. Show livestock, enter a Christmas tree and a Life Skills project, attend the speaker session and quiz. Prizes courtesy of Farm Credit Canada.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
+    <meta property="og:url" content="https://cumberlandcountyex.com/future-farmer.html">
+    <meta property="og:site_name" content="Cumberland County Exhibition">
+    <link rel="preload" as="image" href="images/art/beef showmanship.webp" fetchpriority="high">
+    <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css?v=20260815a">
+    <link href="css/style.css?v=20260815a" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
+    <script src="js/nav.js?v=20260811d" defer></script>
+    <script src="js/search.js?v=20260811d" defer></script>
+    <script src="js/countdown.js?v=20260811d" defer></script>
+    <script src="js/ui.js?v=20260811d" defer></script>
+    <style>
+        /* Page-specific only - shared event page components live in css/style.css (.evt-*) */
+        .ff-hero-bg {
+            background: linear-gradient(135deg, #1a2f08 0%, #4a7c1a 45%, #14260a 100%);
+        }
+        .evt-hero-content { max-width: 74%; }
+        .evt-tagline { font-size: 1.02rem; }
+        .evt-step { border-top-color: #4a7c1a; }
+        .ff-hero-shot {
+            position: absolute;
+            right: -30px;
+            bottom: 0;
+            height: 112%;
+            max-height: 360px;
+            opacity: 0.26;
+            pointer-events: none;
+            user-select: none;
+            filter: brightness(1.35) contrast(1.05);
+            mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, #000 55%, transparent 100%);
+        }
+
+        /* Requirements checklist */
+        .ff-reqs {
+            list-style: none;
+            margin: 1rem 0 0;
+            padding: 0;
+            display: grid;
+            gap: 0.85rem;
+        }
+        .ff-reqs li {
+            position: relative;
+            background: var(--cream);
+            border: 2px solid var(--wood-light);
+            border-left: 6px solid #4a7c1a;
+            border-radius: 10px;
+            padding: 0.9rem 1.1rem 0.9rem 3.1rem;
+            color: var(--text-dark);
+        }
+        .ff-reqs li::before {
+            content: attr(data-n);
+            position: absolute;
+            left: 0.9rem;
+            top: 0.85rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 50%;
+            background: #4a7c1a;
+            color: #fff;
+            font-family: 'Alfa Slab One', serif;
+            font-size: 0.85rem;
+            line-height: 1.6rem;
+            text-align: center;
+        }
+        .ff-reqs li strong { display: block; margin-bottom: 0.2rem; }
+
+        /* Points table */
+        .ff-table-wrap { overflow-x: auto; margin-top: 1rem; }
+        .ff-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 420px;
+            font-family: 'Lato', sans-serif;
+        }
+        .ff-table th,
+        .ff-table td {
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.12);
+            color: var(--text-dark);
+        }
+        .ff-table thead th {
+            background: #4a7c1a;
+            color: #fff;
+            font-family: 'Alfa Slab One', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+        .ff-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.03); }
+
+        /* Prize cards */
+        .ff-prizes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .ff-prize {
+            background: linear-gradient(160deg, #fff9ea, #f0e4c4);
+            border: 3px solid var(--straw);
+            border-radius: 12px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+        }
+        .ff-prize .ff-prize-rank {
+            font-family: 'Alfa Slab One', serif;
+            color: #1f5b34;
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        .ff-prize .ff-prize-amt {
+            font-family: 'Alfa Slab One', serif;
+            font-size: 2rem;
+            color: var(--barn-red);
+            display: block;
+            line-height: 1;
+        }
+
+        /* TBA note */
+        .ff-tba {
+            background: rgba(160, 30, 0, 0.08);
+            border: 2px dashed var(--barn-red);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-top: 1.2rem;
+            color: var(--text-dark);
+        }
+        .ff-tba strong { color: var(--barn-red); }
+
+        /* JotForm embed */
+        .jotform-embed {
+            background: var(--cream);
+            border: 3px solid var(--wood-medium);
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+        .jotform-embed iframe {
+            display: block;
+            width: 100%;
+            min-height: 900px;
+            border: none;
+            border-radius: 8px;
+        }
+        .jotform-fallback {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        .jotform-fallback a {
+            color: var(--barn-red);
+            font-weight: 600;
+        }
+
+        @media (max-width: 700px) {
+            .evt-hero-content { max-width: 100%; }
+            .ff-hero-shot { opacity: 0.14; right: -60px; }
+            .jotform-embed iframe { min-height: 1100px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
+                <span class="logo-tagline">Cumberland County Exhibition</span>
+            </a>
+            <nav>
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule-2026.html">Schedule</a></li>
+                    <li class="has-dropdown">
+                        <a href="events.html">See &amp; Do</a>
+                        <ul class="dropdown">
+                            <li><a href="events.html">All Events</a></li>
+                            <li><a href="parade.html">CCEx Parade</a></li>
+                            <li><a href="activities.html">Kids Activities &amp; Fun Zone</a></li>
+                            <li><a href="show-n-shine.html">Kids Show 'N Shine</a></li>
+                            <li><a href="events.html#mud-stomp">Mud Stomp (19+)</a></li>
+                            <li><a href="photos.html">Photo Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="exhibitors.html" class="active">Shows &amp; Entries</a>
+                        <ul class="dropdown">
+                            <li><a href="exhibitors.html">Exhibitor Info</a></li>
+                            <li><a href="beef-registration.html">Open Beef Show</a></li>
+                            <li><a href="junior-beef-show.html">Junior Beef Show</a></li>
+                            <li><a href="horse-registration.html">Light Horse Show</a></li>
+                            <li><a href="4h.html">4-H Programs</a></li>
+                            <li><a href="future-farmer.html" class="active">Future Farmer Competition</a></li>
+                            <li><a href="christmas-tree.html">Christmas Tree Competition</a></li>
+                            <li><a href="parade.html">CCEx Parade</a></li>
+                            <li class="dropdown-sep"><a href="forms.html">All Entry Forms</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="vendors.html">Vendors</a>
+                        <ul class="dropdown">
+                            <li><a href="vendors.html">Booth Info &amp; Pricing</a></li>
+                            <li><a href="vendor-application.html">Vendor Application</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="merch.html">Tickets &amp; Merch</a></li>
+                    <li class="has-dropdown">
+                        <a href="contact.html">About</a>
+                        <ul class="dropdown">
+                            <li><a href="sponsors.html">Sponsors</a></li>
+                            <li><a href="members.html">Board Members</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Full width search bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search pages, forms, events, FAQ..." id="siteSearch" autocomplete="off">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <main id="main">
+        <section class="hero">
+            <h1>Future Farmer Competition</h1>
+            <p class="tagline">For youth ages 7 to 21 &middot; CCEx 2026</p>
+        </section>
+
+        <div class="container">
+            <!-- Future Farmer Hero Card -->
+            <div class="evt-hero" id="future-farmer-hero">
+                <div class="evt-hero-bg ff-hero-bg"></div>
+                <img width="1024" height="1024" decoding="async" fetchpriority="high" src="images/art/beef showmanship.webp" alt="" class="ff-hero-shot" aria-hidden="true">
+                <div class="evt-hero-content">
+                    <span class="evt-badge">CCEx 2026 &middot; Youth Aggregate</span>
+                    <h2 class="evt-title">Future Farmer Competition</h2>
+                    <p class="evt-tagline">One entry, five ways to earn points across the whole fair</p>
+                    <p class="evt-desc">The Future Farmer Competition is for young people who want to do it all. Show an animal, grow a Christmas tree, put a Life Skills project in the hall, sit in on the speaker session and take the quiz. Points from each part are tallied up, and the top three take home cash prizes courtesy of Farm Credit Canada.</p>
+                    <div class="evt-pills">
+                        <span class="evt-pill gold">$5 entry fee</span>
+                        <span class="evt-pill">Ages 7&ndash;21</span>
+                        <span class="evt-pill">Prizes by Farm Credit Canada</span>
+                        <span class="evt-pill">Awarded Sunday, Sept 6</span>
+                    </div>
+                    <div class="evt-doc-links">
+                        <a href="#registration" class="evt-doc-link">Enter Online Now &rarr;</a>
+                        <a href="images/forms and documents/Future Farmer Rules and Regulations 2026.pdf" target="_blank" rel="noopener" class="evt-doc-link">Download Rules &amp; Regulations PDF &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Info Grid -->
+            <section class="panel">
+                <h2>At a Glance</h2>
+                <div class="evt-info-grid">
+                    <div class="evt-info-card">
+                        <h4>Who Can Enter</h4>
+                        <p class="lead">Ages 7&ndash;21</p>
+                        <p>Open to youth who were <strong>7 to 21 years old as of January 1, 2026</strong>.</p>
+                    </div>
+                    <div class="evt-info-card">
+                        <h4>Future Farmer Entry Fee</h4>
+                        <p class="lead">$5</p>
+                        <p>Paid when your entry form is submitted to the exhibition. No form or no fee means you're not in the running.</p>
+                    </div>
+                    <div class="evt-info-card">
+                        <h4>Class Entry Fees</h4>
+                        <p class="lead">Paid separately</p>
+                        <p>The fee for each class you enter is payable to the committee running that division, on top of the $5 Future Farmer fee.</p>
+                    </div>
+                    <div class="evt-info-card">
+                        <h4>Awards Presented</h4>
+                        <p class="lead">Sunday, Sept 6</p>
+                        <p>All points are tallied and prizes are handed out on the last day of the fair.</p>
+                    </div>
+                    <div class="evt-info-card">
+                        <h4>Prizes Courtesy Of</h4>
+                        <p class="lead">Farm Credit Canada</p>
+                        <p>Cash prizes for Champion, Reserve Champion and Honourable Mention.</p>
+                    </div>
+                    <div class="evt-info-card">
+                        <h4>Where</h4>
+                        <p class="lead">Exhibition Grounds</p>
+                        <p>Oxford, NS &mdash; Aug 31 to Sept 6, 2026. Each part of the competition runs at its own venue and time.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- What You Have To Enter -->
+            <section class="panel">
+                <h2>What You Have To Enter</h2>
+                <p>To be eligible for the Future Farmer Competition, you must enter <strong>all four</strong> of the following:</p>
+                <ul class="ff-reqs">
+                    <li data-n="1">
+                        <strong>At least one livestock, light horse or beef entry</strong>
+                        Pick whichever suits you. See the <a href="beef-registration.html" class="link-accent">Open Beef Show</a>, the <a href="junior-beef-show.html" class="link-accent">Junior Beef Show</a> or the <a href="horse-registration.html" class="link-accent">Light Horse Show</a> for classes and entry forms.
+                    </li>
+                    <li data-n="2">
+                        <strong>The Christmas Tree Competition</strong>
+                        Held in memory of Keith Moore. It's $5 per tree with no registration deadline &mdash; <a href="christmas-tree.html" class="link-accent">enter here</a>.
+                    </li>
+                    <li data-n="3">
+                        <strong>At least one Life Skills project, any category</strong>
+                        Vegetables, flowers, baking and pickling, arts and crafts, or the children's competition. Booklets and the entry form are on the <a href="forms.html" class="link-accent">Forms &amp; Documents</a> page.
+                    </li>
+                    <li data-n="4">
+                        <strong>A speaker session, plus the quiz</strong>
+                        Attend the session and complete the quiz that follows it.
+                    </li>
+                </ul>
+                <div class="ff-tba">
+                    <p><strong>Still to be announced:</strong> the speaker's name, and the time and location of the speaker session. We'll post it here and on the <a href="schedule-2026.html" class="link-accent">2026 schedule</a> as soon as it's set, and everyone who has entered will be told directly.</p>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- Registration Form (JotForm embed) -->
+            <section id="registration" class="panel-wooden">
+                <h2>Enter Online</h2>
+                <p style="color: var(--cream); margin-bottom: 1rem;">Fill out the form below to enter the 2026 Future Farmer Competition. Remember that your <strong>$5 entry fee</strong> must be paid when the form is submitted, and that each class you enter is paid for separately through the committee running that division.</p>
+
+                <div class="jotform-embed">
+                    <iframe
+                        id="JotFormIFrame-262293996326066"
+                        title="CCEx Future Farmer Competition Entry Form"
+                        src="https://form.jotform.com/262293996326066"
+                        allow="geolocation; microphone; camera; fullscreen; payment"
+                        scrolling="auto"
+                        loading="lazy">
+                    </iframe>
+                    <noscript>
+                        <div class="jotform-fallback">
+                            JavaScript is required to display this form.
+                            <a href="https://form.jotform.com/262293996326066" target="_blank" rel="noopener">Open the entry form in a new tab &rarr;</a>
+                        </div>
+                    </noscript>
+                </div>
+
+                <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                    Having trouble with the embedded form? <a href="https://form.jotform.com/262293996326066" target="_blank" rel="noopener" class="link-accent-straw">Open it in a new tab</a>, read the <a href="images/forms and documents/Future Farmer Rules and Regulations 2026.pdf" target="_blank" rel="noopener" class="link-accent-straw">rules &amp; regulations</a>, or give us a call at <a href="tel:+19024473285" class="link-accent-straw">(902) 447-3285</a>.
+                </p>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- How Points Work -->
+            <section class="panel">
+                <h2>How Points Are Earned</h2>
+                <p>Each part of the competition scores differently. At the end of the fair every competitor's points are added together.</p>
+                <div class="ff-table-wrap">
+                    <table class="ff-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Division</th>
+                                <th scope="col">How it scores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Light Horse</strong></td>
+                                <td>Your top three placings count.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Beef</strong></td>
+                                <td>Your showmanship placing counts.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Christmas Tree</strong></td>
+                                <td>1 point automatically for entering, plus placing points below.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Life Skills</strong></td>
+                                <td>1 point automatically for entering, plus placing points below.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 1.6rem;">Placing Points &mdash; Christmas Tree &amp; Life Skills</h3>
+                <div class="ff-table-wrap">
+                    <table class="ff-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Placing</th>
+                                <th scope="col">1st</th>
+                                <th scope="col">2nd</th>
+                                <th scope="col">3rd</th>
+                                <th scope="col">4th</th>
+                                <th scope="col">5th</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Points</strong></td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Prizes -->
+            <section class="panel ribboned">
+                <h2>Prizes</h2>
+                <p>All points are tallied at the end of the fair and prizes are presented on <strong>Sunday, September 6</strong>, courtesy of <strong>Farm Credit Canada</strong>.</p>
+                <div class="ff-prizes">
+                    <div class="ff-prize">
+                        <span class="ff-prize-rank">Champion</span>
+                        <span class="ff-prize-amt">$50</span>
+                    </div>
+                    <div class="ff-prize">
+                        <span class="ff-prize-rank">Reserve Champion</span>
+                        <span class="ff-prize-amt">$30</span>
+                    </div>
+                    <div class="ff-prize">
+                        <span class="ff-prize-rank">Honourable Mention</span>
+                        <span class="ff-prize-amt">$20</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider-rope"></div>
+
+            <!-- How It Works -->
+            <section class="panel">
+                <h2>How It Works</h2>
+                <div class="evt-steps">
+                    <div class="evt-step">
+                        <span class="step-num">Step 1</span>
+                        <h4>Enter the Competition</h4>
+                        <p>Fill out the Future Farmer entry form above and pay the <strong>$5 entry fee</strong> when you submit it. Without both, you won't be considered for the competition.</p>
+                    </div>
+                    <div class="evt-step">
+                        <span class="step-num">Step 2</span>
+                        <h4>Enter Your Classes</h4>
+                        <p>Sign up separately for your livestock, light horse or beef class, the Christmas Tree Competition, and at least one Life Skills project. Each class fee goes to the committee running that division.</p>
+                    </div>
+                    <div class="evt-step">
+                        <span class="step-num">Step 3</span>
+                        <h4>Come Show &amp; Take the Quiz</h4>
+                        <p>Show your animal, drop off your tree and your Life Skills project, then attend the speaker session and complete the quiz. Details on the session are still to be announced.</p>
+                    </div>
+                    <div class="evt-step">
+                        <span class="step-num">Step 4</span>
+                        <h4>Awards</h4>
+                        <p>Points are tallied across every division and the Champion, Reserve Champion and Honourable Mention are announced <strong>Sunday, September 6</strong>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rules download -->
+            <section class="panel-rope text-center">
+                <h2>Read the Full Rules</h2>
+                <p>Everything above comes straight from the official rules and regulations. Download the whole thing to keep on hand.</p>
+                <div class="mt-3">
+                    <a href="images/forms and documents/Future Farmer Rules and Regulations 2026.pdf" class="btn" target="_blank" rel="noopener">Future Farmer Rules &amp; Regulations (PDF)</a>
+                </div>
+            </section>
+
+            <!-- Questions -->
+            <section class="panel-rope text-center ribboned">
+                <h2>Questions?</h2>
+                <p>Not sure whether a class counts, or which Life Skills category to pick? Get in touch and we'll walk you through it.</p>
+                <p style="margin-top: 0.75rem;">Email <a href="mailto:cumberlandexhibition@gmail.com" class="link-accent">cumberlandexhibition@gmail.com</a> &nbsp;&middot;&nbsp; Call <a href="tel:+19024473285" class="link-accent">(902) 447-3285</a></p>
+                <p style="margin-top: 0.75rem;">Mail: <strong>Cumberland County Exhibition, P.O. Box 516, Oxford, NS&nbsp; B0M 1P0</strong></p>
+            </section>
+
+            <!-- Become a Sponsor CTA -->
+            <div class="sponsor-cta">
+                <h3>Become a Sponsor!</h3>
+                <p>Support the Cumberland County Exhibition and put your business in front of thousands of visitors. Sponsorship packages available for every budget!</p>
+                <a href="sponsors.html" class="btn">View Sponsorship Opportunities</a>
+            </div>
+        </div>
+        <!-- Site Directory - every page, one click away -->
+        <nav class="site-directory" aria-label="Site directory">
+            <h2 class="site-directory-title">Find It Fast</h2>
+            <div class="site-directory-grid">
+                <div class="site-directory-col">
+                    <h3>Visit the Fair</h3>
+                    <a href="index.html">Home</a>
+                    <a href="schedule-2026.html">Schedule</a>
+                    <a href="events.html">All Events</a>
+                    <a href="parade.html">CCEx Parade</a>
+                    <a href="activities.html">Kids Activities &amp; Fun Zone</a>
+                    <a href="show-n-shine.html">Kids Show 'N Shine</a>
+                    <a href="events.html#mud-stomp">Mud Stomp (19+)</a>
+                    <a href="merch.html">Tickets &amp; Merch</a>
+                    <a href="photos.html">Photo Gallery</a>
+                </div>
+                <div class="site-directory-col">
+                    <h3>Shows &amp; Entries</h3>
+                    <a href="exhibitors.html">Exhibitor Info</a>
+                    <a href="beef-registration.html">Open Beef Show</a>
+                    <a href="junior-beef-show.html">Junior Beef Show</a>
+                    <a href="horse-registration.html">Light Horse Show</a>
+                    <a href="4h.html">4-H Programs</a>
+                    <a href="future-farmer.html">Future Farmer Competition</a>
+                    <a href="christmas-tree.html">Christmas Tree Competition</a>
+                    <a href="forms.html">All Entry Forms &amp; Documents</a>
+                </div>
+                <div class="site-directory-col">
+                    <h3>Get Involved</h3>
+                    <a href="vendors.html">Booth Info &amp; Pricing</a>
+                    <a href="vendor-application.html">Vendor Application</a>
+                    <a href="sponsors.html">Sponsors</a>
+                    <a href="members.html">Board Members</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="contact.html">Volunteer With Us</a>
+                </div>
+            </div>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="footer-logo">
+                <div>
+                    <span class="footer-title">Cumberland County Exhibition</span>
+                    <span class="footer-address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Oxford+NS+Exhibition+Grounds" target="_blank">
+                            Exhibition Grounds, Oxford, NS
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="countdown-container">
+                    <div class="countdown-label">Countdown to CCEx 2026</div>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">---</span>
+                            <span class="countdown-unit">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">--</span>
+                            <span class="countdown-unit">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="mins">--</span>
+                            <span class="countdown-unit">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secs">--</span>
+                            <span class="countdown-unit">Secs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-phone"><a href="tel:+19024473285">Call us: (902) 447-3285</a></p>
+                <p><a href="https://www.facebook.com/cumberlandex/" target="_blank" class="footer-social-link">Follow us on Facebook</a></p>
+                <p>&copy; 2026 Cumberland County Exhibition</p>
+                <p class="footer-credit">Website by <a href="https://JustinGreeno.dev">Justin Greeno</a></p>
+            </div>
+        </div>
+        <div class="footer-secret">
+            <a href="https://JustinGreeno.dev" title="JustinGreeno.dev">J</a>
+        </div>
+    </footer>
+
+    <!-- JotForm iframe resize handler -->
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+    <script>
+        if (window.jotformEmbedHandler) {
+            window.jotformEmbedHandler("iframe[id='JotFormIFrame-262293996326066']", "https://form.jotform.com/");
+        }
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+        }
+
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.has-dropdown > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1150) {
+                    e.preventDefault();
+                    this.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(e.target) && window.innerWidth <= 1150) {
+                document.getElementById('navMenu').classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Parallax background
+        (function() {
+            const root = document.documentElement;
+            let ticking = false;
+            function updateParallax() {
+                root.style.setProperty('--scroll-y', window.pageYOffset + 'px');
+                ticking = false;
+            }
+            window.addEventListener('scroll', () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+            }, { passive: true });
+            updateParallax();
+        })();
+    </script>
+</body>
+</html>
