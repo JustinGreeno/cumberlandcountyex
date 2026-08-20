@@ -4065,24 +4065,24 @@ nav .dropdown li.dropdown-sep {
 }
 
 /* Two-column panel — for menus long enough that one column runs down the page.
-   Column flow fills the left column top to bottom before starting the right,
-   so it still reads as a list. The separated tail item spans the full width
-   underneath. Reverts to a single column on mobile (see the 1150px block).
 
-   The 5 rows below hold up to 10 plain items plus the tail item on row 6.
-   Adding an 11th plain item spills into a third column — bump the row count
-   (and the tail's grid-row) instead if this menu ever grows that far. */
+   Items fill left-to-right, row by row, which splits them evenly on its own
+   however many there are: 8 items give 4 and 4, 6 give 3 and 3. Do NOT go
+   back to `grid-auto-flow: column` with a fixed `grid-template-rows` — an
+   explicitly placed tail item adds an implicit row that the column cursor
+   then counts, and the columns come out lopsided.
+
+   Equal 1fr tracks in a shrink-to-fit panel both resolve to the widest label,
+   so the two columns line up. The separated tail item spans the full width
+   underneath. Reverts to a single column on mobile (see the 1150px block). */
 nav .dropdown.two-col {
     display: grid;
-    grid-template-columns: max-content max-content;
-    grid-template-rows: repeat(5, auto);
-    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 0.4rem;
 }
 
 nav .dropdown.two-col > li.dropdown-sep {
     grid-column: 1 / -1;
-    grid-row: 6;
 }
 
 /* ============================================
