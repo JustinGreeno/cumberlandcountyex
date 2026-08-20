@@ -78,5 +78,66 @@
             var section = activeChild.closest('.has-dropdown');
             if (section) section.classList.add('open');
         }
+
+        /* -----------------------------------------------------------------
+           KEEP DROPDOWN PANELS INSIDE THE VIEWPORT
+
+           Panels are CSS-positioned with `right: 0`, so they hang off the
+           right edge of whichever tab opened them. That is fine until the
+           header wraps at medium widths and moves the tabs — then a wide
+           panel can run off the side of the window. Rather than hand-tune
+           each menu, measure every panel and write any needed correction
+           into --dd-shift, which style.css folds into the panel's
+           transform. Panels that already fit get a shift of 0.
+        ----------------------------------------------------------------- */
+        var EDGE_GAP = 8; // px of breathing room to leave at the window edge
+
+        function clampPanel(panel) {
+            // Clear any previous correction so we measure the natural position
+            panel.style.setProperty('--dd-shift', '0px');
+
+            var rect = panel.getBoundingClientRect();
+            var limit = document.documentElement.clientWidth - EDGE_GAP;
+            var shift = 0;
+
+            if (rect.right > limit) shift = limit - rect.right;
+            // Pulling it off the right edge must not push it off the left one.
+            // A panel too wide for the window lands flush left and relies on
+            // the max-width in style.css to stay inside.
+            if (rect.left + shift < EDGE_GAP) shift = EDGE_GAP - rect.left;
+
+            if (shift) panel.style.setProperty('--dd-shift', Math.round(shift) + 'px');
+        }
+
+        var panels = Array.prototype.slice.call(nav.querySelectorAll('.dropdown'));
+
+        // Hidden panels are still laid out, so they can be measured before the
+        // first hover. Doing it up front keeps the open animation purely
+        // vertical — measuring on hover would slide the panel in sideways.
+        function measureAll() {
+            if (window.innerWidth <= MOBILE_BREAKPOINT) {
+                // The stacked mobile menu is full width; a leftover shift there
+                // would just knock the panel out of line.
+                panels.forEach(function (panel) {
+                    panel.style.setProperty('--dd-shift', '0px');
+                });
+                return;
+            }
+            panels.forEach(clampPanel);
+        }
+
+        measureAll();
+
+        // A late-arriving webfont changes label widths, so measure again once
+        // the fonts settle. Harmless where the API isn't supported.
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(measureAll).catch(function () {});
+        }
+
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(measureAll, 120);
+        });
     });
 })();

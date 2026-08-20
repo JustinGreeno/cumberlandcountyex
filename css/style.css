@@ -305,12 +305,20 @@ nav li.has-dropdown > a::after {
     opacity: 0.7;
 }
 
-/* Dropdown menu */
+/* Dropdown menu
+
+   Panels are right-anchored to their tab, so where they land depends on where
+   that tab sits — and the header wraps at medium widths, which moves the tabs.
+   js/nav.js measures each panel as it opens and writes a correction into
+   --dd-shift when it would cross a viewport edge; both transforms below carry
+   that shift so the open/close animation and the clamp don't fight over
+   `transform`. --dd-shift stays 0 whenever the panel already fits. */
 nav .dropdown {
     position: absolute;
     top: 100%;
     right: 0;
     min-width: 170px;
+    max-width: calc(100vw - 1rem);
     background: var(--wood-dark);
     border: 2px solid var(--rope-tan);
     border-top: none;
@@ -318,7 +326,7 @@ nav .dropdown {
     box-shadow: 0 8px 20px var(--shadow-dark);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-5px);
+    transform: translate(var(--dd-shift, 0px), -5px);
     transition: var(--t-ui);
     z-index: 100;
     padding: 0.4rem 0;
@@ -328,7 +336,7 @@ nav li.has-dropdown:hover .dropdown,
 nav li.has-dropdown:focus-within .dropdown {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translate(var(--dd-shift, 0px), 0);
 }
 
 nav .dropdown li {
@@ -4056,6 +4064,27 @@ nav .dropdown li.dropdown-sep {
     padding-top: 0.35rem;
 }
 
+/* Two-column panel — for menus long enough that one column runs down the page.
+   Column flow fills the left column top to bottom before starting the right,
+   so it still reads as a list. The separated tail item spans the full width
+   underneath. Reverts to a single column on mobile (see the 1150px block).
+
+   The 5 rows below hold up to 10 plain items plus the tail item on row 6.
+   Adding an 11th plain item spills into a third column — bump the row count
+   (and the tail's grid-row) instead if this menu ever grows that far. */
+nav .dropdown.two-col {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: repeat(5, auto);
+    grid-auto-flow: column;
+    column-gap: 0.4rem;
+}
+
+nav .dropdown.two-col > li.dropdown-sep {
+    grid-column: 1 / -1;
+    grid-row: 6;
+}
+
 /* ============================================
    SITE DIRECTORY - every page, one click away
    ============================================ */
@@ -4158,6 +4187,12 @@ nav .dropdown li.dropdown-sep {
     nav .dropdown {
         white-space: normal;
         min-width: 0;
+    }
+
+    /* The stacked mobile menu has the full width to itself — one column reads
+       better there, and the clamp in nav.js stands down below this breakpoint. */
+    nav .dropdown.two-col {
+        display: block;
     }
 
     nav .dropdown a {
