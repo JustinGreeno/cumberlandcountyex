@@ -15,14 +15,14 @@
     <link rel="preload" as="image" href="images/art/light horse.webp" fetchpriority="high">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/fonts.css?v=20260820a">
-    <link href="css/style.css?v=20260820a" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css?v=20260820b">
+    <link href="css/style.css?v=20260820b" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
-    <script src="js/nav.js?v=20260820a" defer></script>
-    <script src="js/search.js?v=20260820a" defer></script>
-    <script src="js/countdown.js?v=20260820a" defer></script>
-    <script src="js/ui.js?v=20260820a" defer></script>
-    <script src="js/lightbox.js?v=20260820a" defer></script>
+    <script src="js/nav.js?v=20260820b" defer></script>
+    <script src="js/search.js?v=20260820b" defer></script>
+    <script src="js/countdown.js?v=20260820b" defer></script>
+    <script src="js/ui.js?v=20260820b" defer></script>
+    <script src="js/lightbox.js?v=20260820b" defer></script>
     <style>
         .registration-form {
             max-width: 800px;
@@ -372,46 +372,6 @@
             font-weight: 600;
         }
 
-        /* Collapsed entry form
-           The Aug 10 deadline has passed, so the red notice does the talking and
-           the form starts closed behind a toggle. Native <details> on purpose:
-           it collapses with no JS, and the iframe inside a closed panel isn't
-           fetched until someone actually opens it. */
-        .reg-collapse {
-            border: 1px solid var(--line-light);
-            border-radius: var(--r-md);
-            overflow: hidden;
-        }
-        .reg-collapse > summary {
-            list-style: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.95rem 1.25rem;
-            font-family: 'Roboto Slab', serif;
-            font-weight: 700;
-            font-size: 1.02rem;
-            color: var(--wood-dark);
-            background: var(--straw);
-            transition: var(--t-ui);
-        }
-        /* Safari still draws its own triangle without this */
-        .reg-collapse > summary::-webkit-details-marker { display: none; }
-        .reg-collapse > summary:hover { background: var(--hay); }
-        .reg-collapse > summary:focus-visible {
-            outline: 3px solid var(--cream);
-            outline-offset: -3px;
-        }
-        .reg-collapse > summary::after {
-            content: '\25BE';
-            margin-left: auto;
-            font-size: 1.15rem;
-            line-height: 1;
-            transition: transform var(--t-fast) var(--ease);
-        }
-        .reg-collapse[open] > summary::after { transform: rotate(180deg); }
-        .reg-collapse-body { padding: 1.25rem 1.25rem 1.5rem; }
     </style>
 </head>
 <body>

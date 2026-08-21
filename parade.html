@@ -14,13 +14,13 @@
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/fonts.css?v=20260820a">
-    <link href="css/style.css?v=20260820a" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css?v=20260820b">
+    <link href="css/style.css?v=20260820b" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
-    <script src="js/nav.js?v=20260820a" defer></script>
-    <script src="js/search.js?v=20260820a" defer></script>
-    <script src="js/countdown.js?v=20260820a" defer></script>
-    <script src="js/ui.js?v=20260820a" defer></script>
+    <script src="js/nav.js?v=20260820b" defer></script>
+    <script src="js/search.js?v=20260820b" defer></script>
+    <script src="js/countdown.js?v=20260820b" defer></script>
+    <script src="js/ui.js?v=20260820b" defer></script>
     <style>
         /* Page-specific only - shared event page components live in css/style.css (.evt-*) */
         .pd-hero-bg {
@@ -415,20 +415,27 @@
             <!-- Registration Form (Microsoft Forms embed) -->
             <section id="registration" class="panel-wooden">
                 <h2>Enter the Parade</h2>
-                <p style="color: var(--cream); margin-bottom: 1rem;">Fill out the form below to enter your float, vehicle, group or club in the 2026 CCEx Parade. There's no deadline, so sign up whenever you're ready.</p>
+                <details class="reg-collapse">
+                    <summary>Enter the 2026 CCEx Parade</summary>
+                    <div class="reg-collapse-body">
 
-                <div class="msforms-embed">
-                    <iframe
-                        title="CCEx Parade Entry Form"
-                        src="https://forms.cloud.microsoft/r/N4PBLuUvzD?embed=true"
-                        loading="lazy"
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                    <p style="color: var(--cream); margin-bottom: 1rem;">Fill out the form below to enter your float, vehicle, group or club in the 2026 CCEx Parade. There's no deadline, so sign up whenever you're ready.</p>
 
-                <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    Having trouble with the embedded form? <a href="https://forms.cloud.microsoft/r/N4PBLuUvzD" target="_blank" rel="noopener" class="link-accent-straw">Open it in a new tab</a>, or give us a call at <a href="tel:+19024473285" class="link-accent-straw">(902) 447-3285</a>.
-                </p>
+                    <div class="msforms-embed">
+                        <iframe
+                            title="CCEx Parade Entry Form"
+                            src="https://forms.cloud.microsoft/r/N4PBLuUvzD?embed=true"
+                            loading="lazy"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                        Having trouble with the embedded form? <a href="https://forms.cloud.microsoft/r/N4PBLuUvzD" target="_blank" rel="noopener" class="link-accent-straw">Open it in a new tab</a>, or give us a call at <a href="tel:+19024473285" class="link-accent-straw">(902) 447-3285</a>.
+                    </p>
+
+                    </div><!-- /.reg-collapse-body -->
+                </details>
             </section>
 
             <div class="divider-rope"></div>

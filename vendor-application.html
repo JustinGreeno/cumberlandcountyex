@@ -14,13 +14,13 @@
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/fonts.css?v=20260820a">
-    <link href="css/style.css?v=20260820a" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css?v=20260820b">
+    <link href="css/style.css?v=20260820b" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
-    <script src="js/nav.js?v=20260820a" defer></script>
-    <script src="js/search.js?v=20260820a" defer></script>
-    <script src="js/countdown.js?v=20260820a" defer></script>
-    <script src="js/ui.js?v=20260820a" defer></script>
+    <script src="js/nav.js?v=20260820b" defer></script>
+    <script src="js/search.js?v=20260820b" defer></script>
+    <script src="js/countdown.js?v=20260820b" defer></script>
+    <script src="js/ui.js?v=20260820b" defer></script>
     <style>
         .application-form {
             max-width: 800px;
@@ -429,6 +429,10 @@
             <section class="panel-wooden">
                 <h2>Vendor Application Form</h2>
 
+                <details class="reg-collapse">
+                    <summary>Open the application form anyway</summary>
+                    <div class="reg-collapse-body">
+
                 <!-- SUCCESS MESSAGE -->
                 <div class="form-success-panel" id="vendorSuccess" style="display:none;">
                     <span class="success-check">✓</span>
@@ -752,6 +756,9 @@
                         Your application will be reviewed by our Vendor Committee. We will contact you within 2 weeks regarding your application status.
                     </div>
                 </form>
+
+                    </div><!-- /.reg-collapse-body -->
+                </details>
 
                 <script>
                 document.getElementById('vendorApplicationForm').addEventListener('submit', async function(e) {

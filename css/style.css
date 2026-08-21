@@ -3952,6 +3952,55 @@ html {
     .deadline-passed p { font-size: 0.96rem; }
 }
 
+/* ── Collapsed entry form ──
+   Every embedded entry form on the site sits inside one of these, closed by
+   default, so a 1100px+ iframe doesn't swallow the page. Native
+   <details>/<summary> on purpose: it collapses with no JS at all, carries its
+   own keyboard and screen-reader semantics, and a lazy iframe inside a closed
+   panel isn't fetched until someone opens it.
+   Always sits in a .panel-wooden, hence --line-light for the border. */
+.reg-collapse {
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-md);
+    overflow: hidden;
+}
+.reg-collapse > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.25rem;
+    /* Roboto Slab, not Alfa Slab One - the display face turns to mush at
+       heading-3 size and below. */
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--wood-dark);
+    background: var(--straw);
+    transition: var(--t-ui);
+}
+/* Safari still draws its own triangle without this */
+.reg-collapse > summary::-webkit-details-marker { display: none; }
+.reg-collapse > summary:hover { background: var(--hay); }
+.reg-collapse > summary:focus-visible {
+    outline: 3px solid var(--cream);
+    outline-offset: -3px;
+}
+.reg-collapse > summary::after {
+    content: '\25BE';
+    margin-left: auto;
+    font-size: 1.15rem;
+    line-height: 1;
+    transition: transform var(--t-fast) var(--ease);
+}
+.reg-collapse[open] > summary::after { transform: rotate(180deg); }
+.reg-collapse-body { padding: 1.25rem 1.25rem 1.5rem; }
+@media (max-width: 600px) {
+    .reg-collapse > summary { padding: 0.85rem 1rem; font-size: 0.95rem; }
+    .reg-collapse-body { padding: 1rem 0.85rem 1.15rem; }
+}
+
 /* ── Poster lightbox ──
    Placement and the backdrop are set inline by js/lightbox.js, because this
    overlay is injected at the end of <body> and a stale or slow stylesheet
