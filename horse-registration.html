@@ -371,6 +371,47 @@
             color: var(--barn-red);
             font-weight: 600;
         }
+
+        /* Collapsed entry form
+           The Aug 10 deadline has passed, so the red notice does the talking and
+           the form starts closed behind a toggle. Native <details> on purpose:
+           it collapses with no JS, and the iframe inside a closed panel isn't
+           fetched until someone actually opens it. */
+        .reg-collapse {
+            border: 1px solid var(--line-light);
+            border-radius: var(--r-md);
+            overflow: hidden;
+        }
+        .reg-collapse > summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.95rem 1.25rem;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            font-size: 1.02rem;
+            color: var(--wood-dark);
+            background: var(--straw);
+            transition: var(--t-ui);
+        }
+        /* Safari still draws its own triangle without this */
+        .reg-collapse > summary::-webkit-details-marker { display: none; }
+        .reg-collapse > summary:hover { background: var(--hay); }
+        .reg-collapse > summary:focus-visible {
+            outline: 3px solid var(--cream);
+            outline-offset: -3px;
+        }
+        .reg-collapse > summary::after {
+            content: '\25BE';
+            margin-left: auto;
+            font-size: 1.15rem;
+            line-height: 1;
+            transition: transform var(--t-fast) var(--ease);
+        }
+        .reg-collapse[open] > summary::after { transform: rotate(180deg); }
+        .reg-collapse-body { padding: 1.25rem 1.25rem 1.5rem; }
     </style>
 </head>
 <body>
@@ -481,28 +522,35 @@
                     <p>Entries for the 2026 Light Horse Show closed on <strong>August 10, 2026</strong>. You can still fill in the form below and we'll do our best to fit you in, but space is limited and a spot isn't guaranteed this late.</p>
                     <p>Any issues or concerns, please <a href="contact.html">get in touch</a> or call <a href="tel:+19024473285">(902) 447-3285</a> and we'll sort it out with you.</p>
                 </div>
-                <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Light Horse Show. Select your division, classes, and stabling. Standing stall $20 · Box stall $30. <strong style="color: var(--straw);">Registration closes August 10, 2026.</strong></p>
+                <details class="reg-collapse">
+                    <summary>Open the entry form anyway</summary>
+                    <div class="reg-collapse-body">
 
-                <div class="jotform-embed">
-                    <iframe
-                        id="JotFormIFrame-252124378353052"
-                        title="CCEx Light Horse Registration Form 2026"
-                        src="https://form.jotform.com/252124378353052"
-                        allow="geolocation; microphone; camera; fullscreen; payment"
-                        scrolling="auto"
-                        loading="lazy">
-                    </iframe>
-                    <noscript>
-                        <div class="jotform-fallback">
-                            JavaScript is required to display this form.
-                            <a href="https://form.jotform.com/252124378353052" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
-                        </div>
-                    </noscript>
-                </div>
+                    <p style="color: var(--cream); margin-bottom: 1rem;">Complete the form below to enter the 2026 Light Horse Show. Select your division, classes, and stabling. Standing stall $20 · Box stall $30. <strong style="color: var(--straw);">Registration closed August 10, 2026.</strong></p>
 
-                <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    Having trouble with the embedded form? <a href="https://form.jotform.com/252124378353052" target="_blank" rel="noopener" class="link-accent-straw">Open it in a new tab</a>.
-                </p>
+                    <div class="jotform-embed">
+                        <iframe
+                            id="JotFormIFrame-252124378353052"
+                            title="CCEx Light Horse Registration Form 2026"
+                            src="https://form.jotform.com/252124378353052"
+                            allow="geolocation; microphone; camera; fullscreen; payment"
+                            scrolling="auto"
+                            loading="lazy">
+                        </iframe>
+                        <noscript>
+                            <div class="jotform-fallback">
+                                JavaScript is required to display this form.
+                                <a href="https://form.jotform.com/252124378353052" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
+                            </div>
+                        </noscript>
+                    </div>
+
+                    <p style="color: var(--cream); text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                        Having trouble with the embedded form? <a href="https://form.jotform.com/252124378353052" target="_blank" rel="noopener" class="link-accent-straw">Open it in a new tab</a>.
+                    </p>
+
+                    </div><!-- /.reg-collapse-body -->
+                </details>
 
                 <!-- FORM SAVED — keep in case we want to use it or swap for another form later -->
                 <template id="horse-registration-form-saved">
