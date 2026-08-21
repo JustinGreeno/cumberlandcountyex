@@ -3960,44 +3960,75 @@ html {
    panel isn't fetched until someone opens it.
    Always sits in a .panel-wooden, hence --line-light for the border. */
 .reg-collapse {
-    border: 1px solid var(--line-light);
+    border: 2px solid var(--straw);
     border-radius: var(--r-md);
     overflow: hidden;
+    box-shadow: var(--elev-2);
 }
 .reg-collapse > summary {
     list-style: none;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.95rem 1.25rem;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem 1rem 1.25rem;
     /* Roboto Slab, not Alfa Slab One - the display face turns to mush at
        heading-3 size and below. */
     font-family: 'Roboto Slab', serif;
     font-weight: 700;
-    font-size: 1.02rem;
+    font-size: 1.05rem;
     color: var(--wood-dark);
     background: var(--straw);
     transition: var(--t-ui);
 }
 /* Safari still draws its own triangle without this */
 .reg-collapse > summary::-webkit-details-marker { display: none; }
+
+/* The affordance. A chevron alone read as decoration, so the control spells
+   out what it does in a pill that flips label and arrow with the panel's
+   state - no JS, just [open] swapping the generated content. */
+.reg-collapse > summary::after {
+    content: 'Show \25BE';
+    margin-left: auto;
+    flex-shrink: 0;
+    background: var(--barn-red);
+    color: var(--cream);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--r-pill);
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+    transition: var(--t-ui);
+}
+.reg-collapse[open] > summary::after { content: 'Hide \25B4'; }
+
 .reg-collapse > summary:hover { background: var(--hay); }
+.reg-collapse > summary:hover::after {
+    background: var(--wood-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
+}
+.reg-collapse > summary:active::after { transform: translateY(0); }
 .reg-collapse > summary:focus-visible {
-    outline: 3px solid var(--cream);
+    outline: 3px solid var(--wood-dark);
     outline-offset: -3px;
 }
-.reg-collapse > summary::after {
-    content: '\25BE';
-    margin-left: auto;
-    font-size: 1.15rem;
-    line-height: 1;
-    transition: transform var(--t-fast) var(--ease);
-}
-.reg-collapse[open] > summary::after { transform: rotate(180deg); }
 .reg-collapse-body { padding: 1.25rem 1.25rem 1.5rem; }
 @media (max-width: 600px) {
-    .reg-collapse > summary { padding: 0.85rem 1rem; font-size: 0.95rem; }
+    .reg-collapse > summary {
+        padding: 0.85rem 0.9rem;
+        font-size: 0.95rem;
+        gap: 0.6rem;
+    }
+    .reg-collapse > summary::after {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.7rem;
+        letter-spacing: 0.05em;
+    }
     .reg-collapse-body { padding: 1rem 0.85rem 1.15rem; }
 }
 
