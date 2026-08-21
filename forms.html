@@ -14,14 +14,14 @@
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/fonts.css?v=20260820c">
-    <link href="css/style.css?v=20260820c" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css?v=20260820d">
+    <link href="css/style.css?v=20260820d" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
-    <script src="js/nav.js?v=20260820c" defer></script>
-    <script src="js/search.js?v=20260820c" defer></script>
-    <script src="js/countdown.js?v=20260820c" defer></script>
-    <script src="js/horseshoe.js?v=20260820c" defer></script>
-    <script src="js/ui.js?v=20260820c" defer></script>
+    <script src="js/nav.js?v=20260820d" defer></script>
+    <script src="js/search.js?v=20260820d" defer></script>
+    <script src="js/countdown.js?v=20260820d" defer></script>
+    <script src="js/horseshoe.js?v=20260820d" defer></script>
+    <script src="js/ui.js?v=20260820d" defer></script>
     <style>
         /* ── Page intro ── */
         .forms-intro {
@@ -145,6 +145,13 @@
             padding: 0.22rem 0.6rem;
             border-radius: 11px;
             margin-bottom: 0.7rem;
+        }
+        /* Entries have closed. Muted red so the open forms are the ones that
+           catch the eye when you scan the grid. */
+        .form-tag.closed {
+            background: #f3e0d8;
+            border-color: #c8907d;
+            color: #7d2008;
         }
         .btn-register {
             align-self: flex-start;
@@ -338,25 +345,25 @@
                 </div>
                 <div class="reg-grid">
                     <div class="form-card reg-card" data-keywords="show shine kids children car vehicle registration deadline closing date august 15">
-                        <span class="form-tag">📅 Closes Aug 15, 2026</span>
+                        <span class="form-tag closed">📅 Closed Aug 15, 2026</span>
                         <h3>Kids Show 'N Shine</h3>
                         <p>Register a child (9 &amp; under) for the Show 'N Shine vehicle display.</p>
                         <a href="show-n-shine.html#register" class="btn-register">Register →</a>
                     </div>
                     <div class="form-card reg-card" data-keywords="horse show exhibitor registration light horse stall box standing deadline closing date august 10">
-                        <span class="form-tag">📅 Closes Aug 10, 2026</span>
+                        <span class="form-tag closed">📅 Closed Aug 10, 2026</span>
                         <h3>Light Horse Show</h3>
                         <p>Enter the Light Horse Show — box stall $30, standing stall $20.</p>
                         <a href="horse-registration.html" class="btn-register">Register →</a>
                     </div>
                     <div class="form-card reg-card" data-keywords="beef show cattle registration entry exhibitor open 2026 cumberland county hereford angus simmental shorthorn speckle park charolais commercial steer heifer bull july 31">
-                        <span class="form-tag">📅 Closes Jul 31, 2026</span>
+                        <span class="form-tag closed">📅 Closed Jul 31, 2026</span>
                         <h3>Open Beef Show</h3>
                         <p>Enter the 2026 Open Beef Show — September 3–5.</p>
                         <a href="beef-registration.html" class="btn-register">Register →</a>
                     </div>
                     <div class="form-card reg-card" data-keywords="junior beef show youth kids registration entry showmanship conformation sales talk fitting cow costume parade farm advertisement photography judging aggregate 2026 cattle steer heifer august 10 t-shirt">
-                        <span class="form-tag">📅 Due Aug 10, 2026</span>
+                        <span class="form-tag closed">📅 Closed Aug 10, 2026</span>
                         <h3>Junior Beef Show</h3>
                         <p>Youth show, Sept 3–6. $25 registration, t-shirt included.</p>
                         <a href="junior-beef-show.html" class="btn-register">Register →</a>
