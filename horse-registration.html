@@ -15,13 +15,14 @@
     <link rel="preload" as="image" href="images/art/light horse.webp" fetchpriority="high">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/fonts.css?v=20260819b">
-    <link href="css/style.css?v=20260819b" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css?v=20260820a">
+    <link href="css/style.css?v=20260820a" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
-    <script src="js/nav.js?v=20260819b" defer></script>
-    <script src="js/search.js?v=20260819b" defer></script>
-    <script src="js/countdown.js?v=20260819b" defer></script>
-    <script src="js/ui.js?v=20260819b" defer></script>
+    <script src="js/nav.js?v=20260820a" defer></script>
+    <script src="js/search.js?v=20260820a" defer></script>
+    <script src="js/countdown.js?v=20260820a" defer></script>
+    <script src="js/ui.js?v=20260820a" defer></script>
+    <script src="js/lightbox.js?v=20260820a" defer></script>
     <style>
         .registration-form {
             max-width: 800px;
@@ -336,6 +337,9 @@
         .hs-booklet-link:hover {
             color: white;
         }
+        .hs-booklet-link + .hs-booklet-link {
+            margin-left: 1.25rem;
+        }
         @media (max-width: 600px) {
             .hs-hero-content { max-width: 100%; padding: 1.75rem 1.25rem; }
             .hs-hero-horse { opacity: 0.1; right: -40px; }
@@ -464,6 +468,7 @@
                         <span class="hs-pill urgent">Space Is Limited — Register Early!</span>
                     </div>
                     <a href="images/forms and documents/CCex-Light Horse booklet 2026 (1).pdf" class="hs-booklet-link">Download 2026 Show Booklet</a>
+                    <a href="#patterns" class="hs-booklet-link">View the 2026 Show Patterns</a>
                 </div>
             </div>
 
@@ -802,6 +807,62 @@
 
                 </template><!-- end #horse-registration-form-saved -->
 
+            </section>
+
+            <!-- 2026 Show Patterns -->
+            <section id="patterns" class="panel">
+                <h2>2026 Show Patterns</h2>
+                <p>These are the official patterns for the 2026 Light Horse Show. Study them before you get to the grounds &mdash; tap any pattern to open it full size, then use the arrows to page through the rest.</p>
+                <p class="poster-view-note">Patterns run in show order: Showmanship first, then English and Western Equitation, Trail, and Ranch Riding. The drawn line is only a general depiction of the pattern &mdash; use the arena space to best show off your horse, and always follow the instructions of your ring steward.</p>
+
+                <div class="poster-strip">
+                    <a href="images/light-horse-patterns/showmanship-small-fry.webp" target="_blank" class="poster-thumb" aria-label="View the full Showmanship (Small Fry) pattern">
+                        <img width="1032" height="1522" loading="lazy" decoding="async" src="images/light-horse-patterns/showmanship-small-fry.webp" alt="Showmanship, Small Fry pattern. Be ready at A. Walk from A to B, trot from B to the judge, stop and set up for inspection, turn 90 degrees when dismissed, then walk away from the judge.">
+                        <span class="poster-caption">Showmanship &mdash; Small Fry</span>
+                    </a>
+                    <a href="images/light-horse-patterns/showmanship-junior.webp" target="_blank" class="poster-thumb" aria-label="View the full Showmanship (Junior) pattern">
+                        <img width="1047" height="1536" loading="lazy" decoding="async" src="images/light-horse-patterns/showmanship-junior.webp" alt="Showmanship, Junior pattern. Be ready at A. Walk to and around B, trot from B to C, walk from C to the judge, stop and set up for inspection, perform a 90 degree turn when dismissed, then trot to the line-up.">
+                        <span class="poster-caption">Showmanship &mdash; Junior</span>
+                    </a>
+                    <a href="images/light-horse-patterns/showmanship-senior.webp" target="_blank" class="poster-thumb" aria-label="View the full Showmanship (Senior) pattern">
+                        <img width="1073" height="1534" loading="lazy" decoding="async" src="images/light-horse-patterns/showmanship-senior.webp" alt="Showmanship, Senior pattern. Be ready at A. Walk to and around B, trot from B around C to the judge, stop and set up for inspection, then perform a 90 degree turn and back until even with C before trotting to the line-up.">
+                        <span class="poster-caption">Showmanship &mdash; Senior</span>
+                    </a>
+                    <a href="images/light-horse-patterns/english-equitation-walk-trot.webp" target="_blank" class="poster-thumb" aria-label="View the full English Equitation (Walk Trot) pattern">
+                        <img width="1029" height="1522" loading="lazy" decoding="async" src="images/light-horse-patterns/english-equitation-walk-trot.webp" alt="English Equitation, Walk Trot pattern. Walk to A, sitting trot towards B, posting trot circle to the right then to the left at the halfway point, continue the posting trot to B, then stop and back approximately one horse length.">
+                        <span class="poster-caption">English Equitation &mdash; Walk&nbsp;Trot</span>
+                    </a>
+                    <a href="images/light-horse-patterns/english-equitation-junior-senior.webp" target="_blank" class="poster-thumb" aria-label="View the full English Equitation (Junior and Senior) pattern">
+                        <img width="1061" height="1521" loading="lazy" decoding="async" src="images/light-horse-patterns/english-equitation-junior-senior.webp" alt="English Equitation, Junior and Senior pattern. Sitting trot from A to B, posting trot circle to the right at B, posting trot circle to the left at B, canter on the left lead from B to C, then stop and back four steps at C.">
+                        <span class="poster-caption">English Equitation &mdash; Junior &amp; Senior</span>
+                    </a>
+                    <a href="images/light-horse-patterns/western-equitation-walk-trot.webp" target="_blank" class="poster-thumb" aria-label="View the full Western Equitation (Walk Trot) pattern">
+                        <img width="1076" height="1535" loading="lazy" decoding="async" src="images/light-horse-patterns/western-equitation-walk-trot.webp" alt="Western Equitation, Walk Trot pattern. Begin before A at a walk. Jog from A to B, extend the jog and circle at B, stop facing B, quarter turn to the left, back one horse length, then jog to C and stop.">
+                        <span class="poster-caption">Western Equitation &mdash; Walk&nbsp;Trot</span>
+                    </a>
+                    <a href="images/light-horse-patterns/western-equitation-junior.webp" target="_blank" class="poster-thumb" aria-label="View the full Western Equitation (Junior) pattern">
+                        <img width="1016" height="1523" loading="lazy" decoding="async" src="images/light-horse-patterns/western-equitation-junior.webp" alt="Western Equitation, Junior pattern. Begin before A at a jog. Jog from A to B, lope on the left lead and circle at B, stop facing B, quarter turn to the left, back one horse length, then jog to C and stop.">
+                        <span class="poster-caption">Western Equitation &mdash; Junior</span>
+                    </a>
+                    <a href="images/light-horse-patterns/western-equitation-senior.webp" target="_blank" class="poster-thumb" aria-label="View the full Western Equitation (Senior) pattern">
+                        <img width="1065" height="1525" loading="lazy" decoding="async" src="images/light-horse-patterns/western-equitation-senior.webp" alt="Western Equitation, Senior pattern. Begin before A at a jog. Jog from A to B, lope on the left lead and circle at B, stop facing B, one and a quarter turn to the left, back one horse length, then lope on the right lead to C and stop.">
+                        <span class="poster-caption">Western Equitation &mdash; Senior</span>
+                    </a>
+                    <a href="images/light-horse-patterns/trail-walk-trot.webp" target="_blank" class="poster-thumb" aria-label="View the full Trail (Walk Trot) pattern">
+                        <img width="1015" height="1522" loading="lazy" decoding="async" src="images/light-horse-patterns/trail-walk-trot.webp" alt="Trail, Walk Trot pattern. Jog over a pole into the chute, back around the corner, jog out of the chute and over poles, walk around the cone, jog around the cone, jog through the boxes and into the box with a quarter turn to the right then walk out, jog over poles, then walk over the bridge to finish.">
+                        <span class="poster-caption">Trail &mdash; Walk&nbsp;Trot</span>
+                    </a>
+                    <a href="images/light-horse-patterns/trail.webp" target="_blank" class="poster-thumb" aria-label="View the full Trail pattern">
+                        <img width="1046" height="1521" loading="lazy" decoding="async" src="images/light-horse-patterns/trail.webp" alt="Trail pattern. Jog over a pole into the chute, back around the corner, jog out of the chute and over poles, walk around the cone, lope on the right lead around the cone, jog through the boxes and into the box with a quarter turn to the right then walk out, jog over poles, then walk over the bridge to finish.">
+                        <span class="poster-caption">Trail</span>
+                    </a>
+                    <a href="images/light-horse-patterns/ranch-riding.webp" target="_blank" class="poster-thumb" aria-label="View the full Ranch Riding pattern">
+                        <img width="1069" height="1529" loading="lazy" decoding="async" src="images/light-horse-patterns/ranch-riding.webp" alt="Ranch Riding pattern. Twelve maneuvers: walk, walk over logs, lope on the right lead, extended lope on the right lead, trot, stop and one and a half turns to the right, walk, trot, extended trot, lope on the left lead, stop and back, then side pass to the right.">
+                        <span class="poster-caption">Ranch Riding</span>
+                    </a>
+                </div>
+
+                <p class="poster-view-note">Full class lists and rules are in the <a href="images/forms and documents/CCex-Light Horse booklet 2026 (1).pdf" class="link-accent">2026 Light Horse Show Booklet</a>. Patterns provided by HorseShowPatterns.com.</p>
             </section>
 
             <!-- Contact Info -->
