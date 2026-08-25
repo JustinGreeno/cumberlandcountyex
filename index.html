@@ -14,8 +14,8 @@
     <link rel="preload" as="image" href="images/art/sign logo.webp" fetchpriority="high">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/fonts.css?v=20260820e">
-    <link href="css/style.css?v=20260820e" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css?v=20260825a">
+    <link href="css/style.css?v=20260825a" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/art/Try Logo 1 white glow.png">
     <style>
         /* ── Fun Zone Hero ── */
@@ -177,6 +177,52 @@
         @media (max-width: 700px) {
             .entry-forms-cta { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
         }
+        /* ── Still-Open Registrations ── */
+        .open-reg { margin: 2rem 0; }
+        .open-reg .or-head { text-align: center; margin-bottom: 0.5rem; }
+        .open-reg .or-badge {
+            display: inline-block;
+            background: var(--grass-green);
+            color: #fff;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            border: 2px solid var(--straw);
+            margin-bottom: 0.75rem;
+        }
+        .open-reg .info-cards { margin-top: 1.75rem; }
+        .open-reg .info-card {
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--grass-green);
+        }
+        .open-reg .or-icon { font-size: 2.4rem; line-height: 1; display: block; margin-bottom: 0.6rem; }
+        .open-reg .info-card p { font-size: 1.05rem; flex-grow: 1; }
+        .open-reg .or-status {
+            display: block;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--grass-green);
+            margin-bottom: 0.75rem;
+        }
+        .open-reg .or-go {
+            display: inline-block;
+            margin-top: 1.1rem;
+            background: var(--barn-red);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.6rem 1.3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background var(--t-mid) var(--ease-out), transform var(--t-mid) var(--ease-out);
+        }
+        .open-reg .or-go:hover { background: var(--wood-dark); transform: translateY(-2px); text-decoration: none; }
+
         /* ── Mud Stomp Hero ── */
         .mud-stomp-hero {
             position: relative;
@@ -308,13 +354,13 @@
             margin: 0 auto 1.75rem;
         }
     </style>
-    <script src="js/nav.js?v=20260820e" defer></script>
-    <script src="js/search.js?v=20260820e" defer></script>
-    <script src="js/countdown.js?v=20260820e" defer></script>
-    <script src="js/horseshoe.js?v=20260820e" defer></script>
-    <script src="js/ui.js?v=20260820e" defer></script>
-    <script src="js/happening-now.js?v=20260820e" defer></script>
-    <script src="js/lightbox.js?v=20260820e" defer></script>
+    <script src="js/nav.js?v=20260825a" defer></script>
+    <script src="js/search.js?v=20260825a" defer></script>
+    <script src="js/countdown.js?v=20260825a" defer></script>
+    <script src="js/horseshoe.js?v=20260825a" defer></script>
+    <script src="js/ui.js?v=20260825a" defer></script>
+    <script src="js/happening-now.js?v=20260825a" defer></script>
+    <script src="js/lightbox.js?v=20260825a" defer></script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -455,6 +501,46 @@
                 </div>
                 <a href="forms.html" class="btn">View All Entry Forms →</a>
             </div>
+
+            <!-- Registrations Still Open -->
+            <section class="panel open-reg" id="still-open">
+                <div class="or-head">
+                    <span class="or-badge">Still Taking Entries</span>
+                    <h2>Registration Is Still Open</h2>
+                    <p>The fair is almost here, but it isn't too late to take part. These four sign-ups have no closing date &mdash; enter right up to the day.</p>
+                </div>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <span class="or-icon" aria-hidden="true">&#128663;</span>
+                        <h3>Kids Show 'N Shine</h3>
+                        <span class="or-status">Just re-opened &middot; No deadline</span>
+                        <p>A free, kids-only car show for children 9 &amp; under. Bring an electric powered ride, or come be a judge &mdash; every child gets a treat bag.</p>
+                        <a href="show-n-shine.html#register" class="or-go">Register &rarr;</a>
+                    </div>
+                    <div class="info-card">
+                        <span class="or-icon" aria-hidden="true">&#127881;</span>
+                        <h3>CCEx Parade</h3>
+                        <span class="or-status">Open &middot; No deadline</span>
+                        <p>Saturday, Sept 5 at 1:00 PM through Oxford. Floats, tractors, horses, clubs and businesses all welcome. Theme: Sew it, Grow it, Show it.</p>
+                        <a href="parade.html#registration" class="or-go">Enter the Parade &rarr;</a>
+                    </div>
+                    <div class="info-card">
+                        <span class="or-icon" aria-hidden="true">&#127876;</span>
+                        <h3>Christmas Tree Competition</h3>
+                        <span class="or-status">Open &middot; No deadline</span>
+                        <p>$5 per tree, held in memory of Keith Moore of ShelBell Farm. Judged Thursday morning and on display through Sunday.</p>
+                        <a href="christmas-tree.html#registration" class="or-go">Enter a Tree &rarr;</a>
+                    </div>
+                    <div class="info-card">
+                        <span class="or-icon" aria-hidden="true">&#127793;</span>
+                        <h3>Future Farmer Competition</h3>
+                        <span class="or-status">Open &middot; Ages 7&ndash;21</span>
+                        <p>$5 entry. Earn points across livestock, Christmas tree and Life Skills classes, plus a speaker session and quiz. Prizes by Farm Credit Canada.</p>
+                        <a href="future-farmer.html#registration" class="or-go">Register &rarr;</a>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:1.5rem;">Missed a deadline? The <a href="forms.html" class="link-accent">entry forms page</a> lists every show &mdash; get in touch and we'll do our best to fit you in.</p>
+            </section>
 
             <!-- Parade Promo -->
             <div class="parade-promo">
