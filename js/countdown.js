@@ -2,7 +2,7 @@
 (function() {
     var countdownInterval = null;
 
-    var fairStart  = new Date('August 31, 2026 00:00:00').getTime();
+    var fairStart  = new Date('August 31, 2026 07:00:00').getTime(); // gates & first class, Mon morning
     var fairEnd    = new Date('September 7, 2026 00:00:00').getTime(); // day after Sept 6
     var nextYear   = new Date('August 31, 2027 00:00:00').getTime();
 
