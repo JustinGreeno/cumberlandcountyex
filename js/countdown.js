@@ -6,6 +6,50 @@
     var fairEnd    = new Date('September 7, 2026 00:00:00').getTime(); // day after Sept 6
     var nextYear   = new Date('August 31, 2027 00:00:00').getTime();
 
+    // Each fair day and the schedule anchor it belongs to, so the live badge
+    // can send people straight to the right spot. Mirrors js/happening-now.js.
+    var FAIR_DAYS = {
+        '2026-08-31': 'day-aug31',
+        '2026-09-01': 'day-sep1',
+        '2026-09-02': 'day-sep2',
+        '2026-09-03': 'day-sep3',
+        '2026-09-04': 'day-sep4',
+        '2026-09-05': 'day-sep5',
+        '2026-09-06': 'day-sep6'
+    };
+
+    function todayKey() {
+        var d = new Date();
+        var m = d.getMonth() + 1;
+        var day = d.getDate();
+        return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day);
+    }
+
+    // Only rewritten when the day rolls over, so a page left open overnight
+    // still points at the right day come morning.
+    var liveDay = null;
+    function renderLive(el) {
+        var key = todayKey();
+        if (liveDay === key) return;
+        liveDay = key;
+
+        var id = FAIR_DAYS[key];
+        var onSchedule = /schedule-2026\.html$/.test(location.pathname);
+        var href = 'schedule-2026.html';
+        if (id) href = (onSchedule ? '' : 'schedule-2026.html') + '#' + id;
+
+        el.innerHTML =
+            '<a class="countdown-live" href="' + href + '">' +
+                '<span class="countdown-live-dot" aria-hidden="true"></span>' +
+                '<span class="countdown-live-text">' +
+                    '<strong>Happening Now!</strong>' +
+                    '<span class="countdown-live-sub">' +
+                        (id ? "See today&rsquo;s schedule &rarr;" : 'See the schedule &rarr;') +
+                    '</span>' +
+                '</span>' +
+            '</a>';
+    }
+
     function updateCountdown() {
         var now = new Date().getTime();
 
@@ -23,8 +67,7 @@
             if (labelEl) labelEl.textContent = 'See us next year \u2014 CCEx 2027';
             var distance = nextYear - now;
             if (distance <= 0) {
-                countdownEl.innerHTML = '<span style="color:var(--straw-light);">Happening Now!</span>';
-                clearInterval(countdownInterval);
+                renderLive(countdownEl);
                 return;
             }
             if (daysEl && hoursEl && minsEl && secsEl) {
@@ -36,12 +79,10 @@
             return;
         }
 
-        // Phase 2: during the exhibition — "Happening Now"
+        // Phase 2: during the exhibition — a live badge linking to today
         if (now >= fairStart) {
-            if (labelEl) labelEl.textContent = 'CCEx 2026';
-            countdownEl.innerHTML = '<span style="color:var(--straw-light);font-family:\'Alfa Slab One\',serif;font-size:1.6rem;letter-spacing:0.05em;">Happening Now!</span>';
-            clearInterval(countdownInterval);
-            countdownInterval = null;
+            if (labelEl) labelEl.textContent = 'CCEx 2026 is on';
+            renderLive(countdownEl);
             return;
         }
 

@@ -2881,6 +2881,57 @@ main {
     text-transform: uppercase;
 }
 
+/* ── Countdown → live badge ──
+   During the fair js/countdown.js swaps the digits for this, a button that
+   drops the visitor on today's section of the schedule. Reuses the green and
+   the pulsing dot of the .happening-now banner so the two read as one thing. */
+.countdown-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--r-pill);
+    border: 2px solid var(--hay);
+    background: linear-gradient(135deg, #1a6a35, #2a9a50);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: var(--elev-2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.countdown-live:hover { transform: translateY(-2px); box-shadow: var(--elev-3); }
+.countdown-live:focus-visible { outline: 3px solid var(--straw-light); outline-offset: 3px; }
+.countdown-live-dot {
+    flex-shrink: 0;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--straw);
+    animation: hnPulse 2s ease-out infinite;
+}
+.countdown-live-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    text-align: left;
+}
+.countdown-live strong {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--straw-light);
+}
+.countdown-live-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.92);
+}
+@media (prefers-reduced-motion: reduce) {
+    .countdown-live-dot { animation: none; }
+    .countdown-live:hover { transform: none; }
+}
+
 body {
     display: flex;
     flex-direction: column;
