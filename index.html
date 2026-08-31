@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Cumberland County Exhibition</title>
+    <title>Cumberland County Exhibition (CCEx) — Oxford, Nova Scotia</title>
     <link rel="canonical" href="https://cumberlandcountyex.com/">
-    <meta name="description" content="Cumberland County Exhibition - Nova Scotia's Premier Agricultural Exhibition. Join us for livestock shows, 4-H competitions, and family fun!">
-    <meta property="og:title" content="Cumberland County Exhibition | CCEx">
-    <meta property="og:description" content="Nova Scotia's Premier Agricultural Exhibition - livestock shows, 4-H competitions, and family fun! August 31 - September 6, 2026.">
+    <meta property="og:locale" content="en_CA">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#3d2914">
+    <meta name="description" content="CCEx — the Cumberland County Exhibition in Oxford, Nova Scotia. Seven days of livestock shows, 4-H, harness racing, live music, the parade and the Mud Stomp. August 31 – September 6, 2026.">
+    <meta property="og:title" content="Cumberland County Exhibition (CCEx) — Oxford, Nova Scotia">
+    <meta property="og:description" content="Nova Scotia's premier agricultural exhibition. Livestock shows, 4-H competitions, live music, the CCEx Parade and family fun — August 31 to September 6, 2026.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://cumberlandcountyex.com/images/art/sign%20logo.png">
-    <meta name="keywords" content="Cumberland County Exhibition, CCEx, agricultural exhibition, Nova Scotia, Oxford, livestock, 4-H, horse shows">
+    <meta property="og:url" content="https://cumberlandcountyex.com/">
+    <meta property="og:site_name" content="Cumberland County Exhibition">
+    <meta name="keywords" content="CCEx, Cumberland County Exhibition, Cumberland Exhibition, agricultural exhibition, Nova Scotia, Oxford NS, livestock, 4-H, horse shows">
     <link rel="preload" as="image" href="images/art/sign logo.webp" fetchpriority="high">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -361,6 +366,102 @@
     <script src="js/ui.js?v=20260831b" defer></script>
     <script src="js/happening-now.js?v=20260831b" defer></script>
     <script src="js/lightbox.js?v=20260831b" defer></script>
+
+    <!-- Structured data. The `alternateName` entries are the part that matters
+         for search: they are how Google learns that "CCEx" and "Cumberland
+         Exhibition" name this organisation and this site, so a search for the
+         short form lands on the home page instead of whichever inside page
+         happened to spell it out. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cumberlandcountyex.com/#organization",
+          "name": "Cumberland County Exhibition",
+          "alternateName": ["CCEx", "CCEX", "Cumberland Exhibition", "Cumberland County Ex"],
+          "url": "https://cumberlandcountyex.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cumberlandcountyex.com/images/art/sign%20logo.png"
+          },
+          "description": "Nova Scotia's premier agricultural exhibition, held every summer on the Exhibition Grounds in Oxford, Cumberland County.",
+          "email": "cumberlandexhibition@gmail.com",
+          "telephone": "+1-902-447-3285",
+          "address": {
+            "@type": "PostalAddress",
+            "postOfficeBoxNumber": "123",
+            "addressLocality": "Oxford",
+            "addressRegion": "NS",
+            "postalCode": "B0M 1P0",
+            "addressCountry": "CA"
+          },
+          "areaServed": "Cumberland County, Nova Scotia",
+          "sameAs": ["https://www.facebook.com/cumberlandex/"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cumberlandcountyex.com/#website",
+          "name": "Cumberland County Exhibition",
+          "alternateName": ["CCEx", "CCEX"],
+          "url": "https://cumberlandcountyex.com/",
+          "inLanguage": "en-CA",
+          "publisher": { "@id": "https://cumberlandcountyex.com/#organization" }
+        },
+        {
+          "@type": "Event",
+          "@id": "https://cumberlandcountyex.com/#event2026",
+          "name": "Cumberland County Exhibition 2026",
+          "alternateName": "CCEx 2026",
+          "description": "Seven days of livestock shows, 4-H competitions, light horse and heavy horse events, the CCEx Parade, live music, kids activities and the Saturday night Mud Stomp.",
+          "startDate": "2026-08-31",
+          "endDate": "2026-09-06",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "url": "https://cumberlandcountyex.com/",
+          "image": "https://cumberlandcountyex.com/images/art/sign%20logo.png",
+          "organizer": { "@id": "https://cumberlandcountyex.com/#organization" },
+          "location": {
+            "@type": "Place",
+            "name": "Cumberland County Exhibition Grounds",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Oxford",
+              "addressRegion": "NS",
+              "addressCountry": "CA"
+            }
+          },
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Day Pass",
+              "price": "5",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://cumberlandcountyex.com/merch.html"
+            },
+            {
+              "@type": "Offer",
+              "name": "Week Pass",
+              "price": "15",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://cumberlandcountyex.com/merch.html"
+            },
+            {
+              "@type": "Offer",
+              "name": "Family Day Pass",
+              "price": "20",
+              "priceCurrency": "CAD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://cumberlandcountyex.com/merch.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -370,7 +471,7 @@
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
+                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="Cumberland County Exhibition (CCEx)" class="logo-img">
                 <span class="logo-tagline">Cumberland County Exhibition</span>
             </a>
             <nav>

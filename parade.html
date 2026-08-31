@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CCEx Parade | Cumberland County Exhibition</title>
+    <title>CCEx Parade 2026 &#8212; Route, Entry &amp; Line-Up | Cumberland County Exhibition</title>
     <link rel="canonical" href="https://cumberlandcountyex.com/parade.html">
+    <meta property="og:locale" content="en_CA">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#3d2914">
     <meta name="description" content="Enter the 2026 CCEx Parade, Oxford NS — Saturday, September 5. Line up 12:45 PM on Foundry St, parade at 1:00 PM. Theme: Sew it, Grow it, Show it. No deadline, no entry fee.">
     <meta property="og:title" content="CCEx Parade | Cumberland County Exhibition">
     <meta property="og:description" content="Enter the 2026 CCEx Parade, Oxford NS — Saturday, September 5. Line up 12:45 PM on Foundry St, parade at 1:00 PM. Theme: Sew it, Grow it, Show it. No deadline, no entry fee.">
@@ -205,13 +208,46 @@
             .msforms-embed iframe { height: 80vh; max-height: none; }
         }
     </style>
+
+    <!-- Event data for the parade. The `superEvent` link is what tells search
+         engines this is one item inside the exhibition rather than a separate
+         organisation of its own. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "CCEx Parade 2026",
+      "alternateName": "Cumberland County Exhibition Parade",
+      "description": "The CCEx Parade through downtown Oxford, Nova Scotia. Floats, tractors, horses and fire trucks. Entries line up on Foundry Street for 12:45 PM; the parade steps off at 1:00 PM. 2026 theme: Sew it, Grow it, Show it. No entry fee and no deadline.",
+      "startDate": "2026-09-05T13:00:00-03:00",
+      "endDate": "2026-09-05T15:00:00-03:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "url": "https://cumberlandcountyex.com/parade.html",
+      "image": "https://cumberlandcountyex.com/images/art/Parade%20Route.jpg",
+      "isAccessibleForFree": true,
+      "location": {
+        "@type": "Place",
+        "name": "Downtown Oxford — Water Street to Main Street to Duke Street",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Water Street",
+          "addressLocality": "Oxford",
+          "addressRegion": "NS",
+          "addressCountry": "CA"
+        }
+      },
+      "organizer": { "@id": "https://cumberlandcountyex.com/#organization" },
+      "superEvent": { "@id": "https://cumberlandcountyex.com/#event2026" }
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
     <header>
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="CCEx" class="logo-img">
+                <img width="1024" height="1024" decoding="async" src="images/art/Try Logo 1 white glow.webp" alt="Cumberland County Exhibition (CCEx)" class="logo-img">
                 <span class="logo-tagline">Cumberland County Exhibition</span>
             </a>
             <nav>
