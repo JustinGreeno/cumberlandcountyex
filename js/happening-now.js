@@ -220,7 +220,7 @@
 
         elLink.href = dayHref(day);
         elLinkTxt.innerHTML = onSchedule
-            ? (isToday ? 'Jump to today' : 'Jump to ' + weekday)
+            ? (isToday ? 'See full schedule' : 'Jump to ' + weekday)
             : (isToday ? 'See today&rsquo;s schedule' : 'See ' + weekday + '&rsquo;s schedule');
 
         for (var q = 0; q < dayBtns.length; q++) {
