@@ -78,7 +78,26 @@
       "Bash(grep -iE \"jul|aug|sep|[0-9]{1,2},\")",
       "Bash(grep -noiE \"clos[a-z]*[^<.]{0,70}\" horse-registration.html)",
       "Bash(grep -noiE \"<form|<iframe[^>]{0,60}|mailto:[a-z@.]*\" vendor-application.html)",
-      "Bash(awk -F: '{print $1\" line \"$2}')"
+      "Bash(awk -F: '{print $1\" line \"$2}')",
+      "Bash(grep -n -B1 -A4 \"^h1,\\\\|^h1 {\\\\|^h2 {\\\\|^\\\\.panel h2\" css/style.css)",
+      "Bash(grep -E \"^[0-9]+[:-]\\(\\\\.|#|[a-z0-9 ,.-]*\\\\{|\\\\s*text-shadow\\)\")",
+      "Bash(grep -E \"^[0-9]+[:-]\\(\\\\.|#|[a-z0-9 ,.:-]*\\\\{|\\\\s*background-image\\)\")",
+      "Bash(grep -E \"^[0-9]+[:-]\\(\\\\.|#|[a-z0-9 ,.:>-]*\\\\{|\\\\s*transition\\)\")",
+      "Bash(grep -E \"^[0-9]+[:-]\\(\\\\.|#|[a-z0-9 ,.:>-]*\\\\{|\\\\s*border\\)\")",
+      "Bash(awk 'NR>=2495 && NR<=2530' css/style.css)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" --max-time 20 \"https://fonts.googleapis.com/css2?family=Lato&display=swap\")",
+      "Bash(awk '/font-family:/{f=$0} /font-weight:/{print f\" -> \"$0}' /tmp/gf.css)",
+      "Bash(curl -s --max-time 25 \"https://cumberlandcountyex.com/\")",
+      "Bash(grep -n -i -E \"under 5|admission|week pass|family|\\\\\\\\\\\\$5|\\\\\\\\\\\\$15|\\\\\\\\\\\\$20\" contact.html merch.html index.html)",
+      "Bash(perl -i -pe 's{Future Farmer Competition  Rules &amp; Regulations \\\\.pdf}{Future Farmer Rules and Regulations 2026.pdf}g' future-farmer.html forms.html)",
+      "Bash(perl -i -pe 's{Future Farmer Competition  Rules & Regulations \\\\.pdf}{Future Farmer Rules and Regulations 2026.pdf}g' js/search.js)",
+      "Bash(perl -ne 'while \\(/\\(?:href|src\\)=\"\\([^\"]+\\)\"/g\\) { my $u=$1; next if $u =~ m{^\\(https?:|mailto:|tel:|#|//|data:\\)}; $u =~ s/[#?].*$//; next unless length $u; $seen{$u}=1 } END { for \\(sort keys %seen\\) { my $d=$_; $d =~ s/&amp;/&/g; $d =~ s/%\\([0-9A-Fa-f]{2}\\)/chr\\(hex\\($1\\)\\)/ge; print \"MISSING: $_\\\\n\" unless -e $d } }' *.html)",
+      "Bash(perl -0777 -i -pe 's{\\(<a href=\"exhibitors\\\\.html\"[^>]*>Shows &amp; Entries</a>\\\\s*\\\\n\\\\s*<ul class=\"dropdown\\)\\(\">\\)}{$1 two-col$2}g' *.html)",
+      "Bash(perl -i -pe 's/\\\\?v=20260815a/?v=20260819a/g; s/\\\\?v=20260811d/?v=20260819a/g' *.html)",
+      "Bash(sed -n '/<a href=\"events.html\">See &amp; Do<\\\\/a>/,/<\\\\/ul>/p' index.html)",
+      "Bash(sed -n '/Shows &amp; Entries<\\\\/a>/,/<\\\\/ul>/p' index.html)",
+      "Bash(perl -0777 -i -pe 's{\\(<a href=\"events\\\\.html\"[^>]*>See &amp; Do</a>\\\\s*\\\\n\\\\s*<ul class=\"dropdown\\)\\(\">\\)}{$1 two-col$2}g' *.html)",
+      "Bash(perl -i -pe 's/\\\\?v=20260819a/?v=20260819b/g' *.html)"
     ]
   }
 }
