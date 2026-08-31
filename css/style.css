@@ -3886,18 +3886,24 @@ html {
 }
 /* ── Happening Now banner ──
    Injected by js/happening-now.js only on the days the fair is running. It is
-   the first thing on the page during fair week, so it carries the three things
-   a visitor standing on the grounds actually wants: that today is a fair day,
-   which day it is, and a way straight into today's schedule. */
+   the first thing on the page during fair week, so it carries what a visitor
+   standing on the grounds wants: which day it is, when the day runs, the four
+   to six things worth stopping for, and a way straight into the schedule. The
+   day strip along the bottom opens on today but steps to any other day. */
 .happening-now {
     position: relative;
     background:
-        radial-gradient(120% 160% at 12% 0%, rgba(255, 255, 255, 0.16), transparent 60%),
-        linear-gradient(135deg, #14572c 0%, #1f7f40 48%, #2aa052 100%);
+        radial-gradient(120% 150% at 10% 0%, rgba(255, 255, 255, 0.13), transparent 58%),
+        linear-gradient(150deg, #0b3418 0%, #14572c 45%, #1d7a3e 100%);
     border-top: 3px solid var(--straw);
-    border-bottom: 4px solid #0f3f20;
+    border-bottom: 5px solid #07240f;
     color: #fff;
-    box-shadow: var(--elev-3);
+    /* Deliberately heavier than --elev-3: this sits above the hero and has to
+       read as a card laid on the page, not a stripe painted onto it. */
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.30),
+        0 22px 52px rgba(0, 0, 0, 0.40),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
     overflow: hidden;
 }
 /* Faint rope-stitch line just inside the top edge, the same trick the wooden
@@ -3905,16 +3911,21 @@ html {
 .happening-now::before {
     content: '';
     position: absolute;
-    inset: 6px 0 auto;
+    inset: 7px 0 auto;
     height: 1px;
     background: repeating-linear-gradient(90deg,
-        rgba(255, 255, 255, 0.28) 0 10px, transparent 10px 20px);
+        rgba(255, 255, 255, 0.26) 0 10px, transparent 10px 20px);
     pointer-events: none;
 }
 .hn-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--sp-4) var(--sp-5);
+    padding: var(--sp-4) var(--sp-5) var(--sp-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+}
+.hn-head {
     display: flex;
     align-items: center;
     gap: var(--sp-5);
@@ -3925,14 +3936,14 @@ html {
    glance from across a phone screen. */
 .hn-cal {
     flex-shrink: 0;
-    width: 74px;
+    width: 76px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: var(--cream);
     border-radius: var(--r-sm);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: var(--elev-2);
+    border: 1px solid rgba(0, 0, 0, 0.28);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.34), 0 12px 26px rgba(0, 0, 0, 0.30);
     overflow: hidden;
     transform: rotate(-2deg);
 }
@@ -3946,11 +3957,13 @@ html {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     text-align: center;
-    padding: 0.2rem 0;
+    padding: 0.22rem 0;
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.22);
 }
 .hn-cal-num {
-    font-family: 'Alfa Slab One', serif;
-    font-size: 2rem;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 700;
+    font-size: 2.1rem;
     line-height: 1.05;
     color: var(--wood-dark);
     padding-top: 0.15rem;
@@ -3965,10 +3978,11 @@ html {
     padding-bottom: 0.3rem;
 }
 
-.hn-text { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; flex: 1 1 16rem; }
+.hn-text { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; flex: 1 1 18rem; }
 .hn-eyebrow {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
     font-family: 'Lato', sans-serif;
     font-size: 0.72rem;
@@ -3976,9 +3990,10 @@ html {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--straw-light);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 .hn-sep { width: 3px; height: 3px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); }
-.hn-count { color: rgba(255, 255, 255, 0.78); letter-spacing: 0.12em; }
+.hn-count { color: rgba(255, 255, 255, 0.75); letter-spacing: 0.12em; }
 .hn-dot {
     flex-shrink: 0;
     width: 10px;
@@ -3993,24 +4008,45 @@ html {
     70%  { box-shadow: 0 0 0 12px rgba(212, 168, 75, 0); }
     100% { box-shadow: 0 0 0 0 rgba(212, 168, 75, 0); }
 }
-.hn-date {
-    font-family: 'Alfa Slab One', serif;
-    font-size: clamp(1.25rem, 3.2vw, 1.7rem);
-    line-height: 1.15;
-    letter-spacing: 0.01em;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+/* Shown only when the visitor has stepped off today. */
+.hn-back {
+    font: inherit;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: var(--r-pill);
+    padding: 0.15rem 0.6rem;
+    cursor: pointer;
+    transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
-.hn-note {
-    align-self: flex-start;
-    max-width: 100%;
+.hn-back:hover { background: rgba(0, 0, 0, 0.45); border-color: var(--straw); }
+.hn-back:focus-visible { outline: 2px solid var(--straw-light); outline-offset: 2px; }
+
+/* Roboto Slab rather than Alfa Slab One: the display face is handsome on a
+   cream panel but muddy in white on green at this size. */
+.hn-date {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 3.4vw, 1.85rem);
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.hn-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 0.45rem; }
+.hn-note,
+.hn-hours {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--cream);
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--r-pill);
-    padding: 0.15rem 0.7rem;
+    padding: 0.18rem 0.75rem;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.28);
 }
+.hn-hours { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--straw-light); }
+.hn-hours-icon { font-size: 0.9em; }
 
 .hn-link {
     margin-left: auto;
@@ -4021,50 +4057,158 @@ html {
     background: linear-gradient(180deg, var(--straw-light), var(--straw));
     color: var(--wood-dark);
     font-family: 'Lato', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
     padding: 0.7rem 1.5rem;
     border-radius: var(--r-pill);
     border: 2px solid var(--hay);
-    box-shadow: var(--elev-2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.32),
+        0 12px 28px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
     transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
 }
 .hn-arrow { transition: transform var(--t-fast) var(--ease); }
 .hn-link:hover {
     background: linear-gradient(180deg, #f2d693, var(--straw-light));
     transform: translateY(-2px);
-    box-shadow: var(--elev-3), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.34),
+        0 18px 38px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 .hn-link:hover .hn-arrow { transform: translateX(4px); }
 .hn-link:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
-/* Seven segments, one per fair day - a quiet read on how far through the
-   week we are without spending a line of text on it. */
-.hn-progress { display: flex; gap: 3px; }
-.hn-pip { flex: 1; height: 5px; background: rgba(255, 255, 255, 0.16); }
-.hn-pip.is-past { background: rgba(212, 168, 75, 0.55); }
-.hn-pip.is-today {
-    background: var(--straw);
-    box-shadow: 0 0 10px rgba(212, 168, 75, 0.9);
-    animation: hnPipGlow 2.4s ease-in-out infinite;
+/* ── The day's picks ──
+   Four to six pills: what to make sure you see. Sponsored events are marked
+   in gold, the hero-card shows in barn red, music with a note. */
+.hn-picks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
 }
-@keyframes hnPipGlow {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: 0.62; }
+.hn-pick {
+    --hn-mark: '';
+    --hn-accent: rgba(255, 255, 255, 0.3);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    max-width: 100%;
+    font-size: 0.86rem;
+    line-height: 1.3;
+    color: var(--cream);
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.26);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-left: 3px solid var(--hn-accent);
+    border-radius: var(--r-sm);
+    padding: 0.35rem 0.7rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
+.hn-pick-t {
+    flex-shrink: 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--straw-light);
+    white-space: nowrap;
+}
+.hn-pick-t::before { content: var(--hn-mark); margin-right: 0.3rem; }
+.hn-pick-n { font-weight: 700; }
+a.hn-pick:hover {
+    background: rgba(0, 0, 0, 0.42);
+    border-color: rgba(255, 255, 255, 0.34);
+    border-left-color: var(--hn-accent);
+    transform: translateY(-1px);
+}
+a.hn-pick:focus-visible { outline: 2px solid var(--straw-light); outline-offset: 2px; }
+/* Sponsors bought the top of the list; they get the gold. */
+.hn-pick.is-sponsor { --hn-mark: '\25C6'; --hn-accent: var(--straw); background: rgba(212, 168, 75, 0.16); }
+.hn-pick.is-sponsor .hn-pick-t { color: var(--straw); }
+.hn-pick.is-hero    { --hn-mark: '\2605'; --hn-accent: var(--barn-red-light); }
+.hn-pick.is-music   { --hn-mark: '\266A'; --hn-accent: var(--sky-blue); }
+.hn-pick.is-music .hn-pick-t { color: var(--sky-blue); }
+.hn-pick.is-key     { --hn-mark: '\26A0'; --hn-accent: var(--barn-red-light); background: rgba(166, 61, 31, 0.28); }
 
-@media (max-width: 720px) {
-    .hn-inner { padding: var(--sp-4) var(--sp-4); gap: var(--sp-4); }
+/* ── The day strip ──
+   Opens on today; steps to any other day of the week. Days already gone are
+   dimmed, today keeps a gold underline even when another day is selected. */
+.hn-days {
+    display: flex;
+    gap: 0.35rem;
+    padding-top: var(--sp-2);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.hn-days::-webkit-scrollbar { display: none; }
+.hn-day-btn {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 4.6rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.82);
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--r-pill);
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.hn-day-btn:hover { background: rgba(0, 0, 0, 0.4); border-color: rgba(255, 255, 255, 0.34); transform: translateY(-1px); }
+.hn-day-btn:focus-visible { outline: 2px solid var(--straw-light); outline-offset: 2px; }
+.hn-day-btn.is-past { color: rgba(255, 255, 255, 0.5); background: rgba(0, 0, 0, 0.12); }
+/* Today always carries the gold pip, selected or not. */
+.hn-day-btn.is-today::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--straw);
+}
+.hn-day-btn.is-selected {
+    color: var(--wood-dark);
+    background: linear-gradient(180deg, var(--straw-light), var(--straw));
+    border-color: var(--hay);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.hn-day-btn.is-selected.is-today::after { background: var(--wood-dark); }
+
+@media (max-width: 760px) {
+    .hn-inner { padding: var(--sp-4) var(--sp-4) var(--sp-3); gap: var(--sp-3); }
+    .hn-head { gap: var(--sp-4); }
     .hn-cal { width: 60px; }
-    .hn-cal-num { font-size: 1.6rem; }
+    .hn-cal-num { font-size: 1.65rem; }
     .hn-eyebrow { font-size: 0.65rem; letter-spacing: 0.14em; }
-    .hn-note { font-size: 0.8rem; }
+    .hn-note, .hn-hours { font-size: 0.78rem; }
     .hn-link { margin-left: 0; width: 100%; justify-content: center; font-size: 0.95rem; }
+    /* One swipeable row rather than a wall of stacked pills. */
+    .hn-picks {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin: 0 calc(-1 * var(--sp-4));
+        padding: 0 var(--sp-4) 0.25rem;
+    }
+    .hn-picks::-webkit-scrollbar { display: none; }
+    .hn-pick { flex-shrink: 0; }
+    .hn-day-btn { min-width: 4.2rem; font-size: 0.75rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .hn-dot, .hn-pip.is-today { animation: none; }
-    .hn-link, .hn-arrow { transition: none; }
+    .hn-dot { animation: none; }
+    .hn-link, .hn-arrow, .hn-pick, .hn-day-btn, .hn-back { transition: none; }
 }
 @media print { .happening-now { display: none !important; } }
 
