@@ -511,8 +511,13 @@
             <section class="panel-wooden" id="register">
                 <h2>Registration Form</h2>
 
-                <details class="reg-collapse">
-                    <summary>Open the registration form</summary>
+                <!-- Open by default, unlike the other eight entry pages, which
+                     ship this collapsed. The show is days away and the build
+                     session has limited spaces, so the form should not be
+                     behind a click. Drop the `open` once it fills or the show
+                     is over. -->
+                <details class="reg-collapse" open>
+                    <summary>Sign up for the Hobby Horse Competition</summary>
                     <div class="reg-collapse-body">
 
                     <p class="hh-notice">⏳ <strong>Spaces are limited</strong> and they fill up. If the form below says the show is full, call Kirsteen at <a href="tel:+19022973457">902&nbsp;297&nbsp;3457</a> to ask whether a space has come open.</p>
