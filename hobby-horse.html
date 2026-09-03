@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Show 'N Shine Registration | Cumberland County Exhibition</title>
-    <link rel="canonical" href="https://cumberlandcountyex.com/show-n-shine.html">
+    <title>Hobby Horse Competition | Cumberland County Exhibition</title>
+    <link rel="canonical" href="https://cumberlandcountyex.com/hobby-horse.html">
     <meta property="og:locale" content="en_CA">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#3d2914">
-    <meta name="description" content="Register for the CCEx 3rd Annual Kids Show 'N Shine 2026 — a free, kids-only car show for children 9 years and younger. Registration is open again, with no deadline.">
-    <meta property="og:title" content="Kids Show 'N Shine Registration | Cumberland County Exhibition">
-    <meta property="og:description" content="Register for the CCEx 3rd Annual Kids Show 'N Shine 2026 — a free, kids-only car show for children 9 years and younger!">
+    <meta name="description" content="Riders build their own hobby horse at 10 AM in the dining hall, then show it in the arena at 3:00 PM — Saturday, September 5, 2026. No charge, but spaces are limited and registration is required in advance.">
+    <meta property="og:title" content="Hobby Horse Competition | Cumberland County Exhibition">
+    <meta property="og:description" content="Make your own hobby horse Saturday morning, ride it in the arena Saturday afternoon. Free, ages 3 and up, registration required — spaces are limited.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cumberlandcountyex.com/images/posters/poster%20show%20and%20shine%202026.jpeg">
-    <meta property="og:url" content="https://cumberlandcountyex.com/show-n-shine.html">
+    <meta property="og:image" content="https://cumberlandcountyex.com/images/art/hobby%20horse.png">
+    <meta property="og:url" content="https://cumberlandcountyex.com/hobby-horse.html">
     <meta property="og:site_name" content="Cumberland County Exhibition">
     <link rel="preload" href="fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/alfa-slab-one-400-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,71 +26,51 @@
     <script src="js/ui.js?v=20260902a" defer></script>
     <script src="js/lightbox.js?v=20260902a" defer></script>
     <style>
-        .eligibility-box {
-            background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
-            border: 4px solid var(--wood-medium);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .eligibility-box h3 {
-            font-family: 'Alfa Slab One', serif;
-            color: var(--wood-dark);
-            margin-bottom: 0.75rem;
-        }
-        .eligibility-box p {
-            color: var(--wood-dark);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .eligibility-box .highlight {
-            font-weight: 700;
-            color: var(--barn-red);
-        }
-
-        /* ── Show 'N Shine Hero ── */
-        .sns-hero {
+        /* ── Hero ── */
+        .hh-hero {
             position: relative;
             width: 100%;
             min-height: 460px;
-            border-radius: 20px;
+            border-radius: var(--r-lg);
             overflow: hidden;
             margin: 1.5rem 0 2.5rem;
             display: flex;
             align-items: flex-end;
-            box-shadow: 0 16px 50px rgba(0,0,0,0.55);
+            box-shadow: var(--elev-4);
         }
-        .sns-hero-bg {
+        .hh-hero-bg {
             position: absolute;
             inset: -10%;
-            background: url('images/art/show and shine hero card.webp') center 80% / cover no-repeat;
-            animation: kenBurnsSNS 22s ease-in-out infinite alternate;
-            transform-origin: 50% 80%;
+            background: url('images/art/hobby horse.webp') center 35% / cover no-repeat;
+            animation: kenBurnsHH 24s ease-in-out infinite alternate;
+            transform-origin: 50% 35%;
             z-index: 0;
         }
-        @keyframes kenBurnsSNS {
+        @keyframes kenBurnsHH {
             0%   { transform: scale(1)    translateY(0); }
-            100% { transform: scale(1.15) translateY(4%); }
+            100% { transform: scale(1.14) translateY(3%); }
         }
-        .sns-hero-overlay {
+        @media (prefers-reduced-motion: reduce) {
+            .hh-hero-bg { animation: none; }
+        }
+        .hh-hero-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(
                 to top,
-                rgba(25,8,2,0.94) 0%,
-                rgba(70,25,8,0.58) 42%,
-                rgba(10,2,0,0.12) 100%
+                rgba(25,8,2,0.95) 0%,
+                rgba(70,25,8,0.62) 44%,
+                rgba(10,2,0,0.14) 100%
             );
             z-index: 1;
         }
-        .sns-hero-content {
+        .hh-hero-content {
             position: relative;
             z-index: 2;
             padding: 2.5rem;
             width: 100%;
         }
-        .sns-badge {
+        .hh-badge {
             display: inline-block;
             background: var(--straw);
             color: var(--wood-dark);
@@ -100,34 +80,30 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             padding: 0.3rem 1rem;
-            border-radius: 20px;
+            border-radius: var(--r-pill);
             margin-bottom: 0.8rem;
         }
-        .sns-title {
+        .hh-title {
             font-family: 'Alfa Slab One', serif;
-            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            font-size: clamp(2.1rem, 6vw, 3.6rem);
             color: white;
             text-shadow: 2px 4px 18px rgba(0,0,0,0.75);
             margin: 0 0 0.5rem;
             line-height: 1.05;
         }
-        .sns-desc {
-            color: rgba(255,255,255,0.85);
+        .hh-desc {
+            color: rgba(255,255,255,0.87);
             font-family: 'Lato', sans-serif;
             font-size: 1.05rem;
             line-height: 1.55;
             margin-bottom: 1.3rem;
-            max-width: 520px;
+            max-width: 560px;
         }
-        .sns-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-        .sns-pill {
+        .hh-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+        .hh-pill {
             background: rgba(255,255,255,0.14);
             border: 1.5px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
+            border-radius: var(--r-pill);
             padding: 0.35rem 0.95rem;
             font-family: 'Lato', sans-serif;
             font-size: 0.86rem;
@@ -135,82 +111,179 @@
             color: white;
             white-space: nowrap;
         }
-        .sns-pill.red {
-            background: var(--barn-red);
-            border-color: var(--barn-red);
-        }
-        .sns-pill.straw {
+        .hh-pill.red { background: var(--barn-red); border-color: var(--barn-red); }
+        .hh-pill.straw {
             background: var(--straw);
             border-color: var(--hay);
             color: var(--wood-dark);
+            transition: transform var(--t-mid) var(--ease-out);
         }
+        .hh-pill.straw:hover { transform: translateY(-2px); }
 
-        /* ── Poster ── */
-        .sns-poster {
-            display: block;
-            max-width: 520px;
-            width: 100%;
-            margin: 1.25rem auto 0.5rem;
-            border-radius: 12px;
-            border: 4px solid var(--wood-medium);
-            box-shadow: 0 10px 30px var(--shadow-medium);
+        /* ── Two-part day timeline ── */
+        .hh-day {
+            list-style: none;
+            margin: 1.75rem auto 0;
+            padding: 0 0 0 2.2rem;
+            max-width: 720px;
+            position: relative;
         }
-        .sns-poster-link { display: inline-block; transition: transform 0.3s ease; }
-        .sns-poster-link:hover { transform: translateY(-4px); }
-        .sns-poster-cap {
-            font-size: 0.9rem;
-            font-style: italic;
-            color: var(--text-light);
-            margin-top: 0.25rem;
+        .hh-day::before {
+            content: '';
+            position: absolute;
+            /* centred on the 1.5rem step dots, which sit 0.75rem in */
+            left: calc(0.75rem - 1.5px);
+            top: 1.1rem;
+            bottom: 1.1rem;
+            width: 3px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--rope-tan) 0 8px,
+                transparent 8px 14px
+            );
+            border-radius: 2px;
+        }
+        .hh-step {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .hh-step:last-child { margin-bottom: 0; }
+        .hh-step::before {
+            content: '';
+            position: absolute;
+            left: -2.2rem;
+            top: 0.35rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: var(--straw);
+            border: 3px solid var(--wood-medium);
+            box-shadow: var(--elev-1);
+        }
+        .hh-step.is-main::before { background: var(--barn-red); }
+        .hh-step-time {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--barn-red);
+            margin-bottom: 0.15rem;
+        }
+        .hh-step h3 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--wood-dark);
+            margin: 0 0 0.3rem;
+            font-size: 1.2rem;
+        }
+        .hh-step p {
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .hh-where {
+            display: inline-block;
+            background: var(--cream-dark);
+            border: 1px solid var(--line);
+            border-radius: var(--r-pill);
+            padding: 0.1rem 0.65rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--wood-medium);
+            margin-left: 0.4rem;
+            vertical-align: 2px;
         }
 
         /* ── Info cards ── */
-        .sns-info-grid {
+        .hh-info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.25rem;
             margin-top: 1.5rem;
         }
-        .sns-info-card {
+        .hh-info-card {
             background: var(--cream);
             border: 3px solid var(--rope-tan);
-            border-radius: 12px;
+            border-radius: var(--r-md);
             padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 4px 14px var(--shadow-medium);
+            box-shadow: var(--elev-2);
         }
-        .sns-info-icon {
-            font-size: 2.4rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .sns-info-card h3 {
+        .hh-info-icon { font-size: 2.4rem; display: block; margin-bottom: 0.5rem; }
+        .hh-info-card h3 {
             font-family: 'Roboto Slab', serif;
             color: var(--barn-red);
             margin-bottom: 0.5rem;
         }
-        .sns-info-card p {
+        .hh-info-card p { color: var(--text-dark); font-size: 1rem; line-height: 1.5; }
+
+        /* ── Eligibility ── */
+        .hh-eligibility {
+            background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
+            border: 4px solid var(--wood-medium);
+            border-radius: var(--r-md);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .hh-eligibility h3 {
+            font-family: 'Alfa Slab One', serif;
+            color: var(--wood-dark);
+            margin-bottom: 0.75rem;
+        }
+        .hh-eligibility p {
+            color: var(--wood-dark);
+            font-size: 1.08rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .hh-eligibility p:last-child { margin-bottom: 0; }
+        .hh-eligibility .highlight { font-weight: 700; color: var(--barn-red); }
+
+        /* ── What to wear ── */
+        .hh-wear-list {
+            max-width: 620px;
+            margin: 1.25rem auto 0;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+        }
+        .hh-wear-list li {
+            position: relative;
+            padding: 0.55rem 0 0.55rem 2rem;
+            border-bottom: 1px solid var(--line);
             color: var(--text-dark);
-            font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.55;
+        }
+        .hh-wear-list li:last-child { border-bottom: none; }
+        .hh-wear-list li::before {
+            content: '🐴';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            font-size: 1.05rem;
         }
 
-        /* ── Registration status ── */
-        .sns-deadline {
+        /* ── Registration notice ── */
+        .hh-notice {
             text-align: center;
-            max-width: 560px;
+            max-width: 620px;
             margin: 0 auto 1rem;
-            background: var(--grass-green);
+            background: var(--barn-red);
             color: #fff;
             font-family: 'Roboto Slab', serif;
             font-weight: 600;
-            font-size: 1.05rem;
-            padding: 0.7rem 1.25rem;
-            border-radius: 30px;
+            font-size: 1.02rem;
+            line-height: 1.55;
+            padding: 0.85rem 1.35rem;
+            border-radius: var(--r-lg);
             border: 2px solid var(--straw);
-            box-shadow: 0 4px 14px var(--shadow-medium);
+            box-shadow: var(--elev-2);
         }
-        .sns-deadline strong { color: var(--straw-light); }
+        .hh-notice strong { color: var(--straw-light); }
+        .hh-notice a { color: var(--straw-light); font-weight: 700; }
 
         /* ── Google Form embed ── */
         .gform-intro {
@@ -222,16 +295,16 @@
         .gform-embed {
             background: var(--cream);
             border: 3px solid var(--wood-medium);
-            border-radius: 12px;
+            border-radius: var(--r-md);
             padding: 0.5rem;
-            box-shadow: 0 6px 20px var(--shadow-medium);
+            box-shadow: var(--elev-2);
         }
         .gform-embed iframe {
             display: block;
             width: 100%;
-            min-height: 1400px;
+            min-height: 1350px;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--r-sm);
             background: var(--cream);
         }
         .gform-fallback {
@@ -240,36 +313,11 @@
             color: var(--cream);
             font-size: 0.95rem;
         }
-        .gform-fallback a {
-            color: var(--straw);
-            font-weight: 600;
-        }
-
-        /* ── Sponsor ── */
-        .sns-sponsor {
-            background: linear-gradient(135deg, var(--hay) 0%, var(--straw-light) 100%);
-            border: 4px solid var(--wood-medium);
-            border-radius: 12px;
-        }
-        .sns-sponsor-label {
-            display: inline-block;
-            font-family: 'Lato', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--wood-dark);
-            margin-bottom: 0.4rem;
-        }
-        .sns-sponsor-name {
-            font-family: 'Alfa Slab One', serif;
-            color: var(--barn-red);
-            margin: 0 0 0.5rem;
-        }
-        .sns-sponsor p { color: var(--wood-dark); }
+        .gform-fallback a { color: var(--straw); font-weight: 600; }
 
         @media (max-width: 600px) {
-            .gform-embed iframe { min-height: 1600px; }
+            .hh-hero-content { padding: 1.6rem 1.25rem; }
+            .gform-embed iframe { min-height: 1550px; }
         }
     </style>
 </head>
@@ -296,8 +344,8 @@
                             <li><a href="events.html">All Events</a></li>
                             <li><a href="parade.html">CCEx Parade</a></li>
                             <li><a href="activities.html">Kids Activities &amp; Fun Zone</a></li>
-                            <li><a href="show-n-shine.html" class="active">Kids Show 'N Shine</a></li>
-                            <li><a href="hobby-horse.html">Hobby Horse Competition</a></li>
+                            <li><a href="show-n-shine.html">Kids Show 'N Shine</a></li>
+                            <li><a href="hobby-horse.html" class="active">Hobby Horse Competition</a></li>
                             <li><a href="events.html#mud-stomp">Mud Stomp (19+)</a></li>
                             <li><a href="photos.html">Photo Gallery</a></li>
                         </ul>
@@ -348,27 +396,27 @@
 
     <main id="main">
         <div class="container">
-            <div class="sns-hero">
-                <div class="sns-hero-bg"></div>
-                <div class="sns-hero-overlay"></div>
-                <div class="sns-hero-content">
-                    <span class="sns-badge">CCEx 2026 &mdash; 3rd Annual Kids Event</span>
-                    <h1 class="sns-title">Kids Show 'N Shine</h1>
-                    <p class="sns-desc">A kids-only car show! Bring an electric powered vehicle your child can operate (or steer by remote) and show it off to the crowd. No vehicle? Come be a judge — every child gets a treat bag!</p>
-                    <div class="sns-pills">
-                        <span class="sns-pill red">Ages 9 &amp; Under</span>
-                        <span class="sns-pill">Free Event</span>
-                        <span class="sns-pill">Treat Bag for Every Child</span>
-                        <span class="sns-pill">Registration Open — No Deadline</span>
-                        <a href="#register" class="sns-pill straw">Register Now →</a>
+            <div class="hh-hero">
+                <div class="hh-hero-bg"></div>
+                <div class="hh-hero-overlay"></div>
+                <div class="hh-hero-content">
+                    <span class="hh-badge">CCEx 2026 &mdash; Saturday, September 5</span>
+                    <h1 class="hh-title">Hobby Horse Competition</h1>
+                    <p class="hh-desc">Riders build their own hobby horse in the dining hall Saturday morning, then ride it in a real show in the arena that afternoon. There's no charge &mdash; but spaces are limited, and everyone must sign up ahead of time.</p>
+                    <div class="hh-pills">
+                        <span class="hh-pill red">Ages 3 &amp; Up</span>
+                        <span class="hh-pill">No Charge</span>
+                        <span class="hh-pill">Build 10 AM &middot; Show 3 PM</span>
+                        <span class="hh-pill">Spaces Limited</span>
+                        <a href="#register" class="hh-pill straw">Register Now &rarr;</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Info Panel -->
+            <!-- Intro -->
             <section class="panel section-decorated">
                 <div class="animal-head left">
-                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/cow facing right.webp" alt="Decorative farm animal">
+                    <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse facing right.webp" alt="Decorative farm animal">
                 </div>
                 <div class="animal-head right">
                     <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse facing left.webp" alt="Decorative farm animal">
@@ -376,54 +424,86 @@
                 <div class="horseshoe">
                     <img width="1024" height="1024" loading="lazy" decoding="async" src="images/art/horse shoe.webp" alt="Decorative horseshoe">
                 </div>
-                <h2>3rd Annual Kids Show 'N Shine</h2>
-                <p>Welcome to the Cumberland County Exhibition Kids Show 'N Shine — a kids-only car show for children 9 years and under! Bring an electric powered vehicle your child can operate (or that an adult steers by remote) and show it off to the crowd. No vehicle? No problem — come be a judge and pick your favourite ride. <strong>Every child goes home with a treat bag full of goodies!</strong></p>
+                <h2>Make Your Horse, Then Ride It</h2>
+                <p>The Hobby Horse Competition is one day in two halves. In the morning, every rider makes the hobby horse they're going to compete on &mdash; nothing to bring, nothing to build at home. In the afternoon the arena is theirs: back numbers, riding clothes, and a real show in front of the crowd.</p>
+                <p>It runs in the same arena as the light horse classes, and it runs the same way &mdash; just scaled down to the smallest riders at the fair. Everyone takes their horse home at the end of the day.</p>
                 <p style="text-align:center; margin-top:1.25rem;"><a href="#register" class="btn">Register Now</a></p>
             </section>
 
-            <!-- Event Poster -->
-            <section class="panel text-center">
-                <h2>Event Poster</h2>
-                <p>All makes and models accepted — here are all the details for this year's event.</p>
-                <a href="images/posters/poster show and shine 2026.webp" target="_blank" rel="noopener" class="sns-poster-link">
-                    <img width="1024" height="1536" loading="lazy" decoding="async" src="images/posters/poster show and shine 2026.webp" alt="3rd Annual Cumberland County Exhibition Kids Show 'N Shine poster — open to children 9 and under, free event, pre-registration required, sponsored by DG Sons Trucking Ltd" class="sns-poster">
-                </a>
-                <p class="sns-poster-cap">Tap the poster to view it full size.</p>
+            <!-- The day -->
+            <section class="panel">
+                <h2 class="text-center">Saturday, September 5</h2>
+                <p class="text-center">Here's how the day runs, start to finish.</p>
+                <ol class="hh-day">
+                    <li class="hh-step">
+                        <span class="hh-step-time">Saturday Morning</span>
+                        <h3>Register &amp; pick up your back number</h3>
+                        <p>Riders are given a back number when they register on the Saturday morning &mdash; the same as any other class at the show.</p>
+                    </li>
+                    <li class="hh-step is-main">
+                        <span class="hh-step-time">10:00 AM</span>
+                        <h3>Build your hobby horse <span class="hh-where">Dining Hall</span></h3>
+                        <p>The hobby horses used in the show are made by the riders themselves, at 10 AM in the dining hall. It all happens right there &mdash; nothing to bring, nothing to prepare in advance.</p>
+                    </li>
+                    <li class="hh-step is-main">
+                        <span class="hh-step-time">3:00 PM</span>
+                        <h3>The show <span class="hh-where">Arena</span></h3>
+                        <p>The show is held in the arena at 3:00 PM. Riders are encouraged to wear English or Western riding clothes &mdash; and some cowboy hats are available if you need one.</p>
+                    </li>
+                    <li class="hh-step">
+                        <span class="hh-step-time">After the Show</span>
+                        <h3>Take your horse home</h3>
+                        <p>Riders may take their horses back to their home stables after the show on Saturday afternoon. The horse you made is yours to keep.</p>
+                    </li>
+                </ol>
             </section>
 
-            <!-- Event Details -->
+            <div class="divider-rope"></div>
+
+            <!-- Details -->
             <section class="panel">
-                <h2 class="text-center">Event Details</h2>
-                <div class="sns-info-grid">
-                    <div class="sns-info-card">
-                        <span class="sns-info-icon">🚗</span>
-                        <h3>Bring Your Ride</h3>
-                        <p>Open to all children 9 years and under. Bring an electric powered vehicle your child can operate, or that an adult steers via remote, for a kids-only car show!</p>
+                <h2 class="text-center">The Details</h2>
+                <div class="hh-info-grid">
+                    <div class="hh-info-card">
+                        <span class="hh-info-icon">🐴</span>
+                        <h3>Nothing to Bring</h3>
+                        <p>Riders make their own hobby horse at the morning session in the dining hall. Don't build one at home &mdash; making it is half the fun.</p>
                     </div>
-                    <div class="sns-info-card">
-                        <span class="sns-info-icon">⚖️</span>
-                        <h3>No Vehicle? Be a Judge!</h3>
-                        <p>A powered vehicle is not required to take part. Any child 9 &amp; under can come, be a judge, pick their favourite vehicle — and still receive a treat bag!</p>
+                    <div class="hh-info-card">
+                        <span class="hh-info-icon">💰</span>
+                        <h3>No Charge</h3>
+                        <p>There is no cost to take part. All participants must complete the registration form in advance.</p>
                     </div>
-                    <div class="sns-info-card">
-                        <span class="sns-info-icon">🎁</span>
-                        <h3>Treat Bags for All</h3>
-                        <p>Every child who takes part will receive a treat bag full of goodies. It's a fun day for the whole family.</p>
+                    <div class="hh-info-card">
+                        <span class="hh-info-icon">⏳</span>
+                        <h3>Spaces Are Limited</h3>
+                        <p>There are only so many spots in the morning build session, so register early &mdash; and if your plans change, tell us so someone else can take the space.</p>
                     </div>
-                    <div class="sns-info-card">
-                        <span class="sns-info-icon">✅</span>
-                        <h3>Free — But Pre-Register</h3>
-                        <p>This is a free event, but pre-registration is required. All makes and models are accepted. <strong>Registration has re-opened</strong> — there's no deadline, so sign up right up to show day.</p>
+                    <div class="hh-info-card">
+                        <span class="hh-info-icon">👨‍👩‍👧</span>
+                        <h3>Bring a Grown-Up</h3>
+                        <p>All children must be accompanied by an adult. The form asks for that adult's full name and phone number.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Eligibility -->
-            <div class="eligibility-box">
-                <h3>Who Can Participate?</h3>
-                <p>This event is for children <span class="highlight">9 years and younger</span>.</p>
-                <p>If your child does not own a vehicle, they can still participate as a <span class="highlight">judge</span> and will still receive a treat bag!</p>
+            <div class="hh-eligibility">
+                <h3>Who Can Take Part?</h3>
+                <p>This activity is <span class="highlight">not suitable for children under 3 years of age</span>.</p>
+                <p>Every child must be <span class="highlight">accompanied by an adult</span>, and that adult's name and phone number go on the registration form.</p>
             </div>
+
+            <!-- What to wear -->
+            <section class="panel text-center">
+                <h2>What to Wear</h2>
+                <p>Nothing is required &mdash; but the riders who dress the part always steal the show.</p>
+                <ul class="hh-wear-list">
+                    <li>Riders are encouraged to wear <strong>English or Western riding clothes</strong>.</li>
+                    <li><strong>Some cowboy hats are available</strong> at the show if your rider doesn't have one.</li>
+                    <li>Back numbers are handed out at <strong>Saturday morning registration</strong> &mdash; nothing to arrange ahead of time.</li>
+                </ul>
+            </section>
 
             <div class="divider-rope"></div>
 
@@ -435,41 +515,34 @@
                     <summary>Open the registration form</summary>
                     <div class="reg-collapse-body">
 
-                    <p class="sns-deadline">✅ Registration is open again — <strong>no deadline</strong>, so sign up right up to show day, Saturday, Sept 5.</p>
-                    <p class="gform-intro">Pre-registration is required for this free event. Fill out the form below to register your child for the Kids Show 'N Shine.</p>
+                    <p class="hh-notice">⏳ <strong>Spaces are limited</strong> and they fill up. If the form below says the show is full, call Kirsteen at <a href="tel:+19022973457">902&nbsp;297&nbsp;3457</a> to ask whether a space has come open.</p>
+                    <p class="gform-intro">There is no charge, but all participants must complete this form in advance. All children must be accompanied by an adult.</p>
                     <div class="gform-embed">
                         <iframe
-                            src="https://docs.google.com/forms/d/e/1FAIpQLScyK6QPvSM7ByLQFelg6q5phYh_aRrauOKL0zIqY9tkQUtu2w/viewform?embedded=true"
-                            title="Kids Show 'N Shine Registration Form"
-                            loading="lazy">Loading…</iframe>
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdDngwGmaJNEaweu-ksHzyAxGNWQO4JaydCsptyOy6LcJBPEQ/viewform?embedded=true"
+                            title="Hobby Horse Competition Registration Form"
+                            loading="lazy">Loading&hellip;</iframe>
                     </div>
                     <div class="gform-fallback">
                         Having trouble with the embedded form?
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScyK6QPvSM7ByLQFelg6q5phYh_aRrauOKL0zIqY9tkQUtu2w/viewform" target="_blank" rel="noopener">Open the registration form in a new tab →</a>
+                        <a href="https://forms.gle/mHqqn37bL6g1tots9" target="_blank" rel="noopener">Open the registration form in a new tab &rarr;</a>
                     </div>
 
                     </div><!-- /.reg-collapse-body -->
                 </details>
             </section>
 
-            <!-- Sponsor -->
-            <section class="panel text-center sns-sponsor">
-                <span class="sns-sponsor-label">Proudly Sponsored By</span>
-                <h2 class="sns-sponsor-name">DG Sons Trucking Ltd</h2>
-                <p>The Kids Show 'N Shine is made possible thanks to the generous support of DG Sons Trucking Ltd.</p>
-            </section>
-
-            <!-- Organizer -->
-            <section class="panel text-center">
-                <h2>Event Organizer</h2>
-                <p>The Kids Show 'N Shine is organized by <a href="members.html#kylynne" class="link-accent">Kylynne Sheffield</a>, CCEx Director. Have a question about the event? Reach out anytime.</p>
-                <p style="margin-top:1.25rem;"><a href="mailto:ky536048@dal.ca" class="btn">Email Kylynne — ky536048@dal.ca</a></p>
-            </section>
-
-            <!-- Contact Info -->
+            <!-- Change of plans -->
             <section class="panel text-center ribboned">
+                <h2>Plans Changed?</h2>
+                <p>If you've registered and can no longer attend, please let us know as soon as possible so that someone else may attend. Email <a href="mailto:1kirsteenthomson@gmail.com" class="link-accent">1kirsteenthomson@gmail.com</a> or call <a href="tel:+19022973457" class="link-accent">902&nbsp;297&nbsp;3457</a>.</p>
+            </section>
+
+            <!-- Questions -->
+            <section class="panel text-center">
                 <h2>Questions?</h2>
-                <p>All makes and models accepted! For more information about the Kids Show 'N Shine, email organizer <a href="mailto:ky536048@dal.ca" class="link-accent">Kylynne Sheffield</a> at <a href="mailto:ky536048@dal.ca" class="link-accent">ky536048@dal.ca</a>, email the office at <a href="mailto:cumberlandexhibition@gmail.com" class="link-accent">cumberlandexhibition@gmail.com</a>, or <a href="contact.html" class="link-accent">contact us</a> — we're happy to help!</p>
+                <p>For anything about the Hobby Horse Competition &mdash; the morning build session, the afternoon show, or whether a space has come open &mdash; contact Kirsteen at <a href="mailto:1kirsteenthomson@gmail.com" class="link-accent">1kirsteenthomson@gmail.com</a> or <a href="tel:+19022973457" class="link-accent">902&nbsp;297&nbsp;3457</a>.</p>
+                <p style="margin-top:0.75rem;">You can also email the CCEx office at <a href="mailto:cumberlandexhibition@gmail.com" class="link-accent">cumberlandexhibition@gmail.com</a> or <a href="contact.html" class="link-accent">contact us</a> &mdash; and see where the Hobby Horse fits into the day on the <a href="schedule-2026.html#day-sep5" class="link-accent">Saturday schedule</a>.</p>
             </section>
 
         <!-- Become a Sponsor CTA -->
